@@ -1,0 +1,24 @@
+use_nerdfont = true
+
+[theme]
+background = "default"
+primary = "#cdd6f4"
+secondary = "a6adc8"
+title = "#a6e3a1"
+playing = "#cba6f7"
+playing_selected = "#1e1e2e"
+playing_bg = "default"
+highlight = "#1e1e2e"
+highlight_bg = "#eba0ac"
+error = "black"
+error_bg = "#f38ba8"
+statusbar = "#f9e2af"
+statusbar_progress = "#cba6f7"
+statusbar_bg = "#default"
+cmdline = "#cdd6f4"
+cmdline_bg = "#191414"
+search_match = "#f38ba8"
+
+[keybindings]
+"Shift+j" = "move down 5"
+"Shift+k" = "move up 5"

@@ -1,0 +1,67 @@
+# Add navigation in insert mode
+
+[[completion.prepend_keymap]]
+on = ["<C-p>"]
+run = "arrow -1"
+desc = "Move cursor up"
+
+[[completion.prepend_keymap]]
+on = ["<C-n>"]
+run = "arrow 1"
+desc = "Move cursor down"
+
+# Add enter behavior to l key
+# https://yazi-rs.github.io/docs/tips#smart-enter-enter-for-directory-open-for-file
+
+[[manager.prepend_keymap]]
+on = ["l"]
+run = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the file"
+
+# Relative Motions
+# https://github.com/dedukun/relative-motions.yazi
+
+[[manager.prepend_keymap]]
+on = ["1"]
+run = "plugin relative-motions --args=1"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["2"]
+run = "plugin relative-motions --args=2"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["3"]
+run = "plugin relative-motions --args=3"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["4"]
+run = "plugin relative-motions --args=4"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["5"]
+run = "plugin relative-motions --args=5"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["6"]
+run = "plugin relative-motions --args=6"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["7"]
+run = "plugin relative-motions --args=7"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["8"]
+run = "plugin relative-motions --args=8"
+desc = "Move in relative steps"
+
+[[manager.prepend_keymap]]
+on = ["9"]
+run = "plugin relative-motions --args=9"
+desc = "Move in relative steps"

@@ -1,0 +1,27 @@
+import = ["~/.config/alacritty/mocha.toml"]
+live_config_reload = true
+
+[shell]
+program = "/usr/bin/nu"
+
+[cursor.style]
+blinking = "On"
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 10, y = 8 }
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.5
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "FiraMono Nerd Font"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true

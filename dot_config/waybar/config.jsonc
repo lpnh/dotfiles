@@ -1,0 +1,62 @@
+{
+    "layer": "top",
+    "position": "top",
+    "output": "HDMI-A-1",
+    "start_hidden": true,
+    "height": 35,
+    "margin-top": 7,
+    "margin-left": 7,
+    "margin-right": 7,
+    "modules-left": [
+        "custom/logo",
+        "wlr/taskbar"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "pulseaudio"
+    ],
+    "custom/logo": {
+       "format": " ",
+       "tooltip": false
+    },
+    "wlr/taskbar": {
+        "all-outputs": true,
+        "format": "{app_id}",
+        "tooltip": false,
+        "rewrite": {
+            "Alacritty": "",
+            "firefox": "󰈹",
+            "neovim": "",
+            "yazi": "",
+            "ncspot": "",
+            "WebCord": "󰙯"
+        }
+    },
+    "clock": {
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<i>{}</i>\n",
+                "days": "{}",
+                "weekdays": "{}",
+                "today": "<b><u>{}</u></b>"
+            }
+        },
+        "format": "{:%a %d-%b %R}",
+        "actions":  {
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}{volume}%",
+        "tooltip": false,
+        "format-muted": "  Muted",
+        "format-icons": {
+            "default": [" ", " ", " "]
+        }
+    }
+}

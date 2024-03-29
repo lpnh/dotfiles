@@ -1,0 +1,35 @@
+/* Documentation: https://github.com/Alexays/Waybar/wiki/Configuration */
+
+@import "mocha.css";
+
+* {
+    /* border: none; */
+    font-family: 'FiraMono Nerd Font';
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    /* background: transparent; */
+    background: rgba(24, 24, 37, 0.5);
+    border-radius: 7px;
+    border: 1px solid rgba(88, 91, 112, 0.9);
+    color: @text;
+}
+
+#custom-logo,
+#taskbar,
+#clock,
+#pulseaudio {
+    margin: 0;
+    padding: 0 32px;
+}
+
+#taskbar button {
+    color: @surface2;
+}
+
+#taskbar button.active {
+    color: @text;
+}
+
