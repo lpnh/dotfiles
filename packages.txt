@@ -25,6 +25,7 @@ lemurs-git
 lua
 neovim-git
 niri
+nodejs
 nushell
 otf-firamono-nerd
 papirus-folders-catppuccin-git
