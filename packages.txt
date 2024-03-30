@@ -30,6 +30,7 @@ nushell
 otf-firamono-nerd
 papirus-folders-catppuccin-git
 papirus-icon-theme
+polkit-gnome
 poppler
 refind
 ripgrep
