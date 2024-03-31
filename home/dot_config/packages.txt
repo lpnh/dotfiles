@@ -46,7 +46,6 @@ sway
 swaybg
 swayidle
 swaylock
-tldr
 ttf-nerd-fonts-symbols
 unarchiver
 waybar
