@@ -50,6 +50,7 @@ ttf-nerd-fonts-symbols
 unarchiver
 waybar
 webcord
+wev
 wl-clipboard
 wlsunset
 xdg-desktop-portal-gnome
