@@ -55,3 +55,4 @@ xdg-desktop-portal-gtk
 yazi
 zola
 zoxide
+eza
