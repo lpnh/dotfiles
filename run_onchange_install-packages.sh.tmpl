@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# packages.txt hash: {{ include "packages.txt" | sha256sum }}
+yay -S --needed --noconfirm $(cat ~/.config/packages.txt)
