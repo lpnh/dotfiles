@@ -364,9 +364,9 @@ binds {
 
 // }}}
 
-{{ if eq .chezmoi.hostname "desktop" }}
+{{- if eq .chezmoi.hostname "desktop" }}
 spawn-at-startup "niri" "msg" "action" "focus-monitor-right"
-{{ end }}
+{{- end }}
 
 spawn-at-startup "alacritty"
 
