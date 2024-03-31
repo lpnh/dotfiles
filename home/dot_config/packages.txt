@@ -19,6 +19,7 @@ fzf
 git
 gitui
 glow
+gnome-keyring
 go
 inter-font
 jq
