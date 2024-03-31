@@ -9,6 +9,7 @@ cava
 chezmoi
 clang
 dunst
+eza
 fd
 ffmpegthumbnailer
 fish
@@ -55,4 +56,3 @@ xdg-desktop-portal-gtk
 yazi
 zola
 zoxide
-eza
