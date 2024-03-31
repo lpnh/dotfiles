@@ -364,7 +364,10 @@ binds {
 
 // }}}
 
+{{ if eq .chezmoi.hostname "desktop" }}
 spawn-at-startup "niri" "msg" "action" "focus-monitor-right"
+{{ end }}
+
 spawn-at-startup "alacritty"
 
 // vim:fileencoding=utf-8:ft=kdl:fdm=marker
