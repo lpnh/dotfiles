@@ -23,6 +23,7 @@ jq
 just
 lemurs-git
 lua
+ncspot
 neovim-git
 niri
 nodejs
