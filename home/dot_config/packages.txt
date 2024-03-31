@@ -12,7 +12,6 @@ dunst
 eza
 fd
 ffmpegthumbnailer
-firefox
 fish
 fuzzel
 fzf
