@@ -43,3 +43,14 @@ written in Rust
 client written in Rust, inspired by ncmpc and the likes
 
 [Swaylock](https://github.com/swaywm/swaylock): Screen locker for Wayland
+
+## Usage
+
+```sh
+chezmoi init https://github.com/lpnh/dotfiles.git
+```
+
+```sh
+chezmoi apply
+```
+
