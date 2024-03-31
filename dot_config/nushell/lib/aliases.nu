@@ -12,11 +12,12 @@ alias cwr = cargo watch -qcx run
 # chezmoi
 alias ch = chezmoi
 alias chad = chezmoi add
-alias chap = chezmoi apply
-alias chd = chezmoi diff
+alias chap = chezmoi apply --verbose
+alias chdi = chezmoi diff
 alias chda = chezmoi data
 alias ched = chezmoi edit
-alias chs = chezmoi status
+alias chst = chezmoi status
+alias chup = chezmoi update --verbose
 alias chz = chezmoi cd
 
 # eza
