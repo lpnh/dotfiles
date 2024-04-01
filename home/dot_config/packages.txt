@@ -34,6 +34,7 @@ otf-firamono-nerd
 papirus-folders-catppuccin-git
 papirus-icon-theme
 polkit-gnome
+pop-gtk-theme
 poppler
 refind
 ripgrep
