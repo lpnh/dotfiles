@@ -1,0 +1,19 @@
+#!/bin/bash
+
+sudo systemctl enable lemurs.service
+
+# Create Niri script
+sudo tee /etc/lemurs/wayland/niri > /dev/null << EOF
+#!/bin/sh
+exec niri
+EOF
+
+# Create Sway script 
+sudo tee /etc/lemurs/wayland/sway > /dev/null << EOF
+#!/bin/sh
+exec sway
+EOF
+
+# Make the scripts executable
+sudo chmod 755 /etc/lemurs/wayland/niri
+sudo chmod 755 /etc/lemurs/wayland/sway
