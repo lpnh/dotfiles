@@ -18,8 +18,12 @@ input {
     keyboard {
         xkb {
             // For more information, see xkeyboard-config(7)
+            {{- if eq .chezmoi.hostname "desktop" }}
             layout "us"
             options "grp:alt_shift_toggle,compose:ralt"
+            {{- if eq .chezmoi.hostname "laptop" }}
+            layout "br"
+            {{- end }}
         }
     }
 
@@ -339,5 +343,11 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+{{- if eq .chezmoi.hostname "desktop" }}
+spawn-at-startup "niri" "msg" "action" "focus-monitor-right"
+{{- end }}
+
+spawn-at-startup "alacritty"
 
 // vim:fileencoding=utf-8:ft=kdl:fdm=indent
