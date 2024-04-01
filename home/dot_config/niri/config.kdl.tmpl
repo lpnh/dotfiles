@@ -21,7 +21,7 @@ input {
             {{- if eq .chezmoi.hostname "desktop" }}
             layout "us"
             options "grp:alt_shift_toggle,compose:ralt"
-            {{- if eq .chezmoi.hostname "laptop" }}
+            {{- else if eq .chezmoi.hostname "laptop" }}
             layout "br"
             {{- end }}
         }
@@ -346,7 +346,7 @@ binds {
 
 {{- if eq .chezmoi.hostname "desktop" }}
 spawn-at-startup "niri" "msg" "action" "focus-monitor-right"
-{{ end }}
+{{- end }}
 
 spawn-at-startup "alacritty"
 
