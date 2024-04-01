@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    {{- if ne .chezmoi.hostname "desktop" }}
+    {{- if eq .chezmoi.hostname "desktop" }}
     "output": "HDMI-A-1",
     {{- end }}
     "start_hidden": true,
