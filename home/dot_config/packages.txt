@@ -4,7 +4,6 @@ bottom
 cargo-make
 cargo-shuttle
 cargo-watch
-catppuccin-gtk-theme-mocha
 cava
 chezmoi
 clang
