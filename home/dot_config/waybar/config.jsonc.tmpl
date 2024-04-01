@@ -1,7 +1,9 @@
 {
     "layer": "top",
     "position": "top",
+    {{- if ne .chezmoi.hostname "desktop" }}
     "output": "HDMI-A-1",
+    {{- end }}
     "start_hidden": true,
     "height": 35,
     "margin-top": 7,
