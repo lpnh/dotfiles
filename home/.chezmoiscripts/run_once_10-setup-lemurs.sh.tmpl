@@ -8,7 +8,7 @@ sudo mkdir -p /etc/lemurs/wayland
 # Create Niri script
 sudo tee /etc/lemurs/wayland/niri > /dev/null << EOF
 #!/bin/sh
-exec niri
+exec niri-session
 EOF
 
 # Create Sway script 
