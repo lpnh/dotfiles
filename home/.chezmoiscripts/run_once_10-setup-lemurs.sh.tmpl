@@ -2,6 +2,9 @@
 
 sudo systemctl enable lemurs.service
 
+# Create the wayland directory
+sudo mkdir -p /etc/lemurs/wayland
+
 # Create Niri script
 sudo tee /etc/lemurs/wayland/niri > /dev/null << EOF
 #!/bin/sh
