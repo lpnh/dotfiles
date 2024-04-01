@@ -2,8 +2,8 @@
 
 mkdir -p ~/.config/systemd/user/niri.service.wants
 
-ln -s /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/dunst.service ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/swaybg.service ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/swayidle.service ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/wlsunset.service ~/.config/systemd/user/niri.service.wants/
+ln -sf /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
+ln -sf ~/.config/systemd/user/dunst.service ~/.config/systemd/user/niri.service.wants/
+ln -sf ~/.config/systemd/user/swaybg.service ~/.config/systemd/user/niri.service.wants/
+ln -sf ~/.config/systemd/user/swayidle.service ~/.config/systemd/user/niri.service.wants/
+ln -sf ~/.config/systemd/user/wlsunset.service ~/.config/systemd/user/niri.service.wants/
