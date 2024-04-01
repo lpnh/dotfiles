@@ -14,8 +14,6 @@
 
 // https://github.com/YaLTeR/niri/blob/main/resources/default-config.kdl
 
-// Input/Output {{{
-
 input {
     keyboard {
         xkb {
@@ -28,10 +26,6 @@ input {
     // Make the mouse warp to the center of newly focused windows
     warp-mouse-to-focus
 }
-
-// }}}
-
-// Layout {{{
 
 layout {
     gaps 8
@@ -69,10 +63,6 @@ layout {
     }
 }
 
-// }}}
-
-// Env {{{
-
 environment {
     GTK_THEME "Catppuccin-Mocha"
     QT_QPA_PLATFORM "wayland"
@@ -89,10 +79,6 @@ hotkey-overlay {
     // Disable the hotkey help at niri startup
     skip-at-startup
 }
-
-// }}}
-
-// Animations {{{
 
 animations {
     // Uncomment to turn off all animations.
@@ -136,10 +122,6 @@ animations {
     }
 }
 
-// }}}
-
-// Window rules {{{
-
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width
 window-rule {
@@ -164,10 +146,6 @@ window-rule {
     match app-id="(yazi|neovim|ncspot|WebCord)"
     open-maximized true
 }
-
-// }}}
-
-// Keybindings {{{
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -362,6 +340,4 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 }
 
-// }}}
-
-// vim:fileencoding=utf-8:ft=kdl:fdm=marker
+// vim:fileencoding=utf-8:ft=kdl:fdm=indent
