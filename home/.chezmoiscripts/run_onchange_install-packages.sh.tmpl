@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# packages.txt hash: {{ include "dot_config/packages.txt" | sha256sum }}
-yay -S --needed --noconfirm $(cat ~/.config/packages.txt)
