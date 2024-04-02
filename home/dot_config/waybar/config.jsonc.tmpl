@@ -9,14 +9,17 @@
     "margin-top": 7,
     "margin-left": 7,
     "margin-right": 7,
+
     "modules-left": [
         "custom/logo",
         "wlr/taskbar"
     ],
     "modules-center": ["clock"],
     "modules-right": [
+        "network",
         "pulseaudio"
     ],
+
     "custom/logo": {
        "format": " ",
        "tooltip": false
@@ -34,6 +37,7 @@
             "WebCord": "󰙯"
         }
     },
+
     "clock": {
         "calendar": {
             "mode": "month",
@@ -52,6 +56,16 @@
             "on-scroll-up": "shift_down",
             "on-scroll-down": "shift_up"
         }
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "format": "{icon}{volume}%",
