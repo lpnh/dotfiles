@@ -30,6 +30,7 @@ niri
 nodejs
 nushell
 otf-firamono-nerd
+otf-font-awesome
 papirus-folders-catppuccin-git
 papirus-icon-theme
 polkit-gnome
