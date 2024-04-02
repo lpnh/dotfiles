@@ -1,5 +1,0 @@
-#!/bin/sh
-
-{{ range .packages -}}
-yay -S --needed --noconfirm {{ . | quote }}
-{{ end -}}
