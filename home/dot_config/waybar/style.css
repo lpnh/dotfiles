@@ -20,6 +20,7 @@ window#waybar {
 #custom-logo,
 #taskbar,
 #clock,
+#network,
 #pulseaudio {
     margin: 0;
     padding: 0 32px;
