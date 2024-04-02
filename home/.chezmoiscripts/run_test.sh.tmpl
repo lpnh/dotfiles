@@ -1,0 +1,6 @@
+#!/bin/sh
+
+{{ range .packages -}}
+echo {{ . | quote }}
+{{ end -}}
+
