@@ -21,6 +21,7 @@ window#waybar {
 #taskbar,
 #clock,
 #network,
+#battery, /* laptop */
 #pulseaudio {
     margin: 0;
     padding: 0 32px;
