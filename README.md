@@ -6,8 +6,6 @@
 
 Wayland compositor: [Niri](https://github.com/YaLTeR/niri)
 
-Display manager: [Lemurs](https://github.com/coastalwhite/lemurs)
-
 Notification daemon: [Dunst](https://github.com/dunst-project/dunst)
 
 Status bar: [Waybar](https://github.com/Alexays/Waybar)
