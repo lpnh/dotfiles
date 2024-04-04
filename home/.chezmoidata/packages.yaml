@@ -52,8 +52,6 @@ packages:
   - 'wev'
   - 'wl-clipboard'
   - 'wlsunset'
-  - 'xdg-desktop-portal-gnome'
-  - 'xdg-desktop-portal-gtk'
   - 'yazi'
   - 'zola'
   - 'zoxide'
