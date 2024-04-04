@@ -81,6 +81,14 @@ return {
     end,
   },
 
+  -- Oil
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+
   -- Rust stuff ♥
   {
     'mrcjkb/rustaceanvim',
