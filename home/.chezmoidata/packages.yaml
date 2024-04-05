@@ -1,5 +1,6 @@
 packages:
   - 'alacritty'
+  - 'arc-gtk-theme-eos'
   - 'bat'
   - 'bottom'
   - 'cargo-make'
