@@ -54,3 +54,10 @@ Setting Nu as login shell:
 chsh -s /usr/bin/nu lpnh
 ```
 
+## Ly
+
+Enabling the service
+
+```
+systemctl enable ly.service
+```
