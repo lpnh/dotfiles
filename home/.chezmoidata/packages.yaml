@@ -5,6 +5,7 @@ packages:
   common:
     - 'alacritty'
     - 'arc-gtk-theme-eos'
+    - 'aseprite'
     - 'bat'
     - 'bottom'
     - 'cage'
