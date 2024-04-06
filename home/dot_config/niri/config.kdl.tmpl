@@ -166,15 +166,16 @@ binds {
     // shows a list of important hotkeys
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+A { spawn "alacritty"; }
+    // Binds for main apps and programs
     Mod+T { spawn "killall" "-SIGUSR1" "waybar"; }
-    Mod+B { spawn "firefox"; }
     Mod+D { spawn "fuzzel"; }
+    Mod+A { spawn "alacritty"; }
+    Mod+B { spawn "firefox"; }
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
     Mod+S { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
     Mod+W { spawn "webcord" "--ozone-platform=wayland"; }
+    Mod+P { spawn "cage" "--" "/usr/bin/aseprite"; }
 
     Pause { spawn "swaylock"; }
     Mod+Pause { spawn "reboot"; }
