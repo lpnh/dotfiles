@@ -32,6 +32,7 @@ packages:
     - 'jq'
     - 'just'
     - 'lua'
+    - 'ly'
     - 'ncspot'
     - 'neovim-git'
     - 'niri'
