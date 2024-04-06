@@ -2,10 +2,11 @@ packages:
   desktop:
     - 'vulkan-radeon'
   laptop:
+  optional:
+    - 'aseprite'
   common:
     - 'alacritty'
     - 'arc-gtk-theme-eos'
-    - 'aseprite'
     - 'bat'
     - 'bottom'
     - 'cage'
