@@ -14,7 +14,7 @@ window#waybar {
     background: rgba(24, 24, 37, 0.5);
     border-radius: 7px;
     border: 1px solid rgba(203, 166, 247, 0.5);
-    color: @text;
+    color: @mauve;
 }
 
 #custom-arch {
@@ -32,10 +32,10 @@ window#waybar {
 }
 
 #taskbar button {
-    color: @surface2;
+    color: @surface1;
 }
 
 #taskbar button.active {
-    color: @text;
+    color: @mauve;
 }
 
