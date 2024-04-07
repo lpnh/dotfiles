@@ -3,7 +3,7 @@ palette = "catppuccin_mocha"
 
 [character]
 # Note the use of Catppuccin color 'maroon'
-success_symbol = "[♥](green) "
+success_symbol = "[♥](pink) "
 error_symbol = "[](red)"
 
 [package]
