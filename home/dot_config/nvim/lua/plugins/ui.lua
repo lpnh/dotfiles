@@ -181,6 +181,16 @@ return {
 							action = "enew",
 						},
 						{
+							icon = "",
+							icon_hl = "@field",
+							desc = "  Find File",
+							desc_hl = "@field",
+							key = "f",
+							key_hl = "@field",
+							key_format = " %s",
+							action = "Telescope find_files",
+						},
+						{
 							icon = "",
 							icon_hl = "@field",
 							desc = "  History",
@@ -199,16 +209,6 @@ return {
 							key_hl = "@field",
 							key_format = " %s",
 							action = "MiniFiles.open()",
-						},
-						{
-							icon = "",
-							icon_hl = "@field",
-							desc = "  Chezmoi",
-							desc_hl = "@field",
-							key = "c",
-							key_hl = "@field",
-							key_format = " %s",
-							action = "ChezmoiDir",
 						},
 						{
 							icon = "",
