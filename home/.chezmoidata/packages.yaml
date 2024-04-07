@@ -28,6 +28,7 @@ packages:
     - 'glow'
     - 'gnome-keyring'
     - 'go'
+    - 'imv'
     - 'inter-font'
     - 'jq'
     - 'just'
