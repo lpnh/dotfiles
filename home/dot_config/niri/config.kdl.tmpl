@@ -138,6 +138,8 @@ window-rule {
 
 window-rule {
     match app-id="Alacritty"
+    exclude title="amirite"
+
     open-maximized true
 }
 
@@ -170,6 +172,7 @@ binds {
     Mod+T { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+D { spawn "fuzzel"; }
     Mod+A { spawn "alacritty"; }
+    Mod+Shift+A { spawn "alacritty" "--title" "amirite"; }
     Mod+B { spawn "firefox"; }
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
