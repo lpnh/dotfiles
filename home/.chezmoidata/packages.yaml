@@ -34,6 +34,7 @@ packages:
     - 'just'
     - 'lua'
     - 'ly'
+    - 'mpv'
     - 'ncspot'
     - 'neovim-git'
     - 'niri'
