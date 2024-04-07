@@ -1,0 +1,9 @@
+[Default Applications]
+image/jpeg=imv.desktop
+image/png=imv.desktop
+image/svg+xml=imv.desktop
+
+[Added Associations]
+image/jpeg=imv.desktop;
+image/png=imv.desktop;
+image/svg+xml=imv.desktop;
