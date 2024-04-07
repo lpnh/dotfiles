@@ -2,7 +2,7 @@ ignore-empty-password
 
 daemonize
 
-image=$HOME/.config/assets/arch.png
+image=$HOME/.config/assets/lock.png
 
 font=FiraMono Nerd Font
 hide-keyboard-layout

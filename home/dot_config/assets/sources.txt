@@ -1,2 +1,4 @@
-arch.png: https://www.reddit.com/r/wallpapers/comments/169txpz/i_made_this_wallpapers_for_arch_linux_users/
-waifu.png: https://wallhaven.cc/w/1kp3g9 
+lock.png: https://wallhaven.cc/w/o526l5
+waifu.png: https://wallhaven.cc/w/85kmq1
+
+@ https://wallhaven.cc/user/Silriti
