@@ -16,6 +16,7 @@ alias chap = chezmoi apply
 alias chdi = chezmoi diff
 alias chda = chezmoi data
 alias ched = chezmoi edit
+alias chre = chezmoi re-add
 alias chst = chezmoi status
 alias chup = chezmoi update --verbose
 alias chz = chezmoi cd
