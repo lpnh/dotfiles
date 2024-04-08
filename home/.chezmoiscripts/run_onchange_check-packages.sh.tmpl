@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Checking packages:"
+
+{{ range .packages.common -}}
+if yay -Qs {{ . | quote }} &> /dev/null; then
+    echo "[✓] {{ . | quote }}"
+else
+    echo "[ ] {{ . | quote }}"
+fi
+{{ end -}}
