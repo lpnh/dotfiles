@@ -22,6 +22,8 @@ Shell: [Nushell](https://github.com/nushell/nushell)
 
 Prompt: [Starship](https://github.com/starship/starship)
 
+Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
+
 Dotfile manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
 ## Utilities and Quality of Life
