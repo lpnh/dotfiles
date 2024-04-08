@@ -20,26 +20,6 @@ Refreshing the entire system:
 yay -Syyu
 ```
 
-## GitHub
-
-Generating a new SSH key:
-
-```
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
-
-Testing the SSH connection:
-
-```
-ssh -T git@github.com
-```
-
-Echo the public key:
-
-```
-cat ~/.ssh/id_ed25519.pub
-```
-
 ## Nushell
 
 Checking if Nu is in the valid shells list:
@@ -61,3 +41,32 @@ Enabling the service
 ```
 systemctl enable ly.service
 ```
+
+## Font
+
+Refreshing the font cache
+
+```
+sudo fc-cache -fv
+```
+
+## GitHub
+
+Generating a new SSH key:
+
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Echo the public key:
+
+```
+cat ~/.ssh/id_ed25519.pub
+```
+
+Testing the SSH connection:
+
+```
+ssh -T git@github.com
+```
+
