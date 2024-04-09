@@ -18,6 +18,7 @@ packages:
     - 'clang'
     - 'dunst'
     - 'eza'
+    - 'fastfetch'
     - 'fd'
     - 'ffmpegthumbnailer'
     - 'fish'
