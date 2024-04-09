@@ -70,3 +70,10 @@ Testing the SSH connection:
 ssh -T git@github.com
 ```
 
+## Rust
+
+Installing rust-analyzer
+
+```
+rustup component add rust-analyzer
+```
