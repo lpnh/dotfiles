@@ -16,6 +16,7 @@
     ],
     "modules-center": ["clock"],
     "modules-right": [
+        "tray",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
         "battery",
@@ -61,6 +62,9 @@
         }
     },
 
+    "tray": {
+        "spacing": 10
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
