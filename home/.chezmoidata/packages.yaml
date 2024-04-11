@@ -22,6 +22,7 @@ packages:
     - 'fd'
     - 'ffmpegthumbnailer'
     - 'fish'
+    - 'fswatch'
     - 'fuzzel'
     - 'fzf'
     - 'git'
