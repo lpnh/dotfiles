@@ -58,6 +58,7 @@ packages:
     - 'swaybg'
     - 'swayidle'
     - 'swaylock'
+    - 'tree-sitter-cli'
     - 'ttf-nerd-fonts-symbols'
     - 'unarchiver'
     - 'waybar'
