@@ -14,6 +14,8 @@
 
 // https://github.com/YaLTeR/niri/blob/main/resources/default-config.kdl
 
+// Input [[[
+
 input {
     keyboard {
         xkb {
@@ -41,6 +43,10 @@ input {
     // Make the mouse warp to the center of newly focused windows
     warp-mouse-to-focus
 }
+
+// ]]]
+
+// Layout [[[
 
 layout {
     gaps 8
@@ -78,6 +84,10 @@ layout {
     }
 }
 
+// ]]]
+
+// Miscellaneous [[[
+
 environment {
     GTK_THEME "Arc-Dark"
     QT_QPA_PLATFORM "wayland"
@@ -98,6 +108,10 @@ hotkey-overlay {
     // Disable the hotkey help at niri startup
     skip-at-startup
 }
+
+// ]]]
+
+// Animations [[[
 
 animations {
     // Uncomment to turn off all animations.
@@ -141,9 +155,13 @@ animations {
     }
 }
 
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width
+// ]]]
+
+// Window Rules [[[
+
 window-rule {
+    // Work around WezTerm's initial configure bug
+    // by setting an empty default-column-width
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives
     // You can get away with just app-id="wezterm" if you want
@@ -167,6 +185,10 @@ window-rule {
     match app-id="(yazi|neovim|ncspot|WebCord)"
     open-maximized true
 }
+
+// ]]]
+
+// Key Bindings [[[
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -362,6 +384,8 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+// ]]]
 
 {{- if eq .chezmoi.hostname "desktop" }}
 spawn-at-startup "niri" "msg" "action" "focus-monitor-right"
