@@ -77,3 +77,11 @@ Installing rust-analyzer
 ```
 rustup component add rust-analyzer
 ```
+
+## Neovim
+
+Installing neovim npm package
+
+```
+sudo npm install -g neovim
+```
