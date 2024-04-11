@@ -7,9 +7,12 @@ local opt = vim.opt
 
 opt.breakindent = true -- Enable break indent
 opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
-opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
+opt.completeopt = 'menuone,noselect' -- Better completion experience
 opt.expandtab = true -- Use spaces instead of tabs
-opt.fillchars = { eob = ' ' } -- Remove the `~` char on empty lines
+opt.fillchars = {
+  eob = ' ', -- Remove the `~` char on empty lines
+  fold = ' ', -- Remove trailing char after fold title
+}
 opt.hlsearch = true -- Set search highlight as default
 opt.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search
 opt.inccommand = 'split' -- Preview substitutions live, as you type
