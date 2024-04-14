@@ -74,13 +74,8 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
 local servers = {
+  typos_lsp = {},
   clangd = {},
   gopls = {},
   lua_ls = {
@@ -92,7 +87,7 @@ local servers = {
     },
   },
   taplo = {},
-  html = { filetypes = { 'rs', 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'rs', 'html', 'twig', 'hbs' } },
   tailwindcss = {},
   htmx = {},
   tsserver = {},
@@ -122,4 +117,3 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
