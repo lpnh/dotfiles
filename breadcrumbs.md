@@ -78,6 +78,12 @@ Installing rust-analyzer
 rustup component add rust-analyzer
 ```
 
+Adding WebAssembly target
+
+```
+rustup target add wasm32-unknown-unknown
+```
+
 ## Neovim
 
 Installing neovim npm package
