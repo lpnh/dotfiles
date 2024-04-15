@@ -91,3 +91,12 @@ Installing neovim npm package
 ```
 sudo npm install -g neovim
 ```
+
+Increasing the maximum number of `inotify` watches and queued events.
+Add the following to `/etc/sysctl.conf`
+
+```
+sysctl fs.inotify.max_user_watches=100000
+sysctl fs.inotify.max_queued_events=100000
+```
+
