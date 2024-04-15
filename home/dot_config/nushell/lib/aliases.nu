@@ -7,6 +7,7 @@ alias bpl = bat --plain --line-range
 alias bl = bat --line-range
 
 # cargo
+alias cwc = cargo watch -qcx clippy
 alias cwr = cargo watch -qcx run
 
 # chezmoi
