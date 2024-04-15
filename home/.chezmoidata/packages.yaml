@@ -1,4 +1,6 @@
 packages:
+  crates:
+    - "trunk"
   desktop:
     - 'vulkan-radeon'
   laptop:
