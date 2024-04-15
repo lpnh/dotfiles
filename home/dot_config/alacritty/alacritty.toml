@@ -25,3 +25,6 @@ style = "Regular"
 
 [mouse]
 hide_when_typing = true
+
+[keyboard]
+bindings = [{ key = "A", mods = "Control|Shift", action = "SpawnNewInstance" }]
