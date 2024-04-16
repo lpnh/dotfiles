@@ -1,6 +1,7 @@
 packages:
   crates:
-    - "trunk"
+    - 'trunk'
+    - 'cargo-chef'
   desktop:
     - 'vulkan-radeon'
   laptop:
