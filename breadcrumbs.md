@@ -100,3 +100,48 @@ sysctl fs.inotify.max_user_watches=100000
 sysctl fs.inotify.max_queued_events=100000
 ```
 
+## NetworkManager
+
+### Wi-Fi
+
+Getting a list of Wi-Fi networks
+
+```
+nmcli device wifi list
+```
+
+Connecting to a Wi-Fi
+
+```
+nmcli device wifi connect <SSID_or_BSSID> password <password>
+```
+
+### DNS
+
+Getting a list of connections
+
+```
+nmcli connection show
+```
+
+Checking the DNS values
+
+```
+nmcli connection show 'NAME' | rg dns
+```
+
+Setting the DNS
+
+```
+nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
+```
+
+Reconnecting
+
+```
+nmcli connection down 'NAME'
+```
+
+```
+nmcli connection up 'NAME'
+```
