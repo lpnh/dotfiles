@@ -7,6 +7,20 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+-- Diagnostic Options
+vim.diagnostic.config {
+  virtual_text = {
+    source = 'if_many',
+  },
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = 'if_many',
+    header = '',
+    prefix = '',
+  },
+}
+
 -- See `:help option-list`
 local opt = vim.opt
 

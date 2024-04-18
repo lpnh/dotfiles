@@ -203,12 +203,12 @@ return {
             {
               icon = '',
               icon_hl = '@field',
-              desc = '  File Tree',
+              desc = '  File Explorer',
               desc_hl = '@field',
-              key = 'e',
+              key = 'o',
               key_hl = '@field',
               key_format = ' %s',
-              action = 'MiniFiles.open()',
+              action = 'Oil',
             },
             {
               icon = '',

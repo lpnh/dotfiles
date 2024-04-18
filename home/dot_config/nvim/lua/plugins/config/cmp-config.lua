@@ -48,5 +48,8 @@ cmp.setup {
     { name = 'path' },
     { name = 'crates' },
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 }
-

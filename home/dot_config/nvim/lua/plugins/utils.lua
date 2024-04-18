@@ -88,9 +88,6 @@ return {
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       require('mini.surround').setup()
-
-      -- File explorer tree
-      require('mini.files').setup()
     end,
   },
 
