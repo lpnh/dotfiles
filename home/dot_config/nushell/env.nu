@@ -67,6 +67,12 @@ $env.EDITOR = "nvim"
 # ssh-agent
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
 
+# fzf mocha theme
+$env.FZF_DEFAULT_OPTS = "
+--color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
 # starship
 $env.STARSHIP_CONFIG = $"($env.HOME)/.config/starship/starship.toml"
 mkdir ~/.cache/starship
