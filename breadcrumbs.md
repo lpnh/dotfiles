@@ -145,3 +145,35 @@ nmcli connection down 'NAME'
 ```
 nmcli connection up 'NAME'
 ```
+
+## Virtual Machine
+
+Checking if virtualization is enabled
+
+```
+grep -Ec '(vmx|svm)' /proc/cpuinfo
+```
+
+Installing necessary packages
+
+```
+sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
+```
+
+Enabling libvirtd service
+
+```
+sudo systemctl enable --now libvirtd.service
+```
+
+Adding the user to the libvirt group
+
+```
+sudo usermod -aG libvirt $env.USER
+```
+
+Restarting the libvirtd service
+
+```
+systemctl restart libvirtd.service
+```
