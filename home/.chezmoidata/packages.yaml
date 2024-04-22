@@ -62,6 +62,7 @@ packages:
     - 'swayidle'
     - 'swaylock'
     - 'transmission-cli'
+    - 'transmission-gtk'
     - 'tree-sitter-cli'
     - 'ttf-nerd-fonts-symbols'
     - 'unarchiver'
