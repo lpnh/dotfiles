@@ -1,14 +1,10 @@
 # bat
 alias b = bat
+alias bl = bat --line-range
 alias bn = bat --number
 alias bnl = bat --number --line-range
 alias bp = bat --plain
 alias bpl = bat --plain --line-range
-alias bl = bat --line-range
-
-# cargo
-alias cwc = cargo watch -qcx clippy
-alias cwr = cargo watch -qcx run
 
 # chezmoi
 alias ch = chezmoi
@@ -22,15 +18,9 @@ alias chst = chezmoi status
 alias chup = chezmoi update --verbose
 alias chz = chezmoi cd
 
-# eza
-alias x = eza --icons --oneline
-alias xx = eza --icons
-alias xa = eza --icons --all --oneline
-alias xxa = eza --icons --all
-alias xl = eza --long
-alias xla = eza --long --all
-alias xt = eza --icons --tree
-alias xta = eza --icons --tree --all
+# cargo
+alias cwc = cargo watch -qcx clippy
+alias cwr = cargo watch -qcx run
 
 # git
 alias ga = git add --all
@@ -60,3 +50,16 @@ alias ll = ls -l
 
 # neovim
 alias nv = nvim
+
+# eza
+alias x = eza --icons --oneline
+alias xx = eza --icons
+alias xa = eza --icons --all --oneline
+alias xxa = eza --icons --all
+alias xl = eza --long
+alias xla = eza --long --all
+alias xt = eza --icons --tree
+alias xta = eza --icons --tree --all
+
+# yay
+alias yay! = yay --devel --noconfirm
