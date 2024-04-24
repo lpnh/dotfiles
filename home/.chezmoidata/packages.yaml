@@ -5,7 +5,7 @@ packages:
   desktop:
     - 'vulkan-radeon'
   laptop:
-    - 'nvidia'
+    - 'nvidia-inst'
   optional:
     - 'aseprite'
   common:
