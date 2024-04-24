@@ -34,14 +34,6 @@ Setting Nu as login shell:
 chsh -s /usr/bin/nu lpnh
 ```
 
-## Ly
-
-Enabling the service
-
-```
-systemctl enable ly.service
-```
-
 ## Font
 
 Refreshing the font cache
@@ -98,6 +90,29 @@ Add the following to `/etc/sysctl.conf`
 ```
 sysctl fs.inotify.max_user_watches=100000
 sysctl fs.inotify.max_queued_events=100000
+```
+
+## Greetd-tuigreet
+
+Enabling the `greetd` service
+
+```
+systemctl enable greetd
+```
+
+Editing `greetd` config to use `tuigreet`
+
+```
+sudo nvim /etc/greetd/config.toml
+```
+
+```
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet --remember --remember-session --asterisks"
+user = "greeter"
 ```
 
 ## NetworkManager

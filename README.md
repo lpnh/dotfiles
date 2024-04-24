@@ -2,7 +2,43 @@
 
 *simple and aesthetic*
 
-## Environment
+## Usage
+
+```sh
+chezmoi init https://github.com/lpnh/dotfiles.git
+```
+
+```sh
+chezmoi apply
+```
+
+## Bootstrap
+
+Installing `rustup`
+
+```sh
+yay -S rustup
+```
+
+```sh
+rustup update stable
+```
+
+Installing `alacritty`, `niri` and `chezmoi`
+
+```sh
+yay -S alacritty niri chezmoi
+```
+
+Launching `niri`
+
+```sh
+niri-session
+```
+
+## Besides me, who is the culprit for all these files?
+
+### Environment
 
 Wayland compositor: [Niri](https://github.com/YaLTeR/niri)
 
@@ -26,7 +62,7 @@ Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 Dotfile manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
-## Utilities and Quality of Life
+### Utilities and Quality of Life
 
 [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration
@@ -44,13 +80,18 @@ client written in Rust, inspired by ncmpc and the likes
 
 [Swaylock](https://github.com/swaywm/swaylock): Screen locker for Wayland
 
-## Usage
+### Software I'm so grateful for that I feel compelled to acknowledge as well
 
-```sh
-chezmoi init https://github.com/lpnh/dotfiles.git
-```
+[Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
+monitor
 
-```sh
-chezmoi apply
-```
+[Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder
 
+[Ripgrep](https://github.com/BurntSushi/ripgrep): A search tool that combines
+the usability of ag with the raw speed of grep
+
+[Yay](https://github.com/Jguer/yay): Yet another yogurt. Pacman wrapper and AUR
+helper written in go
+
+[Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
+terminal
