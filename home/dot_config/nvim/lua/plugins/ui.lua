@@ -1,8 +1,12 @@
 return {
+  -- Icons
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
+
   -- Set lualine as statusline
   -- See `:help lualine.txt`
   {
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       options = {
         icons_enabled = true,
@@ -88,16 +92,6 @@ return {
     },
   },
 
-  -- Highlight, edit, and navigate code
-  {
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'nushell/tree-sitter-nu',
-    },
-    build = ':TSUpdate',
-  },
-
   -- Add indentation guides even on blank lines
   -- See `:help ibl`
   {
@@ -119,13 +113,6 @@ return {
     end,
   },
 
-  {
-    'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('nvim-web-devicons').setup()
-    end,
-  },
-
   -- Add git related signs to the gutter and other utilities
   -- See `:help gitsigns`
   {
@@ -139,108 +126,5 @@ return {
         changedelete = { text = '~' },
       },
     },
-  },
-
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        theme = 'doom',
-        config = {
-          header = {
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            ' ░░░    ░░ ░░░░░░░  ░░░░░░  ░░    ░░ ░░ ░░░    ░░░ ',
-            ' ▒▒▒▒   ▒▒ ▒▒      ▒▒    ▒▒ ▒▒    ▒▒ ▒▒ ▒▒▒▒  ▒▒▒▒ ',
-            ' ▒▒ ▒▒  ▒▒ ▒▒▒▒▒   ▒▒    ▒▒ ▒▒    ▒▒ ▒▒ ▒▒ ▒▒▒▒ ▒▒ ',
-            ' ▓▓  ▓▓ ▓▓ ▓▓      ▓▓    ▓▓  ▓▓  ▓▓  ▓▓ ▓▓  ▓▓  ▓▓ ',
-            ' ██   ████ ███████  ██████    ████   ██ ██      ██ ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-            '                                                   ',
-          },
-          center = {
-            {
-              icon = '',
-              icon_hl = '@field',
-              desc = '  New               ',
-              desc_hl = '@field',
-              key = 'a',
-              key_hl = '@field',
-              key_format = ' %s',
-              action = 'enew',
-            },
-            {
-              icon = '',
-              icon_hl = '@field',
-              desc = '  Find File',
-              desc_hl = '@field',
-              key = 'f',
-              key_hl = '@field',
-              key_format = ' %s',
-              action = 'Telescope find_files',
-            },
-            {
-              icon = '',
-              icon_hl = '@field',
-              desc = '  History',
-              desc_hl = '@field',
-              key = 'h',
-              key_hl = '@field',
-              key_format = ' %s',
-              action = 'Telescope oldfiles',
-            },
-            {
-              icon = '',
-              icon_hl = '@field',
-              desc = '  File Explorer',
-              desc_hl = '@field',
-              key = 'o',
-              key_hl = '@field',
-              key_format = ' %s',
-              action = 'Oil',
-            },
-            {
-              icon = '',
-              icon_hl = '@field',
-              desc = '  Update',
-              desc_hl = '@field',
-              key = 'u',
-              key_hl = '@field',
-              key_format = ' %s',
-              action = 'Lazy update',
-            },
-            {
-              icon = '',
-              icon_hl = '@field',
-              desc = '  Quit',
-              desc_hl = '@field',
-              key = 'q',
-              key_hl = '@field',
-              key_format = ' %s',
-              action = 'quit',
-            },
-          },
-          footer = {},
-        },
-      }
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
 }

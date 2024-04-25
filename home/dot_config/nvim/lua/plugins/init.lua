@@ -1,15 +1,19 @@
 -- You can configure plugins using the `config` key.
 -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 require('lazy').setup({
+  require 'plugins.treesitter',
 
-  require('plugins.utils'),
+  require 'plugins.lsp',
 
-  require('plugins.lsp'),
+  require 'plugins.telescope',
 
-  require('plugins.cmp'),
+  require 'plugins.utils',
 
-  require('plugins.theme'),
+  require 'plugins.cmp',
 
-  require('plugins.ui'),
+  require 'plugins.catppuccin',
 
+  require 'plugins.ui',
+
+  require 'plugins.dashboard',
 }, {})
