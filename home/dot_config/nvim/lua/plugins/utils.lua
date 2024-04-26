@@ -34,6 +34,13 @@ return {
     },
   },
 
+  -- Autopairs
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {},
+  },
+
   -- Display pending keybinds
   {
     'folke/which-key.nvim',
