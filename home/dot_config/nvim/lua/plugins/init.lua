@@ -1,4 +1,3 @@
--- You can configure plugins using the `config` key.
 -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 require('lazy').setup({
   require 'plugins.treesitter',
