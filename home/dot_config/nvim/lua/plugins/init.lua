@@ -10,6 +10,8 @@ require('lazy').setup({
 
   require 'plugins.cmp',
 
+  require 'plugins.dap',
+
   require 'plugins.catppuccin',
 
   require 'plugins.ui',
