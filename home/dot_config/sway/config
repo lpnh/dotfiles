@@ -17,11 +17,8 @@ set $mod Mod4
 
 # Workspace Icons
 set $wst 
-set $wsy 
-set $wss 
-set $wsd 󰙯
-set $wsp 
-set $wsf 󰈹
+set $wsf 
+set $wss 
 
 # Vi Keys
 set $left h
@@ -128,19 +125,13 @@ input type:keyboard {
 
     # Switch to workspace
     bindsym $mod+1 workspace $wst
-    bindsym $mod+2 workspace $wsy
+    bindsym $mod+2 workspace $wsf
     bindsym $mod+3 workspace $wss
-    bindsym $mod+4 workspace $wsd
-    bindsym $mod+5 workspace $wsp
-    bindsym $mod+0 workspace $wsf
 
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace $wst
-    bindsym $mod+Shift+2 move container to workspace $wsy
+    bindsym $mod+Shift+2 move container to workspace $wsf
     bindsym $mod+Shift+3 move container to workspace $wss
-    bindsym $mod+Shift+4 move container to workspace $wsd
-    bindsym $mod+Shift+5 move container to workspace $wsp
-    bindsym $mod+Shift+0 move container to workspace $wsf
 
     # Move to next / previous workspace
     bindsym $mod+Alt+l workspace next
@@ -204,17 +195,9 @@ mouse_warping container
 # Moving the mouse over a window will not change the focus
 focus_follows_mouse no
 
-# Attaching workspaces to outputs
-workspace $wst output HDMI-A-1
-workspace $wsy output HDMI-A-1
-workspace $wss output HDMI-A-1
-workspace $wsd output HDMI-A-1
-workspace $wsp output HDMI-A-1
-workspace $wsf output DP-2
-
 # Window Rules
 assign [app_id="ncspot"] workspace $wss
-assign [class="WebCord"] workspace $wsd
+assign [class="WebCord"] workspace $wss
 
 # Enable idle inhibitor for fullscreen firefox windows
 for_window [app_id="firefox"] inhibit_idle fullscreen
@@ -222,9 +205,6 @@ for_window [app_id="firefox"] inhibit_idle fullscreen
 # }}}
 
 # Exec {{{
-
-# Autostart Apps
-exec swaymsg "workspace $wsf; exec firefox;"
 
 # Notification
 exec --no-startup-id 'dunst'
@@ -272,10 +252,8 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 # Start sway-session.target
 exec systemctl --user start sway-session.target
 
-# }}}
-
-focus output HDMI-A-1
-workspace $wst
 exec $term
+
+# }}}
 
 # vim:fileencoding=utf-8:ft=config:fdm=marker
