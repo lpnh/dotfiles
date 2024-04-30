@@ -2,6 +2,7 @@ packages:
   crates:
     - 'trunk'
     - 'cargo-chef'
+    - 'dim-screen'
   desktop:
     - 'vulkan-radeon'
   laptop:
