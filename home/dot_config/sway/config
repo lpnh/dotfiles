@@ -1,9 +1,8 @@
+#     ▄▀▀ █   █ ▄▀▄ ▀▄▀
+#     ▄██ ▀▄▀▄▀ █▀█  █
 #
-#    ▄▄·          ▐ ▄  ·▄▄▄ ▪    ▄▄ • 
-#   ▐█ ▌▪  ▄█▀▄  •█▌▐█ ▐▄▄  ██  ▐█ ▀ ▪
-#   ██ ▄▄ ▐█▌.▐▌ ▐█▐▐▌ █  ▪ ▐█· ▄█ ▀█▄
-#   ▐███▌ ▐█▌.▐▌ ██▐█▌ ██ . ▐█▌ ▐█▄▪▐█
-#   ·▀▀▀   ▀█▄▀▪ ▀▀ █▪ ▀▀▀  ▀▀▀ ·▀▀▀▀ 
+#  ▄▀▀ ▄▀▀▄ █▄ █ █▀ █ ▄▀
+#  ▀▄▄ ▀▄▄▀ █ ▀█ █▀ █ ▀▄█
 #
 
 # Read `man 5 sway` for a complete reference
@@ -34,7 +33,7 @@ set $right l
 set $term alacritty
 set $menu fuzzel | xargs swaymsg exec --
 
-# : }}}
+# }}}
 
 # UI {{{
 
@@ -50,12 +49,12 @@ gaps inner 4
 gaps outer 5
 
 # target                 title     bg    text   indicator  border
-client.focused           $maroon   $base $text  $maroon    $maroon
-client.focused_inactive  $overlay0 $base $text  $overlay0  $overlay0
-client.unfocused         $overlay0 $base $text  $overlay0  $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
+client.focused           $mauve    $base $text  $mauve     $mauve
+client.focused_inactive  $surface1 $base $text  $surface1  $surface1
+client.unfocused         $surface1 $base $text  $surface1  $surface1
+client.urgent            $peach    $base $peach $surface1  $peach
 
-# client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+# client.placeholder       $surface1 $base $text  $surface1  $surface1
 # client.background        $base
 
 # Status bar
@@ -99,6 +98,9 @@ input type:keyboard {
     bindsym $mod+n exec $term -e nvim
     bindsym $mod+s exec $term --class ncspot -e ncspot
     bindsym $mod+w exec webcord
+
+    # Toggle waybar
+    bindsym $mod+t exec killall -SIGUSR1 waybar
 
     # Kill focused window
     bindsym $mod+q kill
@@ -199,12 +201,15 @@ bindsym $mod+r mode "resize"
 # Center mouse in container on focus shift
 mouse_warping container
 
+# Moving the mouse over a window will not change the focus
+focus_follows_mouse no
+
 # Attaching workspaces to outputs
-workspace $wst output HMDI-A-1
-workspace $wsy output HMDI-A-1
-workspace $wss output HMDI-A-1
-workspace $wsd output HMDI-A-1
-workspace $wsp output HMDI-A-1
+workspace $wst output HDMI-A-1
+workspace $wsy output HDMI-A-1
+workspace $wss output HDMI-A-1
+workspace $wsd output HDMI-A-1
+workspace $wsp output HDMI-A-1
 workspace $wsf output DP-2
 
 # Window Rules
