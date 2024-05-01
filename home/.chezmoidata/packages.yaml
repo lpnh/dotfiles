@@ -9,6 +9,7 @@ packages:
     - 'nvidia-inst'
   optional:
     - 'aseprite'
+    - 'tiled'
   common:
     - 'alacritty'
     - 'arc-gtk-theme-eos'
@@ -54,6 +55,7 @@ packages:
     - 'papirus-icon-theme'
     - 'polkit-gnome'
     - 'poppler'
+    - 'qt6-wayland'
     - 'refind'
     - 'ripgrep'
     - 'rust-analyzer'
