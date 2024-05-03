@@ -221,10 +221,14 @@ binds {
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
-    // Example volume keys mappings for PipeWire & WirePlumber.
+    // Volume
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
     XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+
+    // Backlight brightness
+    XF86MonBrightnessUp { spawn "brightnessctl" "--class='backlight'" "set" "10%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "--class='backlight'" "set" "10%-"; }
 
     Mod+Q { close-window; }
 
