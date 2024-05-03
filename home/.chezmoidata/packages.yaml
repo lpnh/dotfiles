@@ -71,6 +71,7 @@ packages:
     - 'transmission-gtk'
     - 'tree-sitter-cli'
     - 'ttf-nerd-fonts-symbols'
+    - 'ttf-noto-nerd'
     - 'unarchiver'
     - 'wakatime'
     - 'waybar'
