@@ -19,8 +19,8 @@
         "tray",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
-        "backlight",
         "battery",
+        "backlight",
         {{- end }}
         "pulseaudio"
     ],
@@ -76,10 +76,6 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     {{- if eq .chezmoi.hostname "laptop" }}
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
     "battery": {
         "states": {
             // "good": 95,
@@ -94,6 +90,10 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     {{- end }}
     "pulseaudio": {
