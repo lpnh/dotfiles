@@ -4,10 +4,11 @@ packages:
     - 'cargo-chef'
     - 'dim-screen'
   desktop:
+    - 'piper'
     - 'vulkan-radeon'
   laptop:
-    - 'nvidia-inst'
     - 'brightnessctl'
+    - 'nvidia-inst'
   optional:
     - 'aseprite'
     - 'tiled'
