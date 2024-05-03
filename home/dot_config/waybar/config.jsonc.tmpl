@@ -18,6 +18,7 @@
     "modules-right": [
         "tray",
         "network",
+        "backlight",
         {{- if eq .chezmoi.hostname "laptop" }}
         "battery",
         {{- end }}
@@ -73,6 +74,10 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     {{- if eq .chezmoi.hostname "laptop" }}
     "battery": {
