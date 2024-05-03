@@ -26,6 +26,7 @@ window#waybar {
 #clock,
 #tray,
 #network,
+#backlight, /* laptop */
 #battery, /* laptop */
 #pulseaudio {
     margin: 0;
