@@ -33,6 +33,7 @@
     },
     {
       "type": "gpu",
+      "format": "{} {}",
       "key": "GPU"
     },
     {
