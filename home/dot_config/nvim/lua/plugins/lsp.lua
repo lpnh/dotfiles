@@ -38,11 +38,11 @@ return {
 
         -- Fuzzy find all the symbols in the current document
         --  Symbols are things like variables, functions, types, etc
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>yd', require('telescope.builtin').lsp_document_symbols, 'Fzf all S[y]mbols in [D]ocument')
 
         -- Fuzzy find all the symbols in the current workspace
         --  Similar to document symbols, except searches over the entire project
-        map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        map('<leader>yw', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Fzf all S[y]mbols in [W]orkspace')
 
         -- Execute a code action, usually the cursor needs to be on top of an error
         -- or a suggestion from the LSP for this to activate.
