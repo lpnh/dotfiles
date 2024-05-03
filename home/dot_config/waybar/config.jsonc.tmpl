@@ -68,10 +68,10 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-ethernet": "ethernet ",
+        "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     {{- if eq .chezmoi.hostname "laptop" }}
@@ -94,7 +94,7 @@
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "tooltip": false,
-        "format-muted": "Muted ",
+        "format-muted": "muted ",
         "format-icons": {
             "default": ["", "", ""]
         }
