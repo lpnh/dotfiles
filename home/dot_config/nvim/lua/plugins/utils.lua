@@ -102,13 +102,12 @@ return {
             vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
           end
 
-          nmap('go', '<cmd>RustLsp openCargo<CR>', 'Go to cargo.toml')
-          nmap('<C-w>go', '<C-w>v<cmd>RustLsp openCargo<CR>', 'Go to cargo.toml (in new window)')
-          nmap('<leader>le', '<cmd>RustLsp explainError<CR>', 'Explain error')
-          nmap('<leader>lj', '<cmd>RustLsp moveItem down<CR>', 'Move item down')
-          nmap('<leader>lk', '<cmd>RustLsp moveItem up<CR>', 'Move item up')
-          nmap('<leader>dc', '<cmd>RustLsp debuggables last<CR>', 'Debug')
-          nmap('<leader>ld', '<cmd>RustLsp renderDiagnostic<CR>', 'Render idiagnostics')
+          nmap('<leader>rc', '<cmd>RustLsp openCargo<CR>', 'Go to cargo.toml')
+          nmap('<leader>re', '<cmd>RustLsp explainError<CR>', 'Explain error')
+          nmap('<leader>rj', '<cmd>RustLsp moveItem down<CR>', 'Move item down')
+          nmap('<leader>rk', '<cmd>RustLsp moveItem up<CR>', 'Move item up')
+          nmap('<leader>rd', '<cmd>RustLsp debuggables last<CR>', 'Debug')
+          nmap('<leader>rr', '<cmd>RustLsp renderDiagnostic<CR>', 'Render diagnostics')
         end,
         settings = {
           ['rust-analyzer'] = {
