@@ -18,8 +18,8 @@
     "modules-right": [
         "tray",
         "network",
-        "backlight",
         {{- if eq .chezmoi.hostname "laptop" }}
+        "backlight",
         "battery",
         {{- end }}
         "pulseaudio"
@@ -75,11 +75,11 @@
         "format-disconnected": "disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+    {{- if eq .chezmoi.hostname "laptop" }}
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
-    {{- if eq .chezmoi.hostname "laptop" }}
     "battery": {
         "states": {
             // "good": 95,
