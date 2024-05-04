@@ -1,16 +1,64 @@
 # dotfiles
 
-*simple and aesthetic*
+Simple and aesthetic: a Wayland environment on a minimal EndeavourOS
+installation.
 
-## Usage
+## Components
 
-```sh
-chezmoi init https://github.com/lpnh/dotfiles.git
-```
+### Core
 
-```sh
-chezmoi apply
-```
+Distro: [EndeavourOS](https://github.com/endeavouros-team)  
+Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
+Compositor: [Niri](https://github.com/YaLTeR/niri)  
+Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
+App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
+Notification: [Dunst](https://github.com/dunst-project/dunst)  
+Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
+Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
+
+### User Interface
+
+Fonts and Glyphs: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)  
+Icons: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
+Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
+
+### Terminal
+
+Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
+Shell: [Nushell](https://github.com/nushell/nushell)  
+Prompt: [Starship](https://github.com/starship/starship)
+
+### Tools
+
+File Manager: [Yazi](https://github.com/sxyazi/yazi)  
+Editor: [Neovim](https://github.com/neovim/neovim)
+
+### Clients
+
+Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
+Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
+
+### Utilities and Quality of Life
+
+[Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
+git integration  
+[Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
+monitor  
+[Eza](https://github.com/eza-community/eza): A modern replacement for ls
+(community fork of exa)  
+[Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
+much faster because written in C  
+[Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder  
+[Gitui](https://github.com/extrawurst/gitui): Blazing fast terminal-ui for git
+written in Rust  
+[Ripgrep](https://github.com/BurntSushi/ripgrep): A search tool that combines
+the usability of ag with the raw speed of grep  
+[Yay](https://github.com/Jguer/yay): Yet another yogurt. Pacman wrapper and AUR
+helper written in go  
+[Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
+terminal
+
+*For the exhaustive list, check [packages.yaml](home/.chezmoidata/packages.yaml)*
 
 ## Bootstrap
 
@@ -36,62 +84,12 @@ Launching `niri`
 niri-session
 ```
 
-## Besides me, who is the culprit for all these files?
+## Usage
 
-### Environment
+```sh
+chezmoi init https://github.com/lpnh/dotfiles.git
+```
 
-Wayland compositor: [Niri](https://github.com/YaLTeR/niri)
-
-Notification daemon: [Dunst](https://github.com/dunst-project/dunst)
-
-Status bar: [Waybar](https://github.com/Alexays/Waybar)
-
-App launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)
-
-File manager: [Yazi](https://github.com/sxyazi/yazi)
-
-Text editor: [Neovim](https://github.com/neovim/neovim)
-
-Terminal: [Alacritty](https://github.com/alacritty/alacritty)
-
-Shell: [Nushell](https://github.com/nushell/nushell)
-
-Prompt: [Starship](https://github.com/starship/starship)
-
-Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
-
-Dotfile manager: [Chezmoi](https://github.com/twpayne/chezmoi)
-
-### Utilities and Quality of Life
-
-[Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
-git integration
-
-[Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
-much faster because written in C
-
-[Gitui](https://github.com/extrawurst/gitui): Blazing fast terminal-ui for git
-written in Rust
-
-[Glow](https://github.com/charmbracelet/glow): Command-line markdown renderer
-
-[Ncspot](https://github.com/hrkfdn/ncspot): Cross-platform ncurses Spotify
-client written in Rust, inspired by ncmpc and the likes
-
-[Swaylock](https://github.com/swaywm/swaylock): Screen locker for Wayland
-
-### Software I'm so grateful for that I feel compelled to acknowledge as well
-
-[Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
-monitor
-
-[Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder
-
-[Ripgrep](https://github.com/BurntSushi/ripgrep): A search tool that combines
-the usability of ag with the raw speed of grep
-
-[Yay](https://github.com/Jguer/yay): Yet another yogurt. Pacman wrapper and AUR
-helper written in go
-
-[Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
-terminal
+```sh
+chezmoi apply
+```
