@@ -2,90 +2,52 @@
 
 Simple and aesthetic Wayland environment on a minimal EndeavourOS installation.
 
-**Core**
+## Components
 
-Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
-Compositor: [Niri](https://github.com/YaLTeR/niri)  
-Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
-App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
-Notification: [Dunst](https://github.com/dunst-project/dunst)  
-Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
-Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
+**Core**:
+* Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
+* Compositor: [Niri](https://github.com/YaLTeR/niri)  
+* Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
+* App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
+* Notification: [Dunst](https://github.com/dunst-project/dunst)  
+* Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
+* Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
-**User Interface**
+**User Interface**:
+* Fonts and Glyphs: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)  
+* Icons: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
+* Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
-Fonts and Glyphs: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)  
-Icons: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
-Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
+**Terminal**:
+* Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
+* Shell: [Nushell](https://github.com/nushell/nushell)  
+* Prompt: [Starship](https://github.com/starship/starship)
 
-**Terminal**
+**Tools**:
+* File Manager: [Yazi](https://github.com/sxyazi/yazi)  
+* Editor: [Neovim](https://github.com/neovim/neovim)
 
-Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
-Shell: [Nushell](https://github.com/nushell/nushell)  
-Prompt: [Starship](https://github.com/starship/starship)
+**Clients**:
+* Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
+* Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
-**Tools**
-
-File Manager: [Yazi](https://github.com/sxyazi/yazi)  
-Editor: [Neovim](https://github.com/neovim/neovim)
-
-**Clients**
-
-Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
-Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
-
-**Utilities and Quality of Life**
-
-[Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
+**Utilities and Quality of Life**:
+* [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  
-[Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
+* [Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
 monitor  
-[Eza](https://github.com/eza-community/eza): A modern replacement for ls
+* [Eza](https://github.com/eza-community/eza): A modern replacement for ls
 (community fork of exa)  
-[Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
+* [Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
 much faster because written in C  
-[Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder  
-[Gitui](https://github.com/extrawurst/gitui): Blazing fast terminal-ui for git
+* [Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder  
+* [Gitui](https://github.com/extrawurst/gitui): Blazing fast terminal-ui for git
 written in Rust  
-[Ripgrep](https://github.com/BurntSushi/ripgrep): A search tool that combines
+* [Ripgrep](https://github.com/BurntSushi/ripgrep): A search tool that combines
 the usability of ag with the raw speed of grep  
-[Yay](https://github.com/Jguer/yay): Yet another yogurt. Pacman wrapper and AUR
+* [Yay](https://github.com/Jguer/yay): Yet another yogurt. Pacman wrapper and AUR
 helper written in go  
-[Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
+* [Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
 terminal
 
 *For the exhaustive list, check [packages.yaml](home/.chezmoidata/packages.yaml)*
-
-## Bootstrap
-
-Installing `rustup`
-
-```sh
-yay -S rustup
-```
-
-```sh
-rustup update stable
-```
-
-Installing `alacritty`, `niri` and `chezmoi`
-
-```sh
-yay -S alacritty niri chezmoi
-```
-
-Launching `niri`
-
-```sh
-niri-session
-```
-
-## Usage
-
-```sh
-chezmoi init https://github.com/lpnh/dotfiles.git
-```
-
-```sh
-chezmoi apply
-```
