@@ -1,13 +1,9 @@
 # dotfiles
 
-Simple and aesthetic: a Wayland environment on a minimal EndeavourOS
-installation.
+Simple and aesthetic Wayland environment on a minimal EndeavourOS installation.
 
-## Components
+**Core**
 
-### Core
-
-Distro: [EndeavourOS](https://github.com/endeavouros-team)  
 Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
 Compositor: [Niri](https://github.com/YaLTeR/niri)  
 Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
@@ -16,29 +12,29 @@ Notification: [Dunst](https://github.com/dunst-project/dunst)
 Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
 Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
-### User Interface
+**User Interface**
 
 Fonts and Glyphs: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)  
 Icons: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
 Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
-### Terminal
+**Terminal**
 
 Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
 Shell: [Nushell](https://github.com/nushell/nushell)  
 Prompt: [Starship](https://github.com/starship/starship)
 
-### Tools
+**Tools**
 
 File Manager: [Yazi](https://github.com/sxyazi/yazi)  
 Editor: [Neovim](https://github.com/neovim/neovim)
 
-### Clients
+**Clients**
 
 Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
 Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
-### Utilities and Quality of Life
+**Utilities and Quality of Life**
 
 [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  

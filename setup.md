@@ -1,4 +1,38 @@
-# Breadcrumbs
+# Setup
+
+## Bootstrap
+
+Installing `rustup`
+
+```sh
+yay -S rustup
+```
+
+```sh
+rustup update stable
+```
+
+Installing `alacritty`, `niri` and `chezmoi`
+
+```sh
+yay -S alacritty niri chezmoi
+```
+
+Launching `niri`
+
+```sh
+niri-session
+```
+
+## Chezmoi
+
+```sh
+chezmoi init https://github.com/lpnh/dotfiles.git
+```
+
+```sh
+chezmoi apply
+```
 
 ## EndeavourOS
 
