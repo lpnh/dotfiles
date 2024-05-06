@@ -149,6 +149,14 @@ command = "tuigreet --remember --remember-session --asterisks"
 user = "greeter"
 ```
 
+## Timer
+
+Enabling timer service
+
+```
+systemctl --user enable reminder.timer
+```
+
 ## NetworkManager
 
 ### Wi-Fi
