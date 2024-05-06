@@ -1,0 +1,9 @@
+[Unit]
+Description=Break Reminder
+
+[Timer]
+OnActiveSec=1hour
+OnUnitInactiveSec=1hour
+
+[Install]
+WantedBy=timers.target
