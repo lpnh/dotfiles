@@ -10,7 +10,12 @@ on = ["<C-n>"]
 run = "arrow 1"
 desc = "Move cursor down"
 
-# Add fg plugins keymap
+# Add fg plugin keymap
+
+[[manager.prepend_keymap]]
+on = ["f", "f"]
+run = "plugin fg --args='fzf'"
+desc = "find file by file name"
 
 [[manager.prepend_keymap]]
 on = ["f", "g"]
@@ -18,9 +23,9 @@ run = "plugin fg"
 desc = "find file by content"
 
 [[manager.prepend_keymap]]
-on = ["f", "f"]
-run = "plugin fg --args='fzf'"
-desc = "find file by file name"
+on = ["f", "G"]
+run = "plugin fg --args='rg'"
+desc = "find file by content using ripgrep"
 
 # Add enter behavior to l key
 # https://yazi-rs.github.io/docs/tips#smart-enter-enter-for-directory-open-for-file
