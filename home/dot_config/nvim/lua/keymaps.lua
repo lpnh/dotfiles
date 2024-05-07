@@ -13,6 +13,7 @@ map.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which [K]ey' })
 
 -- Oil
 map.set('n', '<leader>o', '<cmd>Oil<CR>', { desc = '[O]il - File explorer' })
+map.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 -- Clear highlight (search) on pressing <Esc> in normal mode
 map.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
