@@ -150,6 +150,8 @@ return {
 
   {
     'luckasRanarison/tailwind-tools.nvim',
-    opts = {},
+    opts = {
+      custom_filetype = { 'rust' },
+    },
   },
 }

@@ -91,6 +91,7 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
+
     vim.keymap.set('n', '<leader>s?', builtin.help_tags, { desc = '[S]earch Help' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -122,9 +123,13 @@ return {
       }
     end, { desc = '[S]earch [/] in Open Files' })
 
-    -- Shortcut for searching your Neovim configuration files
-    vim.keymap.set('n', '<leader>sn', function()
+    local function search_neovim_config()
+      -- Shortcut for searching your Neovim configuration files
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[S]earch [N]eovim files' })
+    end
+
+    vim.keymap.set('n', '<leader>sn', search_neovim_config, { desc = '[S]earch [N]eovim Config' })
+
+    vim.api.nvim_create_user_command('NeovimConfig', search_neovim_config, {})
   end,
 }

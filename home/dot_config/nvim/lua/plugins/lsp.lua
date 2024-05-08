@@ -97,8 +97,15 @@ return {
         },
       },
       taplo = {},
-      html = { filetypes = { 'rs', 'html' } },
-      tailwindcss = {},
+      html = {},
+      tailwindcss = {
+        filetypes = { 'rust' },
+        init_options = {
+          userLanguages = {
+            rust = 'html',
+          },
+        },
+      },
       htmx = {},
     }
 

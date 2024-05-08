@@ -74,6 +74,16 @@ return {
             action = 'Oil',
           },
           {
+            icon = '',
+            icon_hl = '@field',
+            desc = '  Config',
+            desc_hl = '@field',
+            key = 'c',
+            key_hl = '@field',
+            key_format = ' %s',
+            action = 'NeovimConfig',
+          },
+          {
             icon = '',
             icon_hl = '@field',
             desc = '  Update',
