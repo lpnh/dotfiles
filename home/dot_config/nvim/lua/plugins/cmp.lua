@@ -26,6 +26,8 @@ return {
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+
+    luasnip.filetype_extend('rust', { 'html' })
     luasnip.config.setup {}
 
     cmp.setup {
