@@ -8,3 +8,16 @@ def --env ya [...args] {
     }
     rm -fp $tmp
 }
+
+# The level of enthusiasm determines the scope of the update
+def yay! [] {
+    yay --noconfirm
+    bob update nightly
+}
+
+def yay!! [] {
+    yay --noconfirm
+    rustup update
+    cargo install-update -a
+    bob update nightly
+}
