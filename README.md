@@ -34,6 +34,7 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation.
 **Utilities and Quality of Life**:
 * [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  
+* [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim
 * [Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
 monitor  
 * [Eza](https://github.com/eza-community/eza): A modern replacement for ls
