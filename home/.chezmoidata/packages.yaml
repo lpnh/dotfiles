@@ -1,8 +1,8 @@
 packages:
   crates:
-    - 'trunk'
     - 'cargo-chef'
     - 'dim-screen'
+    - 'trunk'
   desktop:
     - 'piper'
     - 'vulkan-radeon'
@@ -21,6 +21,7 @@ packages:
     - 'cage'
     - 'cargo-make'
     - 'cargo-shuttle'
+    - 'cargo-update'
     - 'cargo-watch'
     - 'cava'
     - 'chezmoi'
