@@ -60,6 +60,3 @@ alias xl = eza --long
 alias xla = eza --long --all
 alias xt = eza --icons --tree
 alias xta = eza --icons --tree --all
-
-# yay
-alias yay! = yay --devel --noconfirm
