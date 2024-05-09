@@ -18,6 +18,8 @@ def yay! [] {
 def yay!! [] {
     yay --noconfirm
     rustup update
-    cargo install-update -a
+    cargo install-update --all
+    sudo npm update --global
+    tldr --update
     bob update nightly
 }
