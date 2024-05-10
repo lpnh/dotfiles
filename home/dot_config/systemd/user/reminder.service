@@ -1,5 +1,5 @@
 [Unit]
-Description=Break Reminder
+Description=Break Reminder Service
 
 [Service]
 Type=oneshot
