@@ -112,6 +112,12 @@ rustup target add wasm32-unknown-unknown
 
 ## Neovim
 
+Installing Neovim nightly
+
+```
+bob install nightly
+```
+
 Installing neovim npm package
 
 ```
@@ -154,7 +160,7 @@ user = "greeter"
 Enabling timer service
 
 ```
-systemctl --user enable reminder.timer
+systemctl --user enable break-reminder.timer
 ```
 
 ## NetworkManager
