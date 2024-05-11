@@ -155,6 +155,18 @@ command = "tuigreet --remember --remember-session --asterisks"
 user = "greeter"
 ```
 
+## Dunst
+
+Disabling default files
+
+```
+sudo mv /usr/share/dbus-1/services/org.knopwob.dunst.service /usr/share/dbus-1/services/org.knopwob.dunst.service.disabled
+```
+
+```
+sudo mv /usr/lib/systemd/user/dunst.service /usr/lib/systemd/user/dunst.service.disabled
+```
+
 ## Timer
 
 Enabling timer service
