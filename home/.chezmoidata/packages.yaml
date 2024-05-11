@@ -18,6 +18,7 @@ packages:
     - 'bat'
     - 'bob'
     - 'bottom'
+    - 'breeze-icons'
     - 'cage'
     - 'cargo-make'
     - 'cargo-shuttle'
