@@ -48,6 +48,7 @@ packages:
     - 'just'
     - 'lld'
     - 'lua'
+    - 'mdbook'
     - 'mpv'
     - 'ncspot'
     - 'niri'
