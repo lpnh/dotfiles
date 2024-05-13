@@ -33,7 +33,9 @@ return {
           },
         },
         lualine_c = {
-          'filename',
+          {
+            'buffers',
+          },
         },
         lualine_x = {},
         lualine_y = {
