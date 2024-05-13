@@ -58,6 +58,8 @@ return {
             ['<esc>'] = require('telescope.actions').close,
             ['<C-u>'] = false,
             ['<C-d>'] = false,
+            ['<C-k>'] = require('telescope.actions').preview_scrolling_up,
+            ['<C-j>'] = require('telescope.actions').preview_scrolling_down,
             ['<C-enter>'] = 'to_fuzzy_refine',
           },
         },
