@@ -45,6 +45,11 @@ return {
           },
         },
       },
+      extensions = {
+        'lazy',
+        'mason',
+        'oil',
+      },
     },
   },
 
