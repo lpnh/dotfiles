@@ -44,13 +44,10 @@ return {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         -- Select the [p]revious item
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-
         -- Accept ([y]es) the completion
         ['<C-y>'] = cmp.mapping.confirm { select = true },
-
         -- Manually trigger a completion from nvim-cmp
         ['<C-Space>'] = cmp.mapping.complete {},
-
         -- <c-l> will move you to the right of each of the expansion locations
         ['<C-l>'] = cmp.mapping(function()
           if luasnip.expand_or_locally_jumpable() then
@@ -72,6 +69,7 @@ return {
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'crates' },
+        { name = 'buffer' },
       },
       window = {
         completion = cmp.config.window.bordered(),
