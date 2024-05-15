@@ -1,0 +1,20 @@
+# Core
+
+font=Inter 12
+width=300
+outer-margin=20
+padding=12
+border-radius=8
+max-icon-size=32
+icon-path=/usr/share/icons/Papirus/
+default-timeout=5000
+
+# Colors
+
+background-color=#1e1e2edd
+text-color=#cdd6f4
+border-color=#b4befedd
+progress-color=over #313244dd
+
+[urgency=high]
+border-color=#fab387dd
