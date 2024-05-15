@@ -15,7 +15,7 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 * Compositor: [Niri](https://github.com/YaLTeR/niri)  
 * Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
 * App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
-* Notification: [Dunst](https://github.com/dunst-project/dunst)  
+* Notification: [Mako](https://github.com/emersion/mako)  
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
 * Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
