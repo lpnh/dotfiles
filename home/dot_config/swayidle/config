@@ -1,4 +1,4 @@
 before-sleep 'swaylock -f'
-timeout 300 'swaylock -f'
+timeout 300 'niri msg action do-screen-transition --delay-ms 1000 && swaylock -f'
 timeout 420 'niri msg action power-off-monitors'
 timeout 430 'systemctl --user stop break-reminder.timer' resume 'systemctl --user restart break-reminder.timer'
