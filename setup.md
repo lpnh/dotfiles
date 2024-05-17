@@ -34,37 +34,17 @@ chezmoi init https://github.com/lpnh/dotfiles.git
 chezmoi apply
 ```
 
-## EndeavourOS
-
-Updating Arch mirrors:
-
-```
-reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
-```
-
-Updating EndeavourOS mirrors:
-
-```
-eos-rankmirrors --verbose
-```
-
-Refreshing the entire system:
-
-```
-yay -Syyu
-```
-
 ## Nushell
 
 Checking if Nu is in the valid shells list:
 
-```
+```sh
 cat /etc/shells
 ```
 
 Setting Nu as login shell:
 
-```
+```sh
 chsh -s /usr/bin/nu lpnh
 ```
 
@@ -72,7 +52,7 @@ chsh -s /usr/bin/nu lpnh
 
 Refreshing the font cache
 
-```
+```sh
 sudo fc-cache -fv
 ```
 
@@ -80,19 +60,19 @@ sudo fc-cache -fv
 
 Generating a new SSH key:
 
-```
+```sh
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 Echo the public key:
 
-```
+```sh
 cat ~/.ssh/id_ed25519.pub
 ```
 
 Testing the SSH connection:
 
-```
+```sh
 ssh -T git@github.com
 ```
 
@@ -100,13 +80,13 @@ ssh -T git@github.com
 
 Installing rust-analyzer
 
-```
+```sh
 rustup component add rust-analyzer
 ```
 
 Adding WebAssembly target
 
-```
+```sh
 rustup target add wasm32-unknown-unknown
 ```
 
@@ -114,20 +94,14 @@ rustup target add wasm32-unknown-unknown
 
 Installing Neovim nightly
 
-```
+```sh
 bob install nightly
-```
-
-Installing neovim npm package
-
-```
-sudo npm install -g neovim
 ```
 
 Increasing the maximum number of `inotify` watches and queued events.
 Add the following to `/etc/sysctl.conf`
 
-```
+```sh
 sysctl fs.inotify.max_user_watches=100000
 sysctl fs.inotify.max_queued_events=100000
 ```
@@ -136,17 +110,17 @@ sysctl fs.inotify.max_queued_events=100000
 
 Enabling the `greetd` service
 
-```
+```sh
 systemctl enable greetd
 ```
 
 Editing `greetd` config to use `tuigreet`
 
-```
+```sh
 sudo nvim /etc/greetd/config.toml
 ```
 
-```
+```toml
 [terminal]
 vt = 1
 
@@ -155,23 +129,11 @@ command = "tuigreet --remember --remember-session --asterisks"
 user = "greeter"
 ```
 
-## Dunst
-
-Disabling default files
-
-```
-sudo mv /usr/share/dbus-1/services/org.knopwob.dunst.service /usr/share/dbus-1/services/org.knopwob.dunst.service.disabled
-```
-
-```
-sudo mv /usr/lib/systemd/user/dunst.service /usr/lib/systemd/user/dunst.service.disabled
-```
-
 ## Timer
 
 Enabling timer service
 
-```
+```sh
 systemctl --user enable break-reminder.timer
 ```
 
@@ -181,13 +143,13 @@ systemctl --user enable break-reminder.timer
 
 Getting a list of Wi-Fi networks
 
-```
+```sh
 nmcli device wifi list
 ```
 
 Connecting to a Wi-Fi
 
-```
+```sh
 nmcli device wifi connect <SSID_or_BSSID> password <password>
 ```
 
@@ -195,60 +157,80 @@ nmcli device wifi connect <SSID_or_BSSID> password <password>
 
 Getting a list of connections
 
-```
+```sh
 nmcli connection show
 ```
 
 Checking the DNS values
 
-```
+```sh
 nmcli connection show 'NAME' | rg dns
 ```
 
 Setting the DNS
 
-```
+```sh
 nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
 ```
 
 Reconnecting
 
-```
+```sh
 nmcli connection down 'NAME'
 ```
 
-```
+```sh
 nmcli connection up 'NAME'
+```
+
+## EndeavourOS
+
+Updating Arch mirrors:
+
+```sh
+reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+Updating EndeavourOS mirrors:
+
+```sh
+eos-rankmirrors --verbose
+```
+
+Refreshing the entire system:
+
+```sh
+yay -Syyu
 ```
 
 ## Virtual Machine
 
 Checking if virtualization is enabled
 
-```
+```sh
 grep -Ec '(vmx|svm)' /proc/cpuinfo
 ```
 
 Installing necessary packages
 
-```
+```sh
 sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
 ```
 
 Enabling libvirtd service
 
-```
+```sh
 sudo systemctl enable --now libvirtd.service
 ```
 
 Adding the user to the libvirt group
 
-```
+```sh
 sudo usermod -aG libvirt $env.USER
 ```
 
 Restarting the libvirtd service
 
-```
+```sh
 systemctl restart libvirtd.service
 ```
