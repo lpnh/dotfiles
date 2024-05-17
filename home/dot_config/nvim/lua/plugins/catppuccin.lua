@@ -1,4 +1,3 @@
--- Add catppuccin ♥
 -- Color references: https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/palettes/mocha.lua
 -- Integrations: https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
 return {
@@ -27,10 +26,12 @@ return {
           enabled = true,
           scope_color = 'surface1',
         },
+        mason = true,
         noice = true,
+        notify = true,
         which_key = true,
       },
     }
-    require('catppuccin').load()
+    vim.cmd.colorscheme 'catppuccin'
   end,
 }
