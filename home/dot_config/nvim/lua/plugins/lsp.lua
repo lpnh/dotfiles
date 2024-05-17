@@ -154,5 +154,14 @@ return {
         end,
       },
     }
+
+    -- Nushell
+    require('lspconfig').nushell.setup {}
+
+    vim.filetype.add {
+      extension = {
+        nuon = 'nu',
+      },
+    }
   end,
 }
