@@ -2,7 +2,7 @@
 Description=Break Reminder Timer
 
 [Timer]
-OnBootSec=1hour
+OnActiveSec=1hour
 OnUnitActiveSec=1hour
 
 [Install]
