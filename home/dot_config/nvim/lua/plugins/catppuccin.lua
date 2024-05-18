@@ -21,6 +21,7 @@ return {
           DashboardFooter = { fg = colors.pink },
           LazyButton = { bg = colors.mantle },
           LazyButtonActive = { bg = colors.surface0 },
+          TelescopeSelection = { fg = colors.rosewater },
         }
       end,
       integrations = {
