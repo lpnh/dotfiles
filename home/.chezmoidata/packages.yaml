@@ -8,6 +8,7 @@ packages:
     - 'vulkan-radeon'
   laptop:
     - 'brightnessctl'
+    - 'tlp'
     - 'nvidia-inst'
   optional:
     - 'aseprite'

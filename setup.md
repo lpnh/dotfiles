@@ -183,6 +183,24 @@ nmcli connection down 'NAME'
 nmcli connection up 'NAME'
 ```
 
+## Tlp
+
+Enabling the service:
+
+```sh
+systemctl enable tlp.service
+```
+
+Masking rfkill:
+
+```sh
+systemctl mask systemd-rfkill.service
+```
+
+```sh
+systemctl mask systemd-rfkill.socket
+```
+
 ## EndeavourOS
 
 Updating Arch mirrors:
