@@ -19,6 +19,8 @@ return {
           CursorLine = { bg = colors.surface1 },
           FloatBorder = { fg = colors.lavender },
           DashboardFooter = { fg = colors.pink },
+          LazyButton = { bg = colors.mantle },
+          LazyButtonActive = { bg = colors.surface0 },
         }
       end,
       integrations = {

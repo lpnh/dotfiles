@@ -14,4 +14,8 @@ require 'keymaps'
 
 require 'lazy-bootstrap'
 
-require 'plugins'
+require('lazy').setup('plugins', {
+  install = {
+    colorscheme = { 'catppuccin' },
+  },
+})
