@@ -29,6 +29,7 @@ return {
         theme = 'catppuccin',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'dashboard' },
       },
       sections = {
         lualine_b = {
@@ -43,12 +44,8 @@ return {
             color = { bg = '#363a4f' },
           },
         },
-        lualine_c = {
-          {
-            'buffers',
-          },
-        },
-        lualine_x = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'grapple' },
         lualine_y = {
           {
             'progress',
