@@ -54,8 +54,11 @@ map.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Deleting using a black hol
 -- Copy all
 map.set('n', '<C-c>', '<cmd>%y+<CR>', { desc = 'Copy entire file' })
 
--- Split window vertically - New window on the [L]eft
-map.set('n', '<leader>l', '<C-w>v', { noremap = true, silent = true, desc = 'Split window vertically' })
+-- Split window vertically - New window on the right
+map.set('n', '<C-S-l>', '<C-w>v', { noremap = true, silent = true, desc = 'Split window vertically' })
+
+-- Split window horizontally - New window at the bottom
+map.set('n', '<C-S-j>', '<C-w>s', { noremap = true, silent = true, desc = 'Split window horizontally' })
 
 -- Old addiction to move lines around using `alt` key
 map.set('n', '<A-j>', '<cmd>m .+1<cr>==', { desc = 'Move down' })

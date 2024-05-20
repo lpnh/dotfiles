@@ -34,7 +34,7 @@ return {
         -- Jump to the type of the word under the cursor
         --  Useful when not sure what type a variable is and want to see
         --  the definition of its *type*, not where it was *defined*
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+        map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
         -- Fuzzy find all the symbols in the current document
         --  Symbols are things like variables, functions, types, etc
@@ -56,36 +56,12 @@ return {
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
         -- Opens a popup that displays signature information about the word under the cursor
-        map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+        map('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-        -- Highlight references of the word under the cursor when it rests there for a little while
-        if client and client.server_capabilities.documentHighlightProvider then
-          local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            buffer = event.buf,
-            group = highlight_augroup,
-            callback = vim.lsp.buf.document_highlight,
-          })
-
-          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            buffer = event.buf,
-            group = highlight_augroup,
-            callback = vim.lsp.buf.clear_references,
-          })
-
-          vim.api.nvim_create_autocmd('LspDetach', {
-            group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-            callback = function(event2)
-              vim.lsp.buf.clear_references()
-              vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-            end,
-          })
-        end
 
         -- Enable inlay hints if the language server supports them
         if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
