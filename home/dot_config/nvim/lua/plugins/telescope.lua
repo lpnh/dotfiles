@@ -103,9 +103,9 @@ return {
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>sh', builtin.oldfiles, { desc = '[S]earch Recent Files (History)' })
-    vim.keymap.set('n', '<leader>e', builtin.buffers, { desc = 'Find [E]xisting buffers' })
-    vim.keymap.set('n', '<leader>ssd', builtin.builtin, { desc = '[S]earch [S]ymbol in [D]ocument' })
-    vim.keymap.set('n', '<leader>ssw', builtin.builtin, { desc = '[S]earch [S]ymbol in [W]orkspace' })
+    vim.keymap.set('n', '<leader>ssd', builtin.builtin, { desc = '[S]earch [S]ymbols in [D]ocument' })
+    vim.keymap.set('n', '<leader>ssw', builtin.builtin, { desc = '[S]earch [S]ymbols in [W]orkspace' })
+    vim.keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Find Existing Buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
