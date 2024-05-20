@@ -13,7 +13,7 @@ map.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which [K]ey' })
 
 -- Oil
 map.set('n', '<leader>o', '<cmd>Oil<CR>', { desc = '[O]il - File explorer' })
-map.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+map.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 
 -- Clear highlight (search) on pressing <Esc> in normal mode
 map.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -33,6 +33,9 @@ map.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to left window' })
 map.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to lower window' })
 map.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to upper window' })
 map.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to right window' })
+
+-- Alternate buffer
+map.set('n', '<leader><Tab>', '<cmd>b#<CR>', { desc = 'Close current buffer', silent = true })
 
 -- Close buffer
 map.set('n', '<leader>x', '<C-w>c', { desc = 'Close current buffer' })
@@ -65,8 +68,6 @@ map.set('n', '<A-j>', '<cmd>m .+1<cr>==', { desc = 'Move down' })
 map.set('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
 map.set('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 map.set('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
-map.set('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = 'Move down' })
-map.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 
 -- Disable arrow keys in normal mode
 map.set('n', '<left>', '<cmd>echo "TJ does not allow this, sorry"<CR>')

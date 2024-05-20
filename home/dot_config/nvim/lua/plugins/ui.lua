@@ -38,11 +38,6 @@ return {
             color = { bg = '#363a4f' },
           },
           {
-            'diff',
-            separator = { right = '' },
-            color = { bg = '#363a4f' },
-          },
-          {
             'diagnostics',
             separator = { right = '' },
             color = { bg = '#363a4f' },
