@@ -131,18 +131,10 @@ user = "greeter"
 
 ## Psd
 
-### Service
-
 Checking the config and current status
 
 ```sh
 psd preview
-```
-
-Enabling psd service
-
-```
-systemctl --user enable psd.service
 ```
 
 ### Overlayfs
@@ -155,6 +147,20 @@ sudo visudo
 
 ```
 <user> ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
+```
+
+### Service
+
+Enabling psd service
+
+```
+systemctl --user enable psd.service
+```
+
+Starting the service
+
+```
+systemctl --user start psd.service
 ```
 
 ## Timer
