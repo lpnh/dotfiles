@@ -27,7 +27,7 @@ niri-session
 ## Chezmoi
 
 ```sh
-chezmoi init https://github.com/lpnh/dotfiles.git
+chezmoi init https://github.com/<user>/dotfiles.git
 ```
 
 ```sh
@@ -45,7 +45,7 @@ cat /etc/shells
 Setting Nu as login shell:
 
 ```sh
-chsh -s /usr/bin/nu lpnh
+chsh -s /usr/bin/nu <user>
 ```
 
 ## Font
@@ -129,6 +129,34 @@ command = "tuigreet --remember --remember-session --asterisks"
 user = "greeter"
 ```
 
+## Psd
+
+### Service
+
+Checking the config and current status
+
+```sh
+psd preview
+```
+
+Enabling psd service
+
+```
+systemctl --user enable psd.service
+```
+
+### Overlayfs
+
+Adding necessary sudo rights on `/etc/sudoers`
+
+```sh
+sudo visudo
+```
+
+```
+<user> ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
+```
+
 ## Timer
 
 Enabling timer service
@@ -206,7 +234,7 @@ systemctl mask systemd-rfkill.socket
 Updating Arch mirrors:
 
 ```sh
-reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 Updating EndeavourOS mirrors:
