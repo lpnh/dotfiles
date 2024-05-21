@@ -49,6 +49,7 @@ packages:
     - 'lld'
     - 'lua'
     - 'mako'
+    - 'md-tui'
     - 'mdbook'
     - 'mpv'
     - 'ncspot'
