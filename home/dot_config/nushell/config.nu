@@ -504,8 +504,8 @@ $env.config = {
 source aliases.nu
 source wrappers.nu
 
-# zoxide
-source ~/.zoxide.nu
-
 # starship
 use ~/.cache/starship/init.nu
+
+# zoxide
+source ~/.zoxide.nu
