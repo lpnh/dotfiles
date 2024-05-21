@@ -61,6 +61,7 @@ packages:
     - 'papirus-icon-theme'
     - 'polkit-gnome'
     - 'poppler'
+    - 'profile-sync-daemon'
     - 'qt6-wayland'
     - 'refind'
     - 'ripgrep'
