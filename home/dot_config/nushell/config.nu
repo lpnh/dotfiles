@@ -310,11 +310,32 @@ $env.config = {
             }
         }
         {
-            name: history_menu
+            name: fuzzy_history
             modifier: control
             keycode: char_r
-            mode: [vi_insert, vi_normal]
-            event: { send: menu name: history_menu }
+            mode: [vi_normal, vi_insert]
+            event: [
+                {
+                    send: ExecuteHostCommand
+                    cmd: "commandline edit --insert (
+                        history
+                        | get command
+                        | reverse
+                        | uniq
+                        | str join (char -i 0)
+                        | fzf
+                            --scheme=history
+                            --read0
+                            --layout=reverse
+                            --height=40%
+                            --bind 'ctrl-/:change-preview-window(right,70%|right)'
+                            --preview='echo {} | nu --stdin -c \'nu-highlight\''
+                            --query (commandline)
+                        | decode utf-8
+                        | str trim
+                    )"
+                }
+            ]
         }
         {
             name: help_menu
@@ -372,8 +393,6 @@ $env.config = {
             mode: [vi_normal, vi_insert]
             event: { send: openeditor }
         }
-
-
         {
             name: move_one_word_left
             modifier: none
