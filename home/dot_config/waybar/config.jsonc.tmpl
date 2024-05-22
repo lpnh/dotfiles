@@ -12,6 +12,7 @@
 
     "modules-left": [
         "custom/arch",
+        "custom/workspaces",
         "wlr/taskbar"
     ],
     "modules-center": ["clock"],
@@ -28,6 +29,10 @@
     "custom/arch": {
        "format": " ",
        "tooltip": false
+    },
+    "custom/workspaces": {
+        "exec": "$HOME/.config/waybar/modules/niri-workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
+        "signal": 8
     },
     "wlr/taskbar": {
         "all-outputs": true,
