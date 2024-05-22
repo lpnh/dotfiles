@@ -575,10 +575,10 @@ binds {
     Mod+Shift+J        { focus-workspace-down; }
     Mod+Shift+K        { focus-workspace-up; }
 
-    Mod+1 { focus-workspace "main"; }
-    Mod+2 { focus-workspace "browser"; }
-    Mod+3 { focus-workspace "lounge"; }
-    Mod+4 { focus-workspace 4; }
+    Mod+1 { spawn "~/.config/waybar/modules/niri-workspaces.sh" "focus-workspace" "main"; }
+    Mod+2 { spawn "~/.config/waybar/modules/niri-workspaces.sh" "focus-workspace" "browser"; }
+    Mod+3 { spawn "~/.config/waybar/modules/niri-workspaces.sh" "focus-workspace" "lounge"; }
+    Mod+4 { spawn "~/.config/waybar/modules/niri-workspaces.sh" "focus-workspace" "1"; }
 
     Mod+Tab { focus-workspace-previous; }
 
