@@ -4,7 +4,6 @@ case "$1" in
 focus-workspace)
     niri msg action "$@" && pkill -SIGRTMIN+8 waybar;;
 *)
-
 	set -e
 
 	monitor=$1
