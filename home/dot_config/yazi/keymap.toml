@@ -10,22 +10,34 @@ on = ["<C-n>"]
 run = "arrow 1"
 desc = "Move cursor down"
 
+# 
+
+[[manager.prepend_keymap]]
+on = ["R"]
+run = "rename --empty=stem --cursor=start"
+desc = "Easy rename"
+
 # Add fg plugin keymap
 
 [[manager.prepend_keymap]]
 on = ["f", "f"]
 run = "plugin fg --args='fzf'"
-desc = "find file by file name"
+desc = "Find file by file name"
 
 [[manager.prepend_keymap]]
 on = ["f", "g"]
 run = "plugin fg"
-desc = "find file by content (fuzzy match)"
+desc = "Find file by content (fuzzy match)"
+
+[[manager.prepend_keymap]]
+on = ["f", "a"]
+run = "plugin fg --args='rga'"
+desc = "Find file by content (ripgrep-all)"
 
 [[manager.prepend_keymap]]
 on = ["f", "G"]
 run = "plugin fg --args='rg'"
-desc = "find file by content (ripgrep match)"
+desc = "Find file by content (ripgrep match)"
 
 # Add enter behavior to l key
 # https://yazi-rs.github.io/docs/tips#smart-enter-enter-for-directory-open-for-file
