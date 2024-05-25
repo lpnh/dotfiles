@@ -12,7 +12,7 @@ git clone --quiet https://github.com/nushell/nushell.git ~/apps/nushell
 
 print "\n\u{eae8} building... this may take a while\n"
 
-cargo build --quiet --release --manifest-path ~/apps/nushell/Cargo.toml
+cargo build --quiet --release --features default --manifest-path ~/apps/nushell/Cargo.toml
 
 if (which nu | is-not-empty) {
     print "\n\u{eb32} current version:"
