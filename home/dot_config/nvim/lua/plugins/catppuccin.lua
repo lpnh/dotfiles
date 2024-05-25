@@ -16,12 +16,13 @@ return {
           LineNr = { fg = colors.overlay0 },
           WarningMsg = { style = { 'italic' } },
           ErrorMsg = { style = { 'italic' } },
-          CursorLine = { bg = colors.surface1 },
+          CursorLine = { bg = colors.surface0 },
           FloatBorder = { fg = colors.lavender },
           DashboardFooter = { fg = colors.pink },
           LazyButton = { bg = colors.mantle },
           LazyButtonActive = { bg = colors.surface0 },
           TelescopeSelection = { fg = colors.rosewater },
+          Visual = { bg = colors.surface0 },
         }
       end,
       integrations = {
