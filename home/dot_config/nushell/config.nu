@@ -187,7 +187,7 @@ $env.config = {
         {
             name: completion_menu
             only_buffer_difference: false
-            marker: "| "
+            marker: ""
             type: {
                 layout: columnar
                 columns: 4
@@ -205,7 +205,7 @@ $env.config = {
         {
             name: ide_completion_menu
             only_buffer_difference: false
-            marker: "| "
+            marker: ""
             type: {
                 layout: ide
                 min_completion_width: 0,
@@ -238,7 +238,7 @@ $env.config = {
         {
             name: history_menu
             only_buffer_difference: true
-            marker: "? "
+            marker: ""
             type: {
                 layout: list
                 page_size: 10
@@ -252,7 +252,7 @@ $env.config = {
         {
             name: help_menu
             only_buffer_difference: true
-            marker: "? "
+            marker: ""
             type: {
                 layout: description
                 columns: 4
@@ -285,8 +285,8 @@ $env.config = {
         }
         {
             name: take_history_hint
-            modifier: alt 
-            keycode: tab
+            modifier: control
+            keycode: char_y
             mode: [vi_insert, vi_normal]
             event: {
                 until: [
@@ -421,7 +421,7 @@ $env.config = {
         }
         {
             name: move_up
-            modifier: control 
+            modifier: control
             keycode: char_k
             mode: [vi_normal, vi_insert]
             event: {
@@ -515,6 +515,20 @@ $env.config = {
             keycode: backspace
             mode: vi_normal
             event: { edit: moveleft }
+        }
+        {
+            name: select_all
+            modifier: shift
+            keycode: char_v
+            mode: vi_normal
+            event: { edit: selectall }
+        }
+        {
+            name: copy_selection
+            modifier: none
+            keycode: char_y
+            mode: vi_normal
+            event: { edit: copyselectionsystem }
         }
     ]
 }

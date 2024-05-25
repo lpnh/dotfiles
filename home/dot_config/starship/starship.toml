@@ -3,7 +3,7 @@ palette = "catppuccin_mocha"
 
 [character]
 success_symbol = "[♥](pink) "
-error_symbol = "[](red)"
+error_symbol = "[ ](red)"
 
 [package]
 disabled = true

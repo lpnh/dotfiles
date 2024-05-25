@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/mocha.toml"]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 live_config_reload = true
 
 [shell]
@@ -18,6 +18,9 @@ size = 12.0
 [font.normal]
 family = "FiraMono Nerd Font"
 style = "Regular"
+
+[cursor]
+unfocused_hollow = false
 
 [mouse]
 hide_when_typing = true
