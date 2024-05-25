@@ -55,6 +55,7 @@ packages:
     - 'ncspot'
     - 'niri'
     - 'nodejs'
+    - 'npm'
     - 'nushell'
     - 'nwg-look'
     - 'otf-firamono-nerd'
