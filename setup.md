@@ -171,6 +171,16 @@ Enabling timer service
 systemctl --user enable break-reminder.timer
 ```
 
+## Pandoc
+
+Download and installing the latest release:
+
+https://github.com/jgm/pandoc/releases
+
+```
+sudo tar xvzf $TGZ --strip-components 1 -C /usr/local
+```
+
 ## NetworkManager
 
 ### Wi-Fi
