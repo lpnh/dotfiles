@@ -10,12 +10,12 @@
     "modules-left": [
         "custom/arch",
         "custom/workspaces",
+        "wlr/taskbar",
         "custom/window"
     ],
     "modules-center": ["clock"],
     "modules-right": [
         "tray",
-        "wlr/taskbar",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
         "battery",
@@ -31,15 +31,10 @@
     "custom/workspaces": {
         "exec": "$HOME/.config/waybar/modules/workspaces.nu \"$WAYBAR_OUTPUT_NAME\""
     },
-    "custom/window": {
-        "return-type": "json",
-        "escape": true,
-        "exec": "$HOME/.config/waybar/modules/window.nu",
-        "format": "{}"
-    },
     "wlr/taskbar": {
-        "all-outputs": true,
         "format": "{title}",
+        "tooltip": false,
+        "active-first": true,
         "rewrite": {
             "Alacritty": "",
             "(Aseprite).*": "",
@@ -49,6 +44,13 @@
             ".*(WebCord).*": "󰙯",
             "yazi": ""
         }
+    },
+    "custom/window": {
+        "return-type": "json",
+        "max-length": 20,
+        "escape": true,
+        "exec": "$HOME/.config/waybar/modules/window.nu",
+        "format": "<i>{}</i>"
     },
 
     "clock": {
@@ -77,7 +79,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "ethernet ",
+        "format-ethernet": "eth ",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "disconnected ⚠",
