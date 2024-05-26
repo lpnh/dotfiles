@@ -7,18 +7,18 @@ let out = {
 
 def main [] {
   loop {
-    sleep 200ms;
+    sleep 100ms
 
-    let window = niri msg -j focused-window | from json;
+    let window = niri msg -j focused-window | from json
 
     if ($window == null) {
-      print ($out | to json -r);
+      print ($out | to json -r)
     } else {
-      let app_id = $window | get app_id;
-      let title = $window | get title;
-      let tooltip = $"($app_id) | ($title)";
+      let title = $window | get title
+      let app_id = $window | get app_id
+      let tooltip = $"($title) | ($app_id)"
 
-      print ( $out | update text ( $"($app_id)" ) | update tooltip ( $"($tooltip)") | to json -r );
+      print ( $out | update text ( $"($title)" ) | update tooltip ( $"($tooltip)") | to json -r )
     }
   }
 }
