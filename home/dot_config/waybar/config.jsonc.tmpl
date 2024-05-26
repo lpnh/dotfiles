@@ -13,11 +13,12 @@
     "modules-left": [
         "custom/arch",
         "custom/workspaces",
-        "wlr/taskbar"
+        "custom/window"
     ],
     "modules-center": ["clock"],
     "modules-right": [
         "tray",
+        "wlr/taskbar",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
         "battery",
@@ -26,18 +27,18 @@
         "pulseaudio"
     ],
 
-    "custom/arch": {
-       "format": " ",
-       "tooltip": false
-    },
     "custom/workspaces": {
-        "exec": "$HOME/.config/waybar/modules/niri-workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
-        "signal": 8
+        "exec": "$HOME/.config/waybar/modules/workspaces.nu \"$WAYBAR_OUTPUT_NAME\""
+    },
+    "custom/window": {
+        "return-type": "json",
+        "escape": true,
+        "exec": "$HOME/.config/waybar/modules/window.nu",
+        "format": "{}"
     },
     "wlr/taskbar": {
         "all-outputs": true,
         "format": "{title}",
-        "tooltip-format": "{title} | {app_id}",
         "rewrite": {
             "Alacritty": "",
             "(Aseprite).*": "",
