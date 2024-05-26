@@ -2,15 +2,18 @@
 
 Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 
-> it's called "dotfiles" because that folder ".config" starts with a dot and is therefor hidden
-> 
-> and we customize these hidden text files for ~20 programs because we're neurotic lovers of beauty 🤷
+> it's called "dotfiles" because that folder ".config" starts with a dot and is
+> therefor hidden
+>
+> and we customize these hidden text files for ~20 programs because we're
+> neurotic lovers of beauty 🤷
 >
 > -- <cite>from a Reddit user on r/unixporn</cite>
 
 ## Components
 
 **Core**:
+
 * Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
 * Compositor: [Niri](https://github.com/YaLTeR/niri)  
 * Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
@@ -20,24 +23,30 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 * Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
 **User Interface**:
+
 * Fonts and Glyphs: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)  
-* Icons: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
+* Icons:
+[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
 * Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 **Terminal**:
+
 * Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
 * Shell: [Nushell](https://github.com/nushell/nushell)  
 * Prompt: [Starship](https://github.com/starship/starship)
 
 **Tools**:
+
 * File Manager: [Yazi](https://github.com/sxyazi/yazi)  
 * Editor: [Neovim](https://github.com/neovim/neovim)
 
 **Clients**:
+
 * Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
 * Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
 **Utilities and Quality of Life**:
+
 * [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  
 * [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim
