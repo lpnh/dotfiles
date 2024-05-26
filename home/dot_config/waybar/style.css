@@ -36,6 +36,8 @@ window#waybar {
 }
 
 #taskbar button {
+    margin: 0;
+    padding: 0;
     color: @surface1;
 }
 
