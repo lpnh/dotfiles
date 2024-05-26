@@ -43,6 +43,8 @@ git integration
 * [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim
 * [Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
 monitor  
+* [Cava](https://github.com/karlstav/cava): Console-based Audio Visualizer for
+Alsa  
 * [Eza](https://github.com/eza-community/eza): A modern replacement for ls
 (community fork of exa)  
 * [Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
