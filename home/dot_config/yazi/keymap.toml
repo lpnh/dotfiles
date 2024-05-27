@@ -10,7 +10,7 @@ on = ["<C-n>"]
 run = "arrow 1"
 desc = "Move cursor down"
 
-# 
+# Empty the filename then move the cursor to start
 
 [[manager.prepend_keymap]]
 on = ["R"]

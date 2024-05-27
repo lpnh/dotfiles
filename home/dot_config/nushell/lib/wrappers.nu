@@ -1,5 +1,5 @@
 # https://yazi-rs.github.io/docs/quick-start#shell-wrapper
-def --env ya [...args] {
+def --env yz [...args] {
     let tmp = (mktemp -t "yazi-cwd.XXXXX")
     yazi ...$args --cwd-file $tmp
     let cwd = (open $tmp)
