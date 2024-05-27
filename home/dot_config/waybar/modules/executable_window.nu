@@ -18,7 +18,7 @@ def main [] {
       let app_id = $window | get app_id
       let tooltip = $"($title) | ($app_id)"
 
-      print ( $out | update text ( $"($title)" ) | update tooltip ( $"($tooltip)") | to json -r )
+      print ($out | update text $title | update tooltip $tooltip | to json -r)
     }
   }
 }
