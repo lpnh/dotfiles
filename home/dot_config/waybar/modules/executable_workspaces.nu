@@ -2,7 +2,7 @@
 
 def main [output_name] {
   loop {
-    sleep 200ms
+    sleep 1sec
 
     print (
       niri msg -j workspaces

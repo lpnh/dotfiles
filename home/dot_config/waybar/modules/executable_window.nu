@@ -6,7 +6,7 @@ let out = {
 }
 
 loop {
-  sleep 100ms
+  sleep 1sec
 
   let fw = niri msg -j focused-window | from json
 
