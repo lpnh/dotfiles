@@ -6,7 +6,8 @@ def main [output_name] {
 
     let text = niri msg -j workspaces
       | from json
-      | each { |ws| if $ws.output == $output_name { if $ws.is_active { "󰪥" } else { "󰄰" } } }
+      | where output == $output_name
+      | each {|ws| if $ws.is_active { '󰪥' } else { '󰄰' } }
       | str join " "
 
     print $text

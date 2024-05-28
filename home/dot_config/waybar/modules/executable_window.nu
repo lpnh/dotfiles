@@ -5,20 +5,14 @@ let out = {
   tooltip: ""
 }
 
-def main [] {
-  loop {
-    sleep 100ms
+loop {
+  sleep 100ms
 
-    let window = niri msg -j focused-window | from json
+  let fw = niri msg -j focused-window | from json
 
-    if ($window == null) {
-      print ($out | to json -r)
-    } else {
-      let title = $window | get title
-      let app_id = $window | get app_id
-      let tooltip = $"($title) | ($app_id)"
-
-      print ($out | update text $title | update tooltip $tooltip | to json -r)
-    }
-  }
+  print (
+    $out
+    | try { update text $fw.title | update tooltip $"($fw.title) | ($fw.app_id)" }
+    | to json -r
+  )
 }
