@@ -6,10 +6,7 @@ local map = vim.keymap
 map.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap `;` to `:` for convenience
-map.set({ 'n', 'v' }, ';', ':')
-
--- WhichKey
-map.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which [K]ey' })
+map.set({ 'n', 'v' }, ';', ':', { desc = 'Enter command-line mode' })
 
 -- Oil
 map.set('n', '<leader>o', '<cmd>Oil<CR>', { desc = '[O]il - File explorer' })
@@ -23,8 +20,6 @@ map.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-map.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic message' })
-map.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic message' })
 map.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
 map.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
@@ -51,8 +46,8 @@ map.set('n', '<leader>S', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
 map.set('n', 'Q', '<Nop>')
 
 -- Make replace less painful
-map.set('x', '<leader>p', [["_dP]], { desc = 'Replace while pasting' })
-map.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Deleting using a black hole' })
+map.set('x', '<leader>p', [["_dP]], { desc = 'Replace While [P]asting' })
+map.set('v', '<leader>d', [["_d]], { desc = '[D]eleting Using a Black Hole' })
 
 -- Copy all
 map.set('n', '<C-c>', '<cmd>%y+<CR>', { desc = 'Copy entire file' })
@@ -70,10 +65,10 @@ map.set('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 map.set('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 
 -- Disable arrow keys in normal mode
-map.set('n', '<left>', '<cmd>echo "TJ does not allow this, sorry"<CR>')
-map.set('n', '<right>', '<cmd>echo "TJ does not allow this, sorry"<CR>')
-map.set('n', '<up>', '<cmd>echo "TJ does not allow this, sorry"<CR>')
-map.set('n', '<down>', '<cmd>echo "TJ does not allow this, sorry"<CR>')
+map.set('n', '<left>', '<cmd>echo "TJ does not allow this"<CR>')
+map.set('n', '<right>', '<cmd>echo "TJ does not allow this"<CR>')
+map.set('n', '<up>', '<cmd>echo "TJ does not allow this"<CR>')
+map.set('n', '<down>', '<cmd>echo "TJ does not allow this"<CR>')
 
 -- Highlight when yanking text
 -- See `:help lua-guide-autocommands`
