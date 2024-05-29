@@ -8,10 +8,6 @@ map.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap `;` to `:` for convenience
 map.set({ 'n', 'v' }, ';', ':', { desc = 'Enter command-line mode' })
 
--- Oil
-map.set('n', '<leader>o', '<cmd>Oil<CR>', { desc = '[O]il - File explorer' })
-map.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
-
 -- Clear highlight (search) on pressing <Esc> in normal mode
 map.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -19,7 +15,7 @@ map.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Diagnostic keymaps
+-- Diagnostic
 map.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
 map.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
@@ -41,9 +37,6 @@ map.set('n', '<C-u>', '<C-u>zz')
 
 -- Find/replace for the word under the cursor
 map.set('n', '<leader>S', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Find/Replace word under cursor' })
-
--- Why people remap this ?
-map.set('n', 'Q', '<Nop>')
 
 -- Make replace less painful
 map.set('x', '<leader>p', [["_dP]], { desc = 'Replace While [P]asting' })
