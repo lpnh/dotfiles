@@ -21,16 +21,29 @@ if (which yazi | is-not-empty) {
     print "yazi binary not found"
 }
 
+if (which ya | is-not-empty) {
+    print "\n\u{eb32} current version:"
+    ya --version
+} else {
+    print "ya binary not found"
+}
+
 print "\n\u{f00e2} removing old bin"
 
-sudo rm --force /usr/bin/yazi 
+sudo rm --force /usr/bin/yazi
+
+sudo rm --force /usr/bin/ya
 
 print "\u{f06d3} adding new bin"
 
 sudo mv ~/apps/yazi/target/release/yazi /usr/bin/yazi
 
+sudo mv ~/apps/yazi/target/release/ya /usr/bin/ya
+
 print "\n\u{f0a43} checking new version:"
 
 yazi --version
+
+ya --version
 
 print "\n\u{f0674} voilà"
