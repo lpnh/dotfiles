@@ -9,3 +9,6 @@ sort_dir_first = true
 play = [
     { run = 'mpv --player-operation-mode=pseudo-gui "$@"', orphan = true, for = "unix" },
 ]
+
+[plugin]
+prepend_previewers = [{ name = "*.md", run = "glow" }]
