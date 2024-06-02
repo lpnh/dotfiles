@@ -60,3 +60,9 @@ alias xl = eza --long
 alias xla = eza --long --all
 alias xt = eza --icons --tree
 alias xta = eza --icons --tree --all
+
+# ya
+alias yp = ya pack
+alias ypi = ya pack --install
+alias ypl = ya pack --list
+alias ypu = ya pack --upgrade

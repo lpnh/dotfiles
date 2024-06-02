@@ -1,6 +1,26 @@
+[core]
+	pager = delta
+
+[diff]
+	colorMoved = no
+
+[merge]
+	conflictstyle = diff3
+
+[interactive]
+	diffFilter = delta --color-only
+
 [user]
 	email = paniguel.lpnh@gmail.com
 	name = lpnh
 
 [url "git@github.com:lpnh/"]
 	insteadOf = https://github.com/lpnh/
+
+[include]
+	path = ~/.config/delta/catppuccin.gitconfig
+
+[delta]
+	features = catppuccin-mocha
+	navigate = true
+	side-by-side = true
