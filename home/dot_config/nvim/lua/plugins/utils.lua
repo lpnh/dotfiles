@@ -8,54 +8,6 @@ return {
   -- Wakatime
   { 'wakatime/vim-wakatime', lazy = false },
 
-  -- Autoformat
-  {
-    'stevearc/conform.nvim',
-    lazy = false,
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
-    },
-    opts = {
-      notify_on_error = false,
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
-      formatters_by_ft = {
-        lua = { 'stylua' },
-      },
-    },
-  },
-
-  -- Linting
-  {
-    'mfussenegger/nvim-lint',
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      local lint = require 'lint'
-      lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
-      }
-
-      -- Create autocommand which carries out the actual linting
-      -- on the specified events.
-      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-        group = lint_augroup,
-        callback = function()
-          require('lint').try_lint()
-        end,
-      })
-    end,
-  },
-
   -- Autopairs
   {
     'windwp/nvim-autopairs',
@@ -78,7 +30,6 @@ return {
       require('which-key').register {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]iagnostic', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ust Lsp', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>ss'] = { name = '[S]earch [S]ymbols', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]able', _ = 'which_key_ignore' },
@@ -143,9 +94,7 @@ return {
   {
     'saecki/crates.nvim',
     ft = { 'toml' },
-    config = function()
-      require('crates').setup()
-    end,
+    opts = {},
   },
 
   {
