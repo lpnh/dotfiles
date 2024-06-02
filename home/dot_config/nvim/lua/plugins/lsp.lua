@@ -9,40 +9,132 @@ return {
 
     -- Additional Lua LSP for the Neovim config, runtime and plugins
     { 'folke/neodev.nvim', opts = {} },
+
+    -- Schema information
+    'b0o/SchemaStore.nvim',
   },
   config = function()
+    -- Capabilities
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+
+    -- Servers
+    local servers = {
+      clangd = true,
+      gopls = true,
+      html = true,
+      htmx = true,
+      lua_ls = {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
+            },
+          },
+        },
+      },
+      markdown_oxide = true,
+      nushell = { manual_install = true },
+      rust_analyzer = {
+        manual_install = true,
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = { allFeatures = true, loadOutDirsFromCheck = true },
+            checkOnSave = { command = 'clippy' },
+            procMacro = { enable = true },
+            diagnostics = { enable = false },
+          },
+        },
+      },
+      tailwindcss = {
+        filetypes = { 'rust' },
+        init_options = {
+          userLanguages = {
+            rust = 'html',
+          },
+        },
+      },
+      taplo = true,
+      templ = true,
+      typos_lsp = true,
+    }
+
+    local servers_to_install = vim.tbl_filter(function(key)
+      local t = servers[key]
+      if type(t) == 'table' then
+        return not t.manual_install
+      else
+        return t
+      end
+    end, vim.tbl_keys(servers))
+
+    -- Mason
+    require('mason').setup()
+
+    local ensure_installed = {
+      'codelldb',
+      'markdownlint',
+    }
+    vim.list_extend(ensure_installed, servers_to_install)
+    require('mason-tool-installer').setup {
+      ensure_installed = ensure_installed,
+      auto_update = true,
+    }
+
+    for name, config in pairs(servers) do
+      if config == true then
+        config = {}
+      end
+      config = vim.tbl_deep_extend('force', {}, {
+        capabilities = capabilities,
+      }, config)
+
+      require('lspconfig')[name].setup(config)
+    end
+
+    vim.filetype.add {
+      extension = {
+        nuon = 'nu',
+      },
+    }
+
     -- Attach
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
         local map = function(keys, func, desc)
-          vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
+          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
+
+        local builtin = require 'telescope.builtin'
 
         -- Jump to the definition of the word under the cursor
         --  This is where a variable was first declared, or where a function is defined, etc
         --  To jump back, press <C-t>
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
+
+        -- Jump to the declaration of the word under the cursor
+        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- Find references for the word under the cursor
-        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map('gr', builtin.lsp_references, '[G]oto [R]eferences')
 
         -- Jump to the implementation of the word under the cursor
         --  Useful when the language has ways of declaring types without an actual implementation
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
 
         -- Jump to the type of the word under the cursor
         --  Useful when not sure what type a variable is and want to see
         --  the definition of its *type*, not where it was *defined*
-        map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        map('gt', builtin.lsp_type_definitions, '[G]oto [T]ype Definition')
 
         -- Fuzzy find all the symbols in the current document
         --  Symbols are things like variables, functions, types, etc
-        map('<leader>ssd', require('telescope.builtin').lsp_document_symbols, '[S]earch [S]ymbols in [D]ocument')
+        map('<leader>ssd', builtin.lsp_document_symbols, '[S]earch [S]ymbols in [D]ocument')
 
         -- Fuzzy find all the symbols in the current workspace
         --  Similar to document symbols, except searches over the entire project
-        map('<leader>ssw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols in [W]orkspace')
+        map('<leader>ssw', builtin.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols in [W]orkspace')
 
         -- Rename the variable under the cursor
         map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
@@ -57,9 +149,6 @@ return {
 
         -- Opens a popup that displays signature information about the word under the cursor
         map('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-        -- WARN: This is not Goto Definition, this is Goto Declaration
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- Highlight references of the word under the cursor
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -94,69 +183,5 @@ return {
         end
       end,
     })
-
-    -- Capabilities
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-    -- Servers
-    local servers = {
-      markdown_oxide = {},
-      typos_lsp = {},
-      clangd = {},
-      gopls = {},
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-          },
-        },
-      },
-      taplo = {},
-      html = {},
-      tailwindcss = {
-        filetypes = { 'rust' },
-        init_options = {
-          userLanguages = {
-            rust = 'html',
-          },
-        },
-      },
-      htmx = {},
-    }
-
-    -- Mason
-    require('mason').setup()
-
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'codelldb',
-      'markdownlint',
-    })
-    require('mason-tool-installer').setup {
-      ensure_installed = ensure_installed,
-      auto_update = true,
-    }
-
-    require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
-    }
-
-    -- Nushell
-    require('lspconfig').nushell.setup {}
-
-    vim.filetype.add {
-      extension = {
-        nuon = 'nu',
-      },
-    }
   end,
 }

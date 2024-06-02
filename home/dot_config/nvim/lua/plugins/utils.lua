@@ -140,55 +140,6 @@ return {
     },
   },
 
-  -- Rust stuff ♥
-  {
-    'mrcjkb/rustaceanvim',
-    dependencies = 'neovim/nvim-lspconfig',
-    ft = { 'rust' },
-    version = '^4', -- Recommended
-    opts = {
-      server = {
-        on_attach = function(_, bufnr)
-          local nmap = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-          end
-
-          nmap('<leader>rc', '<cmd>RustLsp openCargo<CR>', 'Go to cargo.toml')
-          nmap('<leader>re', '<cmd>RustLsp explainError<CR>', 'Explain error')
-          nmap('<leader>rj', '<cmd>RustLsp moveItem down<CR>', 'Move item down')
-          nmap('<leader>rk', '<cmd>RustLsp moveItem up<CR>', 'Move item up')
-          nmap('<leader>rd', '<cmd>RustLsp debuggables last<CR>', 'Debug')
-          nmap('<leader>rr', '<cmd>RustLsp renderDiagnostic<CR>', 'Render diagnostics')
-        end,
-        settings = {
-          ['rust-analyzer'] = {
-            cargo = {
-              allFeatures = true,
-              loadOutDirsFromCheck = true,
-              runBuildScripts = true,
-            },
-            checkOnSave = { -- Add clippy lints for Rust.
-              allFeatures = true,
-              command = 'clippy',
-              extraArgs = { '--no-deps' },
-            },
-            procMacro = {
-              enable = true,
-              ignored = {
-                ['async-trait'] = { 'async_trait' },
-                ['napi-derive'] = { 'napi' },
-                ['async-recursion'] = { 'async_recursion' },
-              },
-            },
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      vim.g.rustaceanvim = vim.tbl_deep_extend('force', {}, opts or {})
-    end,
-  },
-
   {
     'saecki/crates.nvim',
     ft = { 'toml' },
