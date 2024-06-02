@@ -1,5 +1,5 @@
 return {
-  -- LSP Configuration & Plugins
+  -- LSP Configuration
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -109,32 +109,17 @@ return {
 
           local builtin = require 'telescope.builtin'
 
-          -- Jump to the definition of the word under the cursor
-          --  This is where a variable was first declared, or where a function is defined, etc
+          -- Jump to the <target> of the word under the cursor
           --  To jump back, press <C-t>
           map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
-
-          -- Jump to the declaration of the word under the cursor
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-
-          -- Find references for the word under the cursor
           map('gr', builtin.lsp_references, '[G]oto [R]eferences')
-
-          -- Jump to the implementation of the word under the cursor
-          --  Useful when the language has ways of declaring types without an actual implementation
           map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
-
-          -- Jump to the type of the word under the cursor
-          --  Useful when not sure what type a variable is and want to see
-          --  the definition of its *type*, not where it was *defined*
           map('gt', builtin.lsp_type_definitions, '[G]oto [T]ype Definition')
 
-          -- Fuzzy find all the symbols in the current document
+          -- Fuzzy find all the symbols in the current document or workspace
           --  Symbols are things like variables, functions, types, etc
           map('<leader>ssd', builtin.lsp_document_symbols, '[S]earch [S]ymbols in [D]ocument')
-
-          -- Fuzzy find all the symbols in the current workspace
-          --  Similar to document symbols, except searches over the entire project
           map('<leader>ssw', builtin.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols in [W]orkspace')
 
           -- Rename the variable under the cursor
