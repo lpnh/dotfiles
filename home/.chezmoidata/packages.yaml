@@ -76,6 +76,7 @@ packages:
     - 'swaybg'
     - 'swayidle'
     - 'swaylock'
+    - 'tokei'
     - 'transmission-cli'
     - 'transmission-gtk'
     - 'tree-sitter-cli'
