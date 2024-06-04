@@ -28,6 +28,10 @@ return {
         lua_ls = {
           settings = {
             Lua = {
+              diagnostics = {
+                -- LÖVE: handle the "Undefined global `love`" warn
+                globals = { 'love' },
+              },
               completion = {
                 callSnippet = 'Replace',
               },
@@ -218,5 +222,16 @@ return {
         end,
       })
     end,
+  },
+
+  -- LÖVE
+  {
+    'S1M0N38/love2d.nvim',
+    cmd = 'LoveRun',
+    opts = {},
+    keys = {
+      { '<leader>vv', '<cmd>LoveRun<cr>', ft = 'lua', desc = 'Run LÖVE' },
+      { '<leader>vs', '<cmd>LoveStop<cr>', ft = 'lua', desc = 'Stop LÖVE' },
+    },
   },
 }

@@ -33,6 +33,7 @@ return {
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>ss'] = { name = '[S]earch [S]ymbols', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]able', _ = 'which_key_ignore' },
+        ['<leader>v'] = { name = 'LÖVE', _ = 'which_key_ignore' },
       }
 
       vim.keymap.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which [K]ey' })
