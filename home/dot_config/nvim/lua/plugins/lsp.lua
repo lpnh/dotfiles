@@ -61,7 +61,12 @@ return {
         },
         taplo = true,
         templ = true,
-        typos_lsp = true,
+        typos_lsp = {
+          init_options = {
+            -- Equivalent to the typos `--config` cli argument
+            config = '~/.config/typos/typos.toml',
+          },
+        },
       }
 
       local servers_to_install = vim.tbl_filter(function(key)
