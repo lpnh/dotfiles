@@ -1,8 +1,8 @@
-# Custom max-preview
+# Custom layout
 
 [[manager.prepend_keymap]]
 on = ["F"]
-run = "plugin --sync max-preview"
+run = "plugin --sync custom-layout"
 
 # Add navigation in insert mode
 
