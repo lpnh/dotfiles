@@ -46,6 +46,7 @@ packages:
     - 'inter-font'
     - 'jq'
     - 'just'
+    - 'libqalculate'
     - 'lld'
     - 'lua'
     - 'mako'
