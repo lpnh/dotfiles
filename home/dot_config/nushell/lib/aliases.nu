@@ -51,6 +51,9 @@ alias ll = ls -l
 # neovim
 alias nv = nvim
 
+# sudo
+alias please = sudo
+
 # eza
 alias x = eza --icons --oneline
 alias xx = eza --icons
