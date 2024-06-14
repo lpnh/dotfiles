@@ -22,7 +22,6 @@ return {
       -- Servers
       local servers = {
         clangd = true,
-        gopls = true,
         html = true,
         htmx = true,
         lua_ls = {
@@ -102,9 +101,11 @@ return {
         require('lspconfig')[name].setup(config)
       end
 
+      -- Add file extensions
       vim.filetype.add {
         extension = {
           nuon = 'nu',
+          tmpl = 'templ',
         },
       }
 
