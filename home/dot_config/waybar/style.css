@@ -17,11 +17,11 @@ window#waybar {
     color: @mauve;
 }
 
-#custom-arch {
-    color: @blue;
+#custom-endeavouros {
+    color: @mauve;
 }
 
-#custom-arch,
+#custom-endeavouros,
 #custom-workspaces,
 #custom-window,
 #taskbar,
