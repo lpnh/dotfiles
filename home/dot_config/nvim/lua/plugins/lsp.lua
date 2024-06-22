@@ -59,7 +59,6 @@ return {
           },
         },
         taplo = true,
-        templ = true,
         typos_lsp = {
           init_options = {
             -- Equivalent to the typos `--config` cli argument
@@ -105,7 +104,6 @@ return {
       vim.filetype.add {
         extension = {
           nuon = 'nu',
-          tmpl = 'templ',
         },
       }
 
