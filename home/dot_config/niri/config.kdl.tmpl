@@ -542,17 +542,18 @@ binds {
 
     // ]]]
 
-    // Main apps and programs [[[
+    // Main apps [[[
 
     Mod+Space { spawn "killall" "-SIGUSR1" "waybar"; }
-    Mod+D { spawn "fuzzel"; }
     Mod+A { spawn "alacritty"; }
     Mod+B { spawn "firefox"; }
-    Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+M { spawn "gamescope" "-W" "1920" "-H" "1080" "-w" "1920" "-h" "1080" "-f" "--" "gamescope" "minecraft-launcher"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
+    Mod+P { spawn "cage" "--" "/usr/bin/aseprite"; }
     Mod+S { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
     Mod+W { spawn "webcord" "--ozone-platform=wayland"; }
-    Mod+P { spawn "cage" "--" "/usr/bin/aseprite"; }
+    Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     // ]]]
 
