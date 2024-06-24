@@ -7,7 +7,7 @@ sort_dir_first = true
 
 [opener]
 play = [
-    { run = 'mpv --player-operation-mode=pseudo-gui "$@"', orphan = true, for = "unix" },
+	{ run = 'mpv --player-operation-mode=pseudo-gui "$@"', orphan = true, for = "unix" },
 ]
 
 [plugin]
