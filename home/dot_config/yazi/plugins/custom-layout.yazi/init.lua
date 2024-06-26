@@ -10,8 +10,8 @@ local function entry(st)
 				:direction(ui.Layout.HORIZONTAL)
 				:constraints({
 					ui.Constraint.Percentage(0),
-					ui.Constraint.Percentage(25),
-					ui.Constraint.Percentage(75),
+					ui.Constraint.Percentage(30),
+					ui.Constraint.Percentage(70),
 				})
 				:split(area)
 		end
