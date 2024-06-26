@@ -1,3 +1,6 @@
+[manager]
+preview_hovered = { underline = false }
+
 [icon]
 files = [
 	{ name = ".babelrc", text = "", fg_dark = "#f9e2af", fg_light = "#40a02b" },
