@@ -23,6 +23,13 @@ on = ["R"]
 run = "rename --empty=stem --cursor=start"
 desc = "Easy rename"
 
+# Search with Smart filter
+
+[[manager.prepend_keymap]]
+on = ["S"]
+run = "plugin smart-filter"
+desc = "Smart filter"
+
 # Add fg plugin keymap
 
 [[manager.prepend_keymap]]
