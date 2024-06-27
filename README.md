@@ -54,6 +54,8 @@ git integration
 monitor  
 * [Cava](https://github.com/karlstav/cava): Console-based Audio Visualizer for
 Alsa  
+* [Delta](https://github.com/dandavison/delta): A syntax-highlighting pager for
+git, diff, grep, and blame output  
 * [Eza](https://github.com/eza-community/eza): A modern replacement for ls
 (community fork of exa)  
 * [Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
