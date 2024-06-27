@@ -52,8 +52,14 @@ on = ["f", "G"]
 run = "plugin fg --args='rg'"
 desc = "Find file by content (ripgrep match)"
 
-# Add enter behavior to l key
-# https://yazi-rs.github.io/docs/tips#smart-enter-enter-for-directory-open-for-file
+# Chmod
+
+[[manager.prepend_keymap]]
+on = ["c", "m"]
+run = "plugin chmod"
+desc = "Chmod on selected files"
+
+# Smart Enter
 
 [[manager.prepend_keymap]]
 on = ["l"]

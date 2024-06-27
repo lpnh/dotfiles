@@ -1,3 +1,6 @@
+[flavor]
+use = "catppuccin-mocha"
+
 [manager]
 preview_hovered = { underline = false }
 

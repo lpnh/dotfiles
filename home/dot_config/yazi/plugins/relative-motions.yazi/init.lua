@@ -4,8 +4,11 @@ local MOTIONS_AND_OP_KEYS = {
 	{ on = "5" }, { on = "6" }, { on = "7" }, { on = "8" }, { on = "9" },
 	-- commands
 	{ on = "d" }, { on = "v" }, { on = "y" }, { on = "x" },
+	-- tab commands
+	{ on = "t" }, { on = "L" }, { on = "H" }, { on = "w" },
+	{ on = "W" }, { on = "<" }, { on = ">" }, { on = "~" },
 	-- movement
-	{ on = "g" }, { on = "j" }, { on = "k" }
+	{ on = "g" }, { on = "j" }, { on = "k" }, { on = "<Down>" }, { on = "<Up>" }
 }
 
 -- stylua: ignore
@@ -18,7 +21,9 @@ local MOTION_KEYS = {
 
 -- stylua: ignore
 local DIRECTION_KEYS = {
-	{ on = "j" }, { on = "k" }
+	{ on = "j" }, { on = "k" }, { on = "<Down>" }, { on = "<Up>" },
+	-- tab movement
+	{ on = "t" }
 }
 
 local SHOW_NUMBERS_ABSOLUTE = 0
@@ -144,6 +149,15 @@ local function render_clear() render_motion() end
 
 local get_keys = ya.sync(function(state) return state._only_motions and MOTION_KEYS or MOTIONS_AND_OP_KEYS end)
 
+local function normal_direction(dir)
+	if dir == "<Down>" then
+		return "j"
+	elseif dir == "<Up>" then
+		return "k"
+	end
+	return dir
+end
+
 local function get_cmd(first_char, keys)
 	local last_key
 	local lines = first_char or ""
@@ -157,6 +171,7 @@ local function get_cmd(first_char, keys)
 
 		last_key = keys[key].on
 		if not tonumber(last_key) then
+			last_key = normal_direction(last_key)
 			break
 		end
 
@@ -177,10 +192,23 @@ local function get_cmd(first_char, keys)
 		end
 
 		direction = DIRECTION_KEYS[direction_key].on
+		direction = normal_direction(direction)
 	end
 
 	return tonumber(lines), last_key, direction
 end
+
+local function is_tab_command(command)
+	local tab_commands = { "t", "L", "H", "w", "W", "<", ">", "~" }
+	for _, cmd in ipairs(tab_commands) do
+		if command == cmd then
+			return true
+		end
+	end
+	return false
+end
+
+local get_active_tab = ya.sync(function(_) return cx.tabs.idx end)
 
 -----------------------------------------------
 ---------- E N T R Y   /   S E T U P ----------
@@ -215,6 +243,10 @@ return {
 				cmd = "j"
 			elseif direction == "k" then
 				cmd = "k"
+			elseif direction == "t" then
+				ya.manager_emit("tab_switch", { lines - 1 })
+				render_clear()
+				return
 			else
 				-- no valid direction
 				render_clear()
@@ -226,6 +258,32 @@ return {
 			ya.manager_emit("arrow", { lines })
 		elseif cmd == "k" then
 			ya.manager_emit("arrow", { -lines })
+		elseif is_tab_command(cmd) then
+			if cmd == "t" then
+				for _ = 1, lines do
+					ya.manager_emit("tab_create", {})
+				end
+			elseif cmd == "H" then
+				ya.manager_emit("tab_switch", { -lines, relative = true })
+			elseif cmd == "L" then
+				ya.manager_emit("tab_switch", { lines, relative = true })
+			elseif cmd == "w" then
+				ya.manager_emit("tab_close", { lines - 1 })
+			elseif cmd == "W" then
+				local curr_tab = get_active_tab()
+				local del_tab = curr_tab + lines - 1
+				for _ = curr_tab, del_tab do
+					ya.manager_emit("tab_close", { curr_tab - 1 })
+				end
+				ya.manager_emit("tab_switch", { curr_tab - 1 })
+			elseif cmd == "<" then
+				ya.manager_emit("tab_swap", { -lines })
+			elseif cmd == ">" then
+				ya.manager_emit("tab_swap", { lines })
+			elseif cmd == "~" then
+				local jump = lines - get_active_tab()
+				ya.manager_emit("tab_swap", { jump })
+			end
 		else
 			ya.manager_emit("visual_mode", {})
 			-- invert direction when user specifies it

@@ -1,5 +1,4 @@
 [manager]
-# ratio = [ 12, 25, 43 ]
 sort_by = "modified"
 sort_sensitive = true
 sort_reverse = true

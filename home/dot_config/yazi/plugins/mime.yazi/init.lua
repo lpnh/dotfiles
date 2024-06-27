@@ -1396,6 +1396,7 @@ local ext_mime_map = {
 	["flv"] = "video/x-flv",
 	["fxm"] = "video/x-javafx",
 	["mkv"] = "video/x-matroska",
+	["rmvb"] = "application/vnd.rn-realmedia",
 	["mk3d"] = "video/x-matroska-3d",
 	["asx"] = "video/x-ms-asf",
 	["wm"] = "video/x-ms-wm",
