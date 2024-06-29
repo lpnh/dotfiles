@@ -1,5 +1,9 @@
 #!/bin/sh
 
-{{ range .packages.common -}}
+{{ range .common.pacman -}}
+pacman -S --needed --noconfirm {{ . | quote }}
+{{ end -}}
+
+{{ range .common.yay -}}
 yay -S --needed --noconfirm {{ . | quote }}
 {{ end -}}

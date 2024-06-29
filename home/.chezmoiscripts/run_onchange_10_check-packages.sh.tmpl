@@ -1,8 +1,18 @@
 #!/bin/sh
 
-echo "Checking packages:"
+echo "\nChecking official packages:"
 
-{{ range .packages.common -}}
+{{ range .common.pacman -}}
+if yay -Qs {{ . | quote }} &> /dev/null; then
+    echo "[✓] {{ . | quote }}"
+else
+    echo "[ ] {{ . | quote }}"
+fi
+{{ end -}}
+
+echo "\nChecking AUR packages:"
+
+{{ range .common.yay -}}
 if yay -Qs {{ . | quote }} &> /dev/null; then
     echo "[✓] {{ . | quote }}"
 else
