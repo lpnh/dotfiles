@@ -90,6 +90,7 @@ packages:
     - 'webcord'
     - 'wev'
     - 'wl-clipboard'
+    - 'wldash'
     - 'wlsunset'
     - 'xdg-desktop-portal-gnome'
     - 'xorg-xwayland'
