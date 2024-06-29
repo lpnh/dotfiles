@@ -129,6 +129,20 @@ command = "tuigreet --remember --remember-session --asterisks"
 user = "greeter"
 ```
 
+## Systemd-boot
+
+Editing boot config file
+
+```sh
+sudo nvim /efi/loader/loader.conf
+```
+
+Setting the `timeout` option to `0`
+
+```conf
+timeout 0
+```
+
 ## Psd
 
 Checking the config and current status
@@ -145,7 +159,7 @@ Adding necessary sudo rights on `/etc/sudoers`
 sudo visudo
 ```
 
-```
+```txt
 <user> ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
 ```
 
@@ -153,13 +167,13 @@ sudo visudo
 
 Enabling psd service
 
-```
+```sh
 systemctl --user enable psd.service
 ```
 
 Starting the service
 
-```
+```sh
 systemctl --user start psd.service
 ```
 
@@ -175,9 +189,9 @@ systemctl --user enable break-reminder.timer
 
 Download and installing the latest release:
 
-https://github.com/jgm/pandoc/releases
+<https://github.com/jgm/pandoc/releases>
 
-```
+```sh
 sudo tar xvzf $TGZ --strip-components 1 -C /usr/local
 ```
 
