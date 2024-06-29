@@ -21,6 +21,7 @@ alias chz = chezmoi cd
 # cargo
 alias cwc = cargo watch -qcx clippy
 alias cwr = cargo watch -qcx run
+alias cargo-upgrade = cargo +nightly -Zunstable-options update --breaking
 
 # git
 alias ga = git add --all
