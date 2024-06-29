@@ -1,7 +1,7 @@
 #!/bin/sh
 
 {{ range .common.pacman -}}
-pacman -S --needed --noconfirm {{ . | quote }}
+sudo pacman -S --needed --noconfirm {{ . | quote }}
 {{ end -}}
 
 {{ range .common.yay -}}
