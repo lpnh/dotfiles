@@ -1,19 +1,19 @@
-packages:
-  crates:
-    - 'cargo-chef'
-    - 'dim-screen'
-    - 'trunk'
-  desktop:
-    - 'piper'
-    - 'vulkan-radeon'
-  laptop:
-    - 'brightnessctl'
-    - 'tlp'
-    - 'nvidia-inst'
-  optional:
-    - 'aseprite'
-    - 'tiled'
-  common:
+crates:
+  - 'cargo-chef'
+  - 'dim-screen'
+  - 'trunk'
+desktop:
+  - 'piper'
+  - 'vulkan-radeon'
+laptop:
+  - 'brightnessctl'
+  - 'tlp'
+  - 'nvidia-inst'
+optional:
+  - 'aseprite'
+  - 'tiled'
+common:
+  pacman:
     - 'alacritty'
     - 'arc-gtk-theme-eos'
     - 'bat'
@@ -25,7 +25,6 @@ packages:
     - 'cargo-shuttle'
     - 'cargo-update'
     - 'cargo-watch'
-    - 'cava'
     - 'chezmoi'
     - 'clang'
     - 'eza'
@@ -33,7 +32,6 @@ packages:
     - 'fd'
     - 'ffmpegthumbnailer'
     - 'fish'
-    - 'fswatch'
     - 'fuzzel'
     - 'fzf'
     - 'git'
@@ -87,7 +85,6 @@ packages:
     - 'unarchiver'
     - 'wakatime'
     - 'waybar'
-    - 'webcord'
     - 'wev'
     - 'wl-clipboard'
     - 'wldash'
@@ -97,3 +94,7 @@ packages:
     - 'yazi'
     - 'zola'
     - 'zoxide'
+  yay:
+    - 'cava'
+    - 'fswatch'
+    - 'webcord'
