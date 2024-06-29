@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "\nChecking official packages:"
+echo -e "\n\033[3mChecking official packages\033[0m"
 
 {{ range .common.pacman -}}
 if yay -Qs {{ . | quote }} &> /dev/null; then
@@ -10,7 +10,7 @@ else
 fi
 {{ end -}}
 
-echo "\nChecking AUR packages:"
+echo -e "\n\033[3mChecking AUR packages\033[0m"
 
 {{ range .common.yay -}}
 if yay -Qs {{ . | quote }} &> /dev/null; then
