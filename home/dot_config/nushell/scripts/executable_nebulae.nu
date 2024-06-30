@@ -2,4 +2,4 @@
 
 niri msg action do-screen-transition --delay-ms 100
 
-wldash
+nebulae
