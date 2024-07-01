@@ -26,6 +26,8 @@ alias cargo-upgrade = cargo +nightly -Zunstable-options update --breaking
 # git
 alias ga = git add --all
 alias gad = git add
+alias gb = git branch
+alias gbl = git branch --list
 alias gc = git commit --verbose
 alias gc! = git commit --verbose --amend
 alias gcn = git commit --verbose --no-edit
