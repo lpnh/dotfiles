@@ -96,12 +96,6 @@ return {
       },
     },
     config = function(_, opts)
-      -- Repeat movement with , and .
-      -- ensure , goes forward and . goes backward regardless of the last direction
-      local trm = require 'nvim-treesitter.textobjects.repeatable_move'
-      vim.keymap.set({ 'n', 'x', 'o' }, ',', trm.repeat_last_move_previous)
-      vim.keymap.set({ 'n', 'x', 'o' }, '.', trm.repeat_last_move_next)
-
       require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)

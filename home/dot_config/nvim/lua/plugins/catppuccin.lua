@@ -2,7 +2,7 @@
 -- Integrations: https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
 return {
   'catppuccin/nvim',
-  name = 'catppuccin', -- ??? Is this line necessary ???
+  name = 'catppuccin',
   priority = 1000,
   lazy = false,
   config = function()
