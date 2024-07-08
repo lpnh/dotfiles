@@ -1,5 +1,33 @@
 # Setup
 
+## Before the Beginning
+
+### Live USB
+
+ISO source: <https://endeavouros.com/#Download>
+
+Finding the USB drive name
+
+```sh
+ls -l /dev/disk/by-id/usb-*
+```
+
+Checking if it is not mounted
+
+```sh
+lsblk
+```
+
+Using `dd`
+
+```sh
+dd bs=4M if={path/to/EndeavourOS.iso} of={/dev/disk/by-id/usb-My_flash_drive} conv=fsync oflag=direct status=progress
+```
+
+Note: the USB drive name should look something like
+`/dev/disk/by-id/usb-Kingston_DataTraveler_2.0_408D5C1654FDB471E98BED5C-0:0`.
+Make sure to **not** append any partition number like `..-0:0-part1`
+
 ## Bootstrap
 
 Installing `rustup`
