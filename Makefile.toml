@@ -1,0 +1,20 @@
+[tasks.clean-book]
+command = "mdbook"
+args = ["clean"]
+
+[tasks.build-book]
+dependencies = ["clean-book"]
+command = "mdbook"
+args = ["build"]
+
+[tasks.run-dev]
+dependencies = ["build-book"]
+command = "mdbook"
+args = ["serve", "--open"]
+
+[tasks.run-release]
+dependencies = ["build-book"]
+
+[tasks.update-pages]
+command = "git"
+args = ["subtree", "push", "--prefix", "book", "origin", "gh-pages"]
