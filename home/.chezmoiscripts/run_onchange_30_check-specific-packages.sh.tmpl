@@ -1,0 +1,21 @@
+#!/bin/sh
+
+echo -e "\n\033[3mChecking specific packages\033[0m"
+
+{{- if eq .chezmoi.hostname "desktop" }}
+    {{ range .desktop -}}
+    if yay -Qs {{ . | quote }} &> /dev/null; then
+        echo "[✓] {{ . | quote }}"
+    else
+        echo "[ ] {{ . | quote }}"
+    fi
+    {{ end -}}
+{{- else if eq .chezmoi.hostname "laptop" }}
+    {{ range .laptop -}}
+    if yay -Qs {{ . | quote }} &> /dev/null; then
+        echo "[✓] {{ . | quote }}"
+    else
+        echo "[ ] {{ . | quote }}"
+    fi
+    {{ end -}}
+{{- end }}
