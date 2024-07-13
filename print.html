@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -304,6 +304,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
 <pre><code class="language-sh">EDITOR=nano visudo
 </code></pre>
 <h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
+<p>To enable <code>NetworkManager</code> service:</p>
 <pre><code class="language-sh">systemctl enable NetworkManager
 </code></pre>
 <h2 id="boot-loader"><a class="header" href="#boot-loader">Boot Loader</a></h2>
@@ -327,9 +328,9 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 </code></pre>
 <p>To make it easy to set the UUID you can use the <code>blkid</code> command and append the
 output to the <code>arch.conf</code> file.</p>
-<pre><code>blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
+<pre><code class="language-sh">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
 </code></pre>
-<p>Move everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
+<p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
 <h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
 <p>Exit the chroot environment:</p>
 <pre><code class="language-sh">exit
@@ -347,6 +348,57 @@ output to the <code>arch.conf</code> file.</p>
 </code></pre>
 <p>Now simply run and enjoy your achievement:</p>
 <pre><code class="language-sh">fastfetch
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
+<h2 id="system-check"><a class="header" href="#system-check">System Check</a></h2>
+<p>Refresh the entire system:</p>
+<pre><code class="language-sh">sudo pacman -Syyu
+</code></pre>
+<p>Make sure to have some basic system packages installed:</p>
+<pre><code class="language-sh">sudo pacman -S bash curl gcc git ncurses xz zstd
+</code></pre>
+<h2 id="compilers"><a class="header" href="#compilers">Compilers</a></h2>
+<p>Install <code>clang</code>:</p>
+<pre><code class="language-sh">sudo pacman -S clang
+</code></pre>
+<p>Install <code>go</code>:</p>
+<pre><code class="language-sh">sudo pacman -S go
+</code></pre>
+<p>Install <code>rustup</code>:</p>
+<pre><code class="language-sh">sudo pacman -S rustup
+</code></pre>
+<pre><code class="language-sh">rustup update stable
+</code></pre>
+<h2 id="new-initrd"><a class="header" href="#new-initrd">New Initrd</a></h2>
+<p>Install <code>amd-ucode</code> or <code>intel-ucode</code> according with your CPU.</p>
+<pre><code class="language-sh">sudo pacman -S amd-ucode
+</code></pre>
+<pre><code class="language-sh">sudo pacman -S intel-ucode
+</code></pre>
+<p>Install <code>booster</code>:</p>
+<pre><code class="language-sh">sudo pacman -S booster
+</code></pre>
+<p>Move both microcode and booster images to the <code>/efi</code> path.</p>
+<p>Add new loader entry:</p>
+<pre><code class="language-sh">nano /efi/loader/entries/booster.conf
+</code></pre>
+<p>Including both new initrd images accordingly:</p>
+<pre><code class="language-txt">title   Arch Linux with Booster
+linux   /vmlinuz-linux
+initrd  /cpu_manufacturer-ucode.img
+initrd  /booster-linux.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+</code></pre>
+<p>Update the <code>/efi/loader/loader.conf</code> file:</p>
+<pre><code class="language-sh">nano /efi/loader/loader.conf
+</code></pre>
+<p>To use the <code>booster.conf</code> as default:</p>
+<pre><code class="language-txt">default  booster.conf
+timeout  4
+console-mode auto
+</code></pre>
+<p>To verify the boot loader entries:</p>
+<pre><code class="language-sh">sudo bootctl list
 </code></pre>
 
                     </main>

@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html" class="active"><strong aria-hidden="true">3.</strong> Installation</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html" class="active"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -228,6 +228,7 @@
 <pre><code class="language-sh">EDITOR=nano visudo
 </code></pre>
 <h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
+<p>To enable <code>NetworkManager</code> service:</p>
 <pre><code class="language-sh">systemctl enable NetworkManager
 </code></pre>
 <h2 id="boot-loader"><a class="header" href="#boot-loader">Boot Loader</a></h2>
@@ -251,9 +252,9 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 </code></pre>
 <p>To make it easy to set the UUID you can use the <code>blkid</code> command and append the
 output to the <code>arch.conf</code> file.</p>
-<pre><code>blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
+<pre><code class="language-sh">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
 </code></pre>
-<p>Move everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
+<p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
 <h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
 <p>Exit the chroot environment:</p>
 <pre><code class="language-sh">exit
@@ -281,6 +282,9 @@ output to the <code>arch.conf</code> file.</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="pos_installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -292,6 +296,9 @@ output to the <code>arch.conf</code> file.</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="pos_installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

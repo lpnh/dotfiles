@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Before the Beginning - cookbook</title>
+        <title>Pos-Installation - cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html" class="active"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="pos_installation.html" class="active"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -173,36 +173,66 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="before-the-beginning"><a class="header" href="#before-the-beginning">Before the Beginning</a></h1>
-<h2 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h2>
-<h3 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h3>
-<p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
-<p>Note: the BitTorrent Download is the recommended option and the file will look
-like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
-<h3 id="find-the-usb-drive-name"><a class="header" href="#find-the-usb-drive-name">Find the USB drive name</a></h3>
-<p>Find out the name of your USB drive:</p>
-<pre><code class="language-sh">ls -l /dev/disk/by-id/usb-*
+                        <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
+<h2 id="system-check"><a class="header" href="#system-check">System Check</a></h2>
+<p>Refresh the entire system:</p>
+<pre><code class="language-sh">sudo pacman -Syyu
 </code></pre>
-<p>Make sure it is <strong>not</strong> mounted:</p>
-<pre><code class="language-sh">lsblk
+<p>Make sure to have some basic system packages installed:</p>
+<pre><code class="language-sh">sudo pacman -S bash curl gcc git ncurses xz zstd
 </code></pre>
-<h3 id="write-the-iso"><a class="header" href="#write-the-iso">Write the ISO</a></h3>
-<p>Write the ISO to the USB drive using <code>pv</code>:</p>
-<pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
+<h2 id="compilers"><a class="header" href="#compilers">Compilers</a></h2>
+<p>Install <code>clang</code>:</p>
+<pre><code class="language-sh">sudo pacman -S clang
 </code></pre>
-<p>Note: the USB drive name should look something like
-<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.
-Make sure to <strong>not</strong> append any partition number like <code>My_flash_drive-0:0-part1</code>.</p>
-<p>For more information: <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">https://wiki.archlinux.org/title/USB_flash_installation_medium</a></p>
+<p>Install <code>go</code>:</p>
+<pre><code class="language-sh">sudo pacman -S go
+</code></pre>
+<p>Install <code>rustup</code>:</p>
+<pre><code class="language-sh">sudo pacman -S rustup
+</code></pre>
+<pre><code class="language-sh">rustup update stable
+</code></pre>
+<h2 id="new-initrd"><a class="header" href="#new-initrd">New Initrd</a></h2>
+<p>Install <code>amd-ucode</code> or <code>intel-ucode</code> according with your CPU.</p>
+<pre><code class="language-sh">sudo pacman -S amd-ucode
+</code></pre>
+<pre><code class="language-sh">sudo pacman -S intel-ucode
+</code></pre>
+<p>Install <code>booster</code>:</p>
+<pre><code class="language-sh">sudo pacman -S booster
+</code></pre>
+<p>Move both microcode and booster images to the <code>/efi</code> path.</p>
+<p>Add new loader entry:</p>
+<pre><code class="language-sh">nano /efi/loader/entries/booster.conf
+</code></pre>
+<p>Including both new initrd images accordingly:</p>
+<pre><code class="language-txt">title   Arch Linux with Booster
+linux   /vmlinuz-linux
+initrd  /cpu_manufacturer-ucode.img
+initrd  /booster-linux.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+</code></pre>
+<p>Update the <code>/efi/loader/loader.conf</code> file:</p>
+<pre><code class="language-sh">nano /efi/loader/loader.conf
+</code></pre>
+<p>To use the <code>booster.conf</code> as default:</p>
+<pre><code class="language-txt">default  booster.conf
+timeout  4
+console-mode auto
+</code></pre>
+<p>To verify the boot loader entries:</p>
+<pre><code class="language-sh">sudo bootctl list
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-
-                            <a rel="next prefetch" href="first_steps.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -210,10 +240,10 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next prefetch" href="first_steps.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+
             </nav>
 
         </div>
