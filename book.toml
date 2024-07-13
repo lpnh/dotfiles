@@ -3,4 +3,4 @@ authors = ["lpnh"]
 language = "en"
 multilingual = false
 src = "src"
-title = "cookbook"
+title = "dotfiles cookbook"

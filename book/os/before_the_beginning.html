@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installation - cookbook</title>
+        <title>Before the Beginning - dotfiles cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -12,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,7 +35,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="before_the_beginning.html"><strong aria-hidden="true">1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="first_steps.html"><strong aria-hidden="true">2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="installation.html" class="active"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../os/before_the_beginning.html" class="active"><strong aria-hidden="true">1.1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="../os/first_steps.html"><strong aria-hidden="true">1.2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="../os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li></ol></li><li class="chapter-item expanded "><a href="../de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../de/chezmoi.html"><strong aria-hidden="true">2.1.</strong> Chezmoi</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -141,10 +141,10 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">cookbook</h1>
+                    <h1 class="menu-title">dotfiles cookbook</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -173,116 +173,37 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
-<h2 id="mirror-list"><a class="header" href="#mirror-list">Mirror List</a></h2>
-<p>Update the <code>mirrorlist</code> using <code>reflector</code>:</p>
-<pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
+                        <h1 id="before-the-beginning"><a class="header" href="#before-the-beginning">Before the Beginning</a></h1>
+<h2 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h2>
+<h3 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h3>
+<p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
+<p>Note: the BitTorrent Download is the recommended option and the file will look
+like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
+<h3 id="find-the-usb-drive-name"><a class="header" href="#find-the-usb-drive-name">Find the USB drive name</a></h3>
+<p>Find out the name of your USB drive:</p>
+<pre><code class="language-sh">ls -l /dev/disk/by-id/usb-*
 </code></pre>
-<h2 id="install-essential-packages"><a class="header" href="#install-essential-packages">Install Essential Packages</a></h2>
-<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+<p>Make sure it is <strong>not</strong> mounted:</p>
+<pre><code class="language-sh">lsblk
 </code></pre>
-<h2 id="fstab"><a class="header" href="#fstab">Fstab</a></h2>
-<pre><code class="language-sh">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<h3 id="write-the-iso"><a class="header" href="#write-the-iso">Write the ISO</a></h3>
+<p>Write the ISO to the USB drive using <code>pv</code>:</p>
+<pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
-<h2 id="chroot"><a class="header" href="#chroot">Chroot</a></h2>
-<pre><code class="language-sh">arch-chroot /mnt
-</code></pre>
-<h2 id="time"><a class="header" href="#time">Time</a></h2>
-<p>Set the time zone:</p>
-<pre><code class="language-sh">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
-</code></pre>
-<p>Note: You can verify it running <code>date</code>.</p>
-<p>Generate the <code>/etc/adjtime</code> file:</p>
-<pre><code class="language-sh">hwclock --systohc
-</code></pre>
-<h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
-<p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
-<pre><code class="language-sh">nano /etc/locale.gen
-</code></pre>
-<p>Generate the locales:</p>
-<pre><code class="language-sh">locale-gen
-</code></pre>
-<p>Create the <code>locale.conf</code> file with the following content:</p>
-<pre><code class="language-sh">nano /etc/locale.conf
-</code></pre>
-<pre><code class="language-txt">LANG=en_US.UTF-8
-</code></pre>
-<h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>Create the <code>hostname</code> with your host name, e.g. <code>desktop</code>:</p>
-<pre><code class="language-sh">nano /etc/hostname
-</code></pre>
-<pre><code class="language-txt">desktop
-</code></pre>
-<h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
-<p>Set the root password:</p>
-<pre><code class="language-sh">passwd
-</code></pre>
-<h2 id="adding-a-user"><a class="header" href="#adding-a-user">Adding a User</a></h2>
-<p>To add a user with sudo privileges:</p>
-<pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
-</code></pre>
-<p>To add a password to the user:</p>
-<pre><code class="language-sh">passwd &lt;username&gt;
-</code></pre>
-<p>Edit the sudoers uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
-<pre><code class="language-sh">EDITOR=nano visudo
-</code></pre>
-<h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
-<p>To enable <code>NetworkManager</code> service:</p>
-<pre><code class="language-sh">systemctl enable NetworkManager
-</code></pre>
-<h2 id="boot-loader"><a class="header" href="#boot-loader">Boot Loader</a></h2>
-<p>Install <code>systemd-boot</code></p>
-<pre><code class="language-sh">bootctl install
-</code></pre>
-<p>Edit the <code>/efi/loader/loader.conf</code> file:</p>
-<pre><code class="language-sh">nano /efi/loader/loader.conf
-</code></pre>
-<pre><code class="language-txt">default  arch.conf
-timeout  4
-console-mode auto
-</code></pre>
-<p>Create the <code>/efi/loader/entries/arch.conf</code> file:</p>
-<pre><code class="language-sh">nano /efi/loader/entries/arch.conf
-</code></pre>
-<pre><code class="language-txt">title   Arch Linux
-linux   /vmlinuz-linux
-initrd  /initramfs-linux.img
-options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
-</code></pre>
-<p>To make it easy to set the UUID you can use the <code>blkid</code> command and append the
-output to the <code>arch.conf</code> file.</p>
-<pre><code class="language-sh">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
-</code></pre>
-<p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
-<h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
-<p>Exit the chroot environment:</p>
-<pre><code class="language-sh">exit
-</code></pre>
-<p>Unmount all the partitions and reboot:</p>
-<pre><code class="language-sh">umount -R /mnt
-</code></pre>
-<pre><code class="language-sh">reboot
-</code></pre>
-<p>That's it. Good luck!</p>
-<h2 id="by-the-way"><a class="header" href="#by-the-way">By the Way</a></h2>
-<p>If you have succeeded, there's one last thing to be done.</p>
-<p>First download <code>fastfetch</code>:</p>
-<pre><code class="language-sh">sudo pacman -S fastfetch
-</code></pre>
-<p>Now simply run and enjoy your achievement:</p>
-<pre><code class="language-sh">fastfetch
-</code></pre>
+<p>Note: the USB drive name should look something like
+<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.
+Make sure to <strong>not</strong> append any partition number like <code>My_flash_drive-0:0-part1</code>.</p>
+<p>For more information: <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">https://wiki.archlinux.org/title/USB_flash_installation_medium</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="first_steps.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../os/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="pos_installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../os/first_steps.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -292,11 +213,11 @@ output to the <code>arch.conf</code> file.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="first_steps.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../os/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="pos_installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../os/first_steps.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -311,13 +232,13 @@ output to the <code>arch.conf</code> file.</p>
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

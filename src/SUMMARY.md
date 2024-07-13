@@ -1,6 +1,9 @@
 # Summary
 
-- [Before the Beginning](before_the_beginning.md)
-- [First Steps](first_steps.md)
-- [Installation](installation.md)
-- [Pos-Installation](pos_installation.md)
+- [Operating System](os/README.md)
+  - [Before the Beginning](os/before_the_beginning.md)
+  - [First Steps](os/first_steps.md)
+  - [Installation](os/installation.md)
+  - [Pos-Installation](os/pos_installation.md)
+- [Desktop Environment](de/README.md)
+  - [Chezmoi](de/chezmoi.md)
