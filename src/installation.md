@@ -108,6 +108,8 @@ EDITOR=nano visudo
 
 ## Enable Network
 
+To enable `NetworkManager` service:
+
 ```sh
 systemctl enable NetworkManager
 ```
@@ -148,11 +150,11 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 To make it easy to set the UUID you can use the `blkid` command and append the
 output to the `arch.conf` file.
 
-```
+```sh
 blkid -s UUID /dev/root_partition >> /efi/loader/entries/arch.conf
 ```
 
-Move everything that is inside the `/boot` path to `/efi`.
+Copy everything that is inside the `/boot` path to `/efi`.
 
 ## Reboot
 
