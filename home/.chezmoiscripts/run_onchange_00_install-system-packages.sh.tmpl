@@ -1,0 +1,5 @@
+#!/bin/sh
+
+{{ range .system -}}
+sudo pacman -S --needed --noconfirm {{ . | quote }}
+{{ end -}}

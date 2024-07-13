@@ -1,0 +1,11 @@
+#!/bin/sh
+
+{{- if eq .chezmoi.hostname "desktop" }}
+    {{ range .desktop -}}
+    sudo pacman -S --needed --noconfirm {{ . | quote }}
+    {{ end -}}
+{{- else if eq .chezmoi.hostname "laptop" }}
+    {{ range .laptop -}}
+    sudo pacman -S --needed --noconfirm {{ . | quote }}
+    {{ end -}}
+{{- end }}
