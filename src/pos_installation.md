@@ -93,3 +93,34 @@ To verify the boot loader entries:
 ```sh
 sudo bootctl list
 ```
+
+## Pacman
+
+Update `pacman` configuration file:
+
+```sh
+nano /etc/pacman.conf
+```
+
+An example can be found on [EndeavourOS
+repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf)
+
+## Yay
+
+Create and cd into an `apps` directory:
+
+```sh
+mkdir apps && cd apps
+```
+
+Install `yay`:
+
+```sh
+git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
+
+First use:
+
+```sh
+yay -Y --gendb
+```
