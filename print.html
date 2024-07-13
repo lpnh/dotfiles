@@ -400,6 +400,22 @@ console-mode auto
 <p>To verify the boot loader entries:</p>
 <pre><code class="language-sh">sudo bootctl list
 </code></pre>
+<h2 id="pacman"><a class="header" href="#pacman">Pacman</a></h2>
+<p>Update <code>pacman</code> configuration file:</p>
+<pre><code class="language-sh">nano /etc/pacman.conf
+</code></pre>
+<p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
+repo</a></p>
+<h2 id="yay"><a class="header" href="#yay">Yay</a></h2>
+<p>Create and cd into an <code>apps</code> directory:</p>
+<pre><code class="language-sh">mkdir apps &amp;&amp; cd apps
+</code></pre>
+<p>Install <code>yay</code>:</p>
+<pre><code class="language-sh">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+</code></pre>
+<p>First use:</p>
+<pre><code class="language-sh">yay -Y --gendb
+</code></pre>
 
                     </main>
 
