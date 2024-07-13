@@ -79,7 +79,6 @@ system:
   - 'xdg-utils'
   - 'xfsprogs'
   - 'xl2tpd'
-  - 'yay'
 common:
   pacman:
     - 'alacritty'
