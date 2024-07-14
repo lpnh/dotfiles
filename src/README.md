@@ -22,12 +22,13 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
 * Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
 
-**User Interface**:
+**Theme**:
 
-* Fonts and Glyphs: [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)  
+* Fonts and Glyphs: [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts)  
 * Icons:
 [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
-* Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
+* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
+* Palette: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 **Terminal**:
 
