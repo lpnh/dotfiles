@@ -1,9 +1,9 @@
 #!/bin/sh
 
-{{ range .common.pacman -}}
+{{ range .packages.common -}}
 sudo pacman -S --needed --noconfirm {{ . | quote }}
 {{ end -}}
 
-{{ range .common.yay -}}
+{{ range .packages.aur -}}
 yay -S --needed --noconfirm {{ . | quote }}
 {{ end -}}
