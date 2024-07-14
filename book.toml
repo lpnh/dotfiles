@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "dotfiles cookbook"
+
+[output.html]
+default-theme = "navy"
+git-repository-url = "https://github.com/lpnh/dotfiles"
