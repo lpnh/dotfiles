@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/before_the_beginning.html"><strong aria-hidden="true">1.1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="os/first_steps.html"><strong aria-hidden="true">1.2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/drivers_and_modules.html"><strong aria-hidden="true">1.5.</strong> Drivers and Modules</a></li></ol></li><li class="chapter-item expanded "><a href="de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="de/home_sweet_home.html"><strong aria-hidden="true">2.1.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/quality_of_life.html"><strong aria-hidden="true">2.2.</strong> Quality of Life</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Overview</a></li><li class="chapter-item expanded "><a href="os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/before_the_beginning.html"><strong aria-hidden="true">1.1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="os/first_steps.html"><strong aria-hidden="true">1.2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/drivers_and_modules.html"><strong aria-hidden="true">1.5.</strong> Drivers and Modules</a></li></ol></li><li class="chapter-item expanded "><a href="de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="de/home_sweet_home.html"><strong aria-hidden="true">2.1.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/quality_of_life.html"><strong aria-hidden="true">2.2.</strong> Quality of Life</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,7 +177,76 @@
 
                 <div id="content" class="content">
                     <main>
-                        <div style="break-before: page; page-break-before: always;"></div><h1 id="before-the-beginning"><a class="header" href="#before-the-beginning">Before the Beginning</a></h1>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p>Simple and aesthetic Wayland environment on a minimal EndeavourOS installation</p>
+<blockquote>
+<p>it's called "dotfiles" because that folder ".config" starts with a dot and is
+therefor hidden</p>
+<p>and we customize these hidden text files for ~20 programs because we're
+neurotic lovers of beauty 🤷</p>
+<p>-- <cite>from a Reddit user on r/unixporn</cite></p>
+</blockquote>
+<h2 id="components"><a class="header" href="#components">Components</a></h2>
+<p><strong>Core</strong>:</p>
+<ul>
+<li>Greeter: <a href="https://github.com/apognu/tuigreet">Tuigreet</a></li>
+<li>Compositor: <a href="https://github.com/YaLTeR/niri">Niri</a></li>
+<li>Status Bar: <a href="https://github.com/Alexays/Waybar">Waybar</a></li>
+<li>App Launcher: <a href="https://codeberg.org/dnkl/fuzzel">Fuzzel</a></li>
+<li>Notification: <a href="https://github.com/emersion/mako">Mako</a></li>
+<li>Screen Locker <a href="https://github.com/swaywm/swaylock">Swaylock</a></li>
+<li>Dotfile Manager: <a href="https://github.com/twpayne/chezmoi">Chezmoi</a></li>
+</ul>
+<p><strong>User Interface</strong>:</p>
+<ul>
+<li>Fonts and Glyphs: <a href="https://github.com/ryanoasis/nerd-fonts">Nerd Fonts</a></li>
+<li>Icons:
+<a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">Papirus</a></li>
+<li>Theme: <a href="https://github.com/catppuccin/catppuccin">Catppuccin</a></li>
+</ul>
+<p><strong>Terminal</strong>:</p>
+<ul>
+<li>Terminal Emulator: <a href="https://github.com/alacritty/alacritty">Alacritty</a></li>
+<li>Shell: <a href="https://github.com/nushell/nushell">Nushell</a></li>
+<li>Prompt: <a href="https://github.com/starship/starship">Starship</a></li>
+</ul>
+<p><strong>Tools</strong>:</p>
+<ul>
+<li>File Manager: <a href="https://github.com/sxyazi/yazi">Yazi</a></li>
+<li>Editor: <a href="https://github.com/neovim/neovim">Neovim</a></li>
+</ul>
+<p><strong>Clients</strong>:</p>
+<ul>
+<li>Discord: <a href="https://github.com/SpacingBat3/WebCord">WebCord</a></li>
+<li>Spotify: <a href="https://github.com/hrkfdn/ncspot">Ncspot</a></li>
+</ul>
+<p><strong>Utilities and Quality of Life</strong>:</p>
+<ul>
+<li><a href="https://github.com/sharkdp/bat">Bat</a>: Cat clone with syntax highlighting and
+git integration</li>
+<li><a href="https://github.com/MordechaiHadad/bob">Bob</a>: A version manager for neovim</li>
+<li><a href="https://github.com/ClementTsang/bottom">Bottom</a>: A graphical process/system
+monitor</li>
+<li><a href="https://github.com/karlstav/cava">Cava</a>: Console-based Audio Visualizer for
+Alsa</li>
+<li><a href="https://github.com/dandavison/delta">Delta</a>: A syntax-highlighting pager for
+git, diff, grep, and blame output</li>
+<li><a href="https://github.com/eza-community/eza">Eza</a>: A modern replacement for ls
+(community fork of exa)</li>
+<li><a href="https://github.com/fastfetch-cli/fastfetch">Fastfetch</a>: Like Neofetch, but
+much faster because written in C</li>
+<li><a href="https://github.com/junegunn/fzf">Fzf</a>: Command-line fuzzy finder</li>
+<li><a href="https://github.com/extrawurst/gitui">Gitui</a>: Blazing fast terminal-ui for git
+written in Rust</li>
+<li><a href="https://github.com/BurntSushi/ripgrep">Ripgrep</a>: A search tool that combines
+the usability of ag with the raw speed of grep</li>
+<li><a href="https://github.com/Jguer/yay">Yay</a>: Yet another yogurt. Pacman wrapper and AUR
+helper written in go</li>
+<li><a href="https://github.com/ajeetdsouza/zoxide">Zoxide</a>: A smarter cd command for your
+terminal</li>
+</ul>
+<p><em>For the exhaustive list, check <a href="home/.chezmoidata/packages.yaml">packages.yaml</a></em></p>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="before-the-beginning"><a class="header" href="#before-the-beginning">Before the Beginning</a></h1>
 <h2 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h2>
 <h3 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h3>
 <p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
