@@ -116,7 +116,6 @@ packages:
     - 'just'
     - 'libqalculate'
     - 'lld'
-    - 'lua'
     - 'mako'
     - 'md-tui'
     - 'mdbook'
@@ -165,3 +164,4 @@ packages:
     - 'cava'
     - 'fswatch'
     - 'webcord'
+    - 'xcursor-breeze'
