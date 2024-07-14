@@ -7,4 +7,5 @@
   - [Pos-Installation](os/pos_installation.md)
   - [Drivers and Modules](os/drivers_and_modules.md)
 - [Desktop Environment](de/README.md)
-  - [Chezmoi](de/chezmoi.md)
+  - [Home Sweet Home](de/home_sweet_home.md)
+  - [Quality of Life](de/quality_of_life.md)
