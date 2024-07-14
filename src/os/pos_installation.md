@@ -11,7 +11,7 @@ sudo pacman -Syyu
 Make sure to have some basic system packages installed:
 
 ```sh
-sudo pacman -S bash curl gcc git ncurses xz zstd
+sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 ```
 
 ## Compilers
@@ -56,15 +56,13 @@ Install `booster`:
 sudo pacman -S booster
 ```
 
-Move both microcode and booster images to the `/efi` path.
+Copy both microcode and booster images to the `/efi` path.
 
-Add new loader entry:
+Create new loader entry including both new initrd images accordingly:
 
 ```sh
-nano /efi/loader/entries/booster.conf
+sudo nano /efi/loader/entries/booster.conf
 ```
-
-Including both new initrd images accordingly:
 
 ```txt
 title   Arch Linux with Booster
@@ -74,10 +72,19 @@ initrd  /booster-linux.img
 options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 ```
 
+You can take the opportunity to include other kernel parameters to the option
+line. For example `nvme_load=YES`, `nowatchdog`, `quiet`, `splash`, etc.
+
+To check the parameters your system was booted up with:
+
+```sh
+cat /proc/cmdline
+```
+
 Update the `/efi/loader/loader.conf` file:
 
 ```sh
-nano /efi/loader/loader.conf
+sudo nano /efi/loader/loader.conf
 ```
 
 To use the `booster.conf` as default:
@@ -99,7 +106,7 @@ sudo bootctl list
 Update `pacman` configuration file:
 
 ```sh
-nano /etc/pacman.conf
+sudo nano /etc/pacman.conf
 ```
 
 An example can be found on [EndeavourOS
