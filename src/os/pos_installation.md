@@ -28,6 +28,12 @@ Install `go`:
 sudo pacman -S go
 ```
 
+Install `lua`:
+
+```sh
+sudo pacman -S lua
+```
+
 Install `rustup`:
 
 ```sh
