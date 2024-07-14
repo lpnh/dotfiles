@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/before_the_beginning.html"><strong aria-hidden="true">1.1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="os/first_steps.html"><strong aria-hidden="true">1.2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li></ol></li><li class="chapter-item expanded "><a href="de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="de/chezmoi.html"><strong aria-hidden="true">2.1.</strong> Chezmoi</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/before_the_beginning.html"><strong aria-hidden="true">1.1.</strong> Before the Beginning</a></li><li class="chapter-item expanded "><a href="os/first_steps.html"><strong aria-hidden="true">1.2.</strong> First Steps</a></li><li class="chapter-item expanded "><a href="os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/drivers_and_modules.html"><strong aria-hidden="true">1.5.</strong> Drivers and Modules</a></li></ol></li><li class="chapter-item expanded "><a href="de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="de/chezmoi.html"><strong aria-hidden="true">2.1.</strong> Chezmoi</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -355,7 +355,7 @@ output to the <code>arch.conf</code> file.</p>
 <pre><code class="language-sh">sudo pacman -Syyu
 </code></pre>
 <p>Make sure to have some basic system packages installed:</p>
-<pre><code class="language-sh">sudo pacman -S bash curl gcc git ncurses xz zstd
+<pre><code class="language-sh">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 </code></pre>
 <h2 id="compilers"><a class="header" href="#compilers">Compilers</a></h2>
 <p>Install <code>clang</code>:</p>
@@ -378,19 +378,23 @@ output to the <code>arch.conf</code> file.</p>
 <p>Install <code>booster</code>:</p>
 <pre><code class="language-sh">sudo pacman -S booster
 </code></pre>
-<p>Move both microcode and booster images to the <code>/efi</code> path.</p>
-<p>Add new loader entry:</p>
-<pre><code class="language-sh">nano /efi/loader/entries/booster.conf
+<p>Copy both microcode and booster images to the <code>/efi</code> path.</p>
+<p>Create new loader entry including both new initrd images accordingly:</p>
+<pre><code class="language-sh">sudo nano /efi/loader/entries/booster.conf
 </code></pre>
-<p>Including both new initrd images accordingly:</p>
 <pre><code class="language-txt">title   Arch Linux with Booster
 linux   /vmlinuz-linux
 initrd  /cpu_manufacturer-ucode.img
 initrd  /booster-linux.img
 options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 </code></pre>
+<p>You can take the opportunity to include other kernel parameters to the option
+line. For example <code>nvme_load=YES</code>, <code>nowatchdog</code>, <code>quiet</code>, <code>splash</code>, etc.</p>
+<p>To check the parameters your system was booted up with:</p>
+<pre><code class="language-sh">cat /proc/cmdline
+</code></pre>
 <p>Update the <code>/efi/loader/loader.conf</code> file:</p>
-<pre><code class="language-sh">nano /efi/loader/loader.conf
+<pre><code class="language-sh">sudo nano /efi/loader/loader.conf
 </code></pre>
 <p>To use the <code>booster.conf</code> as default:</p>
 <pre><code class="language-txt">default  booster.conf
@@ -402,7 +406,7 @@ console-mode auto
 </code></pre>
 <h2 id="pacman"><a class="header" href="#pacman">Pacman</a></h2>
 <p>Update <code>pacman</code> configuration file:</p>
-<pre><code class="language-sh">nano /etc/pacman.conf
+<pre><code class="language-sh">sudo nano /etc/pacman.conf
 </code></pre>
 <p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
 repo</a></p>
@@ -415,6 +419,21 @@ repo</a></p>
 </code></pre>
 <p>First use:</p>
 <pre><code class="language-sh">yay -Y --gendb
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="drivers-and-modules"><a class="header" href="#drivers-and-modules">Drivers and Modules</a></h1>
+<h2 id="graphics"><a class="header" href="#graphics">Graphics</a></h2>
+<p>Install <code>mesa</code>:</p>
+<pre><code class="language-sh">sudo pacman -S mesa
+</code></pre>
+<h3 id="amd"><a class="header" href="#amd">AMD</a></h3>
+<p>For Vulkan support:</p>
+<pre><code class="language-sh">sudo pacman -S vulkan-radeon
+</code></pre>
+<h2 id="kernel-mode-setting"><a class="header" href="#kernel-mode-setting">Kernel Mode Setting</a></h2>
+<p>To early load modules using Booster:</p>
+<pre><code class="language-sh">sudo nano /etc/booster.yaml
+</code></pre>
+<pre><code class="language-yaml">modules_force_load: &lt;module_name&gt;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="desktop-environment"><a class="header" href="#desktop-environment">Desktop Environment</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chezmoi"><a class="header" href="#chezmoi">Chezmoi</a></h1>
