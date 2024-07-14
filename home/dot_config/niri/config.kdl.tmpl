@@ -544,7 +544,7 @@ binds {
 
     // Main apps [[[
 
-    Mod+Space { spawn "~/.config/nushell/scripts/nebulae.nu"; }
+    Mod+Space { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+A { spawn "alacritty"; }
     Mod+B { spawn "firefox"; }
     Mod+D { spawn "fuzzel"; }
