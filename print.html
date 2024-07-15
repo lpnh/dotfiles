@@ -312,6 +312,15 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
 <p>To format the EFI partition:</p>
 <pre><code class="language-sh">mkfs.fat -F 32 /dev/efi_system_partition
 </code></pre>
+<h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
+<p>Now is a good time to add a label to the efi partition.
+This will be useful later to set the <code>refind</code> configuration.
+Using <code>dosfslabel</code>:</p>
+<pre><code class="language-sh">dosfslabel /dev/efi_system_partition NAME
+</code></pre>
+<p>You can verify it using <code>lsblk</code>:</p>
+<pre><code class="language-sh">lsblk -o NAME,LABEL
+</code></pre>
 <h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
 <p>Mount the root volume to <code>/mnt</code>:</p>
 <pre><code class="language-sh">mount /dev/root_partition /mnt
@@ -550,8 +559,7 @@ user = "greeter"
 <p>To set Nushell as login shell:</p>
 <pre><code class="language-sh">chsh -s /usr/bin/nu &lt;user&gt;
 </code></pre>
-<p>Reboot the system to check if everything is ok.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="quality-of-life-1"><a class="header" href="#quality-of-life-1">Quality of Life</a></h1>
+<p>Note: Reboot the system to check if everything is ok.</p>
 <h2 id="font"><a class="header" href="#font">Font</a></h2>
 <p>To refresh the font cache:</p>
 <pre><code class="language-sh">sudo fc-cache -fv
@@ -577,6 +585,7 @@ Add the following to <code>/etc/sysctl.conf</code></p>
 <pre><code class="language-sh">sysctl fs.inotify.max_user_watches=100000
 sysctl fs.inotify.max_queued_events=100000
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="quality-of-life-1"><a class="header" href="#quality-of-life-1">Quality of Life</a></h1>
 
                     </main>
 
