@@ -75,6 +75,7 @@ packages:
     - 'usb_modeswitch'
     - 'usbutils'
     - 'vpnc'
+    - 'wayland'
     - 'wget'
     - 'which'
     - 'wireless-regdb'
