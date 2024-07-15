@@ -161,6 +161,7 @@ packages:
     - 'refind'
     - 'ripgrep'
     - 'ripgrep-all'
+    - 'rofimoji'
     - 'rust-analyzer'
     - 'starship'
     - 'stylua'
