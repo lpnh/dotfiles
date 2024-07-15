@@ -220,6 +220,15 @@
 <p>To format the EFI partition:</p>
 <pre><code class="language-sh">mkfs.fat -F 32 /dev/efi_system_partition
 </code></pre>
+<h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
+<p>Now is a good time to add a label to the efi partition.
+This will be useful later to set the <code>refind</code> configuration.
+Using <code>dosfslabel</code>:</p>
+<pre><code class="language-sh">dosfslabel /dev/efi_system_partition NAME
+</code></pre>
+<p>You can verify it using <code>lsblk</code>:</p>
+<pre><code class="language-sh">lsblk -o NAME,LABEL
+</code></pre>
 <h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
 <p>Mount the root volume to <code>/mnt</code>:</p>
 <pre><code class="language-sh">mount /dev/root_partition /mnt
