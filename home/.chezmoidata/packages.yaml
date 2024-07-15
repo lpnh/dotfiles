@@ -78,6 +78,7 @@ packages:
     - 'openconnect'
     - 'openvpn'
     - 'perl'
+    - 'pipewire'
     - 'pipewire-alsa'
     - 'pipewire-jack'
     - 'pipewire-pulse'
