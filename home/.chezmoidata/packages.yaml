@@ -35,6 +35,7 @@ packages:
     - 'tlp'
   optional:
     - 'aseprite'
+    - 'audacity'
     - 'minecraft-launcher'
     - 'tiled'
   system:
