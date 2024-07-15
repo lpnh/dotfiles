@@ -35,6 +35,7 @@ packages:
     - 'tlp'
   optional:
     - 'aseprite'
+    - 'minecraft-launcher'
     - 'tiled'
   system:
     - 'alsa-utils'
@@ -131,6 +132,7 @@ packages:
     - 'foot'
     - 'fuzzel'
     - 'fzf'
+    - 'gamescope'
     - 'git-delta'
     - 'gitui'
     - 'glow'
