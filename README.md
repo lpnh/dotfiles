@@ -14,35 +14,39 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 
 **Core**:
 
-* Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
-* Compositor: [Niri](https://github.com/YaLTeR/niri)  
-* Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
 * App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
+* Compositor: [Niri](https://github.com/YaLTeR/niri)  
+* Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)  
+* Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
 * Notification: [Mako](https://github.com/emersion/mako)  
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
-* Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
+* Status Bar: [Waybar](https://github.com/Alexays/Waybar)
 
 **Theme**:
 
-* Fonts and Glyphs: [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts)  
+* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
+* Fonts and Glyphs: [FiraMono Nerd
+Font](https://github.com/ryanoasis/nerd-fonts)  
+* Gtk: [Materia-dark](https://github.com/nana-4/materia-theme)  
 * Icons:
 [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
-* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
-* Theme: [Catppuccin](https://github.com/catppuccin/catppuccin)
+* Palette: [Catppuccin Mocha](https://github.com/catppuccin/catppuccin)
 
 **Terminal**:
 
-* Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
+* Prompt: [Starship](https://github.com/starship/starship)  
 * Shell: [Nushell](https://github.com/nushell/nushell)  
-* Prompt: [Starship](https://github.com/starship/starship)
+* Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)
 
 **Tools**:
 
-* File Manager: [Yazi](https://github.com/sxyazi/yazi)  
-* Editor: [Neovim](https://github.com/neovim/neovim)
+* Browser: [Firefox](https://www.mozilla.org/en-US/firefox/)  
+* Editor: [Neovim](https://github.com/neovim/neovim)  
+* File Manager: [Yazi](https://github.com/sxyazi/yazi)
 
 **Clients**:
 
+* BitTorrent: [Transmission](https://github.com/transmission/transmission)  
 * Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
 * Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
@@ -50,7 +54,7 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 
 * [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  
-* [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim
+* [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim  
 * [Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
 monitor  
 * [Cava](https://github.com/karlstav/cava): Console-based Audio Visualizer for
@@ -61,6 +65,8 @@ git, diff, grep, and blame output
 (community fork of exa)  
 * [Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
 much faster because written in C  
+* [Fd](https://github.com/sharkdp/fd): Simple, fast and user-friendly
+alternative to find  
 * [Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder  
 * [Gitui](https://github.com/extrawurst/gitui): Blazing fast terminal-ui for git
 written in Rust  
