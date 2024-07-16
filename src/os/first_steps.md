@@ -87,7 +87,7 @@ This will be useful later to set the `refind` configuration.
 Using `dosfslabel`:
 
 ```sh
-dosfslabel /dev/efi_system_partition NAME
+dosfslabel /dev/efi_system_partition ARCHIE
 ```
 
 You can verify it using `lsblk`:

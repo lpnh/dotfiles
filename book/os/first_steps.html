@@ -224,7 +224,7 @@
 <p>Now is a good time to add a label to the efi partition.
 This will be useful later to set the <code>refind</code> configuration.
 Using <code>dosfslabel</code>:</p>
-<pre><code class="language-sh">dosfslabel /dev/efi_system_partition NAME
+<pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
 <p>You can verify it using <code>lsblk</code>:</p>
 <pre><code class="language-sh">lsblk -o NAME,LABEL

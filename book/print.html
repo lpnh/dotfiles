@@ -316,7 +316,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
 <p>Now is a good time to add a label to the efi partition.
 This will be useful later to set the <code>refind</code> configuration.
 Using <code>dosfslabel</code>:</p>
-<pre><code class="language-sh">dosfslabel /dev/efi_system_partition NAME
+<pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
 <p>You can verify it using <code>lsblk</code>:</p>
 <pre><code class="language-sh">lsblk -o NAME,LABEL
@@ -491,6 +491,71 @@ console-mode auto
 <p>To verify the boot loader entries:</p>
 <pre><code class="language-sh">sudo bootctl list
 </code></pre>
+<h2 id="refind"><a class="header" href="#refind">rEFInd</a></h2>
+<p>Install <code>refind</code> package:</p>
+<pre><code class="language-sh">sudo pacman -S refind
+</code></pre>
+<p>Install it with the <code>refind-install</code> script:</p>
+<pre><code class="language-sh">refind-install
+</code></pre>
+<p>Note: for comfort I will run <code>su</code> to use the interactive shell as root.</p>
+<p>To add the <a href="https://github.com/catppuccin/refind">catppuccin theme</a>, create a
+<code>themes</code> directory inside refind installation path:</p>
+<pre><code class="language-sh">cd /efi/EFI/refind
+mkdir themes
+</code></pre>
+<p>Clone the repo inside the <code>themes</code> folder:</p>
+<pre><code class="language-sh">git clone https://github.com/catppuccin/refind.git catppuccin
+</code></pre>
+<p>It requires a <code>include themes/catppuccin/mocha.conf</code> line to be appended to the
+end of <code>refind.conf</code> file. But before that, let's add the <code>hidden_tags</code> back to
+the interface, editing the catppuccin <code>mocha.conf</code> file:</p>
+<pre><code class="language-sh">cd catppuccin
+nano mocha.conf
+</code></pre>
+<pre><code class="language-txt"># Which non-bootloader tools to show on the tools line, and in what
+# order to display them:
+#  shell           - the EFI shell (requires external program; see rEFInd
+#                    documentation for details)
+#  gptsync         - the (dangerous) gptsync.efi utility (requires external
+#                    program; see rEFInd documentation for details)
+#  apple_recovery  - boots the Apple Recovery HD partition, if present
+#  mok_tool        - makes available the Machine Owner Key (MOK) maintenance
+#                    tool, MokManager.efi, used on Secure Boot systems
+#  about           - an "about this program" option
+#  exit            - a tag to exit from rEFInd
+#  shutdown        - shuts down the computer (a bug causes this to reboot
+#                    EFI systems)
+#  reboot          - a tag to reboot the computer
+#  firmware        - a tag to reboot the computer into the firmware's
+#                    user interface (ignored on older computers)
+# Default is shell,apple_recovery,mok_tool,about,shutdown,reboot,firmware
+#
+showtools hidden_tags shutdown
+</code></pre>
+<p>Note: The option values start after the <code>showtools</code> key word.</p>
+<p>Back to <code>refind</code> directory:</p>
+<pre><code class="language-sh">cd /efi/EFI/refind
+</code></pre>
+<p>We can now customize the <code>refind.conf</code>, adding a new <code>menuentry</code> for the
+<code>systemd-boot</code> boot loader. I know it seems a bit contradictory using refind to
+launch systemd-boot, but refind role here is to provide a simple and
+customizable interface, capable to handle a dual boot scenario for different
+available distros.</p>
+<pre><code class="language-sh">nano refind.conf
+</code></pre>
+<pre><code class="language-no_rust">menuentry "Arch Linux" {
+    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
+    volume "ARCHIE"
+    loader /EFI/systemd/systemd-bootx64.efi
+}
+
+include themes/catppuccin/mocha.conf
+</code></pre>
+<p>Note the catppuccin theme being included in the last line.</p>
+<p>For more info, check rEFInd <a href="https://www.rodsbooks.com/refind/configfile.html">official
+documentation</a></p>
+<p>To exit the interactive shell simply run <code>exit</code>.</p>
 <h2 id="pacman"><a class="header" href="#pacman">Pacman</a></h2>
 <p>Update <code>pacman</code> configuration file:</p>
 <pre><code class="language-sh">sudo nano /etc/pacman.conf
