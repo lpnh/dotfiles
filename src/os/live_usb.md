@@ -1,15 +1,13 @@
-# Before the Beginning
+# Live USB
 
-## Live USB
-
-### Download the ISO
+## Download the ISO
 
 Download the ISO file from <https://archlinux.org/download/>.
 
 Note: the BitTorrent Download is the recommended option and the file will look
 like this `archlinux-version-x86_64.iso.torrent`.
 
-### Find the USB drive name
+## Find the USB drive name
 
 Find out the name of your USB drive:
 
@@ -23,7 +21,7 @@ Make sure it is **not** mounted:
 lsblk
 ```
 
-### Write the ISO
+## Write the ISO
 
 Write the ISO to the USB drive using `pv`:
 

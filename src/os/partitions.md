@@ -1,8 +1,8 @@
-# First Steps
+# Partitions
 
 ## Quality of Life
 
-Change the font using `setfont`:
+First of all, change the font using `setfont`:
 
 ```sh
 setfont ter-222b
@@ -30,7 +30,7 @@ ping archlinux.org
 timedatectl
 ```
 
-## Partition the Disks
+## Partitioning the Disk
 
 ### Device Identification
 

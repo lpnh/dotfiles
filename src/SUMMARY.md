@@ -4,7 +4,7 @@
 
 - [Operating System](os/README.md)
   - [Live USB](os/live_usb.md)
-  - [Partition and Mount](os/partition_and_mount.md)
+  - [Partitions](os/partitions.md)
   - [Installation](os/installation.md)
   - [Pos-Installation](os/pos_installation.md)
   - [Graphics and Modules](os/graphics_and_modules.md)

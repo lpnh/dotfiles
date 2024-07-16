@@ -1,6 +1,6 @@
-# Drivers and Modules
+# Graphics and Modules
 
-## Graphics
+## Drivers
 
 Install `mesa`:
 
@@ -18,7 +18,7 @@ sudo pacman -S vulkan-radeon
 
 ## Kernel Mode Setting
 
-To early load modules using Booster:
+To load modules early using Booster:
 
 ```sh
 sudo nano /etc/booster.yaml
