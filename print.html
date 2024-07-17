@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="navy" dir="ltr">
+<html lang="en" class="ayu" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -37,7 +37,7 @@
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -62,7 +62,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('navy')
+            html.classList.remove('ayu')
             html.classList.add(theme);
             var body = document.querySelector('body');
             body.classList.remove('no-js')
@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Overview</a></li><li class="chapter-item expanded "><a href="os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/live_usb.html"><strong aria-hidden="true">1.1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="os/partitions.html"><strong aria-hidden="true">1.2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/graphics_and_modules.html"><strong aria-hidden="true">1.5.</strong> Graphics and Modules</a></li></ol></li><li class="chapter-item expanded "><a href="de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="de/home_sweet_home.html"><strong aria-hidden="true">2.1.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.2.</strong> Quality of Life</div></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html"><strong aria-hidden="true">1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="os/partitions.html"><strong aria-hidden="true">2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/graphics_and_modules.html"><strong aria-hidden="true">5.</strong> Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html"><strong aria-hidden="true">6.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Quality of Life</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="appendices/recipes/index.html"><strong aria-hidden="true">8.</strong> Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendices/recipes/live_usb.html"><strong aria-hidden="true">8.1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="appendices/recipes/partitions.html"><strong aria-hidden="true">8.2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="appendices/recipes/installation.html"><strong aria-hidden="true">8.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="appendices/recipes/pos_installation.html"><strong aria-hidden="true">8.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="appendices/recipes/graphics_and_modules.html"><strong aria-hidden="true">8.5.</strong> Graphics and Modules</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -247,7 +247,7 @@ helper written in go</li>
 terminal</li>
 </ul>
 <p><em>For the exhaustive list, check <a href="home/.chezmoidata/packages.yaml">packages.yaml</a></em></p>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
 <h2 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h2>
 <p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
 <p>Note: the BitTorrent Download is the recommended option and the file will look
@@ -586,7 +586,6 @@ repo</a></p>
 </code></pre>
 <pre><code class="language-yaml">modules_force_load: &lt;module_name&gt;
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="desktop-environment"><a class="header" href="#desktop-environment">Desktop Environment</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
 <h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
 <p>Install <code>chezmoi</code>:</p>
@@ -660,6 +659,282 @@ Add the following to <code>/etc/sysctl.conf</code></p>
 <pre><code class="language-sh">sysctl fs.inotify.max_user_watches=100000
 sysctl fs.inotify.max_queued_events=100000
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="recipes"><a class="header" href="#recipes">Recipes</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb-1"><a class="header" href="#live-usb-1">Live USB</a></h1>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<a href="https://archlinux.org/download/">Download the ISO file</a></li>
+<li><input disabled="" type="checkbox"/>
+Find the USB drive name: <code>ls -l /dev/disk/by-id/usb-*</code></li>
+<li><input disabled="" type="checkbox"/>
+Make sure it is <strong>not</strong> mounted: <code>lsblk</code></li>
+<li><input disabled="" type="checkbox"/>
+Write the ISO to the USB drive:</li>
+</ul>
+<pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="partitions-1"><a class="header" href="#partitions-1">Partitions</a></h1>
+<h2 id="inside-the-live-environment"><a class="header" href="#inside-the-live-environment">Inside the Live Environment</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Improve the default font size: <code>setfont ter-222b</code></li>
+<li><input disabled="" type="checkbox"/>
+Make sure the system is booted in UEFI mode:</li>
+</ul>
+<pre><code class="language-sh"># the output should be 64
+cat /sys/firmware/efi/fw_platform_size
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the internet connection: <code>ping archlinux.org</code></li>
+<li><input disabled="" type="checkbox"/>
+Ensure the system clock is synchronized: <code>timedatectl</code></li>
+</ul>
+<h2 id="partitioning-the-disk-1"><a class="header" href="#partitioning-the-disk-1">Partitioning the Disk</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Identify available disks: <code>lsblk -o NAME,SIZE</code></li>
+<li><input disabled="" type="checkbox"/>
+Create the partitions:</li>
+</ul>
+<pre><code class="language-sh">cfdisk /dev/the_disk_to_be_partitioned
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th><th style="text-align: left">Mount point</th></tr></thead><tbody>
+<tr><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td><td style="text-align: left">/efi</td></tr>
+<tr><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">[SWAP]</td></tr>
+<tr><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">/</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the partitions: <code>fdisk -l /dev/partitioned_disk</code></li>
+</ul>
+<h2 id="formatting-the-partitions"><a class="header" href="#formatting-the-partitions">Formatting the Partitions</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create an <em>Ext4</em> fs for the <strong>root</strong>: <code>mkfs.ext4 /dev/root_partition</code></li>
+<li><input disabled="" type="checkbox"/>
+Initialize the <em>swap</em>: <code>mkswap /dev/swap_partition</code></li>
+<li><input disabled="" type="checkbox"/>
+Format the <code>efi</code> to FAT32: <code>mkfs.fat -F 32 /dev/efi_system_partition</code></li>
+<li><input disabled="" type="checkbox"/>
+Add a label to the efi partition:</li>
+</ul>
+<pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the result: <code>lsblk /dev/partioned_disk -o NAME,FSTYPE,LABEL</code></li>
+</ul>
+<h2 id="mounting-the-file-system"><a class="header" href="#mounting-the-file-system">Mounting the File System</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+The root partition to <code>/mnt</code>: <code>mount /dev/root_partition /mnt</code></li>
+<li><input disabled="" type="checkbox"/>
+The EFI partition to <code>/mnt/efi</code>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
+<li><input disabled="" type="checkbox"/>
+Enable the <code>swap</code>: <code>swapon /dev/swap_partition</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-1"><a class="header" href="#installation-1">Installation</a></h1>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the <code>mirrorlist</code>:</li>
+</ul>
+<pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install Essential packages:</li>
+</ul>
+<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+</code></pre>
+<h2 id="configuring-the-system"><a class="header" href="#configuring-the-system">Configuring the System</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Generate an fstab file: <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
+<li><input disabled="" type="checkbox"/>
+Change root into the new system: <code>arch-chroot /mnt</code></li>
+<li><input disabled="" type="checkbox"/>
+Set the time zone: <code> ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code></li>
+<li><input disabled="" type="checkbox"/>
+Generate the <code> generate /etc/adjtime</code>: <code>hwclock --systohc</code></li>
+<li><input disabled="" type="checkbox"/>
+Uncomment the <code>#en_US.UTF-8 UTF-8</code> line: <code>nano /etc/locale.gen</code></li>
+<li><input disabled="" type="checkbox"/>
+Generate the locales: <code>locale-gen</code></li>
+<li><input disabled="" type="checkbox"/>
+Create the <code>locale.conf</code> file:</li>
+</ul>
+<pre><code class="language-sh">nano /etc/locale.conf
+</code></pre>
+<pre><code class="language-txt">LANG=en_US.UTF-8
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <code>hostname</code>:</li>
+</ul>
+<pre><code class="language-sh">nano /etc/hostname
+</code></pre>
+<pre><code class="language-txt">desktop
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the root password: <code>passwd</code></li>
+</ul>
+<h2 id="adding-user-with-sudo-privileges"><a class="header" href="#adding-user-with-sudo-privileges">Adding User With <code>sudo</code> Privileges</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create new user, adding it to <code>wheel</code> group:</li>
+</ul>
+<pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a password to the user: <code>passwd &lt;username&gt;</code></li>
+<li><input disabled="" type="checkbox"/>
+Uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line on sudoers config:</li>
+</ul>
+<pre><code class="language-sh">EDITOR=nano visudo
+</code></pre>
+<pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
+</code></pre>
+<h2 id="set-the-boot-loader"><a class="header" href="#set-the-boot-loader">Set the Boot Loader</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <code>systemd-boot</code>: <code>bootctl install</code></li>
+<li><input disabled="" type="checkbox"/>
+Edit the <code>loader.conf</code> file:</li>
+</ul>
+<pre><code class="language-sh">nano /efi/loader/loader.conf
+</code></pre>
+<pre><code class="language-txt">default  arch.conf
+timeout  4
+console-mode auto
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <code>arch.conf</code> entry:</li>
+</ul>
+<pre><code class="language-sh">nano /efi/loader/entries/arch.conf
+</code></pre>
+<pre><code class="language-txt">title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Append the UUID number:</li>
+</ul>
+<pre><code class="language-sh">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>:</li>
+</ul>
+<pre><code class="language-sh">cd /efi
+</code></pre>
+<pre><code class="language-sh">cp /boot/* .
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <code>NetworkManager</code> service: <code>systemctl enable NetworkManager</code></li>
+</ul>
+<h2 id="finishing"><a class="header" href="#finishing">Finishing</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Exit the chroot environment: <code>exit</code></li>
+<li><input disabled="" type="checkbox"/>
+Unmount all the partitions: <code>umount -R /mnt</code></li>
+<li>Reboot: <code>reboot</code> <em># good luck!</em></li>
+</ul>
+<h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
+<ul>
+<li>Download <code>fastfetch</code>: <code>sudo pacman -S fastfetch</code></li>
+<li>Run it: <code>fastfetch</code></li>
+<li>Enjoy your new achievement <em># I use arch, btw</em></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation-1"><a class="header" href="#pos-installation-1">Pos-Installation</a></h1>
+<h2 id="double-checking"><a class="header" href="#double-checking">Double Checking</a></h2>
+<p><em># sorry I'm neurotic</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Refresh the system, including package database: <code>sudo pacman -Syyu</code></li>
+<li><input disabled="" type="checkbox"/>
+Make sure some basic system packages are installed:</li>
+</ul>
+<pre><code class="language-sh">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
+</code></pre>
+<h2 id="installing-some-compilers"><a class="header" href="#installing-some-compilers">Installing Some Compilers</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+clang: <code>sudo pacman -S clang</code></li>
+<li><input disabled="" type="checkbox"/>
+go: <code>sudo pacman -S go</code></li>
+<li><input disabled="" type="checkbox"/>
+lua: <code>sudo pacman -S lua</code></li>
+<li><input disabled="" type="checkbox"/>
+rustup:</li>
+</ul>
+<pre><code class="language-sh">sudo pacman -S rustup
+</code></pre>
+<pre><code class="language-sh">rustup update stable
+</code></pre>
+<h2 id="improving-the-initramfs"><a class="header" href="#improving-the-initramfs">Improving the Initramfs</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install the microcode accordingly:</li>
+</ul>
+<pre><code class="language-sh"># for AMD CPU
+sudo pacman -S amd-ucode
+</code></pre>
+<pre><code class="language-sh"># for Intel CPU
+sudo pacman -S intel-ucode
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install booster: <code>sudo pacman -S booster</code></li>
+<li><input disabled="" type="checkbox"/>
+Copy both new images to the <code>/efi</code> directory:</li>
+</ul>
+<pre><code class="language-sh">cp /boot/cpu_manufacturer-ucode.img /efi
+</code></pre>
+<pre><code class="language-sh">cp /boot/booster-linux.img /efi
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create new loader entry:</li>
+</ul>
+<pre><code class="language-sh">sudo nano /efi/loader/entries/booster.conf
+</code></pre>
+<pre><code class="language-txt">title   Arch Linux with Booster
+linux   /vmlinuz-linux
+initrd  /cpu_manufacturer-ucode.img
+initrd  /booster-linux.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Take the opportunity to include other kernel parameters:</li>
+</ul>
+<pre><code>options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx nvme_load=YES nowatchdog rw
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the <code>loader.conf</code> file:</li>
+</ul>
+<pre><code class="language-sh">sudo nano /efi/loader/loader.conf
+</code></pre>
+<pre><code class="language-txt">default  booster.conf
+timeout  4
+console-mode auto
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the current available boot loader entries: <code>sudo bootctl list</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="graphics-and-modules-1"><a class="header" href="#graphics-and-modules-1">Graphics and Modules</a></h1>
 
                     </main>
 
@@ -695,6 +970,7 @@ sysctl fs.inotify.max_queued_events=100000
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="js/enable-checkboxes.js"></script>
 
         <script>
         window.addEventListener('load', function() {

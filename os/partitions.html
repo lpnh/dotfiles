@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="navy" dir="ltr">
+<html lang="en" class="ayu" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -36,7 +36,7 @@
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -61,7 +61,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('navy')
+            html.classList.remove('ayu')
             html.classList.add(theme);
             var body = document.querySelector('body');
             body.classList.remove('no-js')
@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Overview</a></li><li class="chapter-item expanded "><a href="../os/index.html"><strong aria-hidden="true">1.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../os/live_usb.html"><strong aria-hidden="true">1.1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../os/partitions.html" class="active"><strong aria-hidden="true">1.2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html"><strong aria-hidden="true">1.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html"><strong aria-hidden="true">1.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html"><strong aria-hidden="true">1.5.</strong> Graphics and Modules</a></li></ol></li><li class="chapter-item expanded "><a href="../de/index.html"><strong aria-hidden="true">2.</strong> Desktop Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../de/home_sweet_home.html"><strong aria-hidden="true">2.1.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.2.</strong> Quality of Life</div></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html"><strong aria-hidden="true">1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../os/partitions.html" class="active"><strong aria-hidden="true">2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html"><strong aria-hidden="true">5.</strong> Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html"><strong aria-hidden="true">6.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Quality of Life</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../appendices/recipes/index.html"><strong aria-hidden="true">8.</strong> Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/recipes/live_usb.html"><strong aria-hidden="true">8.1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/partitions.html"><strong aria-hidden="true">8.2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/installation.html"><strong aria-hidden="true">8.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/pos_installation.html"><strong aria-hidden="true">8.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/graphics_and_modules.html"><strong aria-hidden="true">8.5.</strong> Graphics and Modules</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -286,6 +286,7 @@ Using <code>dosfslabel</code>:</p>
         <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="../js/enable-checkboxes.js"></script>
 
 
     </div>
