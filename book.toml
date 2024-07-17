@@ -6,5 +6,6 @@ src = "src"
 title = "dotfiles cookbook"
 
 [output.html]
-default-theme = "navy"
+default-theme = "ayu"
 git-repository-url = "https://github.com/lpnh/dotfiles"
+additional-js = ["js/enable-checkboxes.js"]
