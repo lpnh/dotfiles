@@ -188,7 +188,16 @@
 <pre><code class="language-sh">chezmoi apply
 </code></pre>
 <p>Note: a lot of packages will be installed. Probably would be a good idea to
-reboot the system after it?</p>
+reboot the system after it.</p>
+<p>For the exhaustive list of packages, you can check the
+<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.yaml">packages.yaml</a>
+file from the repo.</p>
+<p>Hint: A good reference for essential packages is to check the ones available in
+the Arch Linux live system (ISO). You can find them
+<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>.
+Another good source is to check the packages available in the EndeavourOS ISO.
+You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
+repo</a>.</p>
 <h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
 <p>To enable the <code>greetd</code> service:</p>
 <pre><code class="language-sh">systemctl enable greetd
