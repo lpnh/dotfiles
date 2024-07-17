@@ -1,6 +1,6 @@
 # Home Sweet Home
 
-## Bootstrap 
+## Bootstrap
 
 Install `chezmoi`:
 
@@ -21,7 +21,18 @@ chezmoi apply
 ```
 
 Note: a lot of packages will be installed. Probably would be a good idea to
-reboot the system after it?
+reboot the system after it.
+
+For the exhaustive list of packages, you can check the
+[packages.yaml](https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.yaml)
+file from the repo.
+
+Hint: A good reference for essential packages is to check the ones available in
+the Arch Linux live system (ISO). You can find them
+[here](https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt).
+Another good source is to check the packages available in the EndeavourOS ISO.
+You can find them in [their
+repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64).
 
 ## Greeter
 
