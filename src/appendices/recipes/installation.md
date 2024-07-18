@@ -99,7 +99,8 @@ cp /boot/* .
 
 - [ ] Exit the chroot environment: `exit`
 - [ ] Unmount all the partitions: `umount -R /mnt`
-- Reboot: `reboot`  
+- Reboot: `reboot`
+
 *# good luck!*
 
 ## Verifying the Installation
