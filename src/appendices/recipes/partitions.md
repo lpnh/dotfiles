@@ -38,7 +38,7 @@ dosfslabel /dev/efi_system_partition ARCHIE
 
 ## Mounting the File System
 
-- [ ] The **root** partition to */mnt*: `mount /dev/root_partition /mnt`
-- [ ] The **efi** partition to */mnt/efi*: `mount --mkdir
+- [ ] Mount the **root** partition to **/mnt**: `mount /dev/root_partition /mnt`
+- [ ] Mount the **efi** partition to **/mnt/efi**: `mount --mkdir
 /dev/efi_system_partition /mnt/efi`
 - [ ] Enable the **swap**: `swapon /dev/swap_partition`

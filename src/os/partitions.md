@@ -2,7 +2,7 @@
 
 ## Quality of Life
 
-First of all, change the font using `setfont`:
+First of all, improve the default font using `setfont`:
 
 ```sh
 setfont ter-222b

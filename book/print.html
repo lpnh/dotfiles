@@ -269,7 +269,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
 <p>For more information: <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">https://wiki.archlinux.org/title/USB_flash_installation_medium</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
 <h2 id="quality-of-life"><a class="header" href="#quality-of-life">Quality of Life</a></h2>
-<p>First of all, change the font using <code>setfont</code>:</p>
+<p>First of all, improve the default font using <code>setfont</code>:</p>
 <pre><code class="language-sh">setfont ter-222b
 </code></pre>
 <h2 id="some-verification"><a class="header" href="#some-verification">Some verification</a></h2>
@@ -436,10 +436,10 @@ output to the <code>arch.conf</code> file.</p>
 <p>First download <code>fastfetch</code>:</p>
 <pre><code class="language-sh">sudo pacman -S fastfetch
 </code></pre>
-<p>Now simply run and enjoy your new achievement:</p>
+<p>Now run it and enjoy your new achievement:</p>
 <pre><code class="language-sh">fastfetch
 </code></pre>
-<p>Note: this last step is also a simple and efficient way to verify your
+<p>Note: jokes aside, this last step is a simple and efficient way to verify your
 installation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <h2 id="system-check"><a class="header" href="#system-check">System Check</a></h2>
@@ -738,9 +738,9 @@ Verify the result: <code>lsblk /dev/partioned_disk -o NAME,FSTYPE,LABEL</code></
 <h2 id="mounting-the-file-system"><a class="header" href="#mounting-the-file-system">Mounting the File System</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-The <strong>root</strong> partition to <em>/mnt</em>: <code>mount /dev/root_partition /mnt</code></li>
+Mount the <strong>root</strong> partition to <strong>/mnt</strong>: <code>mount /dev/root_partition /mnt</code></li>
 <li><input disabled="" type="checkbox"/>
-The <strong>efi</strong> partition to <em>/mnt/efi</em>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
+Mount the <strong>efi</strong> partition to <strong>/mnt/efi</strong>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
 <li><input disabled="" type="checkbox"/>
 Enable the <strong>swap</strong>: <code>swapon /dev/swap_partition</code></li>
 </ul>
@@ -869,7 +869,7 @@ Enable the <strong>NetworkManager</strong> service: <code>systemctl enable Netwo
 Exit the chroot environment: <code>exit</code></li>
 <li><input disabled="" type="checkbox"/>
 Unmount all the partitions: <code>umount -R /mnt</code></li>
-<li>Reboot: <code>reboot</code>
+<li>Reboot: <code>reboot</code><br />
 <em># good luck!</em></li>
 </ul>
 <h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
@@ -883,7 +883,7 @@ Unmount all the partitions: <code>umount -R /mnt</code></li>
 <p><em># sorry I'm neurotic</em></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Refresh the system, including package database: <code>sudo pacman -Syyu</code></li>
+Refresh the system, including the package database: <code>sudo pacman -Syyu</code></li>
 <li><input disabled="" type="checkbox"/>
 Make sure some basic system packages are installed:</li>
 </ul>
@@ -917,9 +917,9 @@ sudo pacman -S intel-ucode
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install booster: <code>sudo pacman -S booster</code></li>
+Install <strong>booster</strong>: <code>sudo pacman -S booster</code></li>
 <li><input disabled="" type="checkbox"/>
-Copy both new images to the <code>/efi</code> directory:</li>
+Copy both new images to the  <strong>/efi</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">cp /boot/cpu_manufacturer-ucode.img /efi
 </code></pre>
@@ -927,7 +927,7 @@ Copy both new images to the <code>/efi</code> directory:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create new loader entry:</li>
+Create a new loader entry:</li>
 </ul>
 <pre><code class="language-sh">sudo nano /efi/loader/entries/booster.conf
 </code></pre>
@@ -945,7 +945,7 @@ Take the opportunity to include other kernel parameters:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Update the <code>loader.conf</code> file:</li>
+Update the <strong>loader.conf</strong> file:</li>
 </ul>
 <pre><code class="language-sh">sudo nano /efi/loader/loader.conf
 </code></pre>
@@ -957,7 +957,119 @@ console-mode auto
 <li><input disabled="" type="checkbox"/>
 Verify the current available boot loader entries: <code>sudo bootctl list</code></li>
 </ul>
+<h2 id="refind-1"><a class="header" href="#refind-1">rEFInd</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <strong>refind</strong> package: <code>sudo pacman -S refind</code></li>
+<li><input disabled="" type="checkbox"/>
+Install it with the <strong>refind-install</strong> script: <code>refind-install</code></li>
+<li><input disabled="" type="checkbox"/>
+Start an interactive shell as root: <code>su</code></li>
+<li><input disabled="" type="checkbox"/>
+Create the <strong>themes</strong> directory inside refind installation path:</li>
+</ul>
+<pre><code class="language-sh">cd /efi/EFI/refind
+mkdir themes
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Clone the catppuccin repo inside the <strong>themes</strong> directory:</li>
+</ul>
+<pre><code class="language-sh">git clone https://github.com/catppuccin/refind.git catppuccin
+</code></pre>
+<p>end of <code>refind.conf</code> file. But before that, let's</p>
+<ul>
+<li>Edit the catppuccin <strong>mocha.conf</strong> file, adding the <strong>hidden_tags</strong> back to the interface:</li>
+</ul>
+<pre><code class="language-sh">cd catppuccin
+nano mocha.conf
+</code></pre>
+<pre><code class="language-txt"># Which non-bootloader tools to show on the tools line, and in what
+# order to display them:
+#  shell           - the EFI shell (requires external program; see rEFInd
+#                    documentation for details)
+#  gptsync         - the (dangerous) gptsync.efi utility (requires external
+#                    program; see rEFInd documentation for details)
+#  apple_recovery  - boots the Apple Recovery HD partition, if present
+#  mok_tool        - makes available the Machine Owner Key (MOK) maintenance
+#                    tool, MokManager.efi, used on Secure Boot systems
+#  about           - an "about this program" option
+#  exit            - a tag to exit from rEFInd
+#  shutdown        - shuts down the computer (a bug causes this to reboot
+#                    EFI systems)
+#  reboot          - a tag to reboot the computer
+#  firmware        - a tag to reboot the computer into the firmware's
+#                    user interface (ignored on older computers)
+# Default is shell,apple_recovery,mok_tool,about,shutdown,reboot,firmware
+#
+showtools hidden_tags shutdown
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Go back to <code>refind</code> directory:</li>
+</ul>
+<pre><code class="language-sh">cd /efi/EFI/refind
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <strong>refind.conf</strong>, adding a new <strong>menuentry</strong> for the
+<strong>systemd-boot</strong> and also the including the <em>mocha.conf</em> file:</li>
+</ul>
+<pre><code class="language-sh">nano refind.conf
+</code></pre>
+<pre><code class="language-no_rust">menuentry "Arch Linux" {
+    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
+    volume "ARCHIE"
+    loader /EFI/systemd/systemd-bootx64.efi
+}
+
+include themes/catppuccin/mocha.conf
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Exit the interactive shell: <code>exit</code></li>
+</ul>
+<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
+<h3 id="pacman-1"><a class="header" href="#pacman-1">Pacman</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update <strong>pacman</strong> configuration file:</li>
+</ul>
+<pre><code class="language-sh">sudo nano /etc/pacman.conf
+</code></pre>
+<pre><code class="language-txt"># Misc options
+#UseSyslog
+Color
+ILoveCandy
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists
+ParallelDownloads = 5
+</code></pre>
+<h3 id="yay-1"><a class="header" href="#yay-1">Yay</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create and cd into the <strong>apps</strong> directory:</li>
+</ul>
+<pre><code class="language-sh">mkdir apps &amp;&amp; cd apps
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <strong>yay</strong>:</li>
+</ul>
+<pre><code class="language-sh">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+</code></pre>
+<pre><code class="language-sh"># I'm not sure about this one
+yay -Y --gendb
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphics-and-modules-1"><a class="header" href="#graphics-and-modules-1">Graphics and Modules</a></h1>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <strong>mesa</strong>: <code>sudo pacman -S mesa</code></li>
+<li><input disabled="" type="checkbox"/>
+Install <strong>Vulkan</strong> support for AMD: <code>sudo pacman -S vulkan-radeon</code></li>
+</ul>
+<p><em>Work in Progress</em></p>
 
                     </main>
 

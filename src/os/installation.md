@@ -198,11 +198,11 @@ First download `fastfetch`:
 sudo pacman -S fastfetch
 ```
 
-Now simply run and enjoy your new achievement:
+Now run it and enjoy your new achievement:
 
 ```sh
 fastfetch
 ```
 
-Note: this last step is also a simple and efficient way to verify your
+Note: jokes aside, this last step is a simple and efficient way to verify your
 installation.
