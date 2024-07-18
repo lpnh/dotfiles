@@ -198,6 +198,12 @@
 <p>Generate the <code>/etc/adjtime</code> file:</p>
 <pre><code class="language-sh">hwclock --systohc
 </code></pre>
+<p>Set up time synchronization with <code>systemd-timesyncd</code>:</p>
+<pre><code class="language-sh">timedatectl set-ntp true
+</code></pre>
+<p>Check the service status:</p>
+<pre><code class="language-sh">timedatectl status
+</code></pre>
 <h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
 <p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
 <pre><code class="language-sh">nano /etc/locale.gen
@@ -205,13 +211,13 @@
 <p>Generate the locales:</p>
 <pre><code class="language-sh">locale-gen
 </code></pre>
-<p>Create the <code>locale.conf</code> file with the following content:</p>
+<p>Create the <code>locale.conf</code> file, setting the <em>LANG</em> variable accordingly:</p>
 <pre><code class="language-sh">nano /etc/locale.conf
 </code></pre>
 <pre><code class="language-txt">LANG=en_US.UTF-8
 </code></pre>
 <h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>Create the <code>hostname</code> with your host name, e.g. <code>desktop</code>:</p>
+<p>Create the <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
 <pre><code class="language-sh">nano /etc/hostname
 </code></pre>
 <pre><code class="language-txt">desktop
@@ -220,15 +226,18 @@
 <p>Set the root password:</p>
 <pre><code class="language-sh">passwd
 </code></pre>
-<h2 id="adding-a-user"><a class="header" href="#adding-a-user">Adding a User</a></h2>
-<p>To add a user with sudo privileges:</p>
+<h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
+<p>To create new user, adding it to the <code>wheel</code> group:</p>
 <pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
 </code></pre>
 <p>To add a password to the user:</p>
 <pre><code class="language-sh">passwd &lt;username&gt;
 </code></pre>
-<p>Edit the sudoers uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
+<p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
 <pre><code class="language-sh">EDITOR=nano visudo
+</code></pre>
+<pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
 </code></pre>
 <h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
 <p>To enable <code>NetworkManager</code> service:</p>

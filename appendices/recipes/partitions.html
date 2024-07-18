@@ -217,11 +217,11 @@ Verify the partitions: <code>fdisk -l /dev/partitioned_disk</code></li>
 <li><input disabled="" type="checkbox"/>
 Create an <em>Ext4</em> fs for the <strong>root</strong>: <code>mkfs.ext4 /dev/root_partition</code></li>
 <li><input disabled="" type="checkbox"/>
-Initialize the <em>swap</em>: <code>mkswap /dev/swap_partition</code></li>
+Initialize the <strong>swap</strong>: <code>mkswap /dev/swap_partition</code></li>
 <li><input disabled="" type="checkbox"/>
-Format the <code>efi</code> to FAT32: <code>mkfs.fat -F 32 /dev/efi_system_partition</code></li>
+Format the <strong>efi</strong> to <em>FAT32</em>: <code>mkfs.fat -F 32 /dev/efi_system_partition</code></li>
 <li><input disabled="" type="checkbox"/>
-Add a label to the efi partition:</li>
+Add a label to the <strong>efi</strong> partition:</li>
 </ul>
 <pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
@@ -232,11 +232,11 @@ Verify the result: <code>lsblk /dev/partioned_disk -o NAME,FSTYPE,LABEL</code></
 <h2 id="mounting-the-file-system"><a class="header" href="#mounting-the-file-system">Mounting the File System</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-The root partition to <code>/mnt</code>: <code>mount /dev/root_partition /mnt</code></li>
+The <strong>root</strong> partition to <em>/mnt</em>: <code>mount /dev/root_partition /mnt</code></li>
 <li><input disabled="" type="checkbox"/>
-The EFI partition to <code>/mnt/efi</code>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
+The <strong>efi</strong> partition to <em>/mnt/efi</em>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
 <li><input disabled="" type="checkbox"/>
-Enable the <code>swap</code>: <code>swapon /dev/swap_partition</code></li>
+Enable the <strong>swap</strong>: <code>swapon /dev/swap_partition</code></li>
 </ul>
 
                     </main>
