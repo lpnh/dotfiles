@@ -42,6 +42,18 @@ Generate the `/etc/adjtime` file:
 hwclock --systohc
 ```
 
+Set up time synchronization with `systemd-timesyncd`:
+
+```sh
+timedatectl set-ntp true
+```
+
+Check the service status:
+
+```sh
+timedatectl status
+```
+
 ## Localization
 
 Uncomment the `#en_US.UTF-8 UTF-8` line editing the `/etc/locale.gen` file:
@@ -56,24 +68,22 @@ Generate the locales:
 locale-gen
 ```
 
-Create the `locale.conf` file with the following content:
+Create the `locale.conf` file, setting the *LANG* variable accordingly:
 
 ```sh
 nano /etc/locale.conf
 ```
-
 ```txt
 LANG=en_US.UTF-8
 ```
 
 ## Hostname
 
-Create the `hostname` with your host name, e.g. `desktop`:
+Create the `hostname` file, adding its name, e.g. `desktop`:
 
 ```sh
 nano /etc/hostname
 ```
-
 ```txt
 desktop
 ```
@@ -86,9 +96,9 @@ Set the root password:
 passwd
 ```
 
-## Adding a User
+## Creating New User
 
-To add a user with sudo privileges:
+To create new user, adding it to the `wheel` group:
 
 ```sh
 useradd -m -G wheel <username>
@@ -100,10 +110,14 @@ To add a password to the user:
 passwd <username>
 ```
 
-Edit the sudoers uncommenting the `# %wheel ALL=(ALL:ALL) ALL` line:
+Edit the sudoers configuration file, uncommenting the `# %wheel ALL=(ALL:ALL) ALL` line:
 
 ```sh
 EDITOR=nano visudo
+```
+```txt
+## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
 ```
 
 ## Enable Network
@@ -127,7 +141,6 @@ Edit the `/efi/loader/loader.conf` file:
 ```sh
 nano /efi/loader/loader.conf
 ```
-
 ```txt
 default  arch.conf
 timeout  4
@@ -139,7 +152,6 @@ Create the `/efi/loader/entries/arch.conf` file:
 ```sh
 nano /efi/loader/entries/arch.conf
 ```
-
 ```txt
 title   Arch Linux
 linux   /vmlinuz-linux

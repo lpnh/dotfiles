@@ -179,32 +179,45 @@
                         <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Update the <code>mirrorlist</code>:</li>
+Update the <strong>mirrorlist</strong>:</li>
 </ul>
 <pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install Essential packages:</li>
+Install the essential packages to the new root:</li>
 </ul>
 <pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
 </code></pre>
 <h2 id="configuring-the-system"><a class="header" href="#configuring-the-system">Configuring the System</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Generate an fstab file: <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
+Generate an <strong>fstab</strong> file: <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
 <li><input disabled="" type="checkbox"/>
 Change root into the new system: <code>arch-chroot /mnt</code></li>
 <li><input disabled="" type="checkbox"/>
-Set the time zone: <code> ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code></li>
+Set the time zone: <code>ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code></li>
 <li><input disabled="" type="checkbox"/>
-Generate the <code> generate /etc/adjtime</code>: <code>hwclock --systohc</code></li>
+Verify the new local time: <code>date</code></li>
 <li><input disabled="" type="checkbox"/>
-Uncomment the <code>#en_US.UTF-8 UTF-8</code> line: <code>nano /etc/locale.gen</code></li>
+Generate the <em>/etc/adjtime</em>: <code>hwclock --systohc</code></li>
+<li><input disabled="" type="checkbox"/>
+Set up time synchronization: <code>timedatectl set-ntp true</code></li>
+<li><input disabled="" type="checkbox"/>
+Check the service status: <code>timedatectl status</code></li>
+<li><input disabled="" type="checkbox"/>
+Edit the <strong>locale.gen</strong> file:</li>
+</ul>
+<pre><code class="language-sh">nano /etc/locale.gen
+</code></pre>
+<pre><code class="language-txt"># Uncomment this line
+en_US.UTF-8 UTF-8
+</code></pre>
+<ul>
 <li><input disabled="" type="checkbox"/>
 Generate the locales: <code>locale-gen</code></li>
 <li><input disabled="" type="checkbox"/>
-Create the <code>locale.conf</code> file:</li>
+Create the <strong>locale.conf</strong> file, setting the <strong>LANG</strong> variable accordingly:</li>
 </ul>
 <pre><code class="language-sh">nano /etc/locale.conf
 </code></pre>
@@ -212,7 +225,7 @@ Create the <code>locale.conf</code> file:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <code>hostname</code>:</li>
+Create the <strong>hostname</strong> file:</li>
 </ul>
 <pre><code class="language-sh">nano /etc/hostname
 </code></pre>
@@ -222,10 +235,10 @@ Create the <code>hostname</code>:</li>
 <li><input disabled="" type="checkbox"/>
 Set the root password: <code>passwd</code></li>
 </ul>
-<h2 id="adding-user-with-sudo-privileges"><a class="header" href="#adding-user-with-sudo-privileges">Adding User With <code>sudo</code> Privileges</a></h2>
+<h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create new user, adding it to <code>wheel</code> group:</li>
+Create new user, adding it to the <strong>wheel</strong> group:</li>
 </ul>
 <pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
 </code></pre>
@@ -233,7 +246,7 @@ Create new user, adding it to <code>wheel</code> group:</li>
 <li><input disabled="" type="checkbox"/>
 Add a password to the user: <code>passwd &lt;username&gt;</code></li>
 <li><input disabled="" type="checkbox"/>
-Uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line on sudoers config:</li>
+Edit the sudoers configuration file:</li>
 </ul>
 <pre><code class="language-sh">EDITOR=nano visudo
 </code></pre>
@@ -243,9 +256,9 @@ Uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line on sudoers config:
 <h2 id="set-the-boot-loader"><a class="header" href="#set-the-boot-loader">Set the Boot Loader</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install <code>systemd-boot</code>: <code>bootctl install</code></li>
+Install <strong>systemd-boot</strong>: <code>bootctl install</code></li>
 <li><input disabled="" type="checkbox"/>
-Edit the <code>loader.conf</code> file:</li>
+Edit the <strong>loader.conf</strong> file:</li>
 </ul>
 <pre><code class="language-sh">nano /efi/loader/loader.conf
 </code></pre>
@@ -255,7 +268,7 @@ console-mode auto
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <code>arch.conf</code> entry:</li>
+Create the <strong>arch.conf</strong> entry:</li>
 </ul>
 <pre><code class="language-sh">nano /efi/loader/entries/arch.conf
 </code></pre>
@@ -272,7 +285,7 @@ Append the UUID number:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>:</li>
+Copy everything that is inside <strong>/boot</strong> to <strong>/efi</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">cd /efi
 </code></pre>
@@ -280,7 +293,7 @@ Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>:
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Enable the <code>NetworkManager</code> service: <code>systemctl enable NetworkManager</code></li>
+Enable the <strong>NetworkManager</strong> service: <code>systemctl enable NetworkManager</code></li>
 </ul>
 <h2 id="finishing"><a class="header" href="#finishing">Finishing</a></h2>
 <ul>
@@ -288,13 +301,14 @@ Enable the <code>NetworkManager</code> service: <code>systemctl enable NetworkMa
 Exit the chroot environment: <code>exit</code></li>
 <li><input disabled="" type="checkbox"/>
 Unmount all the partitions: <code>umount -R /mnt</code></li>
-<li>Reboot: <code>reboot</code> <em># good luck!</em></li>
+<li>Reboot: <code>reboot</code>
+<em># good luck!</em></li>
 </ul>
 <h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
 <ul>
-<li>Download <code>fastfetch</code>: <code>sudo pacman -S fastfetch</code></li>
+<li>Download <strong>fastfetch</strong>: <code>sudo pacman -S fastfetch</code></li>
 <li>Run it: <code>fastfetch</code></li>
-<li>Enjoy your new achievement <em># I use arch, btw</em></li>
+<li>Enjoy your new achievement</li>
 </ul>
 
                     </main>

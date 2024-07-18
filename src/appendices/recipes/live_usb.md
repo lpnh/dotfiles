@@ -1,6 +1,6 @@
 # Live USB
 
-- [ ] [Download the ISO file](https://archlinux.org/download/)
+- [ ] Download the ISO file from the [Arch Linux website](https://archlinux.org/download/)
 - [ ] Find the USB drive name: `ls -l /dev/disk/by-id/usb-*`
 - [ ] Make sure it is **not** mounted: `lsblk`
 - [ ] Write the ISO to the USB drive:

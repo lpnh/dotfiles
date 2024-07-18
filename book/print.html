@@ -352,6 +352,12 @@ Using <code>dosfslabel</code>:</p>
 <p>Generate the <code>/etc/adjtime</code> file:</p>
 <pre><code class="language-sh">hwclock --systohc
 </code></pre>
+<p>Set up time synchronization with <code>systemd-timesyncd</code>:</p>
+<pre><code class="language-sh">timedatectl set-ntp true
+</code></pre>
+<p>Check the service status:</p>
+<pre><code class="language-sh">timedatectl status
+</code></pre>
 <h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
 <p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
 <pre><code class="language-sh">nano /etc/locale.gen
@@ -359,13 +365,13 @@ Using <code>dosfslabel</code>:</p>
 <p>Generate the locales:</p>
 <pre><code class="language-sh">locale-gen
 </code></pre>
-<p>Create the <code>locale.conf</code> file with the following content:</p>
+<p>Create the <code>locale.conf</code> file, setting the <em>LANG</em> variable accordingly:</p>
 <pre><code class="language-sh">nano /etc/locale.conf
 </code></pre>
 <pre><code class="language-txt">LANG=en_US.UTF-8
 </code></pre>
 <h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>Create the <code>hostname</code> with your host name, e.g. <code>desktop</code>:</p>
+<p>Create the <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
 <pre><code class="language-sh">nano /etc/hostname
 </code></pre>
 <pre><code class="language-txt">desktop
@@ -374,15 +380,18 @@ Using <code>dosfslabel</code>:</p>
 <p>Set the root password:</p>
 <pre><code class="language-sh">passwd
 </code></pre>
-<h2 id="adding-a-user"><a class="header" href="#adding-a-user">Adding a User</a></h2>
-<p>To add a user with sudo privileges:</p>
+<h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
+<p>To create new user, adding it to the <code>wheel</code> group:</p>
 <pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
 </code></pre>
 <p>To add a password to the user:</p>
 <pre><code class="language-sh">passwd &lt;username&gt;
 </code></pre>
-<p>Edit the sudoers uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
+<p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
 <pre><code class="language-sh">EDITOR=nano visudo
+</code></pre>
+<pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
 </code></pre>
 <h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
 <p>To enable <code>NetworkManager</code> service:</p>
@@ -663,7 +672,7 @@ sysctl fs.inotify.max_queued_events=100000
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb-1"><a class="header" href="#live-usb-1">Live USB</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-<a href="https://archlinux.org/download/">Download the ISO file</a></li>
+Download the ISO file from the <a href="https://archlinux.org/download/">Arch Linux website</a></li>
 <li><input disabled="" type="checkbox"/>
 Find the USB drive name: <code>ls -l /dev/disk/by-id/usb-*</code></li>
 <li><input disabled="" type="checkbox"/>
@@ -714,11 +723,11 @@ Verify the partitions: <code>fdisk -l /dev/partitioned_disk</code></li>
 <li><input disabled="" type="checkbox"/>
 Create an <em>Ext4</em> fs for the <strong>root</strong>: <code>mkfs.ext4 /dev/root_partition</code></li>
 <li><input disabled="" type="checkbox"/>
-Initialize the <em>swap</em>: <code>mkswap /dev/swap_partition</code></li>
+Initialize the <strong>swap</strong>: <code>mkswap /dev/swap_partition</code></li>
 <li><input disabled="" type="checkbox"/>
-Format the <code>efi</code> to FAT32: <code>mkfs.fat -F 32 /dev/efi_system_partition</code></li>
+Format the <strong>efi</strong> to <em>FAT32</em>: <code>mkfs.fat -F 32 /dev/efi_system_partition</code></li>
 <li><input disabled="" type="checkbox"/>
-Add a label to the efi partition:</li>
+Add a label to the <strong>efi</strong> partition:</li>
 </ul>
 <pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
@@ -729,41 +738,54 @@ Verify the result: <code>lsblk /dev/partioned_disk -o NAME,FSTYPE,LABEL</code></
 <h2 id="mounting-the-file-system"><a class="header" href="#mounting-the-file-system">Mounting the File System</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-The root partition to <code>/mnt</code>: <code>mount /dev/root_partition /mnt</code></li>
+The <strong>root</strong> partition to <em>/mnt</em>: <code>mount /dev/root_partition /mnt</code></li>
 <li><input disabled="" type="checkbox"/>
-The EFI partition to <code>/mnt/efi</code>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
+The <strong>efi</strong> partition to <em>/mnt/efi</em>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
 <li><input disabled="" type="checkbox"/>
-Enable the <code>swap</code>: <code>swapon /dev/swap_partition</code></li>
+Enable the <strong>swap</strong>: <code>swapon /dev/swap_partition</code></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation-1"><a class="header" href="#installation-1">Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Update the <code>mirrorlist</code>:</li>
+Update the <strong>mirrorlist</strong>:</li>
 </ul>
 <pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install Essential packages:</li>
+Install the essential packages to the new root:</li>
 </ul>
 <pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
 </code></pre>
 <h2 id="configuring-the-system"><a class="header" href="#configuring-the-system">Configuring the System</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Generate an fstab file: <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
+Generate an <strong>fstab</strong> file: <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
 <li><input disabled="" type="checkbox"/>
 Change root into the new system: <code>arch-chroot /mnt</code></li>
 <li><input disabled="" type="checkbox"/>
-Set the time zone: <code> ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code></li>
+Set the time zone: <code>ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code></li>
 <li><input disabled="" type="checkbox"/>
-Generate the <code> generate /etc/adjtime</code>: <code>hwclock --systohc</code></li>
+Verify the new local time: <code>date</code></li>
 <li><input disabled="" type="checkbox"/>
-Uncomment the <code>#en_US.UTF-8 UTF-8</code> line: <code>nano /etc/locale.gen</code></li>
+Generate the <em>/etc/adjtime</em>: <code>hwclock --systohc</code></li>
+<li><input disabled="" type="checkbox"/>
+Set up time synchronization: <code>timedatectl set-ntp true</code></li>
+<li><input disabled="" type="checkbox"/>
+Check the service status: <code>timedatectl status</code></li>
+<li><input disabled="" type="checkbox"/>
+Edit the <strong>locale.gen</strong> file:</li>
+</ul>
+<pre><code class="language-sh">nano /etc/locale.gen
+</code></pre>
+<pre><code class="language-txt"># Uncomment this line
+en_US.UTF-8 UTF-8
+</code></pre>
+<ul>
 <li><input disabled="" type="checkbox"/>
 Generate the locales: <code>locale-gen</code></li>
 <li><input disabled="" type="checkbox"/>
-Create the <code>locale.conf</code> file:</li>
+Create the <strong>locale.conf</strong> file, setting the <strong>LANG</strong> variable accordingly:</li>
 </ul>
 <pre><code class="language-sh">nano /etc/locale.conf
 </code></pre>
@@ -771,7 +793,7 @@ Create the <code>locale.conf</code> file:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <code>hostname</code>:</li>
+Create the <strong>hostname</strong> file:</li>
 </ul>
 <pre><code class="language-sh">nano /etc/hostname
 </code></pre>
@@ -781,10 +803,10 @@ Create the <code>hostname</code>:</li>
 <li><input disabled="" type="checkbox"/>
 Set the root password: <code>passwd</code></li>
 </ul>
-<h2 id="adding-user-with-sudo-privileges"><a class="header" href="#adding-user-with-sudo-privileges">Adding User With <code>sudo</code> Privileges</a></h2>
+<h2 id="creating-new-user-1"><a class="header" href="#creating-new-user-1">Creating New User</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create new user, adding it to <code>wheel</code> group:</li>
+Create new user, adding it to the <strong>wheel</strong> group:</li>
 </ul>
 <pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
 </code></pre>
@@ -792,7 +814,7 @@ Create new user, adding it to <code>wheel</code> group:</li>
 <li><input disabled="" type="checkbox"/>
 Add a password to the user: <code>passwd &lt;username&gt;</code></li>
 <li><input disabled="" type="checkbox"/>
-Uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line on sudoers config:</li>
+Edit the sudoers configuration file:</li>
 </ul>
 <pre><code class="language-sh">EDITOR=nano visudo
 </code></pre>
@@ -802,9 +824,9 @@ Uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line on sudoers config:
 <h2 id="set-the-boot-loader"><a class="header" href="#set-the-boot-loader">Set the Boot Loader</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install <code>systemd-boot</code>: <code>bootctl install</code></li>
+Install <strong>systemd-boot</strong>: <code>bootctl install</code></li>
 <li><input disabled="" type="checkbox"/>
-Edit the <code>loader.conf</code> file:</li>
+Edit the <strong>loader.conf</strong> file:</li>
 </ul>
 <pre><code class="language-sh">nano /efi/loader/loader.conf
 </code></pre>
@@ -814,7 +836,7 @@ console-mode auto
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <code>arch.conf</code> entry:</li>
+Create the <strong>arch.conf</strong> entry:</li>
 </ul>
 <pre><code class="language-sh">nano /efi/loader/entries/arch.conf
 </code></pre>
@@ -831,7 +853,7 @@ Append the UUID number:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>:</li>
+Copy everything that is inside <strong>/boot</strong> to <strong>/efi</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">cd /efi
 </code></pre>
@@ -839,7 +861,7 @@ Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>:
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Enable the <code>NetworkManager</code> service: <code>systemctl enable NetworkManager</code></li>
+Enable the <strong>NetworkManager</strong> service: <code>systemctl enable NetworkManager</code></li>
 </ul>
 <h2 id="finishing"><a class="header" href="#finishing">Finishing</a></h2>
 <ul>
@@ -847,13 +869,14 @@ Enable the <code>NetworkManager</code> service: <code>systemctl enable NetworkMa
 Exit the chroot environment: <code>exit</code></li>
 <li><input disabled="" type="checkbox"/>
 Unmount all the partitions: <code>umount -R /mnt</code></li>
-<li>Reboot: <code>reboot</code> <em># good luck!</em></li>
+<li>Reboot: <code>reboot</code>
+<em># good luck!</em></li>
 </ul>
 <h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
 <ul>
-<li>Download <code>fastfetch</code>: <code>sudo pacman -S fastfetch</code></li>
+<li>Download <strong>fastfetch</strong>: <code>sudo pacman -S fastfetch</code></li>
 <li>Run it: <code>fastfetch</code></li>
-<li>Enjoy your new achievement <em># I use arch, btw</em></li>
+<li>Enjoy your new achievement</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation-1"><a class="header" href="#pos-installation-1">Pos-Installation</a></h1>
 <h2 id="double-checking"><a class="header" href="#double-checking">Double Checking</a></h2>
