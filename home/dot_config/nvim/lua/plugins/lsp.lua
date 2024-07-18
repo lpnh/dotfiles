@@ -242,7 +242,6 @@ return {
           print 'markdownlint: MD031 and MD032 enabled'
         end
         mdl_rules_enabled = not mdl_rules_enabled
-        -- Optionally trigger a linting after toggling
         require('lint').try_lint()
       end
 
