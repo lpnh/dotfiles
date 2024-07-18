@@ -17,6 +17,8 @@ packages:
     - 'amd-ucode' # for AMD CPU
     - 'intel-ucode' # for intel CPU
     - 'booster'
+    # yet another boot manager:
+    - 'refind'
     # aur_helper:
     - 'yay'
     # graphics:
@@ -95,7 +97,6 @@ packages:
     - 'ppp'
     - 'qt5-wayland'
     - 'qt6-wayland'
-    - 'refind'
     - 'reflector'
     - 'reiserfsprogs'
     - 'rsync'
