@@ -228,6 +228,27 @@ return {
           require('lint').try_lint()
         end,
       })
+
+      -- Toggle MD031 and MD032 rules
+      local mdl_rules_enabled = true
+      local mdl = require('lint').linters.markdownlint
+
+      local function toggle_mdl_rules()
+        if mdl_rules_enabled then
+          mdl.args = { '--disable', 'MD031', 'MD032' }
+          print 'markdownlint: MD031 and MD032 disabled'
+        else
+          mdl.args = {}
+          print 'markdownlint: MD031 and MD032 enabled'
+        end
+        mdl_rules_enabled = not mdl_rules_enabled
+        -- Optionally trigger a linting after toggling
+        require('lint').try_lint()
+      end
+
+      vim.api.nvim_create_user_command('ToggleMdlRules', toggle_mdl_rules, {})
+
+      vim.keymap.set('n', '<leader>mr', toggle_mdl_rules, { desc = 'Toggle [M]arkdownlint [R]ules' })
     end,
   },
 
