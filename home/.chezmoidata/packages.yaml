@@ -28,6 +28,7 @@ packages:
     - 'chezmoi'
   crates:
     - 'cargo-chef'
+    - 'cargo-generate'
     - 'trunk'
   desktop:
     - 'openrgb'
