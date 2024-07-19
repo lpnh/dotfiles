@@ -40,7 +40,7 @@ ssh -T git@github.com
 
 ## Neovim
 
-- [ ] Install and set Neovim nightly using **bob**:
+- [ ] Install and set **Neovim nightly** using **bob**:
 ```sh
 bob install nightly
 ```
@@ -51,15 +51,23 @@ sudo bob use nightly
 ```sh
 sudo nano /etc/sysctl.conf
 ```
+```txt
+fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
+```
+
+## Pandoc
+
+- [ ] Download and install **Pandoc** [latest
+release](https://github.com/jgm/pandoc/releases)
 ```sh
-sysctl fs.inotify.max_queued_events=100000
-sysctl fs.inotify.max_user_watches=524288
+sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 ```
 
 ## Greeter
 
 - [ ] Enable the **greetd** service: `systemctl enable greetd`
-- [ ] Edit `greetd` configuration file:
+- [ ] Edit the **greetd** configuration file:
 ```sh
 sudo nano /etc/greetd/config.toml
 ```

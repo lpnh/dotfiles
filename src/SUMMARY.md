@@ -13,7 +13,8 @@
 # Desktop Environment
 
 - [Home Sweet Home](de/home_sweet_home.md)
-- [Quality of Life]()
+- [Quality of Life](de/quality_of_life.md)
+- [Miscellaneous](de/miscellaneous.md)
 
 # Appendices
 
@@ -24,3 +25,6 @@
   - [Pos-Installation](appendices/recipes/pos_installation.md)
   - [Graphics and Modules](appendices/recipes/graphics_and_modules.md)
   - [Home Sweet Home](appendices/recipes/home_sweet_home.md)
+  - [Quality of Life](appendices/recipes/quality_of_life.md)
+  - [Miscellaneous](appendices/recipes/miscellaneous.md)
+  - [System Maintenance](appendices/recipes/system_maintenance.md)
