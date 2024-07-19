@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../../os/live_usb.html"><strong aria-hidden="true">1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../../os/partitions.html"><strong aria-hidden="true">2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../../os/installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../../os/pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../../os/graphics_and_modules.html"><strong aria-hidden="true">5.</strong> Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../../de/home_sweet_home.html"><strong aria-hidden="true">6.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Quality of Life</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../../appendices/recipes/index.html"><strong aria-hidden="true">8.</strong> Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../appendices/recipes/live_usb.html"><strong aria-hidden="true">8.1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/partitions.html"><strong aria-hidden="true">8.2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/installation.html"><strong aria-hidden="true">8.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/pos_installation.html"><strong aria-hidden="true">8.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/graphics_and_modules.html"><strong aria-hidden="true">8.5.</strong> Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/home_sweet_home.html" class="active"><strong aria-hidden="true">8.6.</strong> Home Sweet Home</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Overview</a></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../../os/live_usb.html"><strong aria-hidden="true">1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../../os/partitions.html"><strong aria-hidden="true">2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../../os/installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../../os/pos_installation.html"><strong aria-hidden="true">4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../../os/graphics_and_modules.html"><strong aria-hidden="true">5.</strong> Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../../de/home_sweet_home.html"><strong aria-hidden="true">6.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../../de/quality_of_life.html"><strong aria-hidden="true">7.</strong> Quality of Life</a></li><li class="chapter-item expanded "><a href="../../de/miscellaneous.html"><strong aria-hidden="true">8.</strong> Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../../appendices/recipes/index.html"><strong aria-hidden="true">9.</strong> Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../appendices/recipes/live_usb.html"><strong aria-hidden="true">9.1.</strong> Live USB</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/partitions.html"><strong aria-hidden="true">9.2.</strong> Partitions</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/installation.html"><strong aria-hidden="true">9.3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/pos_installation.html"><strong aria-hidden="true">9.4.</strong> Pos-Installation</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/graphics_and_modules.html"><strong aria-hidden="true">9.5.</strong> Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/home_sweet_home.html" class="active"><strong aria-hidden="true">9.6.</strong> Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/quality_of_life.html"><strong aria-hidden="true">9.7.</strong> Quality of Life</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/miscellaneous.html"><strong aria-hidden="true">9.8.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="../../appendices/recipes/system_maintenance.html"><strong aria-hidden="true">9.9.</strong> System Maintenance</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -231,7 +231,7 @@ Test the SSH connection:</li>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install and set Neovim nightly using <strong>bob</strong>:</li>
+Install and set <strong>Neovim nightly</strong> using <strong>bob</strong>:</li>
 </ul>
 <pre><code class="language-sh">bob install nightly
 </code></pre>
@@ -243,15 +243,23 @@ Increase <strong>inotify</strong> maximum numbers:</li>
 </ul>
 <pre><code class="language-sh">sudo nano /etc/sysctl.conf
 </code></pre>
-<pre><code class="language-sh">sysctl fs.inotify.max_queued_events=100000
-sysctl fs.inotify.max_user_watches=524288
+<pre><code class="language-txt">fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
+</code></pre>
+<h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
+release</a></li>
+</ul>
+<pre><code class="language-sh">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 </code></pre>
 <h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Enable the <strong>greetd</strong> service: <code>systemctl enable greetd</code></li>
 <li><input disabled="" type="checkbox"/>
-Edit <code>greetd</code> configuration file:</li>
+Edit the <strong>greetd</strong> configuration file:</li>
 </ul>
 <pre><code class="language-sh">sudo nano /etc/greetd/config.toml
 </code></pre>
@@ -273,6 +281,9 @@ user = "greeter"
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../../appendices/recipes/quality_of_life.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -284,6 +295,9 @@ user = "greeter"
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../../appendices/recipes/quality_of_life.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
