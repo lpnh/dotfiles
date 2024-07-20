@@ -187,7 +187,7 @@ Update the <strong>mirrorlist</strong>:</li>
 <li><input disabled="" type="checkbox"/>
 Install the essential packages to the new root:</li>
 </ul>
-<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 </code></pre>
 <h2 id="configuring-the-system"><a class="header" href="#configuring-the-system">Configuring the System</a></h2>
 <ul>
@@ -202,9 +202,11 @@ Verify the new local time: <code>date</code></li>
 <li><input disabled="" type="checkbox"/>
 Generate the <em>/etc/adjtime</em>: <code>hwclock --systohc</code></li>
 <li><input disabled="" type="checkbox"/>
-Set up time synchronization: <code>timedatectl set-ntp true</code></li>
-<li><input disabled="" type="checkbox"/>
-Check the service status: <code>timedatectl status</code></li>
+Set up time synchronization:</li>
+</ul>
+<pre><code class="language-sh">systemctl enable systemd-timesyncd.service
+</code></pre>
+<ul>
 <li><input disabled="" type="checkbox"/>
 Edit the <strong>locale.gen</strong> file:</li>
 </ul>
@@ -301,15 +303,18 @@ Enable the <strong>NetworkManager</strong> service: <code>systemctl enable Netwo
 Exit the chroot environment: <code>exit</code></li>
 <li><input disabled="" type="checkbox"/>
 Unmount all the partitions: <code>umount -R /mnt</code></li>
-<li>Reboot: <code>reboot</code></li>
+<li><input disabled="" type="checkbox"/>
+Reboot: <code>reboot</code></li>
 </ul>
 <p><em># good luck!</em></p>
 <h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
 <ul>
-<li>Download <strong>fastfetch</strong>: <code>sudo pacman -S fastfetch</code></li>
-<li>Run it: <code>fastfetch</code></li>
-<li>Enjoy your new achievement</li>
+<li><input disabled="" type="checkbox"/>
+Download <strong>fastfetch</strong>: <code>sudo pacman -S fastfetch</code></li>
+<li><input disabled="" type="checkbox"/>
+Run it: <code>fastfetch</code></li>
 </ul>
+<p><em># enjoy your new achievement!</em></p>
 
                     </main>
 
