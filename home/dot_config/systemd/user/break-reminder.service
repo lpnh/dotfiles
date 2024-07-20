@@ -1,6 +1,0 @@
-[Unit]
-Description=Break Reminder Service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/notify-send --icon=emote-love --urgency=critical "wake up" "it's happening"
