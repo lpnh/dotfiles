@@ -137,6 +137,8 @@ packages:
     - 'just'
     - 'libqalculate'
     - 'lld'
+    - 'lua51'
+    - 'luarocks'
     - 'mako'
     - 'md-tui'
     - 'mdbook'
