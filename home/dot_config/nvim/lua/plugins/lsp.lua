@@ -121,7 +121,7 @@ return {
           --  To jump back, press <C-t>
           map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('gr', builtin.lsp_references, '[G]oto [R]eferences')
+          -- map('gr', builtin.lsp_references, '[G]oto [R]eferences')
           map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
           map('gt', builtin.lsp_type_definitions, '[G]oto [T]ype Definition')
 
@@ -129,13 +129,6 @@ return {
           --  Symbols are things like variables, functions, types, etc
           map('<leader>ssd', builtin.lsp_document_symbols, '[S]earch [S]ymbols in [D]ocument')
           map('<leader>ssw', builtin.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols in [W]orkspace')
-
-          -- Rename the variable under the cursor
-          map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
-
-          -- Execute a code action, usually the cursor needs to be on top of an error
-          -- or a suggestion from the LSP for this to activate
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
           -- Opens a popup that displays documentation about the word under the cursor
           --  See `:help K` for why this keymap

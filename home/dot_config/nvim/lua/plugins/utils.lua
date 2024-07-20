@@ -21,23 +21,27 @@ return {
     event = 'VimEnter',
     config = function()
       require('which-key').setup {
-        window = {
+        win = {
           border = 'single',
         },
       }
 
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]iagnostic', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>ss'] = { name = '[S]earch [S]ymbols', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]able', _ = 'which_key_ignore' },
-        ['<leader>v'] = { name = 'LÖVE', _ = 'which_key_ignore' },
-      }
-
       vim.keymap.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which [K]ey' })
     end,
+
+    -- Document existing key chains
+    keys = {
+      { '<leader>d', group = '[D]iagnostic' },
+      { '<leader>d_', hidden = true },
+      { '<leader>s', group = '[S]earch' },
+      { '<leader>s_', hidden = true },
+      { '<leader>ss', group = '[S]earch [S]ymbols' },
+      { '<leader>ss_', hidden = true },
+      { '<leader>t', group = '[T]able' },
+      { '<leader>t_', hidden = true },
+      { '<leader>v', group = 'LÖVE' },
+      { '<leader>v_', hidden = true },
+    },
   },
 
   -- Mini modules
@@ -65,7 +69,6 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>o', '<cmd>Oil<CR>', { desc = '[O]il - File explorer' })
       vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Oil: Open parent directory' })
     end,
   },
