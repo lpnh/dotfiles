@@ -6,6 +6,9 @@
       "2": "blue"
     }
   },
+  "display": {
+    "color": "blue"
+  },
   "modules": [
     "title",
     "separator",
