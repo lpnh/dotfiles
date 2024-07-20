@@ -181,6 +181,8 @@
 <p><em># sorry I'm neurotic</em></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
+Check the <strong>timesyncd</strong> service: <code>timedatectl status</code></li>
+<li><input disabled="" type="checkbox"/>
 Refresh the system, including the package database: <code>sudo pacman -Syyu</code></li>
 <li><input disabled="" type="checkbox"/>
 Make sure some basic system packages are installed:</li>
@@ -219,15 +221,19 @@ Install <strong>booster</strong>: <code>sudo pacman -S booster</code></li>
 <li><input disabled="" type="checkbox"/>
 Copy both new images to the  <strong>/efi</strong> directory:</li>
 </ul>
-<pre><code class="language-sh">cp /boot/cpu_manufacturer-ucode.img /efi
+<pre><code class="language-sh">sudo cp /boot/cpu_manufacturer-ucode.img /efi
 </code></pre>
-<pre><code class="language-sh">cp /boot/booster-linux.img /efi
+<pre><code class="language-sh">sudo cp /boot/booster-linux.img /efi
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create a new loader entry:</li>
+Create a new loader entry based on the previous <strong>arch.conf</strong>:</li>
 </ul>
-<pre><code class="language-sh">sudo nano /efi/loader/entries/booster.conf
+<pre><code class="language-sh">sudo cd /efi/loader/entries
+</code></pre>
+<pre><code class="language-sh">sudo cp arch.conf booster.conf
+</code></pre>
+<pre><code class="language-sh">sudo nano booster.conf
 </code></pre>
 <pre><code class="language-txt">title   Arch Linux with Booster
 linux   /vmlinuz-linux

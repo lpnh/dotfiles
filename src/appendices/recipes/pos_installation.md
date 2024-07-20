@@ -3,6 +3,7 @@
 ## Double Checking
 
 *# sorry I'm neurotic*
+- [ ] Check the **timesyncd** service: `timedatectl status`
 - [ ] Refresh the system, including the package database: `sudo pacman -Syyu`
 - [ ] Make sure some basic system packages are installed:
 ```sh
@@ -36,14 +37,20 @@ sudo pacman -S intel-ucode
 - [ ] Install **booster**: `sudo pacman -S booster`
 - [ ] Copy both new images to the  **/efi** directory:
 ```sh
-cp /boot/cpu_manufacturer-ucode.img /efi
+sudo cp /boot/cpu_manufacturer-ucode.img /efi
 ```
 ```sh
-cp /boot/booster-linux.img /efi
+sudo cp /boot/booster-linux.img /efi
 ```
-- [ ] Create a new loader entry:
+- [ ] Create a new loader entry based on the previous **arch.conf**:
 ```sh
-sudo nano /efi/loader/entries/booster.conf
+sudo cd /efi/loader/entries
+```
+```sh
+sudo cp arch.conf booster.conf
+```
+```sh
+sudo nano booster.conf
 ```
 ```txt
 title   Arch Linux with Booster

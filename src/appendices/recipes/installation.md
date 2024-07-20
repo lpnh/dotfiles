@@ -6,7 +6,7 @@ reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.
 ```
 - [ ] Install the essential packages to the new root:
 ```sh
-pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 ```
 
 ## Configuring the System
@@ -16,8 +16,10 @@ pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
 - [ ] Set the time zone: `ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`
 - [ ] Verify the new local time: `date`
 - [ ] Generate the */etc/adjtime*: `hwclock --systohc`
-- [ ] Set up time synchronization: `timedatectl set-ntp true`
-- [ ] Check the service status: `timedatectl status`
+- [ ] Set up time synchronization:
+```sh
+systemctl enable systemd-timesyncd.service
+```
 - [ ] Edit the **locale.gen** file:
 ```sh
 nano /etc/locale.gen
@@ -99,12 +101,13 @@ cp /boot/* .
 
 - [ ] Exit the chroot environment: `exit`
 - [ ] Unmount all the partitions: `umount -R /mnt`
-- Reboot: `reboot`
+- [ ] Reboot: `reboot`
 
 *# good luck!*
 
 ## Verifying the Installation
 
-- Download **fastfetch**: `sudo pacman -S fastfetch`
-- Run it: `fastfetch`
-- Enjoy your new achievement
+- [ ] Download **fastfetch**: `sudo pacman -S fastfetch`
+- [ ] Run it: `fastfetch`
+
+*# enjoy your new achievement!*
