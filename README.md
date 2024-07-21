@@ -1,7 +1,5 @@
 # dotfiles
 
-Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
-
 > it's called "dotfiles" because that folder ".config" starts with a dot and is
 > therefor hidden
 >
@@ -10,4 +8,6 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 >
 > -- <cite>from a Reddit user on r/unixporn</cite>
 
-For more information, check our [cookbook](https://lpnh.io/dotfiles/)
+a simple and aesthetic Arch Linux Wayland environment
+
+for more information, check the [cookbook](https://lpnh.io/dotfiles/)
