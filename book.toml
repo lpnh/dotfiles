@@ -7,5 +7,7 @@ title = "dotfiles cookbook"
 
 [output.html]
 default-theme = "ayu"
-git-repository-url = "https://github.com/lpnh/dotfiles"
+preferred-dark-theme = "ayu"
 additional-js = ["js/enable-checkboxes.js"]
+no-section-label = true
+git-repository-url = "https://github.com/lpnh/dotfiles"

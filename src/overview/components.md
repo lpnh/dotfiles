@@ -1,14 +1,16 @@
 # Components
 
-## System
+The main building blocks, a.k.a packages[^note]
 
-* Bot Manager: [rEFInd](https://www.rodsbooks.com/refind/)  
+### System
+
+* Boot Manager: [rEFInd](https://www.rodsbooks.com/refind/)  
 * Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)  
 * Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
 * Initramfs Generator: [Booster](https://github.com/anatol/booster)  
 * OS: [Arch Linux](https://archlinux.org/)
 
-## Desktop
+### Desktop
 
 * App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
 * Compositor: [Niri](https://github.com/YaLTeR/niri)  
@@ -16,7 +18,7 @@
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
 * Status Bar: [Waybar](https://github.com/Alexays/Waybar)
 
-## Theme
+### Theme
 
 * Cursor: [Breeze](https://kde.org/plasma-desktop/)  
 * Fonts and Glyphs: [FiraMono Nerd
@@ -26,25 +28,25 @@ Font](https://www.nerdfonts.com/)
 [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
 * Palette: [Catppuccin Mocha](https://catppuccin.com/)
 
-## Terminal
+### Terminal
 
 * Prompt: [Starship](https://starship.rs/)  
 * Shell: [Nushell](https://www.nushell.sh/)  
 * Terminal Emulator: [Alacritty](https://alacritty.org/)
 
-## Tools
+### Tools
 
 * Browser: [Firefox](https://www.mozilla.org/en-US/firefox/)  
 * File Manager: [Yazi](https://yazi-rs.github.io/)  
 * Text Editor: [Neovim](https://neovim.io/)
 
-## Clients
+### Clients
 
 * BitTorrent: [Transmission](https://transmissionbt.com/)  
 * Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
 * Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
-## Utilities and Quality of Life
+### Utilities and Quality of Life
 
 * [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  
@@ -71,7 +73,5 @@ helper written in go
 * [Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
 terminal
 
----
-
-*For the exhaustive package list, you can check the [packages.toml
-file](https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml)*
+[^note]: *For the exhaustive package list, you can check the
+    [packages.toml](https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml)*
