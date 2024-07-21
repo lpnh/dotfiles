@@ -1,6 +1,6 @@
 # Overview
 
-Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
+A simple and aesthetic Arch Linux Wayland environment
 
 > it's called "dotfiles" because that folder ".config" starts with a dot and is
 > therefor hidden
@@ -12,37 +12,47 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 
 ## Components
 
-**Core**:
+**System**:
 
+* Bot Manager: [rEFInd](https://www.rodsbooks.com/refind/)  
+* Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)  
 * Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
-* Compositor: [Niri](https://github.com/YaLTeR/niri)  
-* Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
+* Initramfs Generator: [Booster](https://github.com/anatol/booster)  
+* OS: [Arch Linux](https://archlinux.org/)
+
+**Desktop**:
+
 * App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
-* Notification: [Mako](https://github.com/emersion/mako)  
+* Compositor: [Niri](https://github.com/YaLTeR/niri)  
+* Notification: [Mako](https://wayland.emersion.fr/mako/)  
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
-* Dotfile Manager: [Chezmoi](https://github.com/twpayne/chezmoi)
+* Status Bar: [Waybar](https://github.com/Alexays/Waybar)
 
 **Theme**:
 
-* Fonts and Glyphs: [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts)  
+* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
+* Fonts and Glyphs: [FiraMono Nerd
+Font](https://www.nerdfonts.com/)  
+* Gtk: [Materia-dark](https://github.com/nana-4/materia-theme)  
 * Icons:
 [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
-* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
-* Palette: [Catppuccin](https://github.com/catppuccin/catppuccin)
+* Palette: [Catppuccin Mocha](https://catppuccin.com/)
 
 **Terminal**:
 
-* Terminal Emulator: [Alacritty](https://github.com/alacritty/alacritty)  
-* Shell: [Nushell](https://github.com/nushell/nushell)  
-* Prompt: [Starship](https://github.com/starship/starship)
+* Prompt: [Starship](https://starship.rs/)  
+* Shell: [Nushell](https://www.nushell.sh/)  
+* Terminal Emulator: [Alacritty](https://alacritty.org/)
 
 **Tools**:
 
-* File Manager: [Yazi](https://github.com/sxyazi/yazi)  
-* Editor: [Neovim](https://github.com/neovim/neovim)
+* Browser: [Firefox](https://www.mozilla.org/en-US/firefox/)  
+* File Manager: [Yazi](https://yazi-rs.github.io/)  
+* Text Editor: [Neovim](https://neovim.io/)
 
 **Clients**:
 
+* BitTorrent: [Transmission](https://transmissionbt.com/)  
 * Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
 * Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
@@ -50,18 +60,20 @@ Simple and aesthetic Wayland environment on a minimal EndeavourOS installation
 
 * [Bat](https://github.com/sharkdp/bat): Cat clone with syntax highlighting and
 git integration  
-* [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim
-* [Bottom](https://github.com/ClementTsang/bottom): A graphical process/system
+* [Bob](https://github.com/MordechaiHadad/bob): A version manager for neovim  
+* [Bottom](https://clementtsang.github.io/bottom/): A graphical process/system
 monitor  
 * [Cava](https://github.com/karlstav/cava): Console-based Audio Visualizer for
 Alsa  
-* [Delta](https://github.com/dandavison/delta): A syntax-highlighting pager for
+* [Delta](https://dandavison.github.io/delta/): A syntax-highlighting pager for
 git, diff, grep, and blame output  
-* [Eza](https://github.com/eza-community/eza): A modern replacement for ls
+* [Eza](https://eza.rocks/): A modern replacement for ls
 (community fork of exa)  
 * [Fastfetch](https://github.com/fastfetch-cli/fastfetch): Like Neofetch, but
 much faster because written in C  
-* [Fzf](https://github.com/junegunn/fzf): Command-line fuzzy finder  
+* [Fd](https://github.com/sharkdp/fd): Simple, fast and user-friendly
+alternative to find  
+* [Fzf](https://junegunn.github.io/fzf/): Command-line fuzzy finder  
 * [Gitui](https://github.com/extrawurst/gitui): Blazing fast terminal-ui for git
 written in Rust  
 * [Ripgrep](https://github.com/BurntSushi/ripgrep): A search tool that combines
@@ -71,4 +83,4 @@ helper written in go
 * [Zoxide](https://github.com/ajeetdsouza/zoxide): A smarter cd command for your
 terminal
 
-*For the exhaustive list, check [packages.yaml](home/.chezmoidata/packages.yaml)*
+*For the exhaustive package list, check the [packages.toml file](https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml)*
