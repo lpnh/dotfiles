@@ -1,3 +1,3 @@
 # dotfiles cookbook
 
-all the necessary information i can gather to setup and maintain my dotfiles.
+the [cookbook](https://lpnh.io/dotfiles) source code
