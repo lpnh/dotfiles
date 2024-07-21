@@ -27,3 +27,8 @@ check the [cookbook](https://lpnh.io/dotfiles/)
 ├─ [starship](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/starship)  
 ├─ [waybar](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/waybar)  
 └─ [yazi](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/yazi)
+
+## chezmoi
+
+to better understand this repo structure, see [chezmoi
+website](https://www.chezmoi.io/)
