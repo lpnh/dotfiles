@@ -178,13 +178,13 @@
                     <main>
                         <h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
 <h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
-<p>Install <code>chezmoi</code>:</p>
+<p>To install <code>chezmoi</code>:</p>
 <pre><code class="language-sh">sudo pacman -S chezmoi
 </code></pre>
-<p>Initialize it:</p>
+<p>To initialize it:</p>
 <pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
 </code></pre>
-<p>Apply it:</p>
+<p>To apply it:</p>
 <pre><code class="language-sh">chezmoi apply
 </code></pre>
 <p>Note: a lot of packages will be installed. Probably would be a good idea to
@@ -202,22 +202,22 @@ repo</a>.</p>
 <p>To enable the <code>greetd</code> service:</p>
 <pre><code class="language-sh">systemctl enable greetd
 </code></pre>
-<p>Edit <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
+<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
 <pre><code class="language-sh">sudo nano /etc/greetd/config.toml
 </code></pre>
-<pre><code class="language-toml">[terminal]
-vt = 1
-
+<pre><code class="language-toml"># The default session, also known as the greeter.
 [default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
 command = "tuigreet --remember --remember-session --asterisks"
-user = "greeter"
 </code></pre>
 <h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
-<p>Launching <code>niri</code> from the <code>tty</code>:</p>
+<p>To launch <code>niri</code> from the <code>tty</code>:</p>
 <pre><code class="language-sh">niri-session
 </code></pre>
 <h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
-<p>Check if Nushell is in the valid shells list:</p>
+<p>To check if Nushell is in the valid shells list:</p>
 <pre><code class="language-sh">cat /etc/shells
 </code></pre>
 <p>To set Nushell as login shell:</p>
@@ -232,10 +232,10 @@ user = "greeter"
 <p>To generate a new SSH key:</p>
 <pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
 </code></pre>
-<p>Check the public key:</p>
+<p>To check the public key:</p>
 <pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
 </code></pre>
-<p>Test the SSH connection:</p>
+<p>To test the SSH connection:</p>
 <pre><code class="language-sh">ssh -T git@github.com
 </code></pre>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
@@ -244,10 +244,12 @@ user = "greeter"
 </code></pre>
 <pre><code class="language-sh">sudo bob use nightly
 </code></pre>
-<p>To increase the maximum number of <code>inotify</code> watches and queued events.
-Add the following to <code>/etc/sysctl.conf</code></p>
-<pre><code class="language-sh">sysctl fs.inotify.max_user_watches=100000
-sysctl fs.inotify.max_queued_events=100000
+<p>To increase the maximum number of <code>inotify</code> watches and queued events. Edit the
+<code>/etc/sysctl.conf</code> file:</p>
+<pre><code class="language-sh">sudo nano /etc/sysctl.conf
+</code></pre>
+<pre><code class="language-sh">fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
 </code></pre>
 
                     </main>

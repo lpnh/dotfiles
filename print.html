@@ -349,37 +349,37 @@ Using <code>dosfslabel</code>:</p>
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="mirror-list"><a class="header" href="#mirror-list">Mirror List</a></h2>
-<p>Update the <code>mirrorlist</code> using <code>reflector</code>:</p>
+<p>To update the <code>mirrorlist</code> using <code>reflector</code>:</p>
 <pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 <h2 id="install-essential-packages"><a class="header" href="#install-essential-packages">Install Essential Packages</a></h2>
-<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+<p>To install the essential packages to the new root:</p>
+<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 </code></pre>
 <h2 id="fstab"><a class="header" href="#fstab">Fstab</a></h2>
+<p>To generate an <code>fstab</code> file:</p>
 <pre><code class="language-sh">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
 <h2 id="chroot"><a class="header" href="#chroot">Chroot</a></h2>
+<p>To change root into the new system:</p>
 <pre><code class="language-sh">arch-chroot /mnt
 </code></pre>
 <h2 id="time"><a class="header" href="#time">Time</a></h2>
-<p>Set the time zone:</p>
+<p>To set the time zone:</p>
 <pre><code class="language-sh">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 </code></pre>
 <p>Note: You can verify it running <code>date</code>.</p>
-<p>Generate the <code>/etc/adjtime</code> file:</p>
+<p>To generate the <code>/etc/adjtime</code> file:</p>
 <pre><code class="language-sh">hwclock --systohc
 </code></pre>
-<p>Set up time synchronization with <code>systemd-timesyncd</code>:</p>
-<pre><code class="language-sh">timedatectl set-ntp true
-</code></pre>
-<p>Check the service status:</p>
-<pre><code class="language-sh">timedatectl status
+<p>To set up time synchronization with <code>systemd-timesyncd</code>:</p>
+<pre><code class="language-sh">systemctl enable systemd-timesyncd.service
 </code></pre>
 <h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
 <p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
 <pre><code class="language-sh">nano /etc/locale.gen
 </code></pre>
-<p>Generate the locales:</p>
+<p>To generate the locales:</p>
 <pre><code class="language-sh">locale-gen
 </code></pre>
 <p>Create the <code>locale.conf</code> file, setting the <em>LANG</em> variable accordingly:</p>
@@ -388,20 +388,20 @@ Using <code>dosfslabel</code>:</p>
 <pre><code class="language-txt">LANG=en_US.UTF-8
 </code></pre>
 <h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>Create the <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
+<p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
 <pre><code class="language-sh">nano /etc/hostname
 </code></pre>
 <pre><code class="language-txt">desktop
 </code></pre>
 <h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
-<p>Set the root password:</p>
+<p>To set the root password, run:</p>
 <pre><code class="language-sh">passwd
 </code></pre>
 <h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
 <p>To create new user, adding it to the <code>wheel</code> group:</p>
 <pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
 </code></pre>
-<p>To add a password to the user:</p>
+<p>To add a password to the user, run:</p>
 <pre><code class="language-sh">passwd &lt;username&gt;
 </code></pre>
 <p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
@@ -439,10 +439,10 @@ output to the <code>arch.conf</code> file.</p>
 </code></pre>
 <p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
 <h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
-<p>Exit the chroot environment:</p>
+<p>To exit the chroot environment:</p>
 <pre><code class="language-sh">exit
 </code></pre>
-<p>Unmount all the partitions and reboot:</p>
+<p>To unmount all the partitions and reboot:</p>
 <pre><code class="language-sh">umount -R /mnt
 </code></pre>
 <pre><code class="language-sh">reboot
@@ -614,13 +614,13 @@ repo</a></p>
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
 <h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
-<p>Install <code>chezmoi</code>:</p>
+<p>To install <code>chezmoi</code>:</p>
 <pre><code class="language-sh">sudo pacman -S chezmoi
 </code></pre>
-<p>Initialize it:</p>
+<p>To initialize it:</p>
 <pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
 </code></pre>
-<p>Apply it:</p>
+<p>To apply it:</p>
 <pre><code class="language-sh">chezmoi apply
 </code></pre>
 <p>Note: a lot of packages will be installed. Probably would be a good idea to
@@ -638,22 +638,22 @@ repo</a>.</p>
 <p>To enable the <code>greetd</code> service:</p>
 <pre><code class="language-sh">systemctl enable greetd
 </code></pre>
-<p>Edit <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
+<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
 <pre><code class="language-sh">sudo nano /etc/greetd/config.toml
 </code></pre>
-<pre><code class="language-toml">[terminal]
-vt = 1
-
+<pre><code class="language-toml"># The default session, also known as the greeter.
 [default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
 command = "tuigreet --remember --remember-session --asterisks"
-user = "greeter"
 </code></pre>
 <h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
-<p>Launching <code>niri</code> from the <code>tty</code>:</p>
+<p>To launch <code>niri</code> from the <code>tty</code>:</p>
 <pre><code class="language-sh">niri-session
 </code></pre>
 <h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
-<p>Check if Nushell is in the valid shells list:</p>
+<p>To check if Nushell is in the valid shells list:</p>
 <pre><code class="language-sh">cat /etc/shells
 </code></pre>
 <p>To set Nushell as login shell:</p>
@@ -668,10 +668,10 @@ user = "greeter"
 <p>To generate a new SSH key:</p>
 <pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
 </code></pre>
-<p>Check the public key:</p>
+<p>To check the public key:</p>
 <pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
 </code></pre>
-<p>Test the SSH connection:</p>
+<p>To test the SSH connection:</p>
 <pre><code class="language-sh">ssh -T git@github.com
 </code></pre>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
@@ -680,10 +680,12 @@ user = "greeter"
 </code></pre>
 <pre><code class="language-sh">sudo bob use nightly
 </code></pre>
-<p>To increase the maximum number of <code>inotify</code> watches and queued events.
-Add the following to <code>/etc/sysctl.conf</code></p>
-<pre><code class="language-sh">sysctl fs.inotify.max_user_watches=100000
-sysctl fs.inotify.max_queued_events=100000
+<p>To increase the maximum number of <code>inotify</code> watches and queued events. Edit the
+<code>/etc/sysctl.conf</code> file:</p>
+<pre><code class="language-sh">sudo nano /etc/sysctl.conf
+</code></pre>
+<pre><code class="language-sh">fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="quality-of-life-1"><a class="header" href="#quality-of-life-1">Quality of Life</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
@@ -1187,12 +1189,12 @@ Edit the <strong>greetd</strong> configuration file:</li>
 </ul>
 <pre><code class="language-sh">sudo nano /etc/greetd/config.toml
 </code></pre>
-<pre><code class="language-toml">[terminal]
-vt = 1
-
+<pre><code class="language-toml"># The default session, also known as the greeter.
 [default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
 command = "tuigreet --remember --remember-session --asterisks"
-user = "greeter"
 </code></pre>
 <p>Reboot the system: <code>reboot</code></p>
 <p><em># there's no place like home</em></p>
