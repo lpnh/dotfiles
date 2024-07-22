@@ -28,7 +28,8 @@ check the [cookbook](https://lpnh.io/dotfiles/)
 ├─ [waybar](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/waybar)  
 └─ [yazi](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/yazi)
 
-## chezmoi
+## dot_config ?
 
-to better understand this repo structure, see [chezmoi
-website](https://www.chezmoi.io/)
+if you're finding this repo unfamiliar, it's because it uses `chezmoi` as
+dotfile manager. check out their [website](https://www.chezmoi.io/) for more
+information
