@@ -178,37 +178,37 @@
                     <main>
                         <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="mirror-list"><a class="header" href="#mirror-list">Mirror List</a></h2>
-<p>Update the <code>mirrorlist</code> using <code>reflector</code>:</p>
+<p>To update the <code>mirrorlist</code> using <code>reflector</code>:</p>
 <pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 <h2 id="install-essential-packages"><a class="header" href="#install-essential-packages">Install Essential Packages</a></h2>
-<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+<p>To install the essential packages to the new root:</p>
+<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 </code></pre>
 <h2 id="fstab"><a class="header" href="#fstab">Fstab</a></h2>
+<p>To generate an <code>fstab</code> file:</p>
 <pre><code class="language-sh">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
 <h2 id="chroot"><a class="header" href="#chroot">Chroot</a></h2>
+<p>To change root into the new system:</p>
 <pre><code class="language-sh">arch-chroot /mnt
 </code></pre>
 <h2 id="time"><a class="header" href="#time">Time</a></h2>
-<p>Set the time zone:</p>
+<p>To set the time zone:</p>
 <pre><code class="language-sh">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 </code></pre>
 <p>Note: You can verify it running <code>date</code>.</p>
-<p>Generate the <code>/etc/adjtime</code> file:</p>
+<p>To generate the <code>/etc/adjtime</code> file:</p>
 <pre><code class="language-sh">hwclock --systohc
 </code></pre>
-<p>Set up time synchronization with <code>systemd-timesyncd</code>:</p>
-<pre><code class="language-sh">timedatectl set-ntp true
-</code></pre>
-<p>Check the service status:</p>
-<pre><code class="language-sh">timedatectl status
+<p>To set up time synchronization with <code>systemd-timesyncd</code>:</p>
+<pre><code class="language-sh">systemctl enable systemd-timesyncd.service
 </code></pre>
 <h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
 <p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
 <pre><code class="language-sh">nano /etc/locale.gen
 </code></pre>
-<p>Generate the locales:</p>
+<p>To generate the locales:</p>
 <pre><code class="language-sh">locale-gen
 </code></pre>
 <p>Create the <code>locale.conf</code> file, setting the <em>LANG</em> variable accordingly:</p>
@@ -217,20 +217,20 @@
 <pre><code class="language-txt">LANG=en_US.UTF-8
 </code></pre>
 <h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>Create the <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
+<p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
 <pre><code class="language-sh">nano /etc/hostname
 </code></pre>
 <pre><code class="language-txt">desktop
 </code></pre>
 <h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
-<p>Set the root password:</p>
+<p>To set the root password, run:</p>
 <pre><code class="language-sh">passwd
 </code></pre>
 <h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
 <p>To create new user, adding it to the <code>wheel</code> group:</p>
 <pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
 </code></pre>
-<p>To add a password to the user:</p>
+<p>To add a password to the user, run:</p>
 <pre><code class="language-sh">passwd &lt;username&gt;
 </code></pre>
 <p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
@@ -268,10 +268,10 @@ output to the <code>arch.conf</code> file.</p>
 </code></pre>
 <p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
 <h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
-<p>Exit the chroot environment:</p>
+<p>To exit the chroot environment:</p>
 <pre><code class="language-sh">exit
 </code></pre>
-<p>Unmount all the partitions and reboot:</p>
+<p>To unmount all the partitions and reboot:</p>
 <pre><code class="language-sh">umount -R /mnt
 </code></pre>
 <pre><code class="language-sh">reboot

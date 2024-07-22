@@ -72,12 +72,12 @@ sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C
 sudo nano /etc/greetd/config.toml
 ```
 ```toml
-[terminal]
-vt = 1
-
+# The default session, also known as the greeter.
 [default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
 command = "tuigreet --remember --remember-session --asterisks"
-user = "greeter"
 ```
 
 Reboot the system: `reboot`

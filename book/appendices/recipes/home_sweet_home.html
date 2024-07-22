@@ -263,12 +263,12 @@ Edit the <strong>greetd</strong> configuration file:</li>
 </ul>
 <pre><code class="language-sh">sudo nano /etc/greetd/config.toml
 </code></pre>
-<pre><code class="language-toml">[terminal]
-vt = 1
-
+<pre><code class="language-toml"># The default session, also known as the greeter.
 [default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
 command = "tuigreet --remember --remember-session --asterisks"
-user = "greeter"
 </code></pre>
 <p>Reboot the system: <code>reboot</code></p>
 <p><em># there's no place like home</em></p>

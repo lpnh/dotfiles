@@ -2,7 +2,7 @@
 
 ## Mirror List
 
-Update the `mirrorlist` using `reflector`:
+To update the `mirrorlist` using `reflector`:
 
 ```sh
 reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
@@ -10,11 +10,15 @@ reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.
 
 ## Install Essential Packages
 
+To install the essential packages to the new root:
+
 ```sh
-pacstrap -K /mnt base linux linux-firmware base-devel nano networkmanager
+pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 ```
 
 ## Fstab
+
+To generate an `fstab` file:
 
 ```sh
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -22,13 +26,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 ## Chroot
 
+To change root into the new system:
+
 ```sh
 arch-chroot /mnt
 ```
 
 ## Time
 
-Set the time zone:
+To set the time zone:
 
 ```sh
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
@@ -36,22 +42,16 @@ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 
 Note: You can verify it running `date`.
 
-Generate the `/etc/adjtime` file:
+To generate the `/etc/adjtime` file:
 
 ```sh
 hwclock --systohc
 ```
 
-Set up time synchronization with `systemd-timesyncd`:
+To set up time synchronization with `systemd-timesyncd`:
 
 ```sh
-timedatectl set-ntp true
-```
-
-Check the service status:
-
-```sh
-timedatectl status
+systemctl enable systemd-timesyncd.service
 ```
 
 ## Localization
@@ -62,7 +62,7 @@ Uncomment the `#en_US.UTF-8 UTF-8` line editing the `/etc/locale.gen` file:
 nano /etc/locale.gen
 ```
 
-Generate the locales:
+To generate the locales:
 
 ```sh
 locale-gen
@@ -79,7 +79,7 @@ LANG=en_US.UTF-8
 
 ## Hostname
 
-Create the `hostname` file, adding its name, e.g. `desktop`:
+To set a hostname create a `hostname` file, adding its name, e.g. `desktop`:
 
 ```sh
 nano /etc/hostname
@@ -90,7 +90,7 @@ desktop
 
 ## Root password
 
-Set the root password:
+To set the root password, run:
 
 ```sh
 passwd
@@ -104,13 +104,14 @@ To create new user, adding it to the `wheel` group:
 useradd -m -G wheel <username>
 ```
 
-To add a password to the user:
+To add a password to the user, run:
 
 ```sh
 passwd <username>
 ```
 
-Edit the sudoers configuration file, uncommenting the `# %wheel ALL=(ALL:ALL) ALL` line:
+Edit the sudoers configuration file, uncommenting the `# %wheel ALL=(ALL:ALL)
+ALL` line:
 
 ```sh
 EDITOR=nano visudo
@@ -170,13 +171,13 @@ Copy everything that is inside the `/boot` path to `/efi`.
 
 ## Reboot
 
-Exit the chroot environment:
+To exit the chroot environment:
 
 ```sh
 exit
 ```
 
-Unmount all the partitions and reboot:
+To unmount all the partitions and reboot:
 
 ```sh
 umount -R /mnt

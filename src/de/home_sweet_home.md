@@ -2,19 +2,19 @@
 
 ## Bootstrap
 
-Install `chezmoi`:
+To install `chezmoi`:
 
 ```sh
 sudo pacman -S chezmoi
 ```
 
-Initialize it:
+To initialize it:
 
 ```sh
 chezmoi init https://github.com/<user>/dotfiles.git
 ```
 
-Apply it:
+To apply it:
 
 ```sh
 chezmoi apply
@@ -42,24 +42,23 @@ To enable the `greetd` service:
 systemctl enable greetd
 ```
 
-Edit `greetd` configuration file to use `tuigreet`:
+To edit the `greetd` configuration file to use `tuigreet`:
 
 ```sh
 sudo nano /etc/greetd/config.toml
 ```
-
 ```toml
-[terminal]
-vt = 1
-
+# The default session, also known as the greeter.
 [default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
 command = "tuigreet --remember --remember-session --asterisks"
-user = "greeter"
 ```
 
 ## Graphical Interface
 
-Launching `niri` from the `tty`:
+To launch `niri` from the `tty`:
 
 ```sh
 niri-session
@@ -67,7 +66,7 @@ niri-session
 
 ## Shell
 
-Check if Nushell is in the valid shells list:
+To check if Nushell is in the valid shells list:
 
 ```sh
 cat /etc/shells
@@ -97,13 +96,13 @@ To generate a new SSH key:
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-Check the public key:
+To check the public key:
 
 ```sh
 cat ~/.ssh/id_ed25519.pub
 ```
 
-Test the SSH connection:
+To test the SSH connection:
 
 ```sh
 ssh -T git@github.com
@@ -121,10 +120,13 @@ bob install nightly
 sudo bob use nightly
 ```
 
-To increase the maximum number of `inotify` watches and queued events.
-Add the following to `/etc/sysctl.conf`
+To increase the maximum number of `inotify` watches and queued events. Edit the
+`/etc/sysctl.conf` file:
 
 ```sh
-sysctl fs.inotify.max_user_watches=100000
-sysctl fs.inotify.max_queued_events=100000
+sudo nano /etc/sysctl.conf
+```
+```sh
+fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
 ```
