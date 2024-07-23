@@ -6,8 +6,15 @@
 
 To include the new syntax highlighting theme, rebuild **bat**'s cache:
 
-```sh
+```nu
 bat cache --build
+```
+
+To check if the Catppuccin theme is now available:
+
+```nu
+# the output should be Catppuccin Mocha
+bat --list-themes | rg "Catppuccin"
 ```
 
 ### Firefox
@@ -19,18 +26,18 @@ here](https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oK
 
 To fetch **Neovim** configuration, simply launch it:
 
-```sh
+```nu
 nv
 ```
 
 To include the api-key for the **WakaTime** plugin:
 
-```sh
+```nu
 # launch the website and copy the api key
 start https://wakatime.com/api-key
 ```
 
-```sh
+```bash
 # run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 ```

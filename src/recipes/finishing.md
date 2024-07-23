@@ -5,7 +5,7 @@
 - [ ] Rebuild **bat**'s cache to add the new syntax highlighting: `bat cache
 --build`
 - [ ] Check if Catppuccin is available: 
-```nushell
+```nu
 bat --list-themes | rg "Catppuccin"
 ```
 - [ ] Apply Catppuccin Mocha Mauve color theme to firefox: [simply click
@@ -15,11 +15,11 @@ here](https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oK
 
 - [ ] Launch **Neovim** to fetch its configuration: `nv`
 - [ ] Include the api-key for **WakaTime** plugin:
-```nushell
+```nu
 # launch the website and copy the api key
 start https://wakatime.com/api-key
 ```
-```sh
+```bash
 # run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 ```
