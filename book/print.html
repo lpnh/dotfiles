@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="appendices/recipes/index.html">Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendices/recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="appendices/recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="appendices/recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="appendices/recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="appendices/recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="appendices/recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="appendices/recipes/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="appendices/recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="appendices/recipes/system_maintenance.html">System Maintenance</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -265,15 +265,17 @@ terminal</li>
 <a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml">packages.toml</a></em></p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
+<p>The steps to create a bootable USB containing the Arch Linux ISO.</p>
 <h2 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h2>
 <p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
 <p>Note: the BitTorrent Download is the recommended option and the file will look
 like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
-<h2 id="find-the-usb-drive-name"><a class="header" href="#find-the-usb-drive-name">Find the USB drive name</a></h2>
+<h2 id="usb-drive-name"><a class="header" href="#usb-drive-name">USB Drive Name</a></h2>
 <p>Find out the name of your USB drive:</p>
 <pre><code class="language-sh">ls -l /dev/disk/by-id/usb-*
 </code></pre>
-<p>Make sure it is <strong>not</strong> mounted:</p>
+<p>To make sure it is <strong>not</strong> mounted, run <code>lsblk</code> and search for the MOUNTPOINTS
+column, you should see an empty space:</p>
 <pre><code class="language-sh">lsblk
 </code></pre>
 <h2 id="write-the-iso"><a class="header" href="#write-the-iso">Write the ISO</a></h2>
@@ -281,33 +283,65 @@ like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
 <pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
 <p>Note: the USB drive name should look something like
-<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.
+<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.<br />
 Make sure to <strong>not</strong> append any partition number like <code>My_flash_drive-0:0-part1</code>.</p>
-<p>For more information: <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">https://wiki.archlinux.org/title/USB_flash_installation_medium</a></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
-<h2 id="quality-of-life"><a class="header" href="#quality-of-life">Quality of Life</a></h2>
-<p>First of all, improve the default font using <code>setfont</code>:</p>
+<p>For more information about this topic, check the <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">Arch Linux
+wiki</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
+<h2 id="console-configuration"><a class="header" href="#console-configuration">Console Configuration</a></h2>
+<h3 id="font"><a class="header" href="#font">Font</a></h3>
+<p>First of all, improve the default font size using <code>setfont</code>:</p>
 <pre><code class="language-sh">setfont ter-222b
 </code></pre>
-<h2 id="some-verification"><a class="header" href="#some-verification">Some verification</a></h2>
+<h3 id="keyboard"><a class="header" href="#keyboard">Keyboard</a></h3>
+<p>To change the default keyboard layout:</p>
+<pre><code class="language-sh"># for example, to set a brazilian keyboard layout
+loadkeys br-abnt2
+</code></pre>
+<h2 id="some-verification"><a class="header" href="#some-verification">Some Verification</a></h2>
 <h3 id="uefi-mode"><a class="header" href="#uefi-mode">UEFI Mode</a></h3>
-<p>The following command should return <code>64</code>:</p>
+<p>To make sure the system is booted in UEFI mode, check the output of the
+following command. It should return <code>64</code>, for a 64-bit system:</p>
 <pre><code class="language-sh">cat /sys/firmware/efi/fw_platform_size
 </code></pre>
 <h3 id="internet-connection"><a class="header" href="#internet-connection">Internet Connection</a></h3>
+<p>To check the internet connection:</p>
 <pre><code class="language-sh">ping archlinux.org
 </code></pre>
 <h3 id="system-clock"><a class="header" href="#system-clock">System Clock</a></h3>
+<p>To ensure the system clock is synchronized, run:</p>
 <pre><code class="language-sh">timedatectl
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
 <h2 id="partitioning-the-disk"><a class="header" href="#partitioning-the-disk">Partitioning the Disk</a></h2>
 <h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
-<p>To identify available disks, both <code>lsblk</code> and <code>fdisk -l</code> can be used.</p>
+<p>To identify available disks, both <code>lsblk --fs</code> and <code>fdisk -l</code> can be used.</p>
+<div class="warning">
+<p>Always ensure you identify and select the correct device.
+The following steps may result in unintended data loss.</p>
+</div>
+<h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
+<p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
+<pre><code class="language-sh">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
+</code></pre>
+<pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
+LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
+</code></pre>
+<p>You can confirm it by running <code>lsblk -td</code> and looking at the <code>LOG-SEC</code> column value.</p>
+<p>Note: On the example above the sector size in use (512 bytes) is <strong>not</strong> the
+optimal one.</p>
+<p>To change the logical block address size, you can use the <code>nvme format</code> command
+specifying the preferred value with the <code>--lbaf</code> parameter:</p>
+<pre><code class="language-sh">nvme format --lbaf=1 /dev/nvme0n1
+</code></pre>
 <h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
 <p>To write the partition tables using <code>cfdisk</code>:</p>
 <pre><code class="language-sh">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
-<p>Note: make sure to set the correct type for the <code>efi</code> partition.</p>
+<blockquote>
+<p>[!NOTE]
+make sure to set the correct type for the <code>efi</code> partition.</p>
+</blockquote>
 <p>Example Layout:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
 <tr><td style="text-align: left">/efi</td><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td></tr>
@@ -315,7 +349,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
 <tr><td style="text-align: left">/</td><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td></tr>
 </tbody></table>
 </div>
-<p>To verify the partitions:</p>
+<p>To verify the partitions using <code>fdisk</code>:</p>
 <pre><code class="language-sh">fdisk -l /dev/partitioned_disk
 </code></pre>
 <h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
@@ -330,7 +364,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
 </code></pre>
 <h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
 <p>Now is a good time to add a label to the efi partition.
-This will be useful later to set the <code>refind</code> configuration.
+This will be useful later to set the <code>rEFInd</code> configuration.
 Using <code>dosfslabel</code>:</p>
 <pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
@@ -612,6 +646,7 @@ repo</a></p>
 </code></pre>
 <pre><code class="language-yaml">modules_force_load: &lt;module_name&gt;
 </code></pre>
+<p><em># work in progress</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
 <h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
 <p>To install <code>chezmoi</code>:</p>
@@ -626,7 +661,7 @@ repo</a></p>
 <p>Note: a lot of packages will be installed. Probably would be a good idea to
 reboot the system after it.</p>
 <p>For the exhaustive list of packages, you can check the
-<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.yaml">packages.yaml</a>
+<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml">packages.toml</a>
 file from the repo.</p>
 <p>Hint: A good reference for essential packages is to check the ones available in
 the Arch Linux live system (ISO). You can find them
@@ -634,20 +669,6 @@ the Arch Linux live system (ISO). You can find them
 Another good source is to check the packages available in the EndeavourOS ISO.
 You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
 repo</a>.</p>
-<h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
-<p>To enable the <code>greetd</code> service:</p>
-<pre><code class="language-sh">systemctl enable greetd
-</code></pre>
-<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
-<pre><code class="language-sh">sudo nano /etc/greetd/config.toml
-</code></pre>
-<pre><code class="language-toml"># The default session, also known as the greeter.
-[default_session]
-
-# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
-# with whatever you want started, such as `sway`.
-command = "tuigreet --remember --remember-session --asterisks"
-</code></pre>
 <h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
 <p>To launch <code>niri</code> from the <code>tty</code>:</p>
 <pre><code class="language-sh">niri-session
@@ -660,7 +681,7 @@ command = "tuigreet --remember --remember-session --asterisks"
 <pre><code class="language-sh">chsh -s /usr/bin/nu &lt;user&gt;
 </code></pre>
 <p>Note: Reboot the system to check if everything is ok.</p>
-<h2 id="font"><a class="header" href="#font">Font</a></h2>
+<h2 id="font-1"><a class="header" href="#font-1">Font</a></h2>
 <p>To refresh the font cache:</p>
 <pre><code class="language-sh">sudo fc-cache -fv
 </code></pre>
@@ -687,9 +708,51 @@ command = "tuigreet --remember --remember-session --asterisks"
 <pre><code class="language-sh">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="quality-of-life-1"><a class="header" href="#quality-of-life-1">Quality of Life</a></h1>
+<p>Reboot the system: <code>reboot</code></p>
+<h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
+release</a></li>
+</ul>
+<pre><code class="language-sh">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
+</code></pre>
+<h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
+<p>To enable the <code>greetd</code> service:</p>
+<pre><code class="language-sh">systemctl enable greetd
+</code></pre>
+<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
+<pre><code class="language-sh">sudo nano /etc/greetd/config.toml
+</code></pre>
+<pre><code class="language-toml"># The default session, also known as the greeter.
+[default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
+command = "tuigreet --remember --remember-session --asterisks"
+</code></pre>
+<p><em># there's no place like home</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing"><a class="header" href="#finishing">Finishing</a></h1>
+<h2 id="catppuccin"><a class="header" href="#catppuccin">Catppuccin</a></h2>
+<h3 id="bat"><a class="header" href="#bat">Bat</a></h3>
+<p>To include the new syntax highlighting theme, rebuild <strong>bat</strong>'s cache:</p>
+<pre><code class="language-sh">bat cache --build
+</code></pre>
+<h3 id="firefox"><a class="header" href="#firefox">Firefox</a></h3>
+<p>To apply Catppuccin Mocha Mauve color theme to firefox <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">simply click
+here</a></p>
+<h2 id="neovim-1"><a class="header" href="#neovim-1">Neovim</a></h2>
+<p>To fetch <strong>Neovim</strong> configuration, simply launch it:</p>
+<pre><code class="language-sh">nv
+</code></pre>
+<p>To include the api-key for the <strong>WakaTime</strong> plugin:</p>
+<pre><code class="language-sh"># launch the website and copy the api key
+start https://wakatime.com/api-key
+</code></pre>
+<pre><code class="language-sh"># run the following cmd inside neovim and paste the key
+WakaTimeApiKey
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="recipes"><a class="header" href="#recipes">Recipes</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb-1"><a class="header" href="#live-usb-1">Live USB</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -703,15 +766,22 @@ Write the ISO to the USB drive:</li>
 </ul>
 <pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="partitions-1"><a class="header" href="#partitions-1">Partitions</a></h1>
-<h2 id="inside-the-live-environment"><a class="header" href="#inside-the-live-environment">Inside the Live Environment</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment-1"><a class="header" href="#live-environment-1">Live Environment</a></h1>
+<h2 id="console-configuration-1"><a class="header" href="#console-configuration-1">Console Configuration</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Improve the default font size: <code>setfont ter-222b</code></li>
 <li><input disabled="" type="checkbox"/>
+Change the default keyboard layout, if necessary:</li>
+</ul>
+<pre><code class="language-sh"># for example, to set a brazilian keyboard layout
+loadkeys br-abnt2
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
 Make sure the system is booted in UEFI mode:</li>
 </ul>
-<pre><code class="language-sh"># the output should be 64
+<pre><code class="language-sh"># the output should be 64 for 64-bit system
 cat /sys/firmware/efi/fw_platform_size
 </code></pre>
 <ul>
@@ -720,6 +790,7 @@ Check the internet connection: <code>ping archlinux.org</code></li>
 <li><input disabled="" type="checkbox"/>
 Ensure the system clock is synchronized: <code>timedatectl</code></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="partitions-1"><a class="header" href="#partitions-1">Partitions</a></h1>
 <h2 id="partitioning-the-disk-1"><a class="header" href="#partitioning-the-disk-1">Partitioning the Disk</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -886,7 +957,7 @@ Copy everything that is inside <strong>/boot</strong> to <strong>/efi</strong> d
 <li><input disabled="" type="checkbox"/>
 Enable the <strong>NetworkManager</strong> service: <code>systemctl enable NetworkManager</code></li>
 </ul>
-<h2 id="finishing"><a class="header" href="#finishing">Finishing</a></h2>
+<h2 id="finishing-1"><a class="header" href="#finishing-1">Finishing</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Exit the chroot environment: <code>exit</code></li>
@@ -1154,7 +1225,7 @@ Test the SSH connection:</li>
 </ul>
 <pre><code class="language-sh">ssh -T git@github.com
 </code></pre>
-<h2 id="neovim-1"><a class="header" href="#neovim-1">Neovim</a></h2>
+<h2 id="neovim-2"><a class="header" href="#neovim-2">Neovim</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install and set <strong>Neovim nightly</strong> using <strong>bob</strong>:</li>
@@ -1172,7 +1243,7 @@ Increase <strong>inotify</strong> maximum numbers:</li>
 <pre><code class="language-txt">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
-<h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
+<h2 id="pandoc-1"><a class="header" href="#pandoc-1">Pandoc</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
@@ -1198,32 +1269,34 @@ command = "tuigreet --remember --remember-session --asterisks"
 </code></pre>
 <p>Reboot the system: <code>reboot</code></p>
 <p><em># there's no place like home</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="quality-of-life-2"><a class="header" href="#quality-of-life-2">Quality of Life</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing-2"><a class="header" href="#finishing-2">Finishing</a></h1>
+<h2 id="catppuccin-1"><a class="header" href="#catppuccin-1">Catppuccin</a></h2>
 <ul>
-<li>
-<p><input disabled="" type="checkbox"/>
-Apply Catppuccin Mocha Mauve color theme to firefox: <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">simply click
-here</a></p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"/>
-Launch <strong>Neovim</strong> to fetch its configuration: <code>nv</code></p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"/>
-Include <strong>WakaTime</strong> plugin api-key:</p>
-</li>
+<li><input disabled="" type="checkbox"/>
+Rebuild <strong>bat</strong>'s cache to add the new syntax highlighting: <code>bat cache --build</code></li>
+<li><input disabled="" type="checkbox"/>
+Check if Catppuccin is available:</li>
 </ul>
-<pre><code class="language-sh"># launch the website and copy the api key
+<pre><code class="language-nushell">bat --list-themes | rg "Catppuccin"
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Apply Catppuccin Mocha Mauve color theme to firefox: <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">simply click
+here</a></li>
+</ul>
+<h2 id="neovim-3"><a class="header" href="#neovim-3">Neovim</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Launch <strong>Neovim</strong> to fetch its configuration: <code>nv</code></li>
+<li><input disabled="" type="checkbox"/>
+Include the api-key for <strong>WakaTime</strong> plugin:</li>
+</ul>
+<pre><code class="language-nushell"># launch the website and copy the api key
 start https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-sh"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Rebuild <strong>bat</strong>'s cache: <code>bat cache --build</code></li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous-1"><a class="header" href="#miscellaneous-1">Miscellaneous</a></h1>
 <h2 id="profile-sync-daemon"><a class="header" href="#profile-sync-daemon">Profile-sync-daemon</a></h2>
 <ul>

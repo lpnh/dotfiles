@@ -1,16 +1,5 @@
 # Partitions
 
-## Inside the Live Environment
-
-- [ ] Improve the default font size: `setfont ter-222b`
-- [ ] Make sure the system is booted in UEFI mode:
-```sh
-# the output should be 64
-cat /sys/firmware/efi/fw_platform_size
-```
-- [ ] Check the internet connection: `ping archlinux.org`
-- [ ] Ensure the system clock is synchronized: `timedatectl`
-
 ## Partitioning the Disk
 
 - [ ] Identify available disks: `lsblk -o NAME,SIZE`

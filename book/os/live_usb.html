@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html" class="active">Live USB</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../appendices/recipes/index.html">Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/system_maintenance.html">System Maintenance</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html" class="active">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,15 +177,17 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
+<p>The steps to create a bootable USB containing the Arch Linux ISO.</p>
 <h2 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h2>
 <p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
 <p>Note: the BitTorrent Download is the recommended option and the file will look
 like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
-<h2 id="find-the-usb-drive-name"><a class="header" href="#find-the-usb-drive-name">Find the USB drive name</a></h2>
+<h2 id="usb-drive-name"><a class="header" href="#usb-drive-name">USB Drive Name</a></h2>
 <p>Find out the name of your USB drive:</p>
 <pre><code class="language-sh">ls -l /dev/disk/by-id/usb-*
 </code></pre>
-<p>Make sure it is <strong>not</strong> mounted:</p>
+<p>To make sure it is <strong>not</strong> mounted, run <code>lsblk</code> and search for the MOUNTPOINTS
+column, you should see an empty space:</p>
 <pre><code class="language-sh">lsblk
 </code></pre>
 <h2 id="write-the-iso"><a class="header" href="#write-the-iso">Write the ISO</a></h2>
@@ -193,9 +195,10 @@ like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
 <pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
 <p>Note: the USB drive name should look something like
-<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.
+<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.<br />
 Make sure to <strong>not</strong> append any partition number like <code>My_flash_drive-0:0-part1</code>.</p>
-<p>For more information: <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">https://wiki.archlinux.org/title/USB_flash_installation_medium</a></p>
+<p>For more information about this topic, check the <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">Arch Linux
+wiki</a></p>
 
                     </main>
 
@@ -205,7 +208,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../os/partitions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../os/live_environment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -219,7 +222,7 @@ Make sure to <strong>not</strong> append any partition number like <code>My_flas
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../os/partitions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../os/live_environment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

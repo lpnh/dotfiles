@@ -27,3 +27,5 @@ sudo nano /etc/booster.yaml
 ```yaml
 modules_force_load: <module_name>
 ```
+
+*# work in progress*

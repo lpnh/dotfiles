@@ -1,5 +1,7 @@
 # Live USB
 
+The steps to create a bootable USB containing the Arch Linux ISO.
+
 ## Download the ISO
 
 Download the ISO file from <https://archlinux.org/download/>.
@@ -7,7 +9,7 @@ Download the ISO file from <https://archlinux.org/download/>.
 Note: the BitTorrent Download is the recommended option and the file will look
 like this `archlinux-version-x86_64.iso.torrent`.
 
-## Find the USB drive name
+## USB Drive Name
 
 Find out the name of your USB drive:
 
@@ -15,7 +17,8 @@ Find out the name of your USB drive:
 ls -l /dev/disk/by-id/usb-*
 ```
 
-Make sure it is **not** mounted:
+To make sure it is **not** mounted, run `lsblk` and search for the MOUNTPOINTS
+column, you should see an empty space:
 
 ```sh
 lsblk
@@ -30,7 +33,8 @@ sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_dr
 ```
 
 Note: the USB drive name should look something like
-`/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0`.
+`/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0`.  
 Make sure to **not** append any partition number like `My_flash_drive-0:0-part1`.
 
-For more information: <https://wiki.archlinux.org/title/USB_flash_installation_medium>
+For more information about this topic, check the [Arch Linux
+wiki](https://wiki.archlinux.org/title/USB_flash_installation_medium)

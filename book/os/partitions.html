@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/partitions.html" class="active">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../appendices/recipes/index.html">Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/system_maintenance.html">System Maintenance</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html" class="active">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,29 +177,35 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
-<h2 id="quality-of-life"><a class="header" href="#quality-of-life">Quality of Life</a></h2>
-<p>First of all, improve the default font using <code>setfont</code>:</p>
-<pre><code class="language-sh">setfont ter-222b
-</code></pre>
-<h2 id="some-verification"><a class="header" href="#some-verification">Some verification</a></h2>
-<h3 id="uefi-mode"><a class="header" href="#uefi-mode">UEFI Mode</a></h3>
-<p>The following command should return <code>64</code>:</p>
-<pre><code class="language-sh">cat /sys/firmware/efi/fw_platform_size
-</code></pre>
-<h3 id="internet-connection"><a class="header" href="#internet-connection">Internet Connection</a></h3>
-<pre><code class="language-sh">ping archlinux.org
-</code></pre>
-<h3 id="system-clock"><a class="header" href="#system-clock">System Clock</a></h3>
-<pre><code class="language-sh">timedatectl
-</code></pre>
 <h2 id="partitioning-the-disk"><a class="header" href="#partitioning-the-disk">Partitioning the Disk</a></h2>
 <h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
-<p>To identify available disks, both <code>lsblk</code> and <code>fdisk -l</code> can be used.</p>
+<p>To identify available disks, both <code>lsblk --fs</code> and <code>fdisk -l</code> can be used.</p>
+<div class="warning">
+<p>Always ensure you identify and select the correct device.
+The following steps may result in unintended data loss.</p>
+</div>
+<h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
+<p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
+<pre><code class="language-sh">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
+</code></pre>
+<pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
+LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
+</code></pre>
+<p>You can confirm it by running <code>lsblk -td</code> and looking at the <code>LOG-SEC</code> column value.</p>
+<p>Note: On the example above the sector size in use (512 bytes) is <strong>not</strong> the
+optimal one.</p>
+<p>To change the logical block address size, you can use the <code>nvme format</code> command
+specifying the preferred value with the <code>--lbaf</code> parameter:</p>
+<pre><code class="language-sh">nvme format --lbaf=1 /dev/nvme0n1
+</code></pre>
 <h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
 <p>To write the partition tables using <code>cfdisk</code>:</p>
 <pre><code class="language-sh">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
-<p>Note: make sure to set the correct type for the <code>efi</code> partition.</p>
+<blockquote>
+<p>[!NOTE]
+make sure to set the correct type for the <code>efi</code> partition.</p>
+</blockquote>
 <p>Example Layout:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
 <tr><td style="text-align: left">/efi</td><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td></tr>
@@ -207,7 +213,7 @@
 <tr><td style="text-align: left">/</td><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td></tr>
 </tbody></table>
 </div>
-<p>To verify the partitions:</p>
+<p>To verify the partitions using <code>fdisk</code>:</p>
 <pre><code class="language-sh">fdisk -l /dev/partitioned_disk
 </code></pre>
 <h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
@@ -222,7 +228,7 @@
 </code></pre>
 <h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
 <p>Now is a good time to add a label to the efi partition.
-This will be useful later to set the <code>refind</code> configuration.
+This will be useful later to set the <code>rEFInd</code> configuration.
 Using <code>dosfslabel</code>:</p>
 <pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
@@ -244,7 +250,7 @@ Using <code>dosfslabel</code>:</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../os/live_usb.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../os/live_environment.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -258,7 +264,7 @@ Using <code>dosfslabel</code>:</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../os/live_usb.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../os/live_environment.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
