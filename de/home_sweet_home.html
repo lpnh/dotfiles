@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html" class="active">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../appendices/recipes/index.html">Recipes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendices/recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/quality_of_life.html">Quality of Life</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../appendices/recipes/system_maintenance.html">System Maintenance</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html" class="active">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -190,7 +190,7 @@
 <p>Note: a lot of packages will be installed. Probably would be a good idea to
 reboot the system after it.</p>
 <p>For the exhaustive list of packages, you can check the
-<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.yaml">packages.yaml</a>
+<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml">packages.toml</a>
 file from the repo.</p>
 <p>Hint: A good reference for essential packages is to check the ones available in
 the Arch Linux live system (ISO). You can find them
@@ -198,20 +198,6 @@ the Arch Linux live system (ISO). You can find them
 Another good source is to check the packages available in the EndeavourOS ISO.
 You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
 repo</a>.</p>
-<h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
-<p>To enable the <code>greetd</code> service:</p>
-<pre><code class="language-sh">systemctl enable greetd
-</code></pre>
-<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
-<pre><code class="language-sh">sudo nano /etc/greetd/config.toml
-</code></pre>
-<pre><code class="language-toml"># The default session, also known as the greeter.
-[default_session]
-
-# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
-# with whatever you want started, such as `sway`.
-command = "tuigreet --remember --remember-session --asterisks"
-</code></pre>
 <h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
 <p>To launch <code>niri</code> from the <code>tty</code>:</p>
 <pre><code class="language-sh">niri-session
@@ -251,6 +237,30 @@ command = "tuigreet --remember --remember-session --asterisks"
 <pre><code class="language-sh">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
+<p>Reboot the system: <code>reboot</code></p>
+<h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
+release</a></li>
+</ul>
+<pre><code class="language-sh">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
+</code></pre>
+<h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
+<p>To enable the <code>greetd</code> service:</p>
+<pre><code class="language-sh">systemctl enable greetd
+</code></pre>
+<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
+<pre><code class="language-sh">sudo nano /etc/greetd/config.toml
+</code></pre>
+<pre><code class="language-toml"># The default session, also known as the greeter.
+[default_session]
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
+command = "tuigreet --remember --remember-session --asterisks"
+</code></pre>
+<p><em># there's no place like home</em></p>
 
                     </main>
 
@@ -260,7 +270,7 @@ fs.inotify.max_user_watches=524288
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../de/quality_of_life.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../de/finishing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -274,7 +284,7 @@ fs.inotify.max_user_watches=524288
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../de/quality_of_life.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../de/finishing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
