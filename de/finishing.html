@@ -180,20 +180,24 @@
 <h2 id="catppuccin"><a class="header" href="#catppuccin">Catppuccin</a></h2>
 <h3 id="bat"><a class="header" href="#bat">Bat</a></h3>
 <p>To include the new syntax highlighting theme, rebuild <strong>bat</strong>'s cache:</p>
-<pre><code class="language-sh">bat cache --build
+<pre><code class="language-nu">bat cache --build
+</code></pre>
+<p>To check if the Catppuccin theme is now available:</p>
+<pre><code class="language-nu"># the output should be Catppuccin Mocha
+bat --list-themes | rg "Catppuccin"
 </code></pre>
 <h3 id="firefox"><a class="header" href="#firefox">Firefox</a></h3>
 <p>To apply Catppuccin Mocha Mauve color theme to firefox <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">simply click
 here</a></p>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
 <p>To fetch <strong>Neovim</strong> configuration, simply launch it:</p>
-<pre><code class="language-sh">nv
+<pre><code class="language-nu">nv
 </code></pre>
 <p>To include the api-key for the <strong>WakaTime</strong> plugin:</p>
-<pre><code class="language-sh"># launch the website and copy the api key
+<pre><code class="language-nu"># launch the website and copy the api key
 start https://wakatime.com/api-key
 </code></pre>
-<pre><code class="language-sh"># run the following cmd inside neovim and paste the key
+<pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 </code></pre>
 
