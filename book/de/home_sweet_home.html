@@ -179,13 +179,13 @@
                         <h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
 <h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
 <p>To install <code>chezmoi</code>:</p>
-<pre><code class="language-sh">sudo pacman -S chezmoi
+<pre><code class="language-bash">sudo pacman -S chezmoi
 </code></pre>
 <p>To initialize it:</p>
-<pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
+<pre><code class="language-bash">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
 </code></pre>
 <p>To apply it:</p>
-<pre><code class="language-sh">chezmoi apply
+<pre><code class="language-bash">chezmoi apply
 </code></pre>
 <p>Note: a lot of packages will be installed. Probably would be a good idea to
 reboot the system after it.</p>
@@ -200,41 +200,41 @@ You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-IS
 repo</a>.</p>
 <h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
 <p>To launch <code>niri</code> from the <code>tty</code>:</p>
-<pre><code class="language-sh">niri-session
+<pre><code class="language-bash">niri-session
 </code></pre>
 <h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
 <p>To check if Nushell is in the valid shells list:</p>
-<pre><code class="language-sh">cat /etc/shells
+<pre><code class="language-bash">cat /etc/shells
 </code></pre>
 <p>To set Nushell as login shell:</p>
-<pre><code class="language-sh">chsh -s /usr/bin/nu &lt;user&gt;
+<pre><code class="language-bash">chsh -s /usr/bin/nu &lt;user&gt;
 </code></pre>
-<p>Note: Reboot the system to check if everything is ok.</p>
+<p>Note: Reboot the system to check if everything is ok</p>
 <h2 id="font"><a class="header" href="#font">Font</a></h2>
 <p>To refresh the font cache:</p>
-<pre><code class="language-sh">sudo fc-cache -fv
+<pre><code class="language-bash">sudo fc-cache -fv
 </code></pre>
 <h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
 <p>To generate a new SSH key:</p>
-<pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C "your_email@example.com"
 </code></pre>
 <p>To check the public key:</p>
-<pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
+<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
 </code></pre>
 <p>To test the SSH connection:</p>
-<pre><code class="language-sh">ssh -T git@github.com
+<pre><code class="language-bash">ssh -T git@github.com
 </code></pre>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
 <p>To install and set Neovim nightly using <code>bob</code>:</p>
-<pre><code class="language-sh">bob install nightly
+<pre><code class="language-bash">bob install nightly
 </code></pre>
-<pre><code class="language-sh">sudo bob use nightly
+<pre><code class="language-bash">sudo bob use nightly
 </code></pre>
 <p>To increase the maximum number of <code>inotify</code> watches and queued events. Edit the
 <code>/etc/sysctl.conf</code> file:</p>
-<pre><code class="language-sh">sudo nano /etc/sysctl.conf
+<pre><code class="language-bash">sudo nano /etc/sysctl.conf
 </code></pre>
-<pre><code class="language-sh">fs.inotify.max_queued_events=524288
+<pre><code class="language-bash">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
 <p>Reboot the system: <code>reboot</code></p>
@@ -244,14 +244,14 @@ fs.inotify.max_user_watches=524288
 Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
 release</a></li>
 </ul>
-<pre><code class="language-sh">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
+<pre><code class="language-bash">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 </code></pre>
 <h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
 <p>To enable the <code>greetd</code> service:</p>
-<pre><code class="language-sh">systemctl enable greetd
+<pre><code class="language-bash">systemctl enable greetd
 </code></pre>
 <p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
-<pre><code class="language-sh">sudo nano /etc/greetd/config.toml
+<pre><code class="language-bash">sudo nano /etc/greetd/config.toml
 </code></pre>
 <pre><code class="language-toml"># The default session, also known as the greeter.
 [default_session]

@@ -4,19 +4,19 @@
 
 To install `chezmoi`:
 
-```sh
+```bash
 sudo pacman -S chezmoi
 ```
 
 To initialize it:
 
-```sh
+```bash
 chezmoi init https://github.com/<user>/dotfiles.git
 ```
 
 To apply it:
 
-```sh
+```bash
 chezmoi apply
 ```
 
@@ -38,7 +38,7 @@ repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86
 
 To launch `niri` from the `tty`:
 
-```sh
+```bash
 niri-session
 ```
 
@@ -46,23 +46,23 @@ niri-session
 
 To check if Nushell is in the valid shells list:
 
-```sh
+```bash
 cat /etc/shells
 ```
 
 To set Nushell as login shell:
 
-```sh
+```bash
 chsh -s /usr/bin/nu <user>
 ```
 
-Note: Reboot the system to check if everything is ok.
+Note: Reboot the system to check if everything is ok
 
 ## Font
 
 To refresh the font cache:
 
-```sh
+```bash
 sudo fc-cache -fv
 ```
 
@@ -70,19 +70,19 @@ sudo fc-cache -fv
 
 To generate a new SSH key:
 
-```sh
+```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 To check the public key:
 
-```sh
+```bash
 cat ~/.ssh/id_ed25519.pub
 ```
 
 To test the SSH connection:
 
-```sh
+```bash
 ssh -T git@github.com
 ```
 
@@ -90,21 +90,21 @@ ssh -T git@github.com
 
 To install and set Neovim nightly using `bob`:
 
-```sh
+```bash
 bob install nightly
 ```
 
-```sh
+```bash
 sudo bob use nightly
 ```
 
 To increase the maximum number of `inotify` watches and queued events. Edit the
 `/etc/sysctl.conf` file:
 
-```sh
+```bash
 sudo nano /etc/sysctl.conf
 ```
-```sh
+```bash
 fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 ```
@@ -115,7 +115,7 @@ Reboot the system: `reboot`
 
 - [ ] Download and install **Pandoc** [latest
 release](https://github.com/jgm/pandoc/releases)
-```sh
+```bash
 sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 ```
 
@@ -123,13 +123,13 @@ sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C
 
 To enable the `greetd` service:
 
-```sh
+```bash
 systemctl enable greetd
 ```
 
 To edit the `greetd` configuration file to use `tuigreet`:
 
-```sh
+```bash
 sudo nano /etc/greetd/config.toml
 ```
 ```toml
