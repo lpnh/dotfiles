@@ -23,7 +23,9 @@ sudo pacman -S rustup
 rustup update stable
 ```
 
-## Mkinitcpio Preset
+## Mkinitcpio 
+
+### Linux Preset
 
 - [ ] Keep the default **linux.preset** file as backup:
 ```bash
@@ -52,33 +54,44 @@ fallback_image="/efi/initramfs-linux-fallback.img"
 fallback_options="-S autodetect"
 ```
 
+### Console Warning
+
+- [ ] To avoid unnecessary warnings, remove the **consolefont** option from the
+**HOOK**:
+```bash
+sudo nano /etc/mkinitcpio.conf
+```
+```txt
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap block filesystems fsck)
+```
+
 ## Improving the Initramfs
 
 - [ ] Install the microcode accordingly:
-```sh
+```bash
 # for AMD CPU
 sudo pacman -S amd-ucode
 ```
-```sh
+```bash
 # for Intel CPU
 sudo pacman -S intel-ucode
 ```
 - [ ] Install **booster**: `sudo pacman -S booster`
 - [ ] Copy both new images to the  **/efi** directory:
-```sh
+```bash
 sudo cp /boot/cpu_manufacturer-ucode.img /efi
 ```
-```sh
+```bash
 sudo cp /boot/booster-linux.img /efi
 ```
 - [ ] Create a new loader entry based on the previous **arch.conf**:
-```sh
+```bash
 sudo cd /efi/loader/entries
 ```
-```sh
+```bash
 sudo cp arch.conf booster.conf
 ```
-```sh
+```bash
 sudo nano booster.conf
 ```
 ```txt
@@ -93,7 +106,7 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx nvme_load=YES nowatchdog rw
 ```
 - [ ] Update the **loader.conf** file:
-```sh
+```bash
 sudo nano /efi/loader/loader.conf
 ```
 ```txt
@@ -124,16 +137,16 @@ sudo nano /usr/lib/booster/regenerate_images
 - [ ] Install it with the **refind-install** script: `refind-install`
 - [ ] Start an interactive shell as root: `su`
 - [ ] Create the **themes** directory inside refind installation path:
-```sh
+```bash
 cd /efi/EFI/refind
 mkdir themes
 ```
 - [ ] Clone the catppuccin repo inside the **themes** directory:
-```sh
+```bash
 git clone https://github.com/catppuccin/refind.git catppuccin
 ```
 - [ ] Edit the catppuccin **mocha.conf** file, adding the **hidden_tags** back to the interface:
-```sh
+```bash
 cd catppuccin
 nano mocha.conf
 ```
@@ -160,12 +173,12 @@ showtools hidden_tags shutdown
 ```
 
 - [ ] Go back to the **refind** directory:
-```sh
+```bash
 cd /efi/EFI/refind
 ```
 - [ ] Edit the **refind.conf**, adding a new **menuentry** for the
 **systemd-boot** and also including the *mocha.conf* file:
-```sh
+```bash
 nano refind.conf
 ```
 ```no_rust
@@ -184,7 +197,7 @@ include themes/catppuccin/mocha.conf
 ### Pacman
 
 - [ ] Update **pacman** configuration file:
-```sh
+```bash
 sudo nano /etc/pacman.conf
 ```
 ```txt

@@ -43,7 +43,9 @@ sudo pacman -S rustup
 rustup update stable
 ```
 
-## Mkinitcpio Preset
+## Mkinitcpio
+
+### Linux Preset
 
 Update `linux.preset` to use the `/efi/` path instead of `/boot`.
 
@@ -75,6 +77,20 @@ default_image="/efi/initramfs-linux.img"
 fallback_image="/efi/initramfs-linux-fallback.img"
 #fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
 fallback_options="-S autodetect"
+```
+
+### Consolefont Warning
+
+If no font was set in the `/etc/vconsole.conf` file, `mkinitcpio` will generate
+an annoying warning about it during the hook phase.
+
+To avoid this, remove the `consolefont` option from the `HOOK=()`:
+
+```bash
+sudo nano /etc/mkinitcpio.conf
+```
+```txt
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap block filesystems fsck)
 ```
 
 ## New Initrd

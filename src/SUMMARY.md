@@ -21,6 +21,8 @@
 - [Finishing](de/finishing.md)
 - [Miscellaneous](de/miscellaneous.md)
 
+---
+
 # Recipes 
 
 - [Live USB](recipes/live_usb.md)
