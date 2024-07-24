@@ -495,25 +495,50 @@ installation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <h2 id="system-check"><a class="header" href="#system-check">System Check</a></h2>
 <p>Refresh the entire system:</p>
-<pre><code class="language-sh">sudo pacman -Syyu
+<pre><code class="language-bash">sudo pacman -Syyu
 </code></pre>
 <p>Make sure to have some basic system packages installed:</p>
-<pre><code class="language-sh">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
+<pre><code class="language-bash">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 </code></pre>
 <h2 id="compilers"><a class="header" href="#compilers">Compilers</a></h2>
 <p>Install <code>clang</code>:</p>
-<pre><code class="language-sh">sudo pacman -S clang
+<pre><code class="language-bash">sudo pacman -S clang
 </code></pre>
 <p>Install <code>go</code>:</p>
-<pre><code class="language-sh">sudo pacman -S go
+<pre><code class="language-bash">sudo pacman -S go
 </code></pre>
 <p>Install <code>lua</code>:</p>
-<pre><code class="language-sh">sudo pacman -S lua
+<pre><code class="language-bash">sudo pacman -S lua
 </code></pre>
 <p>Install <code>rustup</code>:</p>
-<pre><code class="language-sh">sudo pacman -S rustup
+<pre><code class="language-bash">sudo pacman -S rustup
 </code></pre>
-<pre><code class="language-sh">rustup update stable
+<pre><code class="language-bash">rustup update stable
+</code></pre>
+<h2 id="mkinitcpio-preset"><a class="header" href="#mkinitcpio-preset">Mkinitcpio Preset</a></h2>
+<p>Update <code>linux.preset</code> to use the <code>/efi/</code> path instead of <code>/boot</code>.</p>
+<p>First, let's keep the default preset file as backup:</p>
+<pre><code class="language-bash">sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+</code></pre>
+<p>Now to edit the <code>linux.preset</code> file, run:</p>
+<pre><code class="language-bash">sudo nano /etc/mkinitcpio.d/linux.preset
+</code></pre>
+<pre><code class="language-txt"># mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/efi/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/efi/initramfs-linux.img"
+#default_uki="/efi/EFI/Linux/arch-linux.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/efi/initramfs-linux-fallback.img"
+#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"
 </code></pre>
 <h2 id="new-initrd"><a class="header" href="#new-initrd">New Initrd</a></h2>
 <p>Install <code>amd-ucode</code> or <code>intel-ucode</code> according with your CPU.</p>
@@ -524,8 +549,16 @@ installation.</p>
 <p>Install <code>booster</code>:</p>
 <pre><code class="language-sh">sudo pacman -S booster
 </code></pre>
-<p>Copy both microcode and booster images to the <code>/efi</code> path.</p>
-<p>Create new loader entry including both new initrd images accordingly:</p>
+<p>To copy both new images to the <code>/efi</code> directory:</p>
+<pre><code class="language-bash">sudo cp /boot/cpu_manufacturer-ucode.img /efi
+</code></pre>
+<pre><code class="language-bash">sudo cp /boot/booster-linux.img /efi
+</code></pre>
+<p>Create a new loader entry to use the new images, based on the previous <code>arch.conf</code>:</p>
+<pre><code class="language-sh">sudo cd /efi/loader/entries
+</code></pre>
+<pre><code class="language-sh">sudo cp arch.conf booster.conf
+</code></pre>
 <pre><code class="language-sh">sudo nano /efi/loader/entries/booster.conf
 </code></pre>
 <pre><code class="language-txt">title   Arch Linux with Booster
@@ -536,19 +569,30 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 </code></pre>
 <p>You can take the opportunity to include other kernel parameters to the option
 line. For example <code>nvme_load=YES</code>, <code>nowatchdog</code>, <code>quiet</code>, <code>splash</code>, etc.</p>
-<p>To check the parameters your system was booted up with:</p>
+<p>To check the parameters your system was booted up with, run:</p>
 <pre><code class="language-sh">cat /proc/cmdline
 </code></pre>
-<p>Update the <code>/efi/loader/loader.conf</code> file:</p>
+<p>To use the <code>booster.conf</code> as default, update the <code>/efi/loader/loader.conf</code>
+file:</p>
 <pre><code class="language-sh">sudo nano /efi/loader/loader.conf
 </code></pre>
-<p>To use the <code>booster.conf</code> as default:</p>
 <pre><code class="language-txt">default  booster.conf
 timeout  4
 console-mode auto
 </code></pre>
+<p>Update booster <code>regenerate_images</code> script to use the <code>/efi</code> path instead of
+<code>/boot</code>.</p>
+<p>To backup the default script, run:</p>
+<pre><code class="language-bash">sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
+</code></pre>
+<p>To update the script:</p>
+<pre><code class="language-bash">sudo nano /usr/lib/booster/regenerate_images
+</code></pre>
+<pre><code class="language-txt">  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &amp;
+  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
+</code></pre>
 <p>To verify the boot loader entries:</p>
-<pre><code class="language-sh">sudo bootctl list
+<pre><code class="language-bash">sudo bootctl list
 </code></pre>
 <h2 id="refind"><a class="header" href="#refind">rEFInd</a></h2>
 <p>Install <code>refind</code> package:</p>
@@ -557,7 +601,8 @@ console-mode auto
 <p>Install it with the <code>refind-install</code> script:</p>
 <pre><code class="language-sh">refind-install
 </code></pre>
-<p>Note: for comfort I will run <code>su</code> to use the interactive shell as root.</p>
+<p>Note: for comfort I will use the <code>su</code> command that launches an interactive shell
+as root.</p>
 <p>To add the <a href="https://github.com/catppuccin/refind">catppuccin theme</a>, create a
 <code>themes</code> directory inside refind installation path:</p>
 <pre><code class="language-sh">cd /efi/EFI/refind
@@ -622,14 +667,18 @@ documentation</a></p>
 <p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
 repo</a></p>
 <h2 id="yay"><a class="header" href="#yay">Yay</a></h2>
-<p>Create and cd into an <code>apps</code> directory:</p>
-<pre><code class="language-sh">mkdir apps &amp;&amp; cd apps
+<p>First, create and <code>cd</code> into an <code>apps</code> directory:</p>
+<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
 </code></pre>
-<p>Install <code>yay</code>:</p>
-<pre><code class="language-sh">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+<p>To install <code>yay</code>:</p>
+<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
-<p>First use:</p>
-<pre><code class="language-sh">yay -Y --gendb
+<p>For the first use:</p>
+<pre><code class="language-bash"># I'm not sure about this one
+yay -Y --gendb
+</code></pre>
+<p>Reboot the system:</p>
+<pre><code class="language-bash">reboot
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphics-and-modules"><a class="header" href="#graphics-and-modules">Graphics and Modules</a></h1>
 <h2 id="drivers"><a class="header" href="#drivers">Drivers</a></h2>
@@ -1007,6 +1056,36 @@ rustup:</li>
 </code></pre>
 <pre><code class="language-sh">rustup update stable
 </code></pre>
+<h2 id="mkinitcpio-preset-1"><a class="header" href="#mkinitcpio-preset-1">Mkinitcpio Preset</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Keep the default <strong>linux.preset</strong> file as backup:</li>
+</ul>
+<pre><code class="language-bash">sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update it to use the <strong>/efi/</strong> path instead of <strong>/boot</strong>.</li>
+</ul>
+<pre><code class="language-bash">sudo nano /etc/mkinitcpio.d/linux.preset
+</code></pre>
+<pre><code class="language-txt"># mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/efi/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/efi/initramfs-linux.img"
+#default_uki="/efi/EFI/Linux/arch-linux.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/efi/initramfs-linux-fallback.img"
+#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"
+</code></pre>
 <h2 id="improving-the-initramfs"><a class="header" href="#improving-the-initramfs">Improving the Initramfs</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -1062,6 +1141,22 @@ console-mode auto
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
+Backup booster <strong>regenerate_images</strong> default script:</li>
+</ul>
+<pre><code class="language-bash">sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the script to use the <strong>/efi</strong> path instead of
+<strong>/boot</strong>:</li>
+</ul>
+<pre><code class="language-bash">sudo nano /usr/lib/booster/regenerate_images
+</code></pre>
+<pre><code class="language-txt">  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &amp;
+  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
 Verify the current available boot loader entries: <code>sudo bootctl list</code></li>
 </ul>
 <h2 id="refind-1"><a class="header" href="#refind-1">rEFInd</a></h2>
@@ -1084,9 +1179,9 @@ Clone the catppuccin repo inside the <strong>themes</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">git clone https://github.com/catppuccin/refind.git catppuccin
 </code></pre>
-<p>end of <code>refind.conf</code> file. But before that, let's</p>
 <ul>
-<li>Edit the catppuccin <strong>mocha.conf</strong> file, adding the <strong>hidden_tags</strong> back to the interface:</li>
+<li><input disabled="" type="checkbox"/>
+Edit the catppuccin <strong>mocha.conf</strong> file, adding the <strong>hidden_tags</strong> back to the interface:</li>
 </ul>
 <pre><code class="language-sh">cd catppuccin
 nano mocha.conf
@@ -1113,14 +1208,14 @@ showtools hidden_tags shutdown
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Go back to <code>refind</code> directory:</li>
+Go back to the <strong>refind</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">cd /efi/EFI/refind
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Edit the <strong>refind.conf</strong>, adding a new <strong>menuentry</strong> for the
-<strong>systemd-boot</strong> and also the including the <em>mocha.conf</em> file:</li>
+<strong>systemd-boot</strong> and also including the <em>mocha.conf</em> file:</li>
 </ul>
 <pre><code class="language-sh">nano refind.conf
 </code></pre>
@@ -1158,17 +1253,18 @@ ParallelDownloads = 5
 <li><input disabled="" type="checkbox"/>
 Create and cd into the <strong>apps</strong> directory:</li>
 </ul>
-<pre><code class="language-sh">mkdir apps &amp;&amp; cd apps
+<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install <strong>yay</strong>:</li>
 </ul>
-<pre><code class="language-sh">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
-<pre><code class="language-sh"># I'm not sure about this one
+<pre><code class="language-bash"># I'm not sure about this one
 yay -Y --gendb
 </code></pre>
+<p>Reboot the system: <code>reboot</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphics-and-modules-1"><a class="header" href="#graphics-and-modules-1">Graphics and Modules</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>

@@ -4,13 +4,13 @@
 
 Refresh the entire system:
 
-```sh
+```bash
 sudo pacman -Syyu
 ```
 
 Make sure to have some basic system packages installed:
 
-```sh
+```bash
 sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 ```
 
@@ -18,30 +18,63 @@ sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 
 Install `clang`:
 
-```sh
+```bash
 sudo pacman -S clang
 ```
 
 Install `go`:
 
-```sh
+```bash
 sudo pacman -S go
 ```
 
 Install `lua`:
 
-```sh
+```bash
 sudo pacman -S lua
 ```
 
 Install `rustup`:
 
-```sh
+```bash
 sudo pacman -S rustup
 ```
-
-```sh
+```bash
 rustup update stable
+```
+
+## Mkinitcpio Preset
+
+Update `linux.preset` to use the `/efi/` path instead of `/boot`.
+
+First, let's keep the default preset file as backup:
+
+```bash
+sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+```
+
+Now to edit the `linux.preset` file, run:
+
+```bash
+sudo nano /etc/mkinitcpio.d/linux.preset
+```
+```txt
+# mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/efi/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/efi/initramfs-linux.img"
+#default_uki="/efi/EFI/Linux/arch-linux.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/efi/initramfs-linux-fallback.img"
+#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"
 ```
 
 ## New Initrd
@@ -62,14 +95,26 @@ Install `booster`:
 sudo pacman -S booster
 ```
 
-Copy both microcode and booster images to the `/efi` path.
+To copy both new images to the `/efi` directory:
 
-Create new loader entry including both new initrd images accordingly:
+```bash
+sudo cp /boot/cpu_manufacturer-ucode.img /efi
+```
+```bash
+sudo cp /boot/booster-linux.img /efi
+```
 
+Create a new loader entry to use the new images, based on the previous `arch.conf`:
+
+```sh
+sudo cd /efi/loader/entries
+```
+```sh
+sudo cp arch.conf booster.conf
+```
 ```sh
 sudo nano /efi/loader/entries/booster.conf
 ```
-
 ```txt
 title   Arch Linux with Booster
 linux   /vmlinuz-linux
@@ -81,29 +126,46 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 You can take the opportunity to include other kernel parameters to the option
 line. For example `nvme_load=YES`, `nowatchdog`, `quiet`, `splash`, etc.
 
-To check the parameters your system was booted up with:
+To check the parameters your system was booted up with, run:
 
 ```sh
 cat /proc/cmdline
 ```
 
-Update the `/efi/loader/loader.conf` file:
+To use the `booster.conf` as default, update the `/efi/loader/loader.conf`
+file:
 
 ```sh
 sudo nano /efi/loader/loader.conf
 ```
-
-To use the `booster.conf` as default:
-
 ```txt
 default  booster.conf
 timeout  4
 console-mode auto
 ```
 
+Update booster `regenerate_images` script to use the `/efi` path instead of
+`/boot`.
+
+To backup the default script, run:
+
+```bash
+sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
+```
+
+To update the script:
+
+```bash
+sudo nano /usr/lib/booster/regenerate_images
+```
+```txt
+  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &
+  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
+```
+
 To verify the boot loader entries:
 
-```sh
+```bash
 sudo bootctl list
 ```
 
@@ -121,7 +183,8 @@ Install it with the `refind-install` script:
 refind-install
 ```
 
-Note: for comfort I will run `su` to use the interactive shell as root.
+Note: for comfort I will use the `su` command that launches an interactive shell
+as root.
 
 To add the [catppuccin theme](https://github.com/catppuccin/refind), create a
 `themes` directory inside refind installation path:
@@ -216,20 +279,27 @@ repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc
 
 ## Yay
 
-Create and cd into an `apps` directory:
+First, create and `cd` into an `apps` directory:
 
-```sh
+```bash
 mkdir apps && cd apps
 ```
 
-Install `yay`:
+To install `yay`:
 
-```sh
+```bash
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
-First use:
+For the first use:
 
-```sh
+```bash
+# I'm not sure about this one
 yay -Y --gendb
+```
+
+Reboot the system:
+
+```bash
+reboot
 ```

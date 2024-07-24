@@ -204,6 +204,36 @@ rustup:</li>
 </code></pre>
 <pre><code class="language-sh">rustup update stable
 </code></pre>
+<h2 id="mkinitcpio-preset"><a class="header" href="#mkinitcpio-preset">Mkinitcpio Preset</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Keep the default <strong>linux.preset</strong> file as backup:</li>
+</ul>
+<pre><code class="language-bash">sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update it to use the <strong>/efi/</strong> path instead of <strong>/boot</strong>.</li>
+</ul>
+<pre><code class="language-bash">sudo nano /etc/mkinitcpio.d/linux.preset
+</code></pre>
+<pre><code class="language-txt"># mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/efi/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/efi/initramfs-linux.img"
+#default_uki="/efi/EFI/Linux/arch-linux.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/efi/initramfs-linux-fallback.img"
+#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"
+</code></pre>
 <h2 id="improving-the-initramfs"><a class="header" href="#improving-the-initramfs">Improving the Initramfs</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -259,6 +289,22 @@ console-mode auto
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
+Backup booster <strong>regenerate_images</strong> default script:</li>
+</ul>
+<pre><code class="language-bash">sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the script to use the <strong>/efi</strong> path instead of
+<strong>/boot</strong>:</li>
+</ul>
+<pre><code class="language-bash">sudo nano /usr/lib/booster/regenerate_images
+</code></pre>
+<pre><code class="language-txt">  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &amp;
+  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
 Verify the current available boot loader entries: <code>sudo bootctl list</code></li>
 </ul>
 <h2 id="refind"><a class="header" href="#refind">rEFInd</a></h2>
@@ -281,9 +327,9 @@ Clone the catppuccin repo inside the <strong>themes</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">git clone https://github.com/catppuccin/refind.git catppuccin
 </code></pre>
-<p>end of <code>refind.conf</code> file. But before that, let's</p>
 <ul>
-<li>Edit the catppuccin <strong>mocha.conf</strong> file, adding the <strong>hidden_tags</strong> back to the interface:</li>
+<li><input disabled="" type="checkbox"/>
+Edit the catppuccin <strong>mocha.conf</strong> file, adding the <strong>hidden_tags</strong> back to the interface:</li>
 </ul>
 <pre><code class="language-sh">cd catppuccin
 nano mocha.conf
@@ -310,14 +356,14 @@ showtools hidden_tags shutdown
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Go back to <code>refind</code> directory:</li>
+Go back to the <strong>refind</strong> directory:</li>
 </ul>
 <pre><code class="language-sh">cd /efi/EFI/refind
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Edit the <strong>refind.conf</strong>, adding a new <strong>menuentry</strong> for the
-<strong>systemd-boot</strong> and also the including the <em>mocha.conf</em> file:</li>
+<strong>systemd-boot</strong> and also including the <em>mocha.conf</em> file:</li>
 </ul>
 <pre><code class="language-sh">nano refind.conf
 </code></pre>
@@ -355,17 +401,18 @@ ParallelDownloads = 5
 <li><input disabled="" type="checkbox"/>
 Create and cd into the <strong>apps</strong> directory:</li>
 </ul>
-<pre><code class="language-sh">mkdir apps &amp;&amp; cd apps
+<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install <strong>yay</strong>:</li>
 </ul>
-<pre><code class="language-sh">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
-<pre><code class="language-sh"># I'm not sure about this one
+<pre><code class="language-bash"># I'm not sure about this one
 yay -Y --gendb
 </code></pre>
+<p>Reboot the system: <code>reboot</code></p>
 
                     </main>
 

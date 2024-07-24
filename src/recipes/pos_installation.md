@@ -23,6 +23,35 @@ sudo pacman -S rustup
 rustup update stable
 ```
 
+## Mkinitcpio Preset
+
+- [ ] Keep the default **linux.preset** file as backup:
+```bash
+sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+```
+- [ ] Update it to use the **/efi/** path instead of **/boot**.
+```bash
+sudo nano /etc/mkinitcpio.d/linux.preset
+```
+```txt
+# mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/efi/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/efi/initramfs-linux.img"
+#default_uki="/efi/EFI/Linux/arch-linux.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/efi/initramfs-linux-fallback.img"
+#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"
+```
+
 ## Improving the Initramfs
 
 - [ ] Install the microcode accordingly:
@@ -72,6 +101,21 @@ default  booster.conf
 timeout  4
 console-mode auto
 ```
+
+- [ ] Backup booster **regenerate_images** default script:
+```bash
+sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
+```
+- [ ] Update the script to use the **/efi** path instead of
+**/boot**:
+```bash
+sudo nano /usr/lib/booster/regenerate_images
+```
+```txt
+  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &
+  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
+```
+
 - [ ] Verify the current available boot loader entries: `sudo bootctl list`
 
 ## rEFInd
@@ -88,10 +132,7 @@ mkdir themes
 ```sh
 git clone https://github.com/catppuccin/refind.git catppuccin
 ```
-
-end of `refind.conf` file. But before that, let's 
-
-- Edit the catppuccin **mocha.conf** file, adding the **hidden_tags** back to the interface:
+- [ ] Edit the catppuccin **mocha.conf** file, adding the **hidden_tags** back to the interface:
 ```sh
 cd catppuccin
 nano mocha.conf
@@ -118,12 +159,12 @@ nano mocha.conf
 showtools hidden_tags shutdown
 ```
 
-- [ ] Go back to `refind` directory:
+- [ ] Go back to the **refind** directory:
 ```sh
 cd /efi/EFI/refind
 ```
 - [ ] Edit the **refind.conf**, adding a new **menuentry** for the
-**systemd-boot** and also the including the *mocha.conf* file:
+**systemd-boot** and also including the *mocha.conf* file:
 ```sh
 nano refind.conf
 ```
@@ -160,14 +201,16 @@ ParallelDownloads = 5
 ### Yay
 
 - [ ] Create and cd into the **apps** directory:
-```sh
+```bash
 mkdir apps && cd apps
 ```
 - [ ] Install **yay**:
-```sh
+```bash
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
-```sh
+```bash
 # I'm not sure about this one
 yay -Y --gendb
 ```
+
+Reboot the system: `reboot`
