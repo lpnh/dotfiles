@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html" class="active">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html" class="active">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -204,7 +204,8 @@ rustup:</li>
 </code></pre>
 <pre><code class="language-sh">rustup update stable
 </code></pre>
-<h2 id="mkinitcpio-preset"><a class="header" href="#mkinitcpio-preset">Mkinitcpio Preset</a></h2>
+<h2 id="mkinitcpio"><a class="header" href="#mkinitcpio">Mkinitcpio</a></h2>
+<h3 id="linux-preset"><a class="header" href="#linux-preset">Linux Preset</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Keep the default <strong>linux.preset</strong> file as backup:</li>
@@ -234,15 +235,25 @@ fallback_image="/efi/initramfs-linux-fallback.img"
 #fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
 fallback_options="-S autodetect"
 </code></pre>
+<h3 id="console-warning"><a class="header" href="#console-warning">Console Warning</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+To avoid unnecessary warnings, remove the <strong>consolefont</strong> option from the
+<strong>HOOK</strong>:</li>
+</ul>
+<pre><code class="language-bash">sudo nano /etc/mkinitcpio.conf
+</code></pre>
+<pre><code class="language-txt">HOOKS=(base udev autodetect microcode modconf kms keyboard keymap block filesystems fsck)
+</code></pre>
 <h2 id="improving-the-initramfs"><a class="header" href="#improving-the-initramfs">Improving the Initramfs</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install the microcode accordingly:</li>
 </ul>
-<pre><code class="language-sh"># for AMD CPU
+<pre><code class="language-bash"># for AMD CPU
 sudo pacman -S amd-ucode
 </code></pre>
-<pre><code class="language-sh"># for Intel CPU
+<pre><code class="language-bash"># for Intel CPU
 sudo pacman -S intel-ucode
 </code></pre>
 <ul>
@@ -251,19 +262,19 @@ Install <strong>booster</strong>: <code>sudo pacman -S booster</code></li>
 <li><input disabled="" type="checkbox"/>
 Copy both new images to the  <strong>/efi</strong> directory:</li>
 </ul>
-<pre><code class="language-sh">sudo cp /boot/cpu_manufacturer-ucode.img /efi
+<pre><code class="language-bash">sudo cp /boot/cpu_manufacturer-ucode.img /efi
 </code></pre>
-<pre><code class="language-sh">sudo cp /boot/booster-linux.img /efi
+<pre><code class="language-bash">sudo cp /boot/booster-linux.img /efi
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Create a new loader entry based on the previous <strong>arch.conf</strong>:</li>
 </ul>
-<pre><code class="language-sh">sudo cd /efi/loader/entries
+<pre><code class="language-bash">sudo cd /efi/loader/entries
 </code></pre>
-<pre><code class="language-sh">sudo cp arch.conf booster.conf
+<pre><code class="language-bash">sudo cp arch.conf booster.conf
 </code></pre>
-<pre><code class="language-sh">sudo nano booster.conf
+<pre><code class="language-bash">sudo nano booster.conf
 </code></pre>
 <pre><code class="language-txt">title   Arch Linux with Booster
 linux   /vmlinuz-linux
@@ -281,7 +292,7 @@ Take the opportunity to include other kernel parameters:</li>
 <li><input disabled="" type="checkbox"/>
 Update the <strong>loader.conf</strong> file:</li>
 </ul>
-<pre><code class="language-sh">sudo nano /efi/loader/loader.conf
+<pre><code class="language-bash">sudo nano /efi/loader/loader.conf
 </code></pre>
 <pre><code class="language-txt">default  booster.conf
 timeout  4
@@ -318,20 +329,20 @@ Start an interactive shell as root: <code>su</code></li>
 <li><input disabled="" type="checkbox"/>
 Create the <strong>themes</strong> directory inside refind installation path:</li>
 </ul>
-<pre><code class="language-sh">cd /efi/EFI/refind
+<pre><code class="language-bash">cd /efi/EFI/refind
 mkdir themes
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Clone the catppuccin repo inside the <strong>themes</strong> directory:</li>
 </ul>
-<pre><code class="language-sh">git clone https://github.com/catppuccin/refind.git catppuccin
+<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Edit the catppuccin <strong>mocha.conf</strong> file, adding the <strong>hidden_tags</strong> back to the interface:</li>
 </ul>
-<pre><code class="language-sh">cd catppuccin
+<pre><code class="language-bash">cd catppuccin
 nano mocha.conf
 </code></pre>
 <pre><code class="language-txt"># Which non-bootloader tools to show on the tools line, and in what
@@ -358,14 +369,14 @@ showtools hidden_tags shutdown
 <li><input disabled="" type="checkbox"/>
 Go back to the <strong>refind</strong> directory:</li>
 </ul>
-<pre><code class="language-sh">cd /efi/EFI/refind
+<pre><code class="language-bash">cd /efi/EFI/refind
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Edit the <strong>refind.conf</strong>, adding a new <strong>menuentry</strong> for the
 <strong>systemd-boot</strong> and also including the <em>mocha.conf</em> file:</li>
 </ul>
-<pre><code class="language-sh">nano refind.conf
+<pre><code class="language-bash">nano refind.conf
 </code></pre>
 <pre><code class="language-no_rust">menuentry "Arch Linux" {
     icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
@@ -385,7 +396,7 @@ Exit the interactive shell: <code>exit</code></li>
 <li><input disabled="" type="checkbox"/>
 Update <strong>pacman</strong> configuration file:</li>
 </ul>
-<pre><code class="language-sh">sudo nano /etc/pacman.conf
+<pre><code class="language-bash">sudo nano /etc/pacman.conf
 </code></pre>
 <pre><code class="language-txt"># Misc options
 #UseSyslog
