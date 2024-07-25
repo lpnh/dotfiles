@@ -15,6 +15,18 @@ return {
     opts = {},
   },
 
+  -- Find and Replace
+  {
+    'MagicDuck/grug-far.nvim',
+    config = function()
+      require('grug-far').setup {}
+
+      vim.keymap.set('n', '<leader>r', function()
+        require('grug-far').grug_far { prefills = { search = vim.fn.expand '<cword>' } }
+      end, { desc = '[R]eplace word under the cursor' })
+    end,
+  },
+
   -- Display pending keybinds
   {
     'folke/which-key.nvim',

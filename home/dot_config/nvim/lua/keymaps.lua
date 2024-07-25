@@ -35,9 +35,6 @@ map.set('n', '<leader>x', '<C-w>c', { desc = 'Close current buffer' })
 map.set('n', '<C-d>', '<C-d>zz')
 map.set('n', '<C-u>', '<C-u>zz')
 
--- Find/replace for the word under the cursor
-map.set('n', '<leader>S', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Find/Replace word under cursor' })
-
 -- Make replace less painful
 map.set('x', '<leader>p', [["_dP]], { desc = 'Replace While [P]asting' })
 map.set('v', '<leader>d', [["_d]], { desc = '[D]eleting Using a Black Hole' })
