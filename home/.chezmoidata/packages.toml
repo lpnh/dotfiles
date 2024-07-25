@@ -1,7 +1,14 @@
 [packages]
 
 # should be manually installed
-optional = ["aseprite", "love", "minecraft-launcher", "ocenaudio-bin", "tiled"]
+optional = [
+    "aseprite",
+    "love",
+    "minecraft-launcher",
+    "ocenaudio-bin",
+    "tiled",
+    "zola",
+]
 
 # should be manually installed with `cargo install --locked`
 crates = ["cargo-chef", "cargo-generate", "trunk"]
