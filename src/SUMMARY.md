@@ -19,6 +19,7 @@
 
 - [Home Sweet Home](de/home_sweet_home.md)
 - [Finishing](de/finishing.md)
+- [Dev Stuff](de/dev_stuff.md)
 - [Miscellaneous](de/miscellaneous.md)
 
 ---
@@ -33,5 +34,6 @@
 - [Graphics and Modules](recipes/graphics_and_modules.md)
 - [Home Sweet Home](recipes/home_sweet_home.md)
 - [Finishing](recipes/finishing.md)
+- [Dev Stuff](recipes/dev_stuff.md)
 - [Miscellaneous](recipes/miscellaneous.md)
 - [System Maintenance](recipes/system_maintenance.md)
