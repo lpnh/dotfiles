@@ -119,23 +119,15 @@ return {
 
           -- Jump to the <target> of the word under the cursor
           --  To jump back, press <C-t>
-          map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          -- map('gr', builtin.lsp_references, '[G]oto [R]eferences')
-          map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
-          map('gt', builtin.lsp_type_definitions, '[G]oto [T]ype Definition')
+          map('gd', builtin.lsp_definitions, 'Go to definition')
+          map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+          map('gR', builtin.lsp_references, 'Go to references')
+          map('gI', builtin.lsp_implementations, 'Go to implementation')
+          map('gt', builtin.lsp_type_definitions, 'Go to type definition')
 
           -- Fuzzy find all the symbols in the current document or workspace
-          --  Symbols are things like variables, functions, types, etc
-          map('<leader>ssd', builtin.lsp_document_symbols, '[S]earch [S]ymbols in [D]ocument')
-          map('<leader>ssw', builtin.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols in [W]orkspace')
-
-          -- Opens a popup that displays documentation about the word under the cursor
-          --  See `:help K` for why this keymap
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
-
-          -- Opens a popup that displays signature information about the word under the cursor
-          map('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
+          map('<leader>ssd', builtin.lsp_document_symbols, 'Search symbols in document')
+          map('<leader>ssw', builtin.lsp_dynamic_workspace_symbols, 'Search symbols in workspace')
 
           -- Highlight references of the word under the cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -166,7 +158,7 @@ return {
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             map('<leader>h', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, 'Toggle Inlay [H]ints')
+            end, 'Toggle inlay hints')
           end
         end,
       })
@@ -187,7 +179,7 @@ return {
           require('conform').format { async = true, lsp_fallback = true }
         end,
         mode = '',
-        desc = '[F]ormat buffer',
+        desc = 'Format buffer',
       },
     },
     opts = {
@@ -240,7 +232,7 @@ return {
 
       vim.api.nvim_create_user_command('ToggleMdlRules', toggle_mdl_rules, {})
 
-      vim.keymap.set('n', '<leader>mr', toggle_mdl_rules, { desc = 'Toggle [M]arkdownlint [R]ules' })
+      vim.keymap.set('n', '<leader>mr', toggle_mdl_rules, { desc = 'Toggle markdownlint rules' })
     end,
   },
 

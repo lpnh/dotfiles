@@ -23,7 +23,7 @@ return {
 
       vim.keymap.set('n', '<leader>r', function()
         require('grug-far').grug_far { prefills = { search = vim.fn.expand '<cword>' } }
-      end, { desc = '[R]eplace word under the cursor' })
+      end, { desc = 'Replace word under the cursor' })
     end,
   },
 
@@ -38,18 +38,18 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which [K]ey' })
+      vim.keymap.set('n', '<leader>k', '<cmd>WhichKey<CR>', { desc = 'Which key' })
     end,
 
     -- Document existing key chains
     keys = {
-      { '<leader>d', group = '[D]iagnostic' },
+      { '<leader>d', group = 'Diagnostic' },
       { '<leader>d_', hidden = true },
-      { '<leader>s', group = '[S]earch' },
+      { '<leader>s', group = 'Search' },
       { '<leader>s_', hidden = true },
-      { '<leader>ss', group = '[S]earch [S]ymbols' },
+      { '<leader>ss', group = 'Search symbols' },
       { '<leader>ss_', hidden = true },
-      { '<leader>t', group = '[T]able' },
+      { '<leader>t', group = 'Table' },
       { '<leader>t_', hidden = true },
       { '<leader>v', group = 'LÖVE' },
       { '<leader>v_', hidden = true },

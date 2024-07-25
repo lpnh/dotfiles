@@ -79,18 +79,17 @@ return {
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
 
-    vim.keymap.set('n', '<leader>s?', builtin.help_tags, { desc = '[S]earch Help' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch Select [T]elescope' })
-    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-    vim.keymap.set('n', '<leader>sh', builtin.oldfiles, { desc = '[S]earch Recent Files (History)' })
-    vim.keymap.set('n', '<leader>ssd', builtin.builtin, { desc = '[S]earch [S]ymbols in [D]ocument' })
-    vim.keymap.set('n', '<leader>ssw', builtin.builtin, { desc = '[S]earch [S]ymbols in [W]orkspace' })
-    vim.keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Find Existing Buffers' })
+    vim.keymap.set('n', '<leader>s?', builtin.help_tags, { desc = 'Search help' })
+    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search keymaps' })
+    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search files' })
+    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = 'Search select Telescope' })
+    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search word under the cursor' })
+    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by grep' })
+    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search diagnostics' })
+    vim.keymap.set('n', '<leader>sh', builtin.oldfiles, { desc = 'Search in recent files' })
+    vim.keymap.set('n', '<leader>ssd', builtin.builtin, { desc = 'Search symbols in document' })
+    vim.keymap.set('n', '<leader>ssw', builtin.builtin, { desc = 'Search symbols in workspace' })
+    vim.keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Find existing buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -99,7 +98,7 @@ return {
         winblend = 10,
         previewer = false,
       })
-    end, { desc = '[/] Fuzzily search in current buffer' })
+    end, { desc = 'Fuzzily search in current buffer' })
 
     -- It's also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -108,14 +107,14 @@ return {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
       }
-    end, { desc = '[S]earch [/] in Open Files' })
+    end, { desc = 'Search in open files' })
 
     local function search_neovim_config()
       -- Shortcut for searching your Neovim configuration files
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end
 
-    vim.keymap.set('n', '<leader>sn', search_neovim_config, { desc = '[S]earch [N]eovim Config' })
+    vim.keymap.set('n', '<leader>sn', search_neovim_config, { desc = 'Search neovim config' })
 
     vim.api.nvim_create_user_command('NeovimConfig', search_neovim_config, {})
   end,
