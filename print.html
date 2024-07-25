@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -814,6 +814,22 @@ start https://wakatime.com/api-key
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff"><a class="header" href="#dev-stuff">Dev Stuff</a></h1>
+<h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
+<h3 id="toolchains"><a class="header" href="#toolchains">Toolchains</a></h3>
+<p>To install the <code>nightly</code> channel:</p>
+<pre><code class="language-bash">rustup toolchain install nightly
+</code></pre>
+<p>To check the installed toolchains:</p>
+<pre><code class="language-bash">rustup toolchain list
+</code></pre>
+<h3 id="targets"><a class="header" href="#targets">Targets</a></h3>
+<p>To include support for the <code>Wasm</code> target:</p>
+<pre><code class="language-bash">rustup target add wasm32-unknown-unknown
+</code></pre>
+<p>To check the installed targets:</p>
+<pre><code class="language-bash">rustup target list --installed
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
 <h2 id="profile-sync-daemon"><a class="header" href="#profile-sync-daemon">Profile-sync-daemon</a></h2>
 <p>To generate the configuration file and check the current status:</p>
@@ -1488,6 +1504,28 @@ start https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff-1"><a class="header" href="#dev-stuff-1">Dev Stuff</a></h1>
+<h2 id="rust-1"><a class="header" href="#rust-1">Rust</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install the <strong>nightly</strong> channel:</li>
+</ul>
+<pre><code class="language-bash">rustup toolchain install nightly
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Include support for the <code>Wasm</code> target:</li>
+</ul>
+<pre><code class="language-bash">rustup target add wasm32-unknown-unknown
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the installation:</li>
+</ul>
+<pre><code class="language-bash">rustup toolchain list
+</code></pre>
+<pre><code class="language-bash">rustup target list --installed
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous-1"><a class="header" href="#miscellaneous-1">Miscellaneous</a></h1>
 <h2 id="profile-sync-daemon-1"><a class="header" href="#profile-sync-daemon-1">Profile-sync-daemon</a></h2>
