@@ -34,6 +34,8 @@ already_installed = [
     "amd-ucode",   # for AMD CPU
     "intel-ucode", # for Intel CPU
     "booster",
+    # UKI
+    "systemd-ukify",
     # yet another boot manager
     "refind",
     # aur helper
@@ -181,6 +183,12 @@ common = [
     "zola",
     "zoxide",
 ]
-aur = ["cava", "fswatch", "mkinitcpio-firmware", "webcord", "xcursor-breeze"]
+aur = [
+    "cava",
+    "fswatch",
+    "pacman-hook-kernel-install",
+    "webcord",
+    "xcursor-breeze",
+]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
