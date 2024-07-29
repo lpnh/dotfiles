@@ -1,8 +1,14 @@
 # Pos-Installation
 
-## System Check
+## Double Checking
 
-Refresh the entire system:
+To check the `timesyncd` service, run:
+
+```bash
+timedatectl status
+```
+
+To refresh the entire system:
 
 ```bash
 sudo pacman -Syyu
@@ -14,7 +20,7 @@ Make sure to have some basic system packages installed:
 sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 ```
 
-## Compilers
+## Installing Some Compilers
 
 Install `clang`:
 
@@ -43,11 +49,38 @@ sudo pacman -S rustup
 rustup update stable
 ```
 
+## Graphic Drivers
+
+### OpenGL
+
+Install `mesa`:
+
+```bash
+sudo pacman -S mesa
+```
+
+### AMD
+
+For Vulkan support:
+
+```bash
+sudo pacman -S vulkan-radeon
+```
+
+### Nvidia
+
+Install the `nvidia` package:
+
+```bash
+sudo pacman -S nvidia
+```
+
 ## UKI
 
 ### Busybox
 
-Install `busybox` to enable an emergency shell in case of a panic during the boot process:
+Install `busybox` to enable an emergency shell in case of a panic during the
+boot process:
 
 ```bash
 sudo pacman -S busybox
@@ -142,6 +175,12 @@ OSRelease=@/etc/os-release
 Splash=/usr/share/systemd/bootctl/splash-arch.bmp
 ```
 
+To verify the current `kernel-install` paths and parameters configuration, run:
+
+```sh
+kernel-install inspect
+```
+
 ### Kernel Command Line
 
 To check the parameters your system was booted up with, run:
@@ -184,52 +223,23 @@ mkdir themes
 Clone the repo inside the `themes` folder:
 
 ```sh
+cd themes
 git clone https://github.com/catppuccin/refind.git catppuccin
 ```
 
 It requires a `include themes/catppuccin/mocha.conf` line to be appended to the
-end of `refind.conf` file. But before that, let's add the `hidden_tags` back to
-the interface, editing the catppuccin `mocha.conf` file:
+end of `refind.conf` file.
 
-```sh
-cd catppuccin
-nano mocha.conf
-```
-
-```txt
-# Which non-bootloader tools to show on the tools line, and in what
-# order to display them:
-#  shell           - the EFI shell (requires external program; see rEFInd
-#                    documentation for details)
-#  gptsync         - the (dangerous) gptsync.efi utility (requires external
-#                    program; see rEFInd documentation for details)
-#  apple_recovery  - boots the Apple Recovery HD partition, if present
-#  mok_tool        - makes available the Machine Owner Key (MOK) maintenance
-#                    tool, MokManager.efi, used on Secure Boot systems
-#  about           - an "about this program" option
-#  exit            - a tag to exit from rEFInd
-#  shutdown        - shuts down the computer (a bug causes this to reboot
-#                    EFI systems)
-#  reboot          - a tag to reboot the computer
-#  firmware        - a tag to reboot the computer into the firmware's
-#                    user interface (ignored on older computers)
-# Default is shell,apple_recovery,mok_tool,about,shutdown,reboot,firmware
-#
-showtools hidden_tags shutdown
-```
-
-Note: The option values start after the `showtools` key word.
-
-Back to `refind` directory:
+To go back to the `refind` directory:
 
 ```sh
 cd /efi/EFI/refind
 ```
 
-We can now customize the `refind.conf`, adding a new `menuentry` for the
-`systemd-boot` boot loader. I know it seems a bit contradictory using refind to
-launch systemd-boot, but refind role here is to provide a simple and
-customizable interface, capable to handle a dual boot scenario for different
+We can now customize the `refind.conf` by adding a new `menuentry` for the
+`systemd-boot` boot loader. Although it might seem a bit contradictory to use
+rEFInd to launch systemd-boot, rEFInd's role here is to provide a simple and
+customizable interface that can handle a dual-boot scenario for different
 available distros.
 
 ```sh
@@ -261,6 +271,16 @@ Update `pacman` configuration file:
 
 ```sh
 sudo nano /etc/pacman.conf
+```
+```txt
+# Misc options
+#UseSyslog
+Color
+ILoveCandy
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists
+ParallelDownloads = 5
 ```
 
 An example can be found on [EndeavourOS

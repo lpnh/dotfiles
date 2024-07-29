@@ -13,7 +13,6 @@
 - [Partitions](os/partitions.md)
 - [Installation](os/installation.md)
 - [Pos-Installation](os/pos_installation.md)
-- [Graphics and Modules](os/graphics_and_modules.md)
 
 # Desktop Environment
 
@@ -31,7 +30,6 @@
 - [Partitions](recipes/partitions.md)
 - [Installation](recipes/installation.md)
 - [Pos-Installation](recipes/pos_installation.md)
-- [Graphics and Modules](recipes/graphics_and_modules.md)
 - [Home Sweet Home](recipes/home_sweet_home.md)
 - [Finishing](recipes/finishing.md)
 - [Dev Stuff](recipes/dev_stuff.md)
