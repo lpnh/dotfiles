@@ -30,6 +30,6 @@ check the [cookbook](https://lpnh.io/dotfiles/)
 
 ## dot_config ?
 
-if you're finding this repo unfamiliar, it's because it uses `chezmoi` as
+if this repo seems unfamiliar, it might be due to using `chezmoi` as the
 dotfile manager. check out their [website](https://www.chezmoi.io/) for more
 information
