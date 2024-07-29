@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html" class="active">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../os/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/graphics_and_modules.html">Graphics and Modules</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html" class="active">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,14 +177,17 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
-<h2 id="system-check"><a class="header" href="#system-check">System Check</a></h2>
-<p>Refresh the entire system:</p>
+<h2 id="double-checking"><a class="header" href="#double-checking">Double Checking</a></h2>
+<p>To check the <code>timesyncd</code> service, run:</p>
+<pre><code class="language-bash">timedatectl status
+</code></pre>
+<p>To refresh the entire system:</p>
 <pre><code class="language-bash">sudo pacman -Syyu
 </code></pre>
 <p>Make sure to have some basic system packages installed:</p>
 <pre><code class="language-bash">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 </code></pre>
-<h2 id="compilers"><a class="header" href="#compilers">Compilers</a></h2>
+<h2 id="installing-some-compilers"><a class="header" href="#installing-some-compilers">Installing Some Compilers</a></h2>
 <p>Install <code>clang</code>:</p>
 <pre><code class="language-bash">sudo pacman -S clang
 </code></pre>
@@ -199,9 +202,23 @@
 </code></pre>
 <pre><code class="language-bash">rustup update stable
 </code></pre>
+<h2 id="graphic-drivers"><a class="header" href="#graphic-drivers">Graphic Drivers</a></h2>
+<h3 id="opengl"><a class="header" href="#opengl">OpenGL</a></h3>
+<p>Install <code>mesa</code>:</p>
+<pre><code class="language-bash">sudo pacman -S mesa
+</code></pre>
+<h3 id="amd"><a class="header" href="#amd">AMD</a></h3>
+<p>For Vulkan support:</p>
+<pre><code class="language-bash">sudo pacman -S vulkan-radeon
+</code></pre>
+<h3 id="nvidia"><a class="header" href="#nvidia">Nvidia</a></h3>
+<p>Install the <code>nvidia</code> package:</p>
+<pre><code class="language-bash">sudo pacman -S nvidia
+</code></pre>
 <h2 id="uki"><a class="header" href="#uki">UKI</a></h2>
 <h3 id="busybox"><a class="header" href="#busybox">Busybox</a></h3>
-<p>Install <code>busybox</code> to enable an emergency shell in case of a panic during the boot process:</p>
+<p>Install <code>busybox</code> to enable an emergency shell in case of a panic during the
+boot process:</p>
 <pre><code class="language-bash">sudo pacman -S busybox
 </code></pre>
 <h3 id="microcode"><a class="header" href="#microcode">Microcode</a></h3>
@@ -257,6 +274,9 @@ Cmdline=@/etc/kernel/cmdline
 OSRelease=@/etc/os-release
 Splash=/usr/share/systemd/bootctl/splash-arch.bmp
 </code></pre>
+<p>To verify the current <code>kernel-install</code> paths and parameters configuration, run:</p>
+<pre><code class="language-sh">kernel-install inspect
+</code></pre>
 <h3 id="kernel-command-line"><a class="header" href="#kernel-command-line">Kernel Command Line</a></h3>
 <p>To check the parameters your system was booted up with, run:</p>
 <pre><code class="language-sh">cat /proc/cmdline
@@ -279,42 +299,18 @@ as root.</p>
 mkdir themes
 </code></pre>
 <p>Clone the repo inside the <code>themes</code> folder:</p>
-<pre><code class="language-sh">git clone https://github.com/catppuccin/refind.git catppuccin
+<pre><code class="language-sh">cd themes
+git clone https://github.com/catppuccin/refind.git catppuccin
 </code></pre>
 <p>It requires a <code>include themes/catppuccin/mocha.conf</code> line to be appended to the
-end of <code>refind.conf</code> file. But before that, let's add the <code>hidden_tags</code> back to
-the interface, editing the catppuccin <code>mocha.conf</code> file:</p>
-<pre><code class="language-sh">cd catppuccin
-nano mocha.conf
-</code></pre>
-<pre><code class="language-txt"># Which non-bootloader tools to show on the tools line, and in what
-# order to display them:
-#  shell           - the EFI shell (requires external program; see rEFInd
-#                    documentation for details)
-#  gptsync         - the (dangerous) gptsync.efi utility (requires external
-#                    program; see rEFInd documentation for details)
-#  apple_recovery  - boots the Apple Recovery HD partition, if present
-#  mok_tool        - makes available the Machine Owner Key (MOK) maintenance
-#                    tool, MokManager.efi, used on Secure Boot systems
-#  about           - an "about this program" option
-#  exit            - a tag to exit from rEFInd
-#  shutdown        - shuts down the computer (a bug causes this to reboot
-#                    EFI systems)
-#  reboot          - a tag to reboot the computer
-#  firmware        - a tag to reboot the computer into the firmware's
-#                    user interface (ignored on older computers)
-# Default is shell,apple_recovery,mok_tool,about,shutdown,reboot,firmware
-#
-showtools hidden_tags shutdown
-</code></pre>
-<p>Note: The option values start after the <code>showtools</code> key word.</p>
-<p>Back to <code>refind</code> directory:</p>
+end of <code>refind.conf</code> file.</p>
+<p>To go back to the <code>refind</code> directory:</p>
 <pre><code class="language-sh">cd /efi/EFI/refind
 </code></pre>
-<p>We can now customize the <code>refind.conf</code>, adding a new <code>menuentry</code> for the
-<code>systemd-boot</code> boot loader. I know it seems a bit contradictory using refind to
-launch systemd-boot, but refind role here is to provide a simple and
-customizable interface, capable to handle a dual boot scenario for different
+<p>We can now customize the <code>refind.conf</code> by adding a new <code>menuentry</code> for the
+<code>systemd-boot</code> boot loader. Although it might seem a bit contradictory to use
+rEFInd to launch systemd-boot, rEFInd's role here is to provide a simple and
+customizable interface that can handle a dual-boot scenario for different
 available distros.</p>
 <pre><code class="language-sh">nano refind.conf
 </code></pre>
@@ -334,6 +330,15 @@ documentation</a></p>
 <h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
 <p>Update <code>pacman</code> configuration file:</p>
 <pre><code class="language-sh">sudo nano /etc/pacman.conf
+</code></pre>
+<pre><code class="language-txt"># Misc options
+#UseSyslog
+Color
+ILoveCandy
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists
+ParallelDownloads = 5
 </code></pre>
 <p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
 repo</a></p>
@@ -372,7 +377,7 @@ generate the unified kernel image:</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../os/graphics_and_modules.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../de/home_sweet_home.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -386,7 +391,7 @@ generate the unified kernel image:</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../os/graphics_and_modules.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../de/home_sweet_home.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
