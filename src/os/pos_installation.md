@@ -43,57 +43,17 @@ sudo pacman -S rustup
 rustup update stable
 ```
 
-## Mkinitcpio
+## UKI
 
-### Linux Preset
+### Busybox
 
-Update `linux.preset` to use the `/efi/` path instead of `/boot`.
-
-First, let's keep the default preset file as backup:
+Install `busybox` to enable an emergency shell in case of a panic during the boot process:
 
 ```bash
-sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+sudo pacman -S busybox
 ```
 
-Now to edit the `linux.preset` file, run:
-
-```bash
-sudo nano /etc/mkinitcpio.d/linux.preset
-```
-```txt
-# mkinitcpio preset file for the 'linux' package
-
-#ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/efi/vmlinuz-linux"
-
-PRESETS=('default' 'fallback')
-
-#default_config="/etc/mkinitcpio.conf"
-default_image="/efi/initramfs-linux.img"
-#default_uki="/efi/EFI/Linux/arch-linux.efi"
-#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
-
-#fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/efi/initramfs-linux-fallback.img"
-#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
-fallback_options="-S autodetect"
-```
-
-### Consolefont Warning
-
-If no font was set in the `/etc/vconsole.conf` file, `mkinitcpio` will generate
-an annoying warning about it during the hook phase.
-
-To avoid this, remove the `consolefont` option from the `HOOK=()`:
-
-```bash
-sudo nano /etc/mkinitcpio.conf
-```
-```txt
-HOOKS=(base udev autodetect microcode modconf kms keyboard keymap block filesystems fsck)
-```
-
-## New Initrd
+### Microcode
 
 Install `amd-ucode` or `intel-ucode` according with your CPU.
 
@@ -105,42 +65,84 @@ sudo pacman -S amd-ucode
 sudo pacman -S intel-ucode
 ```
 
+### Booster
+
 Install `booster`:
 
 ```sh
 sudo pacman -S booster
 ```
 
-To copy both new images to the `/efi` directory:
+Set the configuration file accordingly:
+
+```sh
+sudo nano /etc/booster.yaml
+```
+```yaml
+extra_files: busybox,fsck,fsck.ext4
+modules_force_load: amdgpu,hid_generic,usbhid
+```
+
+Note: the `modules_force_load: amdgpu,hid_generic,usbhid` line is not obligatory.
+
+For `NVIDIA` you can replace `amdgpu` with the following:
+
+```yaml
+modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm
+```
+
+### Ukify
+
+Install `systemd-ukify`:
 
 ```bash
-sudo cp /boot/cpu_manufacturer-ucode.img /efi
+sudo pacman -S systemd-ukify
 ```
+
+Set the configuration accordingly:
+
 ```bash
-sudo cp /boot/booster-linux.img /efi
-```
-
-Create a new loader entry to use the new images, based on the previous `arch.conf`:
-
-```sh
-sudo cd /efi/loader/entries
-```
-```sh
-sudo cp arch.conf booster.conf
-```
-```sh
-sudo nano /efi/loader/entries/booster.conf
+sudo nano /etc/ukify.conf
 ```
 ```txt
-title   Arch Linux with Booster
-linux   /vmlinuz-linux
-initrd  /cpu_manufacturer-ucode.img
-initrd  /booster-linux.img
-options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+[UKI]
+Linux=/boot/vmlinuz-linux
+Initrd=/boot/amd-ucode.img /boot/booster-linux.img
+Cmdline=@/etc/kernel/cmdline
+OSRelease=@/etc/os-release
+Splash=/usr/share/systemd/bootctl/splash-arch.bmp
 ```
 
-You can take the opportunity to include other kernel parameters to the option
-line. For example `nvme_load=YES`, `nowatchdog`, `quiet`, `splash`, etc.
+Note: probably this configuration isn't required because it will be replaced by
+the `kernel-install` one.
+
+### Kernel-install
+
+Set the `install.conf` file:
+
+```bash
+sudo nano /etc/kernel/install.conf
+```
+```txt
+layout=uki
+uki_generator=ukify
+```
+
+Set the `ukify` configuration in the `uki.conf` file:
+
+```bash
+sudo nano /etc/kernel/uki.conf
+```
+```txt
+[UKI]
+Linux=/boot/vmlinuz-linux
+Initrd=/boot/amd-ucode.img /boot/booster-linux.img
+Cmdline=@/etc/kernel/cmdline
+OSRelease=@/etc/os-release
+Splash=/usr/share/systemd/bootctl/splash-arch.bmp
+```
+
+### Kernel Command Line
 
 To check the parameters your system was booted up with, run:
 
@@ -148,41 +150,10 @@ To check the parameters your system was booted up with, run:
 cat /proc/cmdline
 ```
 
-To use the `booster.conf` as default, update the `/efi/loader/loader.conf`
-file:
+To include new kernel parameters to the `UKI`, for example `nvme_load=YES`, `nowatchdog`, `quiet`, `splash`, etc. use the `/etc/kernel/cmdline` file:
 
 ```sh
-sudo nano /efi/loader/loader.conf
-```
-```txt
-default  booster.conf
-timeout  4
-console-mode auto
-```
-
-Update booster `regenerate_images` script to use the `/efi` path instead of
-`/boot`.
-
-To backup the default script, run:
-
-```bash
-sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
-```
-
-To update the script:
-
-```bash
-sudo nano /usr/lib/booster/regenerate_images
-```
-```txt
-  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &
-  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
-```
-
-To verify the boot loader entries:
-
-```bash
-sudo bootctl list
+sudo nano /etc/kernel/cmdline
 ```
 
 ## rEFInd
@@ -282,7 +253,9 @@ documentation](https://www.rodsbooks.com/refind/configfile.html)
 
 To exit the interactive shell simply run `exit`.
 
-## Pacman
+## Package Manager
+
+### Pacman
 
 Update `pacman` configuration file:
 
@@ -293,7 +266,7 @@ sudo nano /etc/pacman.conf
 An example can be found on [EndeavourOS
 repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf)
 
-## Yay
+### Yay
 
 First, create and `cd` into an `apps` directory:
 
@@ -314,7 +287,30 @@ For the first use:
 yay -Y --gendb
 ```
 
-Reboot the system:
+### Additional Pacman Hooks
+
+Install extra pacman hooks for the `kernel-install`:
+
+```bash
+yay -S pacman-hook-kernel-install
+```
+
+## Generating the UKI
+
+Reinstall the kernel package to trigger the `kernel-install` in order to
+generate the unified kernel image:
+
+```bash
+sudo pacman -S linux
+```
+
+To list the current available boot entries which have been configured, run:
+
+```bash
+sudo bootctl list
+```
+
+If everything seems correct, reboot the system:
 
 ```bash
 reboot

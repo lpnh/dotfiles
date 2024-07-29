@@ -515,93 +515,70 @@ installation.</p>
 </code></pre>
 <pre><code class="language-bash">rustup update stable
 </code></pre>
-<h2 id="mkinitcpio"><a class="header" href="#mkinitcpio">Mkinitcpio</a></h2>
-<h3 id="linux-preset"><a class="header" href="#linux-preset">Linux Preset</a></h3>
-<p>Update <code>linux.preset</code> to use the <code>/efi/</code> path instead of <code>/boot</code>.</p>
-<p>First, let's keep the default preset file as backup:</p>
-<pre><code class="language-bash">sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset.bak
+<h2 id="uki"><a class="header" href="#uki">UKI</a></h2>
+<h3 id="busybox"><a class="header" href="#busybox">Busybox</a></h3>
+<p>Install <code>busybox</code> to enable an emergency shell in case of a panic during the boot process:</p>
+<pre><code class="language-bash">sudo pacman -S busybox
 </code></pre>
-<p>Now to edit the <code>linux.preset</code> file, run:</p>
-<pre><code class="language-bash">sudo nano /etc/mkinitcpio.d/linux.preset
-</code></pre>
-<pre><code class="language-txt"># mkinitcpio preset file for the 'linux' package
-
-#ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/efi/vmlinuz-linux"
-
-PRESETS=('default' 'fallback')
-
-#default_config="/etc/mkinitcpio.conf"
-default_image="/efi/initramfs-linux.img"
-#default_uki="/efi/EFI/Linux/arch-linux.efi"
-#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
-
-#fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/efi/initramfs-linux-fallback.img"
-#fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
-fallback_options="-S autodetect"
-</code></pre>
-<h3 id="consolefont-warning"><a class="header" href="#consolefont-warning">Consolefont Warning</a></h3>
-<p>If no font was set in the <code>/etc/vconsole.conf</code> file, <code>mkinitcpio</code> will generate
-an annoying warning about it during the hook phase.</p>
-<p>To avoid this, remove the <code>consolefont</code> option from the <code>HOOK=()</code>:</p>
-<pre><code class="language-bash">sudo nano /etc/mkinitcpio.conf
-</code></pre>
-<pre><code class="language-txt">HOOKS=(base udev autodetect microcode modconf kms keyboard keymap block filesystems fsck)
-</code></pre>
-<h2 id="new-initrd"><a class="header" href="#new-initrd">New Initrd</a></h2>
+<h3 id="microcode"><a class="header" href="#microcode">Microcode</a></h3>
 <p>Install <code>amd-ucode</code> or <code>intel-ucode</code> according with your CPU.</p>
 <pre><code class="language-sh">sudo pacman -S amd-ucode
 </code></pre>
 <pre><code class="language-sh">sudo pacman -S intel-ucode
 </code></pre>
+<h3 id="booster"><a class="header" href="#booster">Booster</a></h3>
 <p>Install <code>booster</code>:</p>
 <pre><code class="language-sh">sudo pacman -S booster
 </code></pre>
-<p>To copy both new images to the <code>/efi</code> directory:</p>
-<pre><code class="language-bash">sudo cp /boot/cpu_manufacturer-ucode.img /efi
+<p>Set the configuration file accordingly:</p>
+<pre><code class="language-sh">sudo nano /etc/booster.yaml
 </code></pre>
-<pre><code class="language-bash">sudo cp /boot/booster-linux.img /efi
+<pre><code class="language-yaml">extra_files: busybox,fsck,fsck.ext4
+modules_force_load: amdgpu,hid_generic,usbhid
 </code></pre>
-<p>Create a new loader entry to use the new images, based on the previous <code>arch.conf</code>:</p>
-<pre><code class="language-sh">sudo cd /efi/loader/entries
+<p>Note: the <code>modules_force_load: amdgpu,hid_generic,usbhid</code> line is not obligatory.</p>
+<p>For <code>NVIDIA</code> you can replace <code>amdgpu</code> with the following:</p>
+<pre><code class="language-yaml">modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm
 </code></pre>
-<pre><code class="language-sh">sudo cp arch.conf booster.conf
+<h3 id="ukify"><a class="header" href="#ukify">Ukify</a></h3>
+<p>Install <code>systemd-ukify</code>:</p>
+<pre><code class="language-bash">sudo pacman -S systemd-ukify
 </code></pre>
-<pre><code class="language-sh">sudo nano /efi/loader/entries/booster.conf
+<p>Set the configuration accordingly:</p>
+<pre><code class="language-bash">sudo nano /etc/ukify.conf
 </code></pre>
-<pre><code class="language-txt">title   Arch Linux with Booster
-linux   /vmlinuz-linux
-initrd  /cpu_manufacturer-ucode.img
-initrd  /booster-linux.img
-options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+<pre><code class="language-txt">[UKI]
+Linux=/boot/vmlinuz-linux
+Initrd=/boot/amd-ucode.img /boot/booster-linux.img
+Cmdline=@/etc/kernel/cmdline
+OSRelease=@/etc/os-release
+Splash=/usr/share/systemd/bootctl/splash-arch.bmp
 </code></pre>
-<p>You can take the opportunity to include other kernel parameters to the option
-line. For example <code>nvme_load=YES</code>, <code>nowatchdog</code>, <code>quiet</code>, <code>splash</code>, etc.</p>
+<p>Note: probably this configuration isn't required because it will be replaced by
+the <code>kernel-install</code> one.</p>
+<h3 id="kernel-install"><a class="header" href="#kernel-install">Kernel-install</a></h3>
+<p>Set the <code>install.conf</code> file:</p>
+<pre><code class="language-bash">sudo nano /etc/kernel/install.conf
+</code></pre>
+<pre><code class="language-txt">layout=uki
+uki_generator=ukify
+</code></pre>
+<p>Set the <code>ukify</code> configuration in the <code>uki.conf</code> file:</p>
+<pre><code class="language-bash">sudo nano /etc/kernel/uki.conf
+</code></pre>
+<pre><code class="language-txt">[UKI]
+Linux=/boot/vmlinuz-linux
+Initrd=/boot/amd-ucode.img /boot/booster-linux.img
+Cmdline=@/etc/kernel/cmdline
+OSRelease=@/etc/os-release
+Splash=/usr/share/systemd/bootctl/splash-arch.bmp
+</code></pre>
+<h3 id="kernel-command-line"><a class="header" href="#kernel-command-line">Kernel Command Line</a></h3>
 <p>To check the parameters your system was booted up with, run:</p>
 <pre><code class="language-sh">cat /proc/cmdline
 </code></pre>
-<p>To use the <code>booster.conf</code> as default, update the <code>/efi/loader/loader.conf</code>
-file:</p>
-<pre><code class="language-sh">sudo nano /efi/loader/loader.conf
-</code></pre>
-<pre><code class="language-txt">default  booster.conf
-timeout  4
-console-mode auto
-</code></pre>
-<p>Update booster <code>regenerate_images</code> script to use the <code>/efi</code> path instead of
-<code>/boot</code>.</p>
-<p>To backup the default script, run:</p>
-<pre><code class="language-bash">sudo cp /usr/lib/booster/regenerate_images /usr/lib/booster/regenerate_images.bak
-</code></pre>
-<p>To update the script:</p>
-<pre><code class="language-bash">sudo nano /usr/lib/booster/regenerate_images
-</code></pre>
-<pre><code class="language-txt">  booster build --force --kernel-version ${kernel##/usr/lib/modules/} /efi/booster-${pkgbase}.img &amp;
-  install -Dm644 "${kernel}/vmlinuz" "/efi/vmlinuz-${pkgbase}"
-</code></pre>
-<p>To verify the boot loader entries:</p>
-<pre><code class="language-bash">sudo bootctl list
+<p>To include new kernel parameters to the <code>UKI</code>, for example <code>nvme_load=YES</code>, <code>nowatchdog</code>, <code>quiet</code>, <code>splash</code>, etc. use the <code>/etc/kernel/cmdline</code> file:</p>
+<pre><code class="language-sh">sudo nano /etc/kernel/cmdline
 </code></pre>
 <h2 id="refind"><a class="header" href="#refind">rEFInd</a></h2>
 <p>Install <code>refind</code> package:</p>
@@ -669,13 +646,14 @@ include themes/catppuccin/mocha.conf
 <p>For more info, check rEFInd <a href="https://www.rodsbooks.com/refind/configfile.html">official
 documentation</a></p>
 <p>To exit the interactive shell simply run <code>exit</code>.</p>
-<h2 id="pacman"><a class="header" href="#pacman">Pacman</a></h2>
+<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
+<h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
 <p>Update <code>pacman</code> configuration file:</p>
 <pre><code class="language-sh">sudo nano /etc/pacman.conf
 </code></pre>
 <p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
 repo</a></p>
-<h2 id="yay"><a class="header" href="#yay">Yay</a></h2>
+<h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
 <p>First, create and <code>cd</code> into an <code>apps</code> directory:</p>
 <pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
 </code></pre>
@@ -686,7 +664,19 @@ repo</a></p>
 <pre><code class="language-bash"># I'm not sure about this one
 yay -Y --gendb
 </code></pre>
-<p>Reboot the system:</p>
+<h3 id="additional-pacman-hooks"><a class="header" href="#additional-pacman-hooks">Additional Pacman Hooks</a></h3>
+<p>Install extra pacman hooks for the <code>kernel-install</code>:</p>
+<pre><code class="language-bash">yay -S pacman-hook-kernel-install
+</code></pre>
+<h2 id="generating-the-uki"><a class="header" href="#generating-the-uki">Generating the UKI</a></h2>
+<p>Reinstall the kernel package to trigger the <code>kernel-install</code> in order to
+generate the unified kernel image:</p>
+<pre><code class="language-bash">sudo pacman -S linux
+</code></pre>
+<p>To list the current available boot entries which have been configured, run:</p>
+<pre><code class="language-bash">sudo bootctl list
+</code></pre>
+<p>If everything seems correct, reboot the system:</p>
 <pre><code class="language-bash">reboot
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphics-and-modules"><a class="header" href="#graphics-and-modules">Graphics and Modules</a></h1>
@@ -1153,8 +1143,8 @@ rustup:</li>
 </code></pre>
 <pre><code class="language-sh">rustup update stable
 </code></pre>
-<h2 id="mkinitcpio-1"><a class="header" href="#mkinitcpio-1">Mkinitcpio</a></h2>
-<h3 id="linux-preset-1"><a class="header" href="#linux-preset-1">Linux Preset</a></h3>
+<h2 id="mkinitcpio"><a class="header" href="#mkinitcpio">Mkinitcpio</a></h2>
+<h3 id="linux-preset"><a class="header" href="#linux-preset">Linux Preset</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Keep the default <strong>linux.preset</strong> file as backup:</li>
@@ -1339,7 +1329,7 @@ include themes/catppuccin/mocha.conf
 <li><input disabled="" type="checkbox"/>
 Exit the interactive shell: <code>exit</code></li>
 </ul>
-<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
+<h2 id="package-manager-1"><a class="header" href="#package-manager-1">Package Manager</a></h2>
 <h3 id="pacman-1"><a class="header" href="#pacman-1">Pacman</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
