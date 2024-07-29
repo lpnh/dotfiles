@@ -30,19 +30,21 @@ already_installed = [
     "go",
     "lua",
     "rustup",
-    # initrd
-    "amd-ucode",   # for AMD CPU
-    "intel-ucode", # for Intel CPU
-    "booster",
-    # UKI
-    "systemd-ukify",
-    # yet another boot manager
-    "refind",
-    # aur helper
-    "yay",
     # graphics
     "mesa",
     "vulkan-radeon", # for AMD GPU
+    "nvidia",        # for NVIDIA GPU
+    # UKI
+    "busybox",
+    "amd-ucode",     # for AMD CPU
+    "intel-ucode",   # for Intel CPU
+    "booster",
+    "systemd-ukify",
+    # yet another boot manager
+    "refind",
+    # AUR helper
+    "yay",
+    "pacman-hook-kernel-install", # from AUR
     # bootstrap
     "chezmoi",
 ]
@@ -183,12 +185,6 @@ common = [
     "zola",
     "zoxide",
 ]
-aur = [
-    "cava",
-    "fswatch",
-    "pacman-hook-kernel-install",
-    "webcord",
-    "xcursor-breeze",
-]
+aur = ["cava", "fswatch", "webcord", "xcursor-breeze"]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
