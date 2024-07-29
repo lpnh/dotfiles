@@ -1,6 +1,7 @@
 # About
 
-The necessary information to setup a simple and aesthetic Arch Linux Wayland
+The necessary information to setup a simple and aesthetic [Arch
+Linux](https://archlinux.org/) [Wayland](https://wayland.freedesktop.org/)
 environment.
 
 > it's called "dotfiles" because that folder ".config" starts with a dot and is

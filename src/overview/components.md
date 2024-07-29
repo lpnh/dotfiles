@@ -5,10 +5,10 @@ The main building blocks, a.k.a packages[^note]
 ### System
 
 * Boot Manager: [rEFInd](https://www.rodsbooks.com/refind/)  
+* Display Manager: [Ly](https://github.com/fairyglade/ly)  
 * Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)  
-* Greeter: [Tuigreet](https://github.com/apognu/tuigreet)  
 * Initramfs Generator: [Booster](https://github.com/anatol/booster)  
-* OS: [Arch Linux](https://archlinux.org/)
+* UKI Generator: [systemd-ukify](https://github.com/systemd/systemd)  
 
 ### Desktop
 
