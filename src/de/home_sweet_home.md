@@ -109,36 +109,29 @@ fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 ```
 
-Reboot the system: `reboot`
-
 ## Pandoc
 
-- [ ] Download and install **Pandoc** [latest
-release](https://github.com/jgm/pandoc/releases)
+Download `Pandoc` latest release from the
+[repo](https://github.com/jgm/pandoc/releases)
+
+To install it:
+
 ```bash
 sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 ```
 
-## Greeter
+## Display Manager
 
-To enable the `greetd` service:
-
-```bash
-systemctl enable greetd
-```
-
-To edit the `greetd` configuration file to use `tuigreet`:
+To enable the `ly` service:
 
 ```bash
-sudo nano /etc/greetd/config.toml
+systemctl enable ly
 ```
-```toml
-# The default session, also known as the greeter.
-[default_session]
 
-# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
-# with whatever you want started, such as `sway`.
-command = "tuigreet --remember --remember-session --asterisks"
+Reboot the system: 
+
+```bash
+reboot
 ```
 
 *# there's no place like home*

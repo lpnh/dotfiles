@@ -64,21 +64,9 @@ release](https://github.com/jgm/pandoc/releases)
 sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 ```
 
-## Greeter
+## Display Manager
 
-- [ ] Enable the **greetd** service: `systemctl enable greetd`
-- [ ] Edit the **greetd** configuration file:
-```sh
-sudo nano /etc/greetd/config.toml
-```
-```toml
-# The default session, also known as the greeter.
-[default_session]
-
-# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
-# with whatever you want started, such as `sway`.
-command = "tuigreet --remember --remember-session --asterisks"
-```
+- [ ] Enable the **ly** service: `systemctl enable ly`
 
 Reboot the system: `reboot`
 

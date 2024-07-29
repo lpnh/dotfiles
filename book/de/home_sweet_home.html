@@ -237,28 +237,18 @@ repo</a>.</p>
 <pre><code class="language-bash">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
-<p>Reboot the system: <code>reboot</code></p>
 <h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
-release</a></li>
-</ul>
+<p>Download <code>Pandoc</code> latest release from the
+<a href="https://github.com/jgm/pandoc/releases">repo</a></p>
+<p>To install it:</p>
 <pre><code class="language-bash">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 </code></pre>
-<h2 id="greeter"><a class="header" href="#greeter">Greeter</a></h2>
-<p>To enable the <code>greetd</code> service:</p>
-<pre><code class="language-bash">systemctl enable greetd
+<h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
+<p>To enable the <code>ly</code> service:</p>
+<pre><code class="language-bash">systemctl enable ly
 </code></pre>
-<p>To edit the <code>greetd</code> configuration file to use <code>tuigreet</code>:</p>
-<pre><code class="language-bash">sudo nano /etc/greetd/config.toml
-</code></pre>
-<pre><code class="language-toml"># The default session, also known as the greeter.
-[default_session]
-
-# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
-# with whatever you want started, such as `sway`.
-command = "tuigreet --remember --remember-session --asterisks"
+<p>Reboot the system:</p>
+<pre><code class="language-bash">reboot
 </code></pre>
 <p><em># there's no place like home</em></p>
 
