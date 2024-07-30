@@ -1,20 +1,11 @@
 return {
   -- Icons
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
-
-  -- Add custom colors to devicons
   {
-    'rachartier/tiny-devicons-auto-colors.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    event = 'VeryLazy',
+    'echasnovski/mini.icons',
+    version = false,
     config = function()
-      local mocha = require('catppuccin.palettes').get_palette 'mocha'
-
-      require('tiny-devicons-auto-colors').setup {
-        colors = mocha,
-      }
+      require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
     end,
   },
 
