@@ -4,6 +4,10 @@ palette = "catppuccin_mocha"
 [character]
 success_symbol = "[♥](pink) "
 error_symbol = "[ ](red)"
+vimcmd_replace_one_symbol = "[♥](pink) "
+vimcmd_replace_symbol = "[♥](pink) "
+vimcmd_symbol = "[♥](pink) "
+vimcmd_visual_symbol = "[♥](pink) "
 
 [package]
 disabled = true
