@@ -1,5 +1,5 @@
 [plugin]
-deps = [ { use = "dedukun/relative-motions", commit = "73f5542" }, { use = "yazi-rs/plugins#smart-filter", commit = "06e5fe1" }, { use = "yazi-rs/plugins#chmod", commit = "06e5fe1" }, { use = "yazi-rs/plugins#diff", commit = "06e5fe1" }, { use = "lpnh/fg", commit = "77a384a" }, ]
+deps = [ { use = "dedukun/relative-motions", commit = "73f5542" }, { use = "yazi-rs/plugins#smart-filter", commit = "06e5fe1" }, { use = "yazi-rs/plugins#chmod", commit = "06e5fe1" }, { use = "yazi-rs/plugins#diff", commit = "06e5fe1" }, { use = "lpnh/fg", commit = "a9a79fc" }, ]
 
 [flavor]
 deps = []
