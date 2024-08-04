@@ -4,7 +4,7 @@
 
 To update the `mirrorlist` using `reflector`:
 
-```sh
+```bash
 reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
@@ -12,7 +12,7 @@ reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.
 
 To install the essential packages to the new root:
 
-```sh
+```bash
 pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 ```
 
@@ -20,7 +20,7 @@ pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 
 To generate an `fstab` file:
 
-```sh
+```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
@@ -28,7 +28,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 To change root into the new system:
 
-```sh
+```bash
 arch-chroot /mnt
 ```
 
@@ -36,21 +36,27 @@ arch-chroot /mnt
 
 To set the time zone:
 
-```sh
-ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+```bash
+<pre>
+ln -sf /usr/share/zoneinfo/<i>Region/City</i> /etc/localtime
+</pre>
 ```
 
-Note: You can verify it running `date`.
+Note: You can verify it using the command `date`:
+
+```bash
+date
+```
 
 To generate the `/etc/adjtime` file:
 
-```sh
+```bash
 hwclock --systohc
 ```
 
 To set up time synchronization with `systemd-timesyncd`:
 
-```sh
+```bash
 systemctl enable systemd-timesyncd.service
 ```
 
@@ -58,41 +64,45 @@ systemctl enable systemd-timesyncd.service
 
 Uncomment the `#en_US.UTF-8 UTF-8` line editing the `/etc/locale.gen` file:
 
-```sh
+```bash
 nano /etc/locale.gen
 ```
 
 To generate the locales:
 
-```sh
+```bash
 locale-gen
 ```
 
 Create the `locale.conf` file, setting the *LANG* variable accordingly:
 
-```sh
+```bash
 nano /etc/locale.conf
 ```
+
 ```txt
 LANG=en_US.UTF-8
 ```
 
 ## Hostname
 
-To set a hostname create a `hostname` file, adding its name, e.g. `desktop`:
+To set a hostname create a `hostname` file, adding its name, e.g. *desktop*:
 
-```sh
+```bash
 nano /etc/hostname
 ```
+
 ```txt
-desktop
+<pre>
+<i>desktop</i>
+</pre>
 ```
 
 ## Root password
 
 To set the root password, run:
 
-```sh
+```bash
 passwd
 ```
 
@@ -100,22 +110,25 @@ passwd
 
 To create new user, adding it to the `wheel` group:
 
-```sh
-useradd -m -G wheel <username>
+```bash
+<pre>
+useradd -m -G wheel <i>username</i>
+</pre>
 ```
 
 To add a password to the user, run:
 
-```sh
+```bash
 passwd <username>
 ```
 
 Edit the sudoers configuration file, uncommenting the `# %wheel ALL=(ALL:ALL)
 ALL` line:
 
-```sh
+```bash
 EDITOR=nano visudo
 ```
+
 ```txt
 ## Uncomment to allow members of group wheel to execute any command
 %wheel ALL=(ALL:ALL) ALL
@@ -125,7 +138,7 @@ EDITOR=nano visudo
 
 To enable `NetworkManager` service:
 
-```sh
+```bash
 systemctl enable NetworkManager
 ```
 
@@ -133,15 +146,16 @@ systemctl enable NetworkManager
 
 Install `systemd-boot`
 
-```sh
+```bash
 bootctl install
 ```
 
 Edit the `/efi/loader/loader.conf` file:
 
-```sh
+```bash
 nano /efi/loader/loader.conf
 ```
+
 ```txt
 default  arch.conf
 timeout  4
@@ -150,9 +164,10 @@ console-mode auto
 
 Create the `/efi/loader/entries/arch.conf` file:
 
-```sh
+```bash
 nano /efi/loader/entries/arch.conf
 ```
+
 ```txt
 title   Arch Linux
 linux   /vmlinuz-linux
@@ -163,7 +178,7 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 To make it easy to set the UUID you can use the `blkid` command and append the
 output to the `arch.conf` file.
 
-```sh
+```bash
 blkid -s UUID /dev/root_partition >> /efi/loader/entries/arch.conf
 ```
 
@@ -173,17 +188,17 @@ Copy everything that is inside the `/boot` path to `/efi`.
 
 To exit the chroot environment:
 
-```sh
+```bash
 exit
 ```
 
 To unmount all the partitions and reboot:
 
-```sh
+```bash
 umount -R /mnt
 ```
 
-```sh
+```bash
 reboot
 ```
 
@@ -195,13 +210,13 @@ If you have succeeded, there's one last thing to be done.
 
 First download `fastfetch`:
 
-```sh
+```bash
 sudo pacman -S fastfetch
 ```
 
 Now run it and enjoy your new achievement:
 
-```sh
+```bash
 fastfetch
 ```
 

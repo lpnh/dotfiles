@@ -7,19 +7,18 @@
 To identify available disks, both `lsblk --fs` and `fdisk -l` can be used.
 
 <div class="warning">
-
 Always ensure you identify and select the correct device.
 The following steps may result in unintended data loss.
-
 </div>
 
 ### Optimal Logical Sector Size (exclusive for NVMe devices)
 
 To check the formatted logical block address (LBA) size of your NVMe drive:
 
-```sh
+```bash
 nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 ```
+
 ```txt
 LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
 LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
@@ -33,7 +32,7 @@ optimal one.
 To change the logical block address size, you can use the `nvme format` command
 specifying the preferred value with the `--lbaf` parameter:
 
-```sh
+```bash
 nvme format --lbaf=1 /dev/nvme0n1
 ```
 
@@ -41,12 +40,15 @@ nvme format --lbaf=1 /dev/nvme0n1
 
 To write the partition tables using `cfdisk`:
 
-```sh
-cfdisk /dev/the_disk_to_be_partitioned
+```bash
+<pre>
+cfdisk /dev/<i>the_disk_to_be_partitioned</i>
+</pre>
 ```
 
-> [!NOTE]
-> make sure to set the correct type for the `efi` partition.
+<div class="warning">
+make sure to set the correct type for the `efi` partition.
+</div>
 
 Example Layout:
 
@@ -58,28 +60,36 @@ Example Layout:
 
 To verify the partitions using `fdisk`:
 
-```sh
-fdisk -l /dev/partitioned_disk
+```bash
+<pre>
+fdisk -l /dev/<i>partitioned_disk</i>
+</pre>
 ```
 
 ## Formatting Partitions
 
 To create an *Ext4* file system for the root:
 
-```sh
-mkfs.ext4 /dev/root_partition
+```bash
+<pre>
+mkfs.ext4 /dev/<i>root_partition</i>
+</pre>
 ```
 
 To initialize the swap partition:
 
-```sh
-mkswap /dev/swap_partition
+```bash
+<pre>
+mkswap /dev/<i>swap_partition</i>
+</pre>
 ```
 
 To format the EFI partition:
 
-```sh
-mkfs.fat -F 32 /dev/efi_system_partition
+```bash
+<pre>
+mkfs.fat -F 32 /dev/<i>efi_system_partition</i>
+</pre>
 ```
 
 ## Filesystem Label
@@ -88,13 +98,15 @@ Now is a good time to add a label to the efi partition.
 This will be useful later to set the `rEFInd` configuration.
 Using `dosfslabel`:
 
-```sh
-dosfslabel /dev/efi_system_partition ARCHIE
+```bash
+<pre>
+dosfslabel /dev/<i>efi_system_partition ARCHIE</i>
+</pre>
 ```
 
 You can verify it using `lsblk`:
 
-```sh
+```bash
 lsblk -o NAME,LABEL
 ```
 
@@ -102,18 +114,24 @@ lsblk -o NAME,LABEL
 
 Mount the root volume to `/mnt`:
 
-```sh
-mount /dev/root_partition /mnt
+```bash
+<pre>
+mount /dev/<i>root_partition</i> /mnt
+</pre>
 ```
 
 Mount the EFI partition:
 
-```sh
-mount --mkdir /dev/efi_system_partition /mnt/efi
+```bash
+<pre>
+mount --mkdir /dev/<i>efi_system_partition</i> /mnt/efi
+</pre>
 ```
 
 Enable the `swap` volume:
 
-```sh
-swapon /dev/swap_partition
+```bash
+<pre>
+swapon /dev/<i>swap_partition</i>
+</pre>
 ```
