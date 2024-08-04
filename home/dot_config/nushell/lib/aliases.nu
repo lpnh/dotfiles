@@ -58,17 +58,16 @@ alias nv = nvim
 alias please = sudo
 
 # eza
-alias x = eza --icons --oneline
-alias xx = eza --icons
-alias xa = eza --icons --all --oneline
-alias xxa = eza --icons --all
-alias xl = eza --long
-alias xla = eza --long --all
-alias xt = eza --icons --tree
-alias xta = eza --icons --tree --all
+alias x = eza --color=always --group-directories-first --icons --oneline
+alias xx = eza --color=always --group-directories-first --icons
+alias xa = eza --color=always --group-directories-first --icons --all --oneline
+alias xxa = eza --color=always --group-directories-first --icons --all
+alias xl = eza --color=always --group-directories-first --long
+alias xla = eza --color=always --group-directories-first --long --all
+alias xt = eza --color=always --group-directories-first --icons --tree
+alias xta = eza --color=always --group-directories-first --icons --tree --all
 
 # ya
-alias yp = ya pack
-alias ypi = ya pack --install
-alias ypl = ya pack --list
-alias ypu = ya pack --upgrade
+alias yi = ya pack --install
+alias yl = ya pack --list
+alias yu = ya pack --upgrade
