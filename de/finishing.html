@@ -180,10 +180,10 @@
 <h2 id="catppuccin"><a class="header" href="#catppuccin">Catppuccin</a></h2>
 <h3 id="bat"><a class="header" href="#bat">Bat</a></h3>
 <p>To include the new syntax highlighting theme, rebuild <strong>bat</strong>'s cache:</p>
-<pre><code class="language-nu">bat cache --build
+<pre><code class="language-bash">bat cache --build
 </code></pre>
 <p>To check if the Catppuccin theme is now available:</p>
-<pre><code class="language-nu"># the output should be Catppuccin Mocha
+<pre><code class="language-bash"># the output should be Catppuccin Mocha
 bat --list-themes | rg "Catppuccin"
 </code></pre>
 <h3 id="firefox"><a class="header" href="#firefox">Firefox</a></h3>
@@ -191,15 +191,23 @@ bat --list-themes | rg "Catppuccin"
 here</a></p>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
 <p>To fetch <strong>Neovim</strong> configuration, simply launch it:</p>
-<pre><code class="language-nu">nv
+<pre><code class="language-bash">nvim
 </code></pre>
 <p>To include the api-key for the <strong>WakaTime</strong> plugin:</p>
-<pre><code class="language-nu"># launch the website and copy the api key
+<pre><code class="language-bash"># launch the website and copy the api key
 start https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 </code></pre>
+<h2 id="yazi"><a class="header" href="#yazi">Yazi</a></h2>
+<p>To fetch the plugins using Yazi package manager:</p>
+<pre><code class="language-bash">ya pack -i
+</code></pre>
+<pre><code class="language-bash">ya pack -u
+</code></pre>
+<p>Note: This will install and update the plugins according to the
+<code>yazi/package.toml</code> file.</p>
 
                     </main>
 

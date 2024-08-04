@@ -193,7 +193,6 @@ neurotic lovers of beauty 🤷</p>
 <h3 id="system"><a class="header" href="#system">System</a></h3>
 <ul>
 <li>Boot Manager: <a href="https://www.rodsbooks.com/refind/">rEFInd</a></li>
-<li>Display Manager: <a href="https://github.com/fairyglade/ly">Ly</a></li>
 <li>Dotfile Manager: <a href="https://www.chezmoi.io/">Chezmoi</a></li>
 <li>Initramfs Generator: <a href="https://github.com/anatol/booster">Booster</a></li>
 <li>UKI Generator: <a href="https://github.com/systemd/systemd">systemd-ukify</a></li>
@@ -201,7 +200,8 @@ neurotic lovers of beauty 🤷</p>
 <h3 id="desktop"><a class="header" href="#desktop">Desktop</a></h3>
 <ul>
 <li>App Launcher: <a href="https://codeberg.org/dnkl/fuzzel">Fuzzel</a></li>
-<li>Compositor: <a href="https://github.com/YaLTeR/niri">Niri</a></li>
+<li>Wayland Compositor: <a href="https://github.com/YaLTeR/niri">Niri</a></li>
+<li>Display Manager: <a href="https://github.com/fairyglade/ly">Ly</a></li>
 <li>Notification: <a href="https://wayland.emersion.fr/mako/">Mako</a></li>
 <li>Screen Locker <a href="https://github.com/swaywm/swaylock">Swaylock</a></li>
 <li>Status Bar: <a href="https://github.com/Alexays/Waybar">Waybar</a></li>
@@ -756,7 +756,10 @@ fs.inotify.max_user_watches=524288
 <p>To enable the <code>ly</code> service:</p>
 <pre><code class="language-bash">systemctl enable ly
 </code></pre>
-<p>Reboot the system:</p>
+<p>To edit <code>ly</code> default configuration:</p>
+<pre><code class="language-bash">sudo nano /etc/ly/config.ini
+</code></pre>
+<p>Reboot the system (I'm neurotic):</p>
 <pre><code class="language-bash">reboot
 </code></pre>
 <p><em># there's no place like home</em></p>
@@ -764,10 +767,10 @@ fs.inotify.max_user_watches=524288
 <h2 id="catppuccin"><a class="header" href="#catppuccin">Catppuccin</a></h2>
 <h3 id="bat"><a class="header" href="#bat">Bat</a></h3>
 <p>To include the new syntax highlighting theme, rebuild <strong>bat</strong>'s cache:</p>
-<pre><code class="language-nu">bat cache --build
+<pre><code class="language-bash">bat cache --build
 </code></pre>
 <p>To check if the Catppuccin theme is now available:</p>
-<pre><code class="language-nu"># the output should be Catppuccin Mocha
+<pre><code class="language-bash"># the output should be Catppuccin Mocha
 bat --list-themes | rg "Catppuccin"
 </code></pre>
 <h3 id="firefox"><a class="header" href="#firefox">Firefox</a></h3>
@@ -775,15 +778,23 @@ bat --list-themes | rg "Catppuccin"
 here</a></p>
 <h2 id="neovim-1"><a class="header" href="#neovim-1">Neovim</a></h2>
 <p>To fetch <strong>Neovim</strong> configuration, simply launch it:</p>
-<pre><code class="language-nu">nv
+<pre><code class="language-bash">nvim
 </code></pre>
 <p>To include the api-key for the <strong>WakaTime</strong> plugin:</p>
-<pre><code class="language-nu"># launch the website and copy the api key
+<pre><code class="language-bash"># launch the website and copy the api key
 start https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 </code></pre>
+<h2 id="yazi"><a class="header" href="#yazi">Yazi</a></h2>
+<p>To fetch the plugins using Yazi package manager:</p>
+<pre><code class="language-bash">ya pack -i
+</code></pre>
+<pre><code class="language-bash">ya pack -u
+</code></pre>
+<p>Note: This will install and update the plugins according to the
+<code>yazi/package.toml</code> file.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff"><a class="header" href="#dev-stuff">Dev Stuff</a></h1>
 <h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
 <h3 id="toolchains"><a class="header" href="#toolchains">Toolchains</a></h3>
@@ -1436,7 +1447,7 @@ Rebuild <strong>bat</strong>'s cache to add the new syntax highlighting: <code>b
 <li><input disabled="" type="checkbox"/>
 Check if Catppuccin is available:</li>
 </ul>
-<pre><code class="language-nu">bat --list-themes | rg "Catppuccin"
+<pre><code class="language-bash">bat --list-themes | rg "Catppuccin"
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -1446,15 +1457,24 @@ here</a></li>
 <h2 id="neovim-3"><a class="header" href="#neovim-3">Neovim</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Launch <strong>Neovim</strong> to fetch its configuration: <code>nv</code></li>
+Launch <strong>Neovim</strong> to fetch its configuration: <code>nvim</code></li>
 <li><input disabled="" type="checkbox"/>
 Include the api-key for <strong>WakaTime</strong> plugin:</li>
 </ul>
-<pre><code class="language-nu"># launch the website and copy the api key
+<pre><code class="language-bash"># launch the website and copy the api key
 start https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
+</code></pre>
+<h2 id="yazi-1"><a class="header" href="#yazi-1">Yazi</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Fetch the plugins using Yazi package manager:</li>
+</ul>
+<pre><code class="language-bash">ya pack -i
+</code></pre>
+<pre><code class="language-bash">ya pack -u
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff-1"><a class="header" href="#dev-stuff-1">Dev Stuff</a></h1>
 <h2 id="rust-1"><a class="header" href="#rust-1">Rust</a></h2>
@@ -1466,7 +1486,7 @@ Install the <strong>nightly</strong> channel:</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Include support for the <code>Wasm</code> target:</li>
+Include support for the <strong>Wasm</strong> target:</li>
 </ul>
 <pre><code class="language-bash">rustup target add wasm32-unknown-unknown
 </code></pre>
