@@ -6,13 +6,13 @@
 
 To include the new syntax highlighting theme, rebuild **bat**'s cache:
 
-```nu
+```bash
 bat cache --build
 ```
 
 To check if the Catppuccin theme is now available:
 
-```nu
+```bash
 # the output should be Catppuccin Mocha
 bat --list-themes | rg "Catppuccin"
 ```
@@ -26,13 +26,13 @@ here](https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oK
 
 To fetch **Neovim** configuration, simply launch it:
 
-```nu
-nv
+```bash
+nvim
 ```
 
 To include the api-key for the **WakaTime** plugin:
 
-```nu
+```bash
 # launch the website and copy the api key
 start https://wakatime.com/api-key
 ```
@@ -41,3 +41,18 @@ start https://wakatime.com/api-key
 # run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 ```
+
+## Yazi
+
+To fetch the plugins using Yazi package manager:
+
+```bash
+ya pack -i
+```
+
+```bash
+ya pack -u
+```
+
+Note: This will install and update the plugins according to the
+`yazi/package.toml` file.

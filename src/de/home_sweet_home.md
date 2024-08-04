@@ -128,7 +128,13 @@ To enable the `ly` service:
 systemctl enable ly
 ```
 
-Reboot the system: 
+To edit `ly` default configuration:
+
+```bash
+sudo nano /etc/ly/config.ini
+```
+
+Reboot the system (I'm neurotic):
 
 ```bash
 reboot

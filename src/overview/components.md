@@ -5,15 +5,15 @@ The main building blocks, a.k.a packages[^note]
 ### System
 
 * Boot Manager: [rEFInd](https://www.rodsbooks.com/refind/)  
-* Display Manager: [Ly](https://github.com/fairyglade/ly)  
 * Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)  
 * Initramfs Generator: [Booster](https://github.com/anatol/booster)  
-* UKI Generator: [systemd-ukify](https://github.com/systemd/systemd)  
+* UKI Generator: [systemd-ukify](https://github.com/systemd/systemd)
 
 ### Desktop
 
 * App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
-* Compositor: [Niri](https://github.com/YaLTeR/niri)  
+* Wayland Compositor: [Niri](https://github.com/YaLTeR/niri)  
+* Display Manager: [Ly](https://github.com/fairyglade/ly)  
 * Notification: [Mako](https://wayland.emersion.fr/mako/)  
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
 * Status Bar: [Waybar](https://github.com/Alexays/Waybar)

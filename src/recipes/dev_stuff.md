@@ -6,7 +6,7 @@
 ```bash
 rustup toolchain install nightly
 ```
-- [ ] Include support for the `Wasm` target:
+- [ ] Include support for the **Wasm** target:
 ```bash
 rustup target add wasm32-unknown-unknown
 ```
