@@ -41,9 +41,7 @@ nvme format --lbaf=1 /dev/nvme0n1
 To write the partition tables using `cfdisk`:
 
 ```bash
-<pre>
-cfdisk /dev/<i>the_disk_to_be_partitioned</i>
-</pre>
+cfdisk /dev/the_disk_to_be_partitioned
 ```
 
 <div class="warning">
@@ -61,9 +59,7 @@ Example Layout:
 To verify the partitions using `fdisk`:
 
 ```bash
-<pre>
-fdisk -l /dev/<i>partitioned_disk</i>
-</pre>
+fdisk -l /dev/partitioned_disk
 ```
 
 ## Formatting Partitions
@@ -71,25 +67,19 @@ fdisk -l /dev/<i>partitioned_disk</i>
 To create an *Ext4* file system for the root:
 
 ```bash
-<pre>
-mkfs.ext4 /dev/<i>root_partition</i>
-</pre>
+mkfs.ext4 /dev/root_partition
 ```
 
 To initialize the swap partition:
 
 ```bash
-<pre>
-mkswap /dev/<i>swap_partition</i>
-</pre>
+mkswap /dev/swap_partition
 ```
 
 To format the EFI partition:
 
 ```bash
-<pre>
-mkfs.fat -F 32 /dev/<i>efi_system_partition</i>
-</pre>
+mkfs.fat -F 32 /dev/efi_system_partition
 ```
 
 ## Filesystem Label
@@ -99,9 +89,7 @@ This will be useful later to set the `rEFInd` configuration.
 Using `dosfslabel`:
 
 ```bash
-<pre>
-dosfslabel /dev/<i>efi_system_partition ARCHIE</i>
-</pre>
+dosfslabel /dev/efi_system_partition ARCHIE
 ```
 
 You can verify it using `lsblk`:
@@ -115,23 +103,17 @@ lsblk -o NAME,LABEL
 Mount the root volume to `/mnt`:
 
 ```bash
-<pre>
-mount /dev/<i>root_partition</i> /mnt
-</pre>
+mount /dev/root_partition /mnt
 ```
 
 Mount the EFI partition:
 
 ```bash
-<pre>
-mount --mkdir /dev/<i>efi_system_partition</i> /mnt/efi
-</pre>
+mount --mkdir /dev/efi_system_partition /mnt/efi
 ```
 
 Enable the `swap` volume:
 
 ```bash
-<pre>
-swapon /dev/<i>swap_partition</i>
-</pre>
+swapon /dev/swap_partition
 ```

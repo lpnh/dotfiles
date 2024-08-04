@@ -195,9 +195,7 @@
 </code></pre>
 <h2 id="time"><a class="header" href="#time">Time</a></h2>
 <p>To set the time zone:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
-&lt;/pre&gt;
+<pre><code class="language-bash">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 </code></pre>
 <p>Note: You can verify it using the command <code>date</code>:</p>
 <pre><code class="language-bash">date
@@ -224,9 +222,7 @@ ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
 <p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <em>desktop</em>:</p>
 <pre><code class="language-bash">nano /etc/hostname
 </code></pre>
-<pre><code class="language-txt">&lt;pre&gt;
-&lt;i&gt;desktop&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-txt">desktop
 </code></pre>
 <h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
 <p>To set the root password, run:</p>
@@ -234,12 +230,10 @@ ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
 </code></pre>
 <h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
 <p>To create new user, adding it to the <code>wheel</code> group:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-useradd -m -G wheel &lt;i&gt;username&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">useradd -m -G wheel username
 </code></pre>
 <p>To add a password to the user, run:</p>
-<pre><code class="language-bash">passwd &lt;username&gt;
+<pre><code class="language-bash">passwd username
 </code></pre>
 <p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
 <pre><code class="language-bash">EDITOR=nano visudo

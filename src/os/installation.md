@@ -37,9 +37,7 @@ arch-chroot /mnt
 To set the time zone:
 
 ```bash
-<pre>
-ln -sf /usr/share/zoneinfo/<i>Region/City</i> /etc/localtime
-</pre>
+ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 ```
 
 Note: You can verify it using the command `date`:
@@ -93,9 +91,7 @@ nano /etc/hostname
 ```
 
 ```txt
-<pre>
-<i>desktop</i>
-</pre>
+desktop
 ```
 
 ## Root password
@@ -111,15 +107,13 @@ passwd
 To create new user, adding it to the `wheel` group:
 
 ```bash
-<pre>
-useradd -m -G wheel <i>username</i>
-</pre>
+useradd -m -G wheel username
 ```
 
 To add a password to the user, run:
 
 ```bash
-passwd <username>
+passwd username
 ```
 
 Edit the sudoers configuration file, uncommenting the `# %wheel ALL=(ALL:ALL)
