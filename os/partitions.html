@@ -181,12 +181,12 @@
 <h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
 <p>To identify available disks, both <code>lsblk --fs</code> and <code>fdisk -l</code> can be used.</p>
 <div class="warning">
-<p>Always ensure you identify and select the correct device.
-The following steps may result in unintended data loss.</p>
+Always ensure you identify and select the correct device.
+The following steps may result in unintended data loss.
 </div>
 <h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
 <p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
-<pre><code class="language-sh">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
+<pre><code class="language-bash">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 </code></pre>
 <pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
 LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
@@ -196,16 +196,17 @@ LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Perf
 optimal one.</p>
 <p>To change the logical block address size, you can use the <code>nvme format</code> command
 specifying the preferred value with the <code>--lbaf</code> parameter:</p>
-<pre><code class="language-sh">nvme format --lbaf=1 /dev/nvme0n1
+<pre><code class="language-bash">nvme format --lbaf=1 /dev/nvme0n1
 </code></pre>
 <h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
 <p>To write the partition tables using <code>cfdisk</code>:</p>
-<pre><code class="language-sh">cfdisk /dev/the_disk_to_be_partitioned
+<pre><code class="language-bash">&lt;pre&gt;
+cfdisk /dev/&lt;i&gt;the_disk_to_be_partitioned&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
-<blockquote>
-<p>[!NOTE]
-make sure to set the correct type for the <code>efi</code> partition.</p>
-</blockquote>
+<div class="warning">
+make sure to set the correct type for the `efi` partition.
+</div>
 <p>Example Layout:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
 <tr><td style="text-align: left">/efi</td><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td></tr>
@@ -214,36 +215,52 @@ make sure to set the correct type for the <code>efi</code> partition.</p>
 </tbody></table>
 </div>
 <p>To verify the partitions using <code>fdisk</code>:</p>
-<pre><code class="language-sh">fdisk -l /dev/partitioned_disk
+<pre><code class="language-bash">&lt;pre&gt;
+fdisk -l /dev/&lt;i&gt;partitioned_disk&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
 <p>To create an <em>Ext4</em> file system for the root:</p>
-<pre><code class="language-sh">mkfs.ext4 /dev/root_partition
+<pre><code class="language-bash">&lt;pre&gt;
+mkfs.ext4 /dev/&lt;i&gt;root_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>To initialize the swap partition:</p>
-<pre><code class="language-sh">mkswap /dev/swap_partition
+<pre><code class="language-bash">&lt;pre&gt;
+mkswap /dev/&lt;i&gt;swap_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>To format the EFI partition:</p>
-<pre><code class="language-sh">mkfs.fat -F 32 /dev/efi_system_partition
+<pre><code class="language-bash">&lt;pre&gt;
+mkfs.fat -F 32 /dev/&lt;i&gt;efi_system_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
 <p>Now is a good time to add a label to the efi partition.
 This will be useful later to set the <code>rEFInd</code> configuration.
 Using <code>dosfslabel</code>:</p>
-<pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
+<pre><code class="language-bash">&lt;pre&gt;
+dosfslabel /dev/&lt;i&gt;efi_system_partition ARCHIE&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>You can verify it using <code>lsblk</code>:</p>
-<pre><code class="language-sh">lsblk -o NAME,LABEL
+<pre><code class="language-bash">lsblk -o NAME,LABEL
 </code></pre>
 <h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
 <p>Mount the root volume to <code>/mnt</code>:</p>
-<pre><code class="language-sh">mount /dev/root_partition /mnt
+<pre><code class="language-bash">&lt;pre&gt;
+mount /dev/&lt;i&gt;root_partition&lt;/i&gt; /mnt
+&lt;/pre&gt;
 </code></pre>
 <p>Mount the EFI partition:</p>
-<pre><code class="language-sh">mount --mkdir /dev/efi_system_partition /mnt/efi
+<pre><code class="language-bash">&lt;pre&gt;
+mount --mkdir /dev/&lt;i&gt;efi_system_partition&lt;/i&gt; /mnt/efi
+&lt;/pre&gt;
 </code></pre>
 <p>Enable the <code>swap</code> volume:</p>
-<pre><code class="language-sh">swapon /dev/swap_partition
+<pre><code class="language-bash">&lt;pre&gt;
+swapon /dev/&lt;i&gt;swap_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 
                     </main>

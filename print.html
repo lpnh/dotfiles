@@ -318,12 +318,12 @@ following command. It should return <code>64</code>, for a 64-bit system:</p>
 <h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
 <p>To identify available disks, both <code>lsblk --fs</code> and <code>fdisk -l</code> can be used.</p>
 <div class="warning">
-<p>Always ensure you identify and select the correct device.
-The following steps may result in unintended data loss.</p>
+Always ensure you identify and select the correct device.
+The following steps may result in unintended data loss.
 </div>
 <h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
 <p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
-<pre><code class="language-sh">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
+<pre><code class="language-bash">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 </code></pre>
 <pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
 LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
@@ -333,16 +333,17 @@ LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Perf
 optimal one.</p>
 <p>To change the logical block address size, you can use the <code>nvme format</code> command
 specifying the preferred value with the <code>--lbaf</code> parameter:</p>
-<pre><code class="language-sh">nvme format --lbaf=1 /dev/nvme0n1
+<pre><code class="language-bash">nvme format --lbaf=1 /dev/nvme0n1
 </code></pre>
 <h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
 <p>To write the partition tables using <code>cfdisk</code>:</p>
-<pre><code class="language-sh">cfdisk /dev/the_disk_to_be_partitioned
+<pre><code class="language-bash">&lt;pre&gt;
+cfdisk /dev/&lt;i&gt;the_disk_to_be_partitioned&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
-<blockquote>
-<p>[!NOTE]
-make sure to set the correct type for the <code>efi</code> partition.</p>
-</blockquote>
+<div class="warning">
+make sure to set the correct type for the `efi` partition.
+</div>
 <p>Example Layout:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
 <tr><td style="text-align: left">/efi</td><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td></tr>
@@ -351,117 +352,141 @@ make sure to set the correct type for the <code>efi</code> partition.</p>
 </tbody></table>
 </div>
 <p>To verify the partitions using <code>fdisk</code>:</p>
-<pre><code class="language-sh">fdisk -l /dev/partitioned_disk
+<pre><code class="language-bash">&lt;pre&gt;
+fdisk -l /dev/&lt;i&gt;partitioned_disk&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
 <p>To create an <em>Ext4</em> file system for the root:</p>
-<pre><code class="language-sh">mkfs.ext4 /dev/root_partition
+<pre><code class="language-bash">&lt;pre&gt;
+mkfs.ext4 /dev/&lt;i&gt;root_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>To initialize the swap partition:</p>
-<pre><code class="language-sh">mkswap /dev/swap_partition
+<pre><code class="language-bash">&lt;pre&gt;
+mkswap /dev/&lt;i&gt;swap_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>To format the EFI partition:</p>
-<pre><code class="language-sh">mkfs.fat -F 32 /dev/efi_system_partition
+<pre><code class="language-bash">&lt;pre&gt;
+mkfs.fat -F 32 /dev/&lt;i&gt;efi_system_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
 <p>Now is a good time to add a label to the efi partition.
 This will be useful later to set the <code>rEFInd</code> configuration.
 Using <code>dosfslabel</code>:</p>
-<pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
+<pre><code class="language-bash">&lt;pre&gt;
+dosfslabel /dev/&lt;i&gt;efi_system_partition ARCHIE&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>You can verify it using <code>lsblk</code>:</p>
-<pre><code class="language-sh">lsblk -o NAME,LABEL
+<pre><code class="language-bash">lsblk -o NAME,LABEL
 </code></pre>
 <h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
 <p>Mount the root volume to <code>/mnt</code>:</p>
-<pre><code class="language-sh">mount /dev/root_partition /mnt
+<pre><code class="language-bash">&lt;pre&gt;
+mount /dev/&lt;i&gt;root_partition&lt;/i&gt; /mnt
+&lt;/pre&gt;
 </code></pre>
 <p>Mount the EFI partition:</p>
-<pre><code class="language-sh">mount --mkdir /dev/efi_system_partition /mnt/efi
+<pre><code class="language-bash">&lt;pre&gt;
+mount --mkdir /dev/&lt;i&gt;efi_system_partition&lt;/i&gt; /mnt/efi
+&lt;/pre&gt;
 </code></pre>
 <p>Enable the <code>swap</code> volume:</p>
-<pre><code class="language-sh">swapon /dev/swap_partition
+<pre><code class="language-bash">&lt;pre&gt;
+swapon /dev/&lt;i&gt;swap_partition&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="mirror-list"><a class="header" href="#mirror-list">Mirror List</a></h2>
 <p>To update the <code>mirrorlist</code> using <code>reflector</code>:</p>
-<pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
+<pre><code class="language-bash">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 <h2 id="install-essential-packages"><a class="header" href="#install-essential-packages">Install Essential Packages</a></h2>
 <p>To install the essential packages to the new root:</p>
-<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
+<pre><code class="language-bash">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 </code></pre>
 <h2 id="fstab"><a class="header" href="#fstab">Fstab</a></h2>
 <p>To generate an <code>fstab</code> file:</p>
-<pre><code class="language-sh">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<pre><code class="language-bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
 <h2 id="chroot"><a class="header" href="#chroot">Chroot</a></h2>
 <p>To change root into the new system:</p>
-<pre><code class="language-sh">arch-chroot /mnt
+<pre><code class="language-bash">arch-chroot /mnt
 </code></pre>
 <h2 id="time"><a class="header" href="#time">Time</a></h2>
 <p>To set the time zone:</p>
-<pre><code class="language-sh">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+<pre><code class="language-bash">&lt;pre&gt;
+ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
+&lt;/pre&gt;
 </code></pre>
-<p>Note: You can verify it running <code>date</code>.</p>
+<p>Note: You can verify it using the command <code>date</code>:</p>
+<pre><code class="language-bash">date
+</code></pre>
 <p>To generate the <code>/etc/adjtime</code> file:</p>
-<pre><code class="language-sh">hwclock --systohc
+<pre><code class="language-bash">hwclock --systohc
 </code></pre>
 <p>To set up time synchronization with <code>systemd-timesyncd</code>:</p>
-<pre><code class="language-sh">systemctl enable systemd-timesyncd.service
+<pre><code class="language-bash">systemctl enable systemd-timesyncd.service
 </code></pre>
 <h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
 <p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
-<pre><code class="language-sh">nano /etc/locale.gen
+<pre><code class="language-bash">nano /etc/locale.gen
 </code></pre>
 <p>To generate the locales:</p>
-<pre><code class="language-sh">locale-gen
+<pre><code class="language-bash">locale-gen
 </code></pre>
 <p>Create the <code>locale.conf</code> file, setting the <em>LANG</em> variable accordingly:</p>
-<pre><code class="language-sh">nano /etc/locale.conf
+<pre><code class="language-bash">nano /etc/locale.conf
 </code></pre>
 <pre><code class="language-txt">LANG=en_US.UTF-8
 </code></pre>
 <h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <code>desktop</code>:</p>
-<pre><code class="language-sh">nano /etc/hostname
+<p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <em>desktop</em>:</p>
+<pre><code class="language-bash">nano /etc/hostname
 </code></pre>
-<pre><code class="language-txt">desktop
+<pre><code class="language-txt">&lt;pre&gt;
+&lt;i&gt;desktop&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
 <p>To set the root password, run:</p>
-<pre><code class="language-sh">passwd
+<pre><code class="language-bash">passwd
 </code></pre>
 <h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
 <p>To create new user, adding it to the <code>wheel</code> group:</p>
-<pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
+<pre><code class="language-bash">&lt;pre&gt;
+useradd -m -G wheel &lt;i&gt;username&lt;/i&gt;
+&lt;/pre&gt;
 </code></pre>
 <p>To add a password to the user, run:</p>
-<pre><code class="language-sh">passwd &lt;username&gt;
+<pre><code class="language-bash">passwd &lt;username&gt;
 </code></pre>
 <p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
-<pre><code class="language-sh">EDITOR=nano visudo
+<pre><code class="language-bash">EDITOR=nano visudo
 </code></pre>
 <pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
 %wheel ALL=(ALL:ALL) ALL
 </code></pre>
 <h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
 <p>To enable <code>NetworkManager</code> service:</p>
-<pre><code class="language-sh">systemctl enable NetworkManager
+<pre><code class="language-bash">systemctl enable NetworkManager
 </code></pre>
 <h2 id="boot-loader"><a class="header" href="#boot-loader">Boot Loader</a></h2>
 <p>Install <code>systemd-boot</code></p>
-<pre><code class="language-sh">bootctl install
+<pre><code class="language-bash">bootctl install
 </code></pre>
 <p>Edit the <code>/efi/loader/loader.conf</code> file:</p>
-<pre><code class="language-sh">nano /efi/loader/loader.conf
+<pre><code class="language-bash">nano /efi/loader/loader.conf
 </code></pre>
 <pre><code class="language-txt">default  arch.conf
 timeout  4
 console-mode auto
 </code></pre>
 <p>Create the <code>/efi/loader/entries/arch.conf</code> file:</p>
-<pre><code class="language-sh">nano /efi/loader/entries/arch.conf
+<pre><code class="language-bash">nano /efi/loader/entries/arch.conf
 </code></pre>
 <pre><code class="language-txt">title   Arch Linux
 linux   /vmlinuz-linux
@@ -470,26 +495,26 @@ options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 </code></pre>
 <p>To make it easy to set the UUID you can use the <code>blkid</code> command and append the
 output to the <code>arch.conf</code> file.</p>
-<pre><code class="language-sh">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
+<pre><code class="language-bash">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
 </code></pre>
 <p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
 <h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
 <p>To exit the chroot environment:</p>
-<pre><code class="language-sh">exit
+<pre><code class="language-bash">exit
 </code></pre>
 <p>To unmount all the partitions and reboot:</p>
-<pre><code class="language-sh">umount -R /mnt
+<pre><code class="language-bash">umount -R /mnt
 </code></pre>
-<pre><code class="language-sh">reboot
+<pre><code class="language-bash">reboot
 </code></pre>
 <p>That's it. Good luck!</p>
 <h2 id="by-the-way"><a class="header" href="#by-the-way">By the Way</a></h2>
 <p>If you have succeeded, there's one last thing to be done.</p>
 <p>First download <code>fastfetch</code>:</p>
-<pre><code class="language-sh">sudo pacman -S fastfetch
+<pre><code class="language-bash">sudo pacman -S fastfetch
 </code></pre>
 <p>Now run it and enjoy your new achievement:</p>
-<pre><code class="language-sh">fastfetch
+<pre><code class="language-bash">fastfetch
 </code></pre>
 <p>Note: jokes aside, this last step is a simple and efficient way to verify your
 installation.</p>
