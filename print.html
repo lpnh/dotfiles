@@ -337,9 +337,7 @@ specifying the preferred value with the <code>--lbaf</code> parameter:</p>
 </code></pre>
 <h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
 <p>To write the partition tables using <code>cfdisk</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-cfdisk /dev/&lt;i&gt;the_disk_to_be_partitioned&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
 <div class="warning">
 make sure to set the correct type for the `efi` partition.
@@ -352,52 +350,36 @@ make sure to set the correct type for the `efi` partition.
 </tbody></table>
 </div>
 <p>To verify the partitions using <code>fdisk</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-fdisk -l /dev/&lt;i&gt;partitioned_disk&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">fdisk -l /dev/partitioned_disk
 </code></pre>
 <h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
 <p>To create an <em>Ext4</em> file system for the root:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mkfs.ext4 /dev/&lt;i&gt;root_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">mkfs.ext4 /dev/root_partition
 </code></pre>
 <p>To initialize the swap partition:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mkswap /dev/&lt;i&gt;swap_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">mkswap /dev/swap_partition
 </code></pre>
 <p>To format the EFI partition:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mkfs.fat -F 32 /dev/&lt;i&gt;efi_system_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">mkfs.fat -F 32 /dev/efi_system_partition
 </code></pre>
 <h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
 <p>Now is a good time to add a label to the efi partition.
 This will be useful later to set the <code>rEFInd</code> configuration.
 Using <code>dosfslabel</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-dosfslabel /dev/&lt;i&gt;efi_system_partition ARCHIE&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
 <p>You can verify it using <code>lsblk</code>:</p>
 <pre><code class="language-bash">lsblk -o NAME,LABEL
 </code></pre>
 <h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
 <p>Mount the root volume to <code>/mnt</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mount /dev/&lt;i&gt;root_partition&lt;/i&gt; /mnt
-&lt;/pre&gt;
+<pre><code class="language-bash">mount /dev/root_partition /mnt
 </code></pre>
 <p>Mount the EFI partition:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mount --mkdir /dev/&lt;i&gt;efi_system_partition&lt;/i&gt; /mnt/efi
-&lt;/pre&gt;
+<pre><code class="language-bash">mount --mkdir /dev/efi_system_partition /mnt/efi
 </code></pre>
 <p>Enable the <code>swap</code> volume:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-swapon /dev/&lt;i&gt;swap_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">swapon /dev/swap_partition
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="mirror-list"><a class="header" href="#mirror-list">Mirror List</a></h2>
@@ -418,9 +400,7 @@ swapon /dev/&lt;i&gt;swap_partition&lt;/i&gt;
 </code></pre>
 <h2 id="time"><a class="header" href="#time">Time</a></h2>
 <p>To set the time zone:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
-&lt;/pre&gt;
+<pre><code class="language-bash">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 </code></pre>
 <p>Note: You can verify it using the command <code>date</code>:</p>
 <pre><code class="language-bash">date
@@ -447,9 +427,7 @@ ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
 <p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <em>desktop</em>:</p>
 <pre><code class="language-bash">nano /etc/hostname
 </code></pre>
-<pre><code class="language-txt">&lt;pre&gt;
-&lt;i&gt;desktop&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-txt">desktop
 </code></pre>
 <h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
 <p>To set the root password, run:</p>
@@ -457,12 +435,10 @@ ln -sf /usr/share/zoneinfo/&lt;i&gt;Region/City&lt;/i&gt; /etc/localtime
 </code></pre>
 <h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
 <p>To create new user, adding it to the <code>wheel</code> group:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-useradd -m -G wheel &lt;i&gt;username&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">useradd -m -G wheel username
 </code></pre>
 <p>To add a password to the user, run:</p>
-<pre><code class="language-bash">passwd &lt;username&gt;
+<pre><code class="language-bash">passwd username
 </code></pre>
 <p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
 <pre><code class="language-bash">EDITOR=nano visudo

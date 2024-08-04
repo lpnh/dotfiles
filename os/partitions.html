@@ -200,9 +200,7 @@ specifying the preferred value with the <code>--lbaf</code> parameter:</p>
 </code></pre>
 <h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
 <p>To write the partition tables using <code>cfdisk</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-cfdisk /dev/&lt;i&gt;the_disk_to_be_partitioned&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
 <div class="warning">
 make sure to set the correct type for the `efi` partition.
@@ -215,52 +213,36 @@ make sure to set the correct type for the `efi` partition.
 </tbody></table>
 </div>
 <p>To verify the partitions using <code>fdisk</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-fdisk -l /dev/&lt;i&gt;partitioned_disk&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">fdisk -l /dev/partitioned_disk
 </code></pre>
 <h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
 <p>To create an <em>Ext4</em> file system for the root:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mkfs.ext4 /dev/&lt;i&gt;root_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">mkfs.ext4 /dev/root_partition
 </code></pre>
 <p>To initialize the swap partition:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mkswap /dev/&lt;i&gt;swap_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">mkswap /dev/swap_partition
 </code></pre>
 <p>To format the EFI partition:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mkfs.fat -F 32 /dev/&lt;i&gt;efi_system_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">mkfs.fat -F 32 /dev/efi_system_partition
 </code></pre>
 <h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
 <p>Now is a good time to add a label to the efi partition.
 This will be useful later to set the <code>rEFInd</code> configuration.
 Using <code>dosfslabel</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-dosfslabel /dev/&lt;i&gt;efi_system_partition ARCHIE&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
 <p>You can verify it using <code>lsblk</code>:</p>
 <pre><code class="language-bash">lsblk -o NAME,LABEL
 </code></pre>
 <h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
 <p>Mount the root volume to <code>/mnt</code>:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mount /dev/&lt;i&gt;root_partition&lt;/i&gt; /mnt
-&lt;/pre&gt;
+<pre><code class="language-bash">mount /dev/root_partition /mnt
 </code></pre>
 <p>Mount the EFI partition:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-mount --mkdir /dev/&lt;i&gt;efi_system_partition&lt;/i&gt; /mnt/efi
-&lt;/pre&gt;
+<pre><code class="language-bash">mount --mkdir /dev/efi_system_partition /mnt/efi
 </code></pre>
 <p>Enable the <code>swap</code> volume:</p>
-<pre><code class="language-bash">&lt;pre&gt;
-swapon /dev/&lt;i&gt;swap_partition&lt;/i&gt;
-&lt;/pre&gt;
+<pre><code class="language-bash">swapon /dev/swap_partition
 </code></pre>
 
                     </main>
