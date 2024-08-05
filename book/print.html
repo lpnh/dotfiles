@@ -812,6 +812,33 @@ WakaTimeApiKey
 <p>To check the installed targets:</p>
 <pre><code class="language-bash">rustup target list --installed
 </code></pre>
+<h2 id="flyio"><a class="header" href="#flyio">Fly.io</a></h2>
+<h3 id="update-the-dns"><a class="header" href="#update-the-dns">Update the DNS</a></h3>
+<div class="warning">
+This is a necessary step for my environment.
+Not sure if this will be the case for anyone else.
+</div>
+<p>To get the list of the current active profiles:</p>
+<pre><code class="language-bash">nmcli connection show --active
+</code></pre>
+<p>To check the current DNS values</p>
+<pre><code class="language-bash">nmcli connection show 'NAME' | rg dns
+</code></pre>
+<p>To update the DNS:</p>
+<pre><code class="language-bash">nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
+</code></pre>
+<p>To reconnect:</p>
+<pre><code class="language-bash">nmcli connection down 'NAME'
+</code></pre>
+<pre><code class="language-bash">nmcli connection up 'NAME'
+</code></pre>
+<h3 id="flyctl"><a class="header" href="#flyctl">flyctl</a></h3>
+<p>To installing <code>flyctl</code>:</p>
+<pre><code class="language-bash">curl -L https://fly.io/install.sh | sh
+</code></pre>
+<p>To sign in using <code>flyctl</code>:</p>
+<pre><code class="language-bash">fly auth login
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
 <h2 id="profile-sync-daemon"><a class="header" href="#profile-sync-daemon">Profile-sync-daemon</a></h2>
 <p>To generate the configuration file and check the current status:</p>
@@ -845,7 +872,7 @@ BROWSERS=(firefox)
 <p>To connect to a Wi-Fi</p>
 <pre><code class="language-bash">nmcli device wifi connect &lt;SSID_or_BSSID&gt; password &lt;password&gt;
 </code></pre>
-<h3 id="update-the-dns"><a class="header" href="#update-the-dns">Update the DNS</a></h3>
+<h3 id="update-the-dns-1"><a class="header" href="#update-the-dns-1">Update the DNS</a></h3>
 <p>To get the list of the current active profiles:</p>
 <pre><code class="language-bash">nmcli connection show --active
 </code></pre>
@@ -1550,7 +1577,7 @@ Connect to a Wi-Fi</li>
 </ul>
 <pre><code class="language-sh">nmcli device wifi connect &lt;SSID_or_BSSID&gt; password &lt;password&gt;
 </code></pre>
-<h3 id="update-the-dns-1"><a class="header" href="#update-the-dns-1">Update the DNS</a></h3>
+<h3 id="update-the-dns-2"><a class="header" href="#update-the-dns-2">Update the DNS</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Get the list of the current active profiles:</li>
