@@ -85,6 +85,20 @@ alias yi 'ya pack --install'
 alias yl 'ya pack --list'
 alias yu 'ya pack --upgrade'
 
+# the enthusiasm level determines the scope
+function yay!
+    yay --noconfirm
+    bob update nightly
+end
+
+function yay!!
+    yay --noconfirm
+    rustup update
+    cargo install-update --all
+    tldr --update
+    bob update nightly
+end
+
 # external setups
 starship init fish | source
 zoxide init fish | source

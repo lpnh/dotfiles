@@ -1,8 +1,8 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
-live_config_reload = true
+# live_config_reload = true
 
 [shell]
-program = "/usr/bin/nu"
+program = "/usr/bin/fish"
 
 [env]
 TERM = "xterm-256color"
