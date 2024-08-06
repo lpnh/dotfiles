@@ -1,5 +1,19 @@
 return {
-  -- LSP Configuration
+  {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    --    used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+
+  { 'Bilal2453/luvit-meta', lazy = true },
+
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -7,6 +21,11 @@ return {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+      { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
+
+      -- Allows extra capabilities provided by nvim-cmp
+      'hrsh7th/cmp-nvim-lsp',
 
       -- Additional Lua LSP for the Neovim config, runtime and plugins
       { 'folke/neodev.nvim', opts = {} },
@@ -99,13 +118,6 @@ return {
 
         require('lspconfig')[name].setup(config)
       end
-
-      -- Add file extensions
-      vim.filetype.add {
-        extension = {
-          nuon = 'nu',
-        },
-      }
 
       -- Attach
       vim.api.nvim_create_autocmd('LspAttach', {
