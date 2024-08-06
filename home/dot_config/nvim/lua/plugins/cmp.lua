@@ -3,7 +3,6 @@ return {
   event = 'InsertEnter',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
-    'L3MON4D3/LuaSnip',
     {
       'L3MON4D3/LuaSnip',
       build = 'make install_jsregexp',
@@ -18,16 +17,14 @@ return {
     },
     'saadparwaiz1/cmp_luasnip',
 
-    -- Adds LSP completion capabilities
+    -- LSP completion capabilities
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
   },
   config = function()
-    -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
 
-    luasnip.filetype_extend('rust', { 'html' })
     luasnip.config.setup {}
 
     cmp.setup {
@@ -37,7 +34,6 @@ return {
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
-
       -- Read `:help ins-completion`
       mapping = cmp.mapping.preset.insert {
         -- Select the [n]ext item
@@ -65,6 +61,10 @@ return {
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
+        {
+          name = 'lazydev',
+          group_index = 0,
+        },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
@@ -73,7 +73,7 @@ return {
       },
       window = {
         completion = cmp.config.window.bordered(),
-        documentation = cmp.config.disable,
+        -- documentation = cmp.config.disable,
       },
     }
   end,
