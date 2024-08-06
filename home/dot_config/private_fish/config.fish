@@ -8,6 +8,8 @@ set -gx fish_cursor_replace_one underscore
 # vi bindings
 set -g fish_key_bindings fish_vi_key_bindings
 
+bind -M insert \cy accept-autosuggestion
+
 # aliases
 
 # bat
