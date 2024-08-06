@@ -70,7 +70,7 @@ return {
           },
         },
         tailwindcss = {
-          filetypes = { 'rust' },
+          filetypes = { 'html', 'rust' },
           init_options = {
             userLanguages = {
               rust = 'html',
@@ -118,6 +118,13 @@ return {
 
         require('lspconfig')[name].setup(config)
       end
+
+      -- Improve filetypes
+      vim.filetype.add {
+        pattern = {
+          ['.*/templates/.*%.html'] = 'html',
+        },
+      }
 
       -- Attach
       vim.api.nvim_create_autocmd('LspAttach', {

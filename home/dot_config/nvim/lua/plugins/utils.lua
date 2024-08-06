@@ -2,9 +2,6 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- MD Tables
-  'dhruvasagar/vim-table-mode',
-
   -- Wakatime
   { 'wakatime/vim-wakatime', lazy = false },
 
@@ -45,11 +42,13 @@ return {
     keys = {
       { '<leader>d', group = 'Diagnostic' },
       { '<leader>d_', hidden = true },
+      { '<leader>m', group = 'Markdown' },
+      { '<leader>m_', hidden = true },
       { '<leader>s', group = 'Search' },
       { '<leader>s_', hidden = true },
       { '<leader>ss', group = 'Search symbols' },
       { '<leader>ss_', hidden = true },
-      { '<leader>t', group = 'Table' },
+      { '<leader>t', group = 'Tailwind' },
       { '<leader>t_', hidden = true },
       { '<leader>v', group = 'LÖVE' },
       { '<leader>v_', hidden = true },
@@ -138,8 +137,21 @@ return {
   },
   {
     'luckasRanarison/tailwind-tools.nvim',
-    opts = {
-      custom_filetype = { 'rust' },
-    },
+    config = function()
+      require('tailwind-tools').setup {
+        -- your configuration
+        extension = {
+          queries = {}, -- a list of filetypes having custom `class` queries
+          patterns = { -- a map of filetypes to Lua pattern lists
+            rust = { 'class=["\']([^"\']+)["\']' },
+          },
+        },
+      }
+
+      vim.keymap.set('n', '<leader>tc', '<cmd>TailwindConcealToggle<CR>', { desc = 'Toggle tailwind conceal' })
+      vim.keymap.set('n', '<leader>ts', '<cmd>TailwindSort<CR>', { desc = 'Sort tailwind classes' })
+      vim.keymap.set('n', '<leader>tp', '<cmd>TailwindPrevClass<CR>', { desc = 'Move to the next class' })
+      vim.keymap.set('n', '<leader>tn', '<cmd>TailwindNextClass<CR>', { desc = 'Move to the previous class' })
+    end,
   },
 }
