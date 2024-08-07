@@ -87,6 +87,11 @@ alias yi 'ya pack --install'
 alias yl 'ya pack --list'
 alias yu 'ya pack --upgrade'
 
+# yay
+abbr yayq 'yay -Qi'
+abbr yayr 'yay -Rns'
+abbr yays 'yay -Ss'
+
 # the enthusiasm level determines the scope
 function yay!
     yay --noconfirm
