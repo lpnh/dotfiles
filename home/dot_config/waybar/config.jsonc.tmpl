@@ -29,7 +29,8 @@
        "tooltip": false
     },
     "custom/workspaces": {
-        "exec": "$HOME/.config/waybar/modules/workspaces.nu \"$WAYBAR_OUTPUT_NAME\""
+        "exec": "$HOME/.config/waybar/modules/workspaces.fish \"$WAYBAR_OUTPUT_NAME\""
+        "format": "{}"
     },
     "wlr/taskbar": {
         "format": "{title}",
@@ -49,7 +50,7 @@
         "return-type": "json",
         "max-length": 20,
         "escape": true,
-        "exec": "$HOME/.config/waybar/modules/window.nu",
+        "exec": "$HOME/.config/waybar/modules/window.fish",
         "format": "<i>{}</i>"
     },
 
