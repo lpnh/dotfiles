@@ -88,6 +88,7 @@ alias yl 'ya pack --list'
 alias yu 'ya pack --upgrade'
 
 # yay
+abbr yayl 'yay -Ql'
 abbr yayq 'yay -Qi'
 abbr yayr 'yay -Rns'
 abbr yays 'yay -Ss'
