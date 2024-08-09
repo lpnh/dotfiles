@@ -12,6 +12,9 @@ bind -M insert \cy accept-autosuggestion
 
 # aliases
 
+# aurv
+alias aurv 'fd --threads=1 --type file PKGBUILD /home/aurv/PKGBUILDS/ --exec makepkg --dir {//} -sic --noconfirm --needed'
+
 # bat
 alias b bat
 alias bl 'bat --line-range'
