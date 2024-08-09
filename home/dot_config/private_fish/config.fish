@@ -99,6 +99,7 @@ abbr yays 'yay -Ss'
 # the enthusiasm level determines the scope
 function yay!
     yay --noconfirm
+    aurv
     bob update nightly
 end
 
@@ -107,6 +108,7 @@ function yay!!
     rustup update
     cargo install-update --all
     tldr --update
+    aurv
     bob update nightly
 end
 
