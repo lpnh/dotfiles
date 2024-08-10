@@ -1,3 +1,20 @@
+# PATH
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.fly/bin
+
+# ENV
+set -gx EDITOR nvim
+set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
+set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
+
+# fzf mocha theme
+set -gx FZF_DEFAULT_OPTS "\
+--color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
 # cursor style
 set -gx fish_vi_force_cursor 1
 set -gx fish_cursor_default block
