@@ -82,7 +82,7 @@ return {
     vim.keymap.set('n', '<leader>s?', builtin.help_tags, { desc = 'Search help' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search keymaps' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search files' })
-    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = 'Search select Telescope' })
+    vim.keymap.set('n', '<leader>sb', builtin.builtin, { desc = 'Search telescope builtin' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search word under the cursor' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by grep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search diagnostics' })

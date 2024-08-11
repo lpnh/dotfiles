@@ -137,17 +137,28 @@ return {
   },
   {
     'luckasRanarison/tailwind-tools.nvim',
+    name = 'tailwind-tools',
+    build = ':UpdateRemotePlugins',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-telescope/telescope.nvim',
+    },
     config = function()
       require('tailwind-tools').setup {
         -- your configuration
         extension = {
-          queries = {}, -- a list of filetypes having custom `class` queries
+          queries = {
+            -- a list of filetypes having custom `class` queries
+            -- https://github.com/luckasRanarison/tailwind-tools.nvim?tab=readme-ov-file#treesitter-queries
+          },
           patterns = { -- a map of filetypes to Lua pattern lists
             rust = { 'class=["\']([^"\']+)["\']' },
           },
         },
       }
 
+      vim.keymap.set('n', '<leader>stc', '<cmd>Telescope tailwind classes<CR>', { desc = 'Search classes in the current document' })
+      vim.keymap.set('n', '<leader>stu', '<cmd>Telescope tailwind utilities<CR>', { desc = 'Search all utility classes available' })
       vim.keymap.set('n', '<leader>tc', '<cmd>TailwindConcealToggle<CR>', { desc = 'Toggle tailwind conceal' })
       vim.keymap.set('n', '<leader>ts', '<cmd>TailwindSort<CR>', { desc = 'Sort tailwind classes' })
       vim.keymap.set('n', '<leader>tp', '<cmd>TailwindPrevClass<CR>', { desc = 'Move to the next class' })
