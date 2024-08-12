@@ -31,7 +31,7 @@ Font](https://www.nerdfonts.com/)
 ### Terminal
 
 * Prompt: [Starship](https://starship.rs/)  
-* Shell: [Nushell](https://www.nushell.sh/)  
+* Shell: [Fish](https://fishshell.com/)  
 * Terminal Emulator: [Alacritty](https://alacritty.org/)
 
 ### Tools
