@@ -92,6 +92,9 @@ alias nv nvim
 # sudo
 alias please sudo
 
+# reflector
+alias reflexo 'sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
+
 # eza
 alias x 'eza --color=always --group-directories-first --icons --oneline'
 alias xx 'eza --color=always --group-directories-first --icons'
