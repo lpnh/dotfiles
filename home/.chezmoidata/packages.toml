@@ -69,6 +69,7 @@ system = [
     "inter-font",
     "iwd",
     "less",
+    "libnotify",
     "linux-headers",
     "lvm2",
     "man-db",
