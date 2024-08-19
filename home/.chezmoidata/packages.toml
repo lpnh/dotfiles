@@ -3,6 +3,7 @@
 # should be manually installed
 optional = [
     "aseprite",
+    "cargo-generate",
     "love",
     "minecraft-launcher",
     "ocenaudio-bin",
@@ -11,7 +12,7 @@ optional = [
 ]
 
 # should be manually installed with `cargo install --locked`
-crates = ["cargo-chef", "cargo-generate", "trunk"]
+crates = ["cargo-chef", "trunk"]
 
 # packages manually installed during OS installation
 already_installed = [
