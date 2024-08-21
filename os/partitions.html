@@ -179,10 +179,13 @@
                         <h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
 <h2 id="partitioning-the-disk"><a class="header" href="#partitioning-the-disk">Partitioning the Disk</a></h2>
 <h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
-<p>To identify available disks, both <code>lsblk --fs</code> and <code>fdisk -l</code> can be used.</p>
+<p>To identify available disks, the <code>fdisk -l</code> command will give you all the
+necessary information, but <code>lsblk</code> can also be used. My favorite flags are
+<code>lsblk -o NAME,SIZE</code> for a concise output and <code>lsblk --fs</code> when I need to check
+file system information.</p>
 <div class="warning">
-Always ensure you identify and select the correct device.
-The following steps may result in unintended data loss.
+Always make sure to identify and select the correct device.
+<p>Otherwise, the following steps may result in unintended data loss.</p>
 </div>
 <h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
 <p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
@@ -203,7 +206,7 @@ specifying the preferred value with the <code>--lbaf</code> parameter:</p>
 <pre><code class="language-bash">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
 <div class="warning">
-make sure to set the correct type for the `efi` partition.
+Make sure to set the correct type for the <b>efi</b> partition.
 </div>
 <p>Example Layout:</p>
 <div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
