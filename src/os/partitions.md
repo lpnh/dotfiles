@@ -4,11 +4,15 @@
 
 ### Device Identification
 
-To identify available disks, both `lsblk --fs` and `fdisk -l` can be used.
+To identify available disks, the `fdisk -l` command will give you all the
+necessary information, but `lsblk` can also be used. My favorite flags are
+`lsblk -o NAME,SIZE` for a concise output and `lsblk --fs` when I need to check
+file system information.
 
 <div class="warning">
-Always ensure you identify and select the correct device.
-The following steps may result in unintended data loss.
+Always make sure to identify and select the correct device.
+
+Otherwise, the following steps may result in unintended data loss.
 </div>
 
 ### Optimal Logical Sector Size (exclusive for NVMe devices)
@@ -45,7 +49,7 @@ cfdisk /dev/the_disk_to_be_partitioned
 ```
 
 <div class="warning">
-make sure to set the correct type for the `efi` partition.
+Make sure to set the correct type for the <b>efi</b> partition.
 </div>
 
 Example Layout:
