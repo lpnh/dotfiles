@@ -51,7 +51,7 @@ alias chma 'chezmoi managed'
 alias chre 'chezmoi re-add --verbose'
 alias chst 'chezmoi status'
 alias chup 'chezmoi update --verbose'
-alias chz 'chezmoi cd'
+alias chz 'cd ~/.local/share/chezmoi'
 
 # cargo
 alias cwc 'cargo watch -qcx clippy'
