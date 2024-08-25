@@ -1,13 +1,22 @@
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
 [manager]
 sort_by = "modified"
 sort_sensitive = true
 sort_reverse = true
-sort_dir_first = true
 
-[opener]
-play = [
-	{ run = 'mpv --player-operation-mode=pseudo-gui "$@"', orphan = true, for = "unix" },
-]
+[[opener.play]]
+run = 'mpv --player-operation-mode=pseudo-gui "$@"'
+orphan = true
+for = "unix"
 
-[plugin]
-prepend_previewers = [{ name = "*.md", run = "glow" }]
+[[plugin.prepend_previewers]]
+name = "*.md"
+run = "glow"
+
+[[plugin.prepend_fetchers]]
+id = "mime"
+if = "!mime"
+name = "*"
+run = "mime-ext"
+prio = "high"
