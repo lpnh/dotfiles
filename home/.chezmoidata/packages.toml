@@ -43,9 +43,10 @@ already_installed = [
     "systemd-ukify",
     # yet another boot manager
     "refind",
-    # AUR helper
+    # package management
     "yay",
     "pacman-hook-kernel-install", # from AUR
+    "pacman-contrib",
     # bootstrap
     "chezmoi",
 ]
