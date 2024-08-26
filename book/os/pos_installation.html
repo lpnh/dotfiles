@@ -349,13 +349,16 @@ repo</a></p>
 <p>To install <code>yay</code>:</p>
 <pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
-<p>For the first use:</p>
-<pre><code class="language-bash"># I'm not sure about this one
-yay -Y --gendb
-</code></pre>
 <h3 id="additional-pacman-hooks"><a class="header" href="#additional-pacman-hooks">Additional Pacman Hooks</a></h3>
 <p>Install extra pacman hooks for the <code>kernel-install</code>:</p>
 <pre><code class="language-bash">yay -S pacman-hook-kernel-install
+</code></pre>
+<h3 id="pacman-utilities"><a class="header" href="#pacman-utilities">Pacman Utilities</a></h3>
+<p>Install the <code>pacman-contrib</code> package:</p>
+<pre><code class="language-bash">sudo pacman -S pacman-contrib
+</code></pre>
+<p>Enable the <code>paccache.timer</code> to periodically clean the <code>pacman</code> cache:</p>
+<pre><code class="language-bash">systemctl enable paccache.timer
 </code></pre>
 <h2 id="generating-the-uki"><a class="header" href="#generating-the-uki">Generating the UKI</a></h2>
 <p>Reinstall the kernel package to trigger the <code>kernel-install</code> in order to

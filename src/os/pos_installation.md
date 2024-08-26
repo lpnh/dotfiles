@@ -300,19 +300,26 @@ To install `yay`:
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
-For the first use:
-
-```bash
-# I'm not sure about this one
-yay -Y --gendb
-```
-
 ### Additional Pacman Hooks
 
 Install extra pacman hooks for the `kernel-install`:
 
 ```bash
 yay -S pacman-hook-kernel-install
+```
+
+### Pacman Utilities
+
+Install the `pacman-contrib` package:
+
+```bash
+sudo pacman -S pacman-contrib
+```
+
+Enable the `paccache.timer` to periodically clean the `pacman` cache:
+
+```bash
+systemctl enable paccache.timer
 ```
 
 ## Generating the UKI
