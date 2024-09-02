@@ -30,7 +30,7 @@ bind -M insert \cy accept-autosuggestion
 # aliases
 
 # aurv
-alias aurv 'fd --threads=1 --type file PKGBUILD /home/aurv/PKGBUILDS/ --exec makepkg --dir {//} -sic --noconfirm --needed'
+alias aurv 'fd --threads=1 --type file PKGBUILD /home/aurv/ --exec makepkg --config /home/aurv/custom-makepkg.conf --dir {//} -si --noconfirm --needed'
 
 # bat
 alias b bat
