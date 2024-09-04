@@ -56,6 +56,9 @@ already_installed = [
     "chezmoi",
 ]
 
+# custom package repository
+aurv = ["niri-nightly", "yazi-nightly"]
+
 # packages that will be automatically installed with chezmoi scripts
 system = [
     "alsa-utils",
@@ -163,7 +166,6 @@ common = [
     "mdbook",
     "mpv",
     "ncspot",
-    "niri",
     "nushell",
     "nwg-look",
     "otf-firamono-nerd",
@@ -192,7 +194,6 @@ common = [
     "waybar",
     "wev",
     "wlsunset",
-    "yazi",
     "zola",
     "zoxide",
 ]
