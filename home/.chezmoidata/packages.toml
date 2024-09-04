@@ -2,13 +2,18 @@
 
 # should be manually installed
 optional = [
+    # pixel art
     "aseprite",
+    "tiled",
+    # dev stuff
     "cargo-generate",
     "love",
-    "minecraft-launcher",
-    "ocenaudio-bin",
-    "tiled",
     "zola",
+    # minecraft
+    "glfw",
+    "prismlauncher",
+    # audio editor
+    "ocenaudio-bin",
 ]
 
 # should be manually installed with `cargo install --locked`
