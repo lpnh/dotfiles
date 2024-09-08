@@ -46,6 +46,20 @@ input {
 
 // ]]]
 
+// Output [[[
+
+{{- if eq .chezmoi.hostname "desktop" }}
+output "DP-2" {
+    position x=0 y=48
+}
+
+output "HDMI-A-1" {
+    position x=1280 y=0
+}
+{{- end }}
+
+// ]]]
+
 // Layout [[[
 
 layout {
