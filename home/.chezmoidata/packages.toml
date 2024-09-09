@@ -172,6 +172,7 @@ common = [
     "profile-sync-daemon",
     "ripgrep",
     "ripgrep-all",
+    "rnote",
     "rofimoji",
     "rust-analyzer",
     "sqlitebrowser",
