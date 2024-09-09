@@ -502,7 +502,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(firefox|ncspot|neovim|WebCord|wlroots|yazi)"
+    match app-id="(Aseprite|discord|firefox|ncspot|neovim|yazi)"
     match title="Minecraft"
     open-maximized true
 }
@@ -519,7 +519,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(ncspot|WebCord)"
+    match app-id="(ncspot|discord)"
     open-on-workspace "lounge"
 }
 
@@ -572,10 +572,10 @@ binds {
     Mod+D { spawn "fuzzel"; }
     Mod+M { spawn "prismlauncher"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
-    Mod+P { spawn "cage" "--" "/usr/bin/aseprite"; }
+    Mod+P { spawn "env" "DISPLAY=:0" "aseprite"; }
     Mod+S { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
     Mod+T { spawn "thunderbird"; }
-    Mod+W { spawn "webcord"; }
+    Mod+W { spawn "env" "DISPLAY=:0" "discord"; }
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     // ]]]
