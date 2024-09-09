@@ -136,11 +136,11 @@ common = [
     "bat",
     "bob",
     "bottom",
-    "cage",
     "cargo-make",
     "cargo-shuttle",
     "cargo-update",
     "cargo-watch",
+    "discord",
     "eza",
     "fd",
     "ffmpegthumbnailer",
@@ -149,7 +149,6 @@ common = [
     "foot",
     "fuzzel",
     "fzf",
-    "gamescope",
     "git-delta",
     "gitui",
     "glow",
@@ -197,6 +196,6 @@ common = [
     "zola",
     "zoxide",
 ]
-aur = ["cava", "fswatch", "webcord", "xcursor-breeze"]
+aur = ["cava", "fswatch", "xcursor-breeze"]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
