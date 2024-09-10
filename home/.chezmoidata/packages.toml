@@ -3,6 +3,7 @@
 # should be manually installed
 optional = [
     # pixel art
+    "cage",
     "aseprite",
     "tiled",
     # dev stuff
