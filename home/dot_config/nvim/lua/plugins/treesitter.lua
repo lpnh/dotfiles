@@ -26,6 +26,7 @@ return {
         'rust',
         'sql',
         'toml',
+        'tsx', -- required by treesitter itself (?)
         'vim',
         'vimdoc',
         'yaml',
