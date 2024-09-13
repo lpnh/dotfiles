@@ -10,6 +10,8 @@ optional = [
     "cargo-generate",
     "love",
     "zola",
+    # games
+    "osu-lazer-bin",
     # minecraft
     "glfw",
     "prismlauncher",
