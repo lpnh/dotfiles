@@ -19,7 +19,6 @@ Make sure to have some basic system packages installed:
 ```bash
 sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
 ```
-
 ## Installing Some Compilers
 
 Install `clang`:
@@ -272,19 +271,9 @@ Update `pacman` configuration file:
 ```sh
 sudo nano /etc/pacman.conf
 ```
-```txt
-# Misc options
-#UseSyslog
-Color
-ILoveCandy
-#NoProgressBar
-#CheckSpace
-VerbosePkgLists
-ParallelDownloads = 5
-```
 
 An example can be found on [EndeavourOS
-repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf)
+repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf). If you plan to use packages like `steam`, make sure to enable (uncomment) the `[multilib]` repository.
 
 ### Yay
 
