@@ -2,6 +2,13 @@
 
 # should be manually installed
 optional = [
+    # steam (multilib repo)
+    "lib32-vulkan-radeon", # for AMD GPU
+    "steam",
+    "vulkan-tools",        # to check Vulkan is working
+    # dofus
+    "ankama-launcher",
+    "wine",            # multilib repo
     # pixel art
     "cage",
     "aseprite",
