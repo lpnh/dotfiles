@@ -143,7 +143,6 @@ common = [
     "cargo-shuttle",
     "cargo-update",
     "cargo-watch",
-    "discord",
     "eza",
     "fd",
     "ffmpegthumbnailer",
@@ -200,6 +199,6 @@ common = [
     "zola",
     "zoxide",
 ]
-aur = ["cava", "fswatch", "xcursor-breeze"]
+aur = ["cava", "fswatch", "vesktop-bin", "xcursor-breeze"]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
