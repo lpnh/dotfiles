@@ -3,15 +3,15 @@
     "position": "top",
     "start_hidden": true,
     "height": 35,
-    "margin-top": 7,
-    "margin-left": 7,
-    "margin-right": 7,
+    "margin-top": 8,
+    "margin-left": 8,
+    "margin-right": 8,
 
     "modules-left": [
         "custom/arch",
-        "custom/workspaces",
+        "niri/workspaces",
         "wlr/taskbar",
-        "custom/window"
+        "niri/window"
     ],
     "modules-center": ["clock"],
     "modules-right": [
@@ -28,30 +28,32 @@
        "format": " ",
        "tooltip": false
     },
-    "custom/workspaces": {
-        "exec": "$HOME/.config/waybar/modules/workspaces.fish \"$WAYBAR_OUTPUT_NAME\"",
-        "format": "{}"
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "󰪥",
+            "default": "󰄰"
+        }
     },
     "wlr/taskbar": {
-        "format": "{title}",
+        "format": "{app_id}",
         "tooltip": false,
         "active-first": true,
         "rewrite": {
             "Alacritty": "",
+            "(Ankama).*": "󱏲",
             "(Aseprite).*": "",
-            ".*(Mozilla Firefox)": "󰈹",
+            "(Dofus).*": "󰪰",
+            "firefox": "󰈹",
             "ncspot": "",
             "neovim": "",
-            ".*(Discord)": "󰙯",
-            "yazi": ""
+            "steam": "󰓓",
+            "vesktop": "",
+            "yazi": "󰇥"
         }
     },
-    "custom/window": {
-        "return-type": "json",
-        "max-length": 20,
-        "escape": true,
-        "exec": "$HOME/.config/waybar/modules/window.fish",
-        "format": "<i>{}</i>"
+    "niri/window": {
+        "format": "{app_id}",
     },
 
     "clock": {

@@ -12,9 +12,9 @@
 window#waybar {
     /* background: transparent; */
     background: rgba(24, 24, 37, 0.5);
-    border-radius: 7px;
-    border: 1px solid rgba(203, 166, 247, 0.5);
-    color: @mauve;
+    border-radius: 8px;
+    border: 2px solid rgba(203, 166, 247, 0.6);
+    color: @lavender;
 }
 
 #custom-arch {
@@ -22,9 +22,9 @@ window#waybar {
 }
 
 #custom-arch,
-#custom-workspaces,
-#custom-window,
+#workspaces,
 #taskbar,
+#window,
 #clock,
 #tray,
 #network,
@@ -35,6 +35,11 @@ window#waybar {
     padding: 0 32px;
 }
 
+#workspaces button {
+    padding: 4;
+    color: @lavender;
+}
+
 #taskbar button {
     /* margin: 0; */
     /* padding: 0; */
@@ -42,6 +47,5 @@ window#waybar {
 }
 
 #taskbar button.active {
-    color: @mauve;
+    color: @lavender;
 }
-
