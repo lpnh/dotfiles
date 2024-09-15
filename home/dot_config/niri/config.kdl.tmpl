@@ -502,7 +502,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(Aseprite|discord|firefox|ncspot|neovim|yazi|steam)"
+    match app-id="(Aseprite|Dofus|firefox|ncspot|neovim|steam|vesktop|yazi)"
     match title="Minecraft"
     open-maximized true
 }
@@ -519,7 +519,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(ncspot|discord|steam)"
+    match app-id="(ncspot|vesktop)"
     open-on-workspace "lounge"
 }
 
@@ -574,7 +574,7 @@ binds {
     Mod+G { spawn "env" "DISPLAY=:0" "steam"; }
     Mod+M { spawn "prismlauncher"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
-    Mod+P { spawn "env" "DISPLAY=:0" "aseprite"; }
+    Mod+P { spawn "steam" "steam://rungameid/431730"; }
     Mod+S { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
     Mod+T { spawn "thunderbird"; }
     Mod+V { spawn "vesktop"; }
