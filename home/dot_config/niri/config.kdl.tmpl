@@ -502,7 +502,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(Aseprite|discord|firefox|ncspot|neovim|yazi)"
+    match app-id="(Aseprite|discord|firefox|ncspot|neovim|yazi|steam)"
     match title="Minecraft"
     open-maximized true
 }
@@ -519,7 +519,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(ncspot|discord)"
+    match app-id="(ncspot|discord|steam)"
     open-on-workspace "lounge"
 }
 
@@ -571,6 +571,7 @@ binds {
     Mod+A { spawn "alacritty"; }
     Mod+B { spawn "firefox"; }
     Mod+D { spawn "env" "DISPLAY=:0" "ankama-launcher"; }
+    Mod+G { spawn "env" "DISPLAY=:0" "steam"; }
     Mod+M { spawn "prismlauncher"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
     Mod+P { spawn "env" "DISPLAY=:0" "aseprite"; }
