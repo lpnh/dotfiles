@@ -43,7 +43,7 @@ Font](https://www.nerdfonts.com/)
 ### Clients
 
 * BitTorrent: [Transmission](https://transmissionbt.com/)  
-* Discord: [WebCord](https://github.com/SpacingBat3/WebCord)  
+* Discord: [Vesktop](https://github.com/Vencord/Vesktop)  
 * Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
 
 ### Utilities and Quality of Life
