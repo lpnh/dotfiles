@@ -2,28 +2,25 @@
 
 # should be manually installed
 optional = [
+    # audio editor
+    "ocenaudio-bin",
+    # dofus
+    "ankama-launcher",
+    "wine",            # multilib repo
+    # dev stuff
+    "cargo-generate",
+    "love",
+    "tiled",
+    "zola",
+    # minecraft
+    "glfw",
+    "prismlauncher",
+    # osu!
+    "osu-lazer-bin",
     # steam (multilib repo)
     "lib32-vulkan-radeon", # for AMD GPU
     "steam",
     "vulkan-tools",        # to check Vulkan is working
-    # dofus
-    "ankama-launcher",
-    "wine",            # multilib repo
-    # pixel art
-    "cage",
-    "aseprite",
-    "tiled",
-    # dev stuff
-    "cargo-generate",
-    "love",
-    "zola",
-    # games
-    "osu-lazer-bin",
-    # minecraft
-    "glfw",
-    "prismlauncher",
-    # audio editor
-    "ocenaudio-bin",
 ]
 
 # should be manually installed with `cargo install --locked`
