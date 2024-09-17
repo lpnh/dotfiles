@@ -77,9 +77,9 @@ alias gl 'git log'
 alias glo 'git log --oneline --decorate'
 alias gp 'git push'
 alias gpf! 'git push --force'
-alias gr 'git remote --verbose'
 alias grm 'git rm'
 alias grmc 'git rm --cached'
+alias grv 'git remote --verbose'
 alias gst 'git status'
 
 # ls
