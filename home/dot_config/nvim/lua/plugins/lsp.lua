@@ -27,9 +27,6 @@ return {
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
 
-      -- Additional Lua LSP for the Neovim config, runtime and plugins
-      { 'folke/neodev.nvim', opts = {} },
-
       -- Schema information
       'b0o/SchemaStore.nvim',
     },
