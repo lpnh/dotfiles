@@ -19,7 +19,7 @@ return {
       require('grug-far').setup {}
 
       vim.keymap.set('n', '<leader>r', function()
-        require('grug-far').grug_far { prefills = { search = vim.fn.expand '<cword>' } }
+        require('grug-far').open { prefills = { search = vim.fn.expand '<cword>' } }
       end, { desc = 'Replace word under the cursor' })
     end,
   },
