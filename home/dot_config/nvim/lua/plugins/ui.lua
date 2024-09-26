@@ -95,7 +95,6 @@ return {
           filter = { event = 'msg_showmode' },
         },
         {
-
           filter = { event = 'notify', find = '^.*WARNING.*vim.treesitter.get_parser.*$' },
           opts = { skip = true },
         },
