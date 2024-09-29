@@ -3,21 +3,24 @@
 
 local map = vim.keymap
 
-map.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+map.set({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
+
+-- Favor `surround` keybindings instead
+map.set('n', 's', '<nop>', { noremap = true, silent = true })
 
 -- Remap `;` to `:` for convenience
 map.set({ 'n', 'v' }, ';', ':', { desc = 'Enter command-line mode' })
 
 -- Clear highlight (search) on pressing <Esc> in normal mode
-map.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map.set('n', '<esc>', '<cmd>nohlsearch<CR>')
 
 -- Remap for dealing with word wrap
 map.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic
-map.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
-map.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+map.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show diagnostic error messages' })
+map.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 
 -- Move to window using the <ctrl> hjkl keys
 map.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to left window' })
@@ -36,8 +39,8 @@ map.set('n', '<C-d>', '<C-d>zz')
 map.set('n', '<C-u>', '<C-u>zz')
 
 -- Make replace less painful
-map.set('x', '<leader>p', [["_dP]], { desc = 'Replace While [P]asting' })
-map.set('v', '<leader>d', [["_d]], { desc = '[D]eleting Using a Black Hole' })
+map.set('x', '<leader>p', [["_dP]], { desc = 'Replace while pasting' })
+map.set('v', '<leader>d', [["_d]], { desc = 'Deleting using black hole' })
 
 -- Copy all
 map.set('n', '<C-c>', '<cmd>%y+<CR>', { desc = 'Copy entire file' })
