@@ -140,13 +140,13 @@ system = [
 ]
 common = [
     "alacritty",
+    "bacon",
     "bat",
     "bob",
     "bottom",
     "cargo-make",
     "cargo-shuttle",
     "cargo-update",
-    "cargo-watch",
     "eza",
     "fd",
     "ffmpegthumbnailer",
