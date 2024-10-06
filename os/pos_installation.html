@@ -331,17 +331,8 @@ documentation</a></p>
 <p>Update <code>pacman</code> configuration file:</p>
 <pre><code class="language-sh">sudo nano /etc/pacman.conf
 </code></pre>
-<pre><code class="language-txt"># Misc options
-#UseSyslog
-Color
-ILoveCandy
-#NoProgressBar
-#CheckSpace
-VerbosePkgLists
-ParallelDownloads = 5
-</code></pre>
 <p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
-repo</a></p>
+repo</a>. If you plan to use packages like <code>steam</code>, make sure to enable (uncomment) the <code>[multilib]</code> repository.</p>
 <h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
 <p>First, create and <code>cd</code> into an <code>apps</code> directory:</p>
 <pre><code class="language-bash">mkdir apps &amp;&amp; cd apps

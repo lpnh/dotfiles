@@ -180,7 +180,7 @@
                         <h1 id="about"><a class="header" href="#about">About</a></h1>
 <p>For those seeking documentation, the <a href="https://wiki.archlinux.org">ArchWiki</a> is
 the best resource available. In fact, it's so good that it can be a perfect
-trap for a curious mind. My goal here is to gather the information I find
+trap for the curious people. My goal here is to gather the information I find
 relevant for my own use case, allowing me to setup and maintain a simple and
 aesthetic <a href="https://archlinux.org/">Arch Linux</a>
 <a href="https://wayland.freedesktop.org/">Wayland</a> environment while minimizing the
@@ -235,7 +235,7 @@ Font</a></li>
 <h3 id="clients"><a class="header" href="#clients">Clients</a></h3>
 <ul>
 <li>BitTorrent: <a href="https://transmissionbt.com/">Transmission</a></li>
-<li>Discord: <a href="https://github.com/SpacingBat3/WebCord">WebCord</a></li>
+<li>Discord: <a href="https://github.com/Vencord/Vesktop">Vesktop</a></li>
 <li>Spotify: <a href="https://github.com/hrkfdn/ncspot">Ncspot</a></li>
 </ul>
 <h3 id="utilities-and-quality-of-life"><a class="header" href="#utilities-and-quality-of-life">Utilities and Quality of Life</a></h3>
@@ -289,7 +289,7 @@ column, you should see an empty space:</p>
 </code></pre>
 <p>Note: the USB drive name should look something like
 <code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.<br />
-Make sure to <strong>not</strong> append any partition number like <code>My_flash_drive-0:0-part1</code>.</p>
+Make sure to <strong>not</strong> append any partition like <em>-part1</em>.</p>
 <p>For more information about this topic, check the <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">Arch Linux
 wiki</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
@@ -656,17 +656,8 @@ documentation</a></p>
 <p>Update <code>pacman</code> configuration file:</p>
 <pre><code class="language-sh">sudo nano /etc/pacman.conf
 </code></pre>
-<pre><code class="language-txt"># Misc options
-#UseSyslog
-Color
-ILoveCandy
-#NoProgressBar
-#CheckSpace
-VerbosePkgLists
-ParallelDownloads = 5
-</code></pre>
 <p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
-repo</a></p>
+repo</a>. If you plan to use packages like <code>steam</code>, make sure to enable (uncomment) the <code>[multilib]</code> repository.</p>
 <h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
 <p>First, create and <code>cd</code> into an <code>apps</code> directory:</p>
 <pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
@@ -723,15 +714,17 @@ repo</a>.</p>
 <pre><code class="language-bash">niri-session
 </code></pre>
 <h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
-<p>To check if Nushell is in the valid shells list:</p>
+<p>To check if <code>fish</code> is in the valid shells list:</p>
 <pre><code class="language-bash">cat /etc/shells
 </code></pre>
-<p>To set Nushell as login shell:</p>
-<pre><code class="language-bash">chsh -s /usr/bin/nu &lt;user&gt;
+<p>To set <code>fish</code> as login shell:</p>
+<pre><code class="language-bash">chsh -s /usr/bin/fish &lt;user&gt;
 </code></pre>
-<p>Note: Reboot the system to check if everything is ok</p>
+<p>To check the login shell from the <code>/etc/passwd</code> file:</p>
+<pre><code class="language-bash">getent passwd $USER | cut -d: -f7
+</code></pre>
 <h2 id="font-1"><a class="header" href="#font-1">Font</a></h2>
-<p>To refresh the font cache:</p>
+<p>To make sure the fonts are available system-wide, refresh the font cache:</p>
 <pre><code class="language-bash">sudo fc-cache -fv
 </code></pre>
 <h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
@@ -757,12 +750,6 @@ repo</a>.</p>
 <pre><code class="language-bash">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
-<h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
-<p>Download <code>Pandoc</code> latest release from the
-<a href="https://github.com/jgm/pandoc/releases">repo</a></p>
-<p>To install it:</p>
-<pre><code class="language-bash">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
-</code></pre>
 <h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
 <p>To enable the <code>ly</code> service:</p>
 <pre><code class="language-bash">systemctl enable ly
@@ -770,10 +757,10 @@ fs.inotify.max_user_watches=524288
 <p>To edit <code>ly</code> default configuration:</p>
 <pre><code class="language-bash">sudo nano /etc/ly/config.ini
 </code></pre>
-<p>Reboot the system (I'm neurotic):</p>
+<p>Reboot the system (yeah, I'm neurotic):</p>
 <pre><code class="language-bash">reboot
 </code></pre>
-<p><em># there's no place like home</em></p>
+<p><em>// there's no place like home</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="finishing"><a class="header" href="#finishing">Finishing</a></h1>
 <h2 id="catppuccin"><a class="header" href="#catppuccin">Catppuccin</a></h2>
 <h3 id="bat"><a class="header" href="#bat">Bat</a></h3>
@@ -919,7 +906,7 @@ BROWSERS=(firefox)
 <p>To add the user to the <strong>libvirt</strong> group:</p>
 <pre><code class="language-bash">sudo usermod -aG libvirt $env.USER
 </code></pre>
-<p>To restart the libvirtd service:</p>
+<p>To restart the service:</p>
 <pre><code class="language-bash">systemctl restart libvirtd.service
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb-1"><a class="header" href="#live-usb-1">Live USB</a></h1>
@@ -1411,19 +1398,25 @@ Reboot the system: <code>reboot</code></li>
 <h2 id="not-far-from-home"><a class="header" href="#not-far-from-home">Not Far From Home</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Refresh the font cache:</li>
+Launch <strong>niri</strong> from the tty: <code>niri-session</code></li>
+<li><input disabled="" type="checkbox"/>
+Check if <strong>fish</strong> is in the valid shells list: <code>cat /etc/shells</code></li>
+<li><input disabled="" type="checkbox"/>
+Set <strong>fish</strong> as login shell:</li>
 </ul>
-<pre><code class="language-sh">sudo fc-cache -fv
+<pre><code class="language-sh">chsh -s /usr/bin/fish &lt;user&gt;
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Launch <strong>niri</strong> from the tty: <code>niri-session</code></li>
-<li><input disabled="" type="checkbox"/>
-Check if <strong>Nushell</strong> is in the valid shells list: <code>cat /etc/shells</code></li>
-<li><input disabled="" type="checkbox"/>
-Set <strong>Nushell</strong> as login shell:</li>
+Check it:</li>
 </ul>
-<pre><code class="language-sh">chsh -s /usr/bin/nu &lt;user&gt;
+<pre><code class="language-sh">getent passwd $USER | cut -d: -f7
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Refresh the font cache:</li>
+</ul>
+<pre><code class="language-sh">sudo fc-cache -fv
 </code></pre>
 <h2 id="ssh-1"><a class="header" href="#ssh-1">SSH</a></h2>
 <ul>
@@ -1461,14 +1454,6 @@ Increase <strong>inotify</strong> maximum numbers:</li>
 </code></pre>
 <pre><code class="language-txt">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
-</code></pre>
-<h2 id="pandoc-1"><a class="header" href="#pandoc-1">Pandoc</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
-release</a></li>
-</ul>
-<pre><code class="language-sh">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 </code></pre>
 <h2 id="display-manager-1"><a class="header" href="#display-manager-1">Display Manager</a></h2>
 <ul>
