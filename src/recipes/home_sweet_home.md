@@ -12,15 +12,19 @@ chezmoi init https://github.com/<user>/dotfiles.git
 
 ## Not Far From Home
 
+- [ ] Launch **niri** from the tty: `niri-session`
+- [ ] Check if **fish** is in the valid shells list: `cat /etc/shells`
+- [ ] Set **fish** as login shell:
+```sh
+chsh -s /usr/bin/fish <user>
+```
+- [ ] Check it:
+```sh
+getent passwd $USER | cut -d: -f7
+```
 - [ ] Refresh the font cache:
 ```sh
 sudo fc-cache -fv
-```
-- [ ] Launch **niri** from the tty: `niri-session`
-- [ ] Check if **Nushell** is in the valid shells list: `cat /etc/shells`
-- [ ] Set **Nushell** as login shell:
-```sh
-chsh -s /usr/bin/nu <user>
 ```
 
 ## SSH
@@ -54,14 +58,6 @@ sudo nano /etc/sysctl.conf
 ```txt
 fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
-```
-
-## Pandoc
-
-- [ ] Download and install **Pandoc** [latest
-release](https://github.com/jgm/pandoc/releases)
-```sh
-sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 ```
 
 ## Display Manager

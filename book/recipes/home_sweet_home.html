@@ -195,19 +195,25 @@ Reboot the system: <code>reboot</code></li>
 <h2 id="not-far-from-home"><a class="header" href="#not-far-from-home">Not Far From Home</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Refresh the font cache:</li>
+Launch <strong>niri</strong> from the tty: <code>niri-session</code></li>
+<li><input disabled="" type="checkbox"/>
+Check if <strong>fish</strong> is in the valid shells list: <code>cat /etc/shells</code></li>
+<li><input disabled="" type="checkbox"/>
+Set <strong>fish</strong> as login shell:</li>
 </ul>
-<pre><code class="language-sh">sudo fc-cache -fv
+<pre><code class="language-sh">chsh -s /usr/bin/fish &lt;user&gt;
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Launch <strong>niri</strong> from the tty: <code>niri-session</code></li>
-<li><input disabled="" type="checkbox"/>
-Check if <strong>Nushell</strong> is in the valid shells list: <code>cat /etc/shells</code></li>
-<li><input disabled="" type="checkbox"/>
-Set <strong>Nushell</strong> as login shell:</li>
+Check it:</li>
 </ul>
-<pre><code class="language-sh">chsh -s /usr/bin/nu &lt;user&gt;
+<pre><code class="language-sh">getent passwd $USER | cut -d: -f7
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Refresh the font cache:</li>
+</ul>
+<pre><code class="language-sh">sudo fc-cache -fv
 </code></pre>
 <h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
 <ul>
@@ -245,14 +251,6 @@ Increase <strong>inotify</strong> maximum numbers:</li>
 </code></pre>
 <pre><code class="language-txt">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
-</code></pre>
-<h2 id="pandoc"><a class="header" href="#pandoc">Pandoc</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Download and install <strong>Pandoc</strong> <a href="https://github.com/jgm/pandoc/releases">latest
-release</a></li>
-</ul>
-<pre><code class="language-sh">sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
 </code></pre>
 <h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
 <ul>

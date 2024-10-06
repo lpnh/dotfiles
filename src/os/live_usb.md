@@ -34,7 +34,7 @@ sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_dr
 
 Note: the USB drive name should look something like
 `/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0`.  
-Make sure to **not** append any partition number like `My_flash_drive-0:0-part1`.
+Make sure to **not** append any partition like *-part1*.
 
 For more information about this topic, check the [Arch Linux
 wiki](https://wiki.archlinux.org/title/USB_flash_installation_medium)

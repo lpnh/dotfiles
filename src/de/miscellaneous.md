@@ -128,7 +128,7 @@ To add the user to the **libvirt** group:
 sudo usermod -aG libvirt $env.USER
 ```
 
-To restart the libvirtd service:
+To restart the service:
 
 ```bash
 systemctl restart libvirtd.service

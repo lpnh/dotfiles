@@ -44,23 +44,27 @@ niri-session
 
 ## Shell
 
-To check if Nushell is in the valid shells list:
+To check if `fish` is in the valid shells list:
 
 ```bash
 cat /etc/shells
 ```
 
-To set Nushell as login shell:
+To set `fish` as login shell:
 
 ```bash
-chsh -s /usr/bin/nu <user>
+chsh -s /usr/bin/fish <user>
 ```
 
-Note: Reboot the system to check if everything is ok
+To check the login shell from the `/etc/passwd` file:
+
+```bash
+getent passwd $USER | cut -d: -f7
+```
 
 ## Font
 
-To refresh the font cache:
+To make sure the fonts are available system-wide, refresh the font cache:
 
 ```bash
 sudo fc-cache -fv
@@ -109,17 +113,6 @@ fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 ```
 
-## Pandoc
-
-Download `Pandoc` latest release from the
-[repo](https://github.com/jgm/pandoc/releases)
-
-To install it:
-
-```bash
-sudo tar xvzf /path/to/pandoc-version-linux-amd64.tar.gz --strip-components 1 -C /usr/local
-```
-
 ## Display Manager
 
 To enable the `ly` service:
@@ -134,10 +127,10 @@ To edit `ly` default configuration:
 sudo nano /etc/ly/config.ini
 ```
 
-Reboot the system (I'm neurotic):
+Reboot the system (yeah, I'm neurotic):
 
 ```bash
 reboot
 ```
 
-*# there's no place like home*
+*// there's no place like home*
