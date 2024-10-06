@@ -106,9 +106,8 @@ alias xt 'eza --color=always --group-directories-first --icons --tree'
 alias xta 'eza --color=always --group-directories-first --icons --tree --all'
 
 # ya
-alias yi 'ya pack --install'
-alias yl 'ya pack --list'
-alias yu 'ya pack --upgrade'
+alias yal 'ya pack --list'
+alias yau 'ya pack --upgrade'
 
 # yay
 abbr yayl 'yay -Ql'
