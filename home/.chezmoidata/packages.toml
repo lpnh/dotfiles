@@ -203,6 +203,6 @@ common = [
     "zola",
     "zoxide",
 ]
-aur = ["cava", "fswatch", "vesktop-bin", "xcursor-breeze"]
+aur = ["cava", "fswatch", "pandoc-bin", "vesktop-bin", "xcursor-breeze"]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
