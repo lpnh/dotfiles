@@ -54,9 +54,10 @@ alias chup 'chezmoi update --verbose'
 alias chz 'cd ~/.local/share/chezmoi'
 
 # cargo
-alias cwc 'cargo watch -qcx clippy'
-alias cwr 'cargo watch -qcx run'
 alias cargo-upgrade 'cargo +nightly -Zunstable-options update --breaking'
+
+# journal
+alias err 'journalctl -b -p err'
 
 # git
 alias ga 'git add --all'
