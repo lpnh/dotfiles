@@ -30,7 +30,7 @@ bind -M insert \cy accept-autosuggestion
 # aliases
 
 # aurv
-alias aurv 'fd --threads=1 --type file PKGBUILD /home/aurv/ --exec makepkg --config /home/aurv/custom-makepkg.conf --dir {//} -si --noconfirm --needed'
+alias aurv /home/aurv/resources/build_pkgs.sh
 
 # bat
 alias b bat
@@ -119,7 +119,6 @@ abbr yays 'yay -Ss'
 # the enthusiasm level determines the scope
 function yay!
     yay --noconfirm
-    aurv
     bob update nightly
 end
 
@@ -128,7 +127,6 @@ function yay!!
     rustup update
     cargo install-update --all
     tldr --update
-    aurv
     bob update nightly
 end
 
