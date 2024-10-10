@@ -27,6 +27,7 @@ window#waybar {
 #window,
 #clock,
 #tray,
+#language,
 #network,
 #backlight, /* laptop */
 #battery, /* laptop */

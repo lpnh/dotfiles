@@ -16,6 +16,7 @@
     "modules-center": ["clock"],
     "modules-right": [
         "tray",
+        "niri/language",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
         "battery",
@@ -78,6 +79,11 @@
 
     "tray": {
         "spacing": 10
+    },
+    "niri/language": {
+        "format": "xkb: {}",
+        "format-en": "English",
+        "format-en-intl": "English (intl)"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
