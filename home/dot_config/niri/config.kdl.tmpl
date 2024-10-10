@@ -21,7 +21,7 @@ input {
     keyboard {
         xkb {
             {{- if eq .chezmoi.hostname "desktop" }}
-            layout "us"
+            layout "us,us(intl)"
             options "grp:alt_shift_toggle,compose:ralt"
             {{- else if eq .chezmoi.hostname "laptop" }}
             layout "br"
