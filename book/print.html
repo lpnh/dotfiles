@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -270,28 +270,43 @@ terminal</li>
 <a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml">packages.toml</a></em></p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
-<p>The steps to create a bootable USB containing the Arch Linux ISO.</p>
-<h2 id="download-the-iso"><a class="header" href="#download-the-iso">Download the ISO</a></h2>
-<p>Download the ISO file from <a href="https://archlinux.org/download/">https://archlinux.org/download/</a>.</p>
-<p>Note: the BitTorrent Download is the recommended option and the file will look
-like this <code>archlinux-version-x86_64.iso.torrent</code>.</p>
-<h2 id="usb-drive-name"><a class="header" href="#usb-drive-name">USB Drive Name</a></h2>
-<p>Find out the name of your USB drive:</p>
-<pre><code class="language-sh">ls -l /dev/disk/by-id/usb-*
+<h2 id="creating-a-bootable-usb-containing-the-iso"><a class="header" href="#creating-a-bootable-usb-containing-the-iso">Creating a bootable USB containing the ISO</a></h2>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"/>
+Download the ISO file from the <a href="https://archlinux.org/download/">Arch Linux website</a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Find the USB drive name</p>
+</li>
+</ul>
+<pre><code class="language-bash">ls -l /dev/disk/by-id/usb-*
 </code></pre>
-<p>To make sure it is <strong>not</strong> mounted, run <code>lsblk</code> and search for the MOUNTPOINTS
-column, you should see an empty space:</p>
-<pre><code class="language-sh">lsblk
+<ul>
+<li><input disabled="" type="checkbox"/>
+Make sure it is <strong>not</strong> mounted (the MOUNTPOINTS column should be empty)</li>
+</ul>
+<pre><code class="language-bash">lsblk
 </code></pre>
-<h2 id="write-the-iso"><a class="header" href="#write-the-iso">Write the ISO</a></h2>
-<p>Write the ISO to the USB drive using <code>pv</code>:</p>
-<pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
+<ul>
+<li><input disabled="" type="checkbox"/>
+Write the ISO to the USB drive using <code>pv</code></li>
+</ul>
+<pre><code class="language-bash">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
-<p>Note: the USB drive name should look something like
-<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>.<br />
-Make sure to <strong>not</strong> append any partition like <em>-part1</em>.</p>
-<p>For more information about this topic, check the <a href="https://wiki.archlinux.org/title/USB_flash_installation_medium">Arch Linux
-wiki</a></p>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<ul>
+<li>
+<p>The BitTorrent Download is the recommended option and the file will look
+like this: <code>archlinux-version-x86_64.iso.torrent</code></p>
+</li>
+<li>
+<p>The USB drive name should look something like
+<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>. Make sure
+to <strong>not</strong> append any partition like <em>-part1</em></p>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
 <h2 id="console-configuration"><a class="header" href="#console-configuration">Console Configuration</a></h2>
 <h3 id="font"><a class="header" href="#font">Font</a></h3>
@@ -908,19 +923,6 @@ BROWSERS=(firefox)
 </code></pre>
 <p>To restart the service:</p>
 <pre><code class="language-bash">systemctl restart libvirtd.service
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="live-usb-1"><a class="header" href="#live-usb-1">Live USB</a></h1>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Download the ISO file from the <a href="https://archlinux.org/download/">Arch Linux website</a></li>
-<li><input disabled="" type="checkbox"/>
-Find the USB drive name: <code>ls -l /dev/disk/by-id/usb-*</code></li>
-<li><input disabled="" type="checkbox"/>
-Make sure it is <strong>not</strong> mounted: <code>lsblk</code></li>
-<li><input disabled="" type="checkbox"/>
-Write the ISO to the USB drive:</li>
-</ul>
-<pre><code class="language-sh">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment-1"><a class="header" href="#live-environment-1">Live Environment</a></h1>
 <h2 id="console-configuration-1"><a class="header" href="#console-configuration-1">Console Configuration</a></h2>

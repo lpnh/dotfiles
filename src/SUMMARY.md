@@ -23,9 +23,8 @@
 
 ---
 
-# Recipes 
+# Recipes
 
-- [Live USB](recipes/live_usb.md)
 - [Live Environment](recipes/live_environment.md)
 - [Partitions](recipes/partitions.md)
 - [Installation](recipes/installation.md)
