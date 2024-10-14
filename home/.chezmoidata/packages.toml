@@ -7,8 +7,9 @@ optional = [
     # dofus
     "ankama-launcher",
     "wine",            # multilib repo
-    # dev stuff
+    # more specific dev stuff
     "cargo-generate",
+    "cargo-shuttle",
     "love",
     "tiled",
     "zola",
@@ -145,8 +146,6 @@ common = [
     "bob",
     "bottom",
     "cargo-make",
-    "cargo-shuttle",
-    "cargo-update",
     "eza",
     "fd",
     "ffmpegthumbnailer",
@@ -171,7 +170,6 @@ common = [
     "mdbook",
     "mpv",
     "ncspot",
-    "nushell",
     "nwg-look",
     "otf-firamono-nerd",
     "otf-font-awesome",
@@ -200,9 +198,15 @@ common = [
     "waybar",
     "wev",
     "wlsunset",
-    "zola",
     "zoxide",
 ]
-aur = ["cava", "fswatch", "pandoc-bin", "vesktop-bin", "xcursor-breeze"]
+aur = [
+    "cava",
+    "fswatch",
+    "pandoc-bin",
+    "vesktop-bin",
+    "xcursor-breeze",
+    "xwayland-satellite",
+]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
