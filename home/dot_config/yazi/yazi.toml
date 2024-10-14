@@ -1,7 +1,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
-sort_by = "modified"
+sort_by = "mtime"
 sort_sensitive = true
 sort_reverse = true
 
