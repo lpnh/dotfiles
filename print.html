@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -308,182 +308,309 @@ to <strong>not</strong> append any partition like <em>-part1</em></p>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
-<h2 id="console-configuration"><a class="header" href="#console-configuration">Console Configuration</a></h2>
-<h3 id="font"><a class="header" href="#font">Font</a></h3>
-<p>First of all, improve the default font size using <code>setfont</code>:</p>
-<pre><code class="language-sh">setfont ter-222b
+<ul>
+<li><input disabled="" type="checkbox"/>
+Improve the default font size</li>
+</ul>
+<pre><code class="language-bash">setfont ter-222b
 </code></pre>
-<h3 id="keyboard"><a class="header" href="#keyboard">Keyboard</a></h3>
-<p>To change the default keyboard layout:</p>
-<pre><code class="language-sh"># for example, to set a brazilian keyboard layout
+<ul>
+<li><input disabled="" type="checkbox"/>
+Change the default keyboard layout (US), if necessary</li>
+</ul>
+<pre><code class="language-bash"># for example, to set a brazilian keyboard layout
 loadkeys br-abnt2
 </code></pre>
-<h2 id="some-verification"><a class="header" href="#some-verification">Some Verification</a></h2>
-<h3 id="uefi-mode"><a class="header" href="#uefi-mode">UEFI Mode</a></h3>
-<p>To make sure the system is booted in UEFI mode, check the output of the
-following command. It should return <code>64</code>, for a 64-bit system:</p>
-<pre><code class="language-sh">cat /sys/firmware/efi/fw_platform_size
+<ul>
+<li><input disabled="" type="checkbox"/>
+Make sure the system is booted in UEFI mode</li>
+</ul>
+<pre><code class="language-sh"># the output should be 64 for 64-bit system
+cat /sys/firmware/efi/fw_platform_size
 </code></pre>
-<h3 id="internet-connection"><a class="header" href="#internet-connection">Internet Connection</a></h3>
-<p>To check the internet connection:</p>
-<pre><code class="language-sh">ping archlinux.org
+<ul>
+<li><input disabled="" type="checkbox"/>
+Connect to the internet</li>
+</ul>
+<p><em>For ethernet, just plug in the cable.</em>
+<em>For wifi, run <code>iwctl</code> and then in the interactive prompt:</em></p>
+<pre><code class="language-bash"># this command will not output anything
+station wlan0 scan
 </code></pre>
-<h3 id="system-clock"><a class="header" href="#system-clock">System Clock</a></h3>
-<p>To ensure the system clock is synchronized, run:</p>
+<pre><code class="language-bash">station wlan0 get-networks
+</code></pre>
+<pre><code class="language-bash">station wlan0 connect "SSID"
+</code></pre>
+<pre><code class="language-bash">station wlan0 show
+</code></pre>
+<pre><code class="language-bash"># Ctrl+d works too
+exit
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the internet connection</li>
+</ul>
+<pre><code class="language-bash">ping archlinux.org
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Ensure the system clock is synchronized</li>
+</ul>
 <pre><code class="language-sh">timedatectl
 </code></pre>
+<h2 id="notes-1"><a class="header" href="#notes-1">Notes</a></h2>
+<ul>
+<li>You can check the available keyboard layouts running <code>localectl list-keymaps</code></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
-<h2 id="partitioning-the-disk"><a class="header" href="#partitioning-the-disk">Partitioning the Disk</a></h2>
-<h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
-<p>To identify available disks, the <code>fdisk -l</code> command will give you all the
-necessary information, but <code>lsblk</code> can also be used. My favorite flags are
-<code>lsblk -o NAME,SIZE</code> for a concise output and <code>lsblk --fs</code> when I need to check
-file system information.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Identify available disks</li>
+</ul>
+<pre><code class="language-bash"># rom, loop or airootfs may be ignore
+lsblk -o NAME,SIZE
+</code></pre>
 <div class="warning">
 Always make sure to identify and select the correct device.
-<p>Otherwise, the following steps may result in unintended data loss.</p>
+Otherwise, the following steps may result in unintended data loss.
 </div>
-<h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
-<p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
+<p><em>The next step is for NVMe drives only.</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the formatted logical block address (LBA) size</li>
+</ul>
 <pre><code class="language-bash">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 </code></pre>
+<p>On the output example below the sector size in use (512 bytes) is <strong>not</strong> the
+optimal one:</p>
 <pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
 LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
 </code></pre>
 <p>You can confirm it by running <code>lsblk -td</code> and looking at the <code>LOG-SEC</code> column value.</p>
-<p>Note: On the example above the sector size in use (512 bytes) is <strong>not</strong> the
-optimal one.</p>
 <p>To change the logical block address size, you can use the <code>nvme format</code> command
 specifying the preferred value with the <code>--lbaf</code> parameter:</p>
 <pre><code class="language-bash">nvme format --lbaf=1 /dev/nvme0n1
 </code></pre>
-<h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
-<p>To write the partition tables using <code>cfdisk</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the partitions</li>
+</ul>
 <pre><code class="language-bash">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
-<div class="warning">
-Make sure to set the correct type for the <b>efi</b> partition.
-</div>
-<p>Example Layout:</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
-<tr><td style="text-align: left">/efi</td><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td></tr>
-<tr><td style="text-align: left">[SWAP]</td><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td></tr>
-<tr><td style="text-align: left">/</td><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th><th style="text-align: left">Mount point</th></tr></thead><tbody>
+<tr><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td><td style="text-align: left">/efi</td></tr>
+<tr><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">[SWAP]</td></tr>
+<tr><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">/</td></tr>
 </tbody></table>
 </div>
-<p>To verify the partitions using <code>fdisk</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the partitions</li>
+</ul>
 <pre><code class="language-bash">fdisk -l /dev/partitioned_disk
 </code></pre>
-<h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
-<p>To create an <em>Ext4</em> file system for the root:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create an <em>Ext4</em> fs for the <strong>root</strong></li>
+</ul>
 <pre><code class="language-bash">mkfs.ext4 /dev/root_partition
 </code></pre>
-<p>To initialize the swap partition:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Initialize the <strong>swap</strong></li>
+</ul>
 <pre><code class="language-bash">mkswap /dev/swap_partition
 </code></pre>
-<p>To format the EFI partition:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Format the <strong>efi</strong> to <em>FAT32</em></li>
+</ul>
 <pre><code class="language-bash">mkfs.fat -F 32 /dev/efi_system_partition
 </code></pre>
-<h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
-<p>Now is a good time to add a label to the efi partition.
-This will be useful later to set the <code>rEFInd</code> configuration.
-Using <code>dosfslabel</code>:</p>
-<pre><code class="language-bash">dosfslabel /dev/efi_system_partition ARCHIE
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a label to the <strong>efi</strong> partition</li>
+</ul>
+<pre><code class="language-sh"># This will be useful later on to set the rEFInd config
+dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
-<p>You can verify it using <code>lsblk</code>:</p>
-<pre><code class="language-bash">lsblk -o NAME,LABEL
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the result</li>
+</ul>
+<pre><code class="language-bash">lsblk --fs /dev/partioned_disk
 </code></pre>
-<h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
-<p>Mount the root volume to <code>/mnt</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Mount the <strong>root</strong> partition to <strong>/mnt</strong></li>
+</ul>
 <pre><code class="language-bash">mount /dev/root_partition /mnt
 </code></pre>
-<p>Mount the EFI partition:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Mount the <strong>efi</strong> partition to <strong>/mnt/efi</strong></li>
+</ul>
 <pre><code class="language-bash">mount --mkdir /dev/efi_system_partition /mnt/efi
 </code></pre>
-<p>Enable the <code>swap</code> volume:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <strong>swap</strong></li>
+</ul>
 <pre><code class="language-bash">swapon /dev/swap_partition
 </code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the mountpoints</li>
+</ul>
+<pre><code class="language-bash">lsblk /dev/partioned_disk
+</code></pre>
+<h2 id="notes-2"><a class="header" href="#notes-2">Notes</a></h2>
+<ul>
+<li>
+<p>To identify available disks, the <code>fdisk -l</code> command will give you all the
+necessary information, but <code>lsblk</code> can also be used. My favorite flags are
+<code>lsblk -o NAME,SIZE</code> for a concise output and <code>lsblk --fs</code> when I need to check
+file system information</p>
+</li>
+<li>
+<p>Make sure to set the correct type for the <em>efi</em> partition</p>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
-<h2 id="mirror-list"><a class="header" href="#mirror-list">Mirror List</a></h2>
-<p>To update the <code>mirrorlist</code> using <code>reflector</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the <strong>mirrorlist</strong></li>
+</ul>
 <pre><code class="language-bash">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
-<h2 id="install-essential-packages"><a class="header" href="#install-essential-packages">Install Essential Packages</a></h2>
-<p>To install the essential packages to the new root:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install the essential packages to the new root</li>
+</ul>
 <pre><code class="language-bash">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 </code></pre>
-<h2 id="fstab"><a class="header" href="#fstab">Fstab</a></h2>
-<p>To generate an <code>fstab</code> file:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Generate an <strong>fstab</strong> file</li>
+</ul>
 <pre><code class="language-bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
-<h2 id="chroot"><a class="header" href="#chroot">Chroot</a></h2>
-<p>To change root into the new system:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Change root into the new system</li>
+</ul>
 <pre><code class="language-bash">arch-chroot /mnt
 </code></pre>
-<h2 id="time"><a class="header" href="#time">Time</a></h2>
-<p>To set the time zone:</p>
-<pre><code class="language-bash">ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the time zone</li>
+</ul>
+<pre><code class="language-bash"># Example for UTC-3
+ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
 </code></pre>
-<p>Note: You can verify it using the command <code>date</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the new local time</li>
+</ul>
 <pre><code class="language-bash">date
 </code></pre>
-<p>To generate the <code>/etc/adjtime</code> file:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Generate the <em>/etc/adjtime</em></li>
+</ul>
 <pre><code class="language-bash">hwclock --systohc
 </code></pre>
-<p>To set up time synchronization with <code>systemd-timesyncd</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set up time synchronization</li>
+</ul>
 <pre><code class="language-bash">systemctl enable systemd-timesyncd.service
 </code></pre>
-<h2 id="localization"><a class="header" href="#localization">Localization</a></h2>
-<p>Uncomment the <code>#en_US.UTF-8 UTF-8</code> line editing the <code>/etc/locale.gen</code> file:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <strong>/etc/locale.gen</strong> file, uncommenting the <code>en_US.UTF-8 UTF-8 </code> and other needed UTF-8 locales</li>
+</ul>
 <pre><code class="language-bash">nano /etc/locale.gen
 </code></pre>
-<p>To generate the locales:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Generate the locales</li>
+</ul>
 <pre><code class="language-bash">locale-gen
 </code></pre>
-<p>Create the <code>locale.conf</code> file, setting the <em>LANG</em> variable accordingly:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <strong>locale.conf</strong> file, setting the <strong>LANG</strong> variable accordingly</li>
+</ul>
 <pre><code class="language-bash">nano /etc/locale.conf
 </code></pre>
 <pre><code class="language-txt">LANG=en_US.UTF-8
 </code></pre>
-<h2 id="hostname"><a class="header" href="#hostname">Hostname</a></h2>
-<p>To set a hostname create a <code>hostname</code> file, adding its name, e.g. <em>desktop</em>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <strong>/etc/vconsole.conf</strong> file, if a different keyboard layout is
+required</li>
+</ul>
+<pre><code class="language-bash">nano /etc/vconsole.conf
+</code></pre>
+<pre><code class="language-txt">KEYMAP=br-abnt2
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <strong>hostname</strong> file</li>
+</ul>
 <pre><code class="language-bash">nano /etc/hostname
 </code></pre>
 <pre><code class="language-txt">desktop
 </code></pre>
-<h2 id="root-password"><a class="header" href="#root-password">Root password</a></h2>
-<p>To set the root password, run:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the root password</li>
+</ul>
 <pre><code class="language-bash">passwd
 </code></pre>
-<h2 id="creating-new-user"><a class="header" href="#creating-new-user">Creating New User</a></h2>
-<p>To create new user, adding it to the <code>wheel</code> group:</p>
-<pre><code class="language-bash">useradd -m -G wheel username
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create a new user, adding it to the <strong>wheel</strong> group</li>
+</ul>
+<pre><code class="language-bash">useradd -m -G wheel &lt;username&gt;
 </code></pre>
-<p>To add a password to the user, run:</p>
-<pre><code class="language-bash">passwd username
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a password to the user</li>
+</ul>
+<pre><code class="language-bash">passwd &lt;username&gt;
 </code></pre>
-<p>Edit the sudoers configuration file, uncommenting the <code># %wheel ALL=(ALL:ALL) ALL</code> line:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the sudoers configuration file</li>
+</ul>
 <pre><code class="language-bash">EDITOR=nano visudo
 </code></pre>
 <pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
 %wheel ALL=(ALL:ALL) ALL
 </code></pre>
-<h2 id="enable-network"><a class="header" href="#enable-network">Enable Network</a></h2>
-<p>To enable <code>NetworkManager</code> service:</p>
-<pre><code class="language-bash">systemctl enable NetworkManager
-</code></pre>
-<h2 id="boot-loader"><a class="header" href="#boot-loader">Boot Loader</a></h2>
-<p>Install <code>systemd-boot</code></p>
+<h2 id="set-the-boot-loader"><a class="header" href="#set-the-boot-loader">Set the Boot Loader</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <strong>systemd-boot</strong></li>
+</ul>
 <pre><code class="language-bash">bootctl install
 </code></pre>
-<p>Edit the <code>/efi/loader/loader.conf</code> file:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <strong>loader.conf</strong> file</li>
+</ul>
 <pre><code class="language-bash">nano /efi/loader/loader.conf
 </code></pre>
 <pre><code class="language-txt">default  arch.conf
-timeout  4
+timeout  3
 console-mode auto
 </code></pre>
-<p>Create the <code>/efi/loader/entries/arch.conf</code> file:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <strong>arch.conf</strong> entry</li>
+</ul>
 <pre><code class="language-bash">nano /efi/loader/entries/arch.conf
 </code></pre>
 <pre><code class="language-txt">title   Arch Linux
@@ -491,31 +618,71 @@ linux   /vmlinuz-linux
 initrd  /initramfs-linux.img
 options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 </code></pre>
-<p>To make it easy to set the UUID you can use the <code>blkid</code> command and append the
-output to the <code>arch.conf</code> file.</p>
+<p><em>Hint: run the following command to append the UUID number to the <code>arch.conf</code>
+file</em></p>
 <pre><code class="language-bash">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
 </code></pre>
-<p>Copy everything that is inside the <code>/boot</code> path to <code>/efi</code>.</p>
-<h2 id="reboot"><a class="header" href="#reboot">Reboot</a></h2>
-<p>To exit the chroot environment:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Copy everything that is inside <strong>/boot</strong> to <strong>/efi</strong> directory</li>
+</ul>
+<pre><code class="language-bash">cd /efi
+</code></pre>
+<pre><code class="language-bash">cp /boot/* .
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <strong>NetworkManager</strong> service</li>
+</ul>
+<pre><code class="language-bash">systemctl enable NetworkManager
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Exit the chroot environment</li>
+</ul>
 <pre><code class="language-bash">exit
 </code></pre>
-<p>To unmount all the partitions and reboot:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Unmount all the partitions</li>
+</ul>
 <pre><code class="language-bash">umount -R /mnt
 </code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Reboot</li>
+</ul>
 <pre><code class="language-bash">reboot
 </code></pre>
-<p>That's it. Good luck!</p>
-<h2 id="by-the-way"><a class="header" href="#by-the-way">By the Way</a></h2>
-<p>If you have succeeded, there's one last thing to be done.</p>
-<p>First download <code>fastfetch</code>:</p>
+<p><em>// good luck!</em></p>
+<h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
+<p><em>The next step is for wi-fi connections only.</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Use <code>nmcli</code> to list and to connect to available Wi-Fi networks</li>
+</ul>
+<pre><code class="language-sh">nmcli device wifi list
+</code></pre>
+<pre><code class="language-sh">nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt;
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Download <strong>fastfetch</strong></li>
+</ul>
 <pre><code class="language-bash">sudo pacman -S fastfetch
 </code></pre>
-<p>Now run it and enjoy your new achievement:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Run it</li>
+</ul>
 <pre><code class="language-bash">fastfetch
 </code></pre>
-<p>Note: jokes aside, this last step is a simple and efficient way to verify your
-installation.</p>
+<p><em>// enjoy your new achievement!</em></p>
+<h2 id="notes-3"><a class="header" href="#notes-3">Notes</a></h2>
+<ul>
+<li>Jokes aside, the last step is a simple and efficient way to verify your
+installation.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <h2 id="double-checking"><a class="header" href="#double-checking">Double Checking</a></h2>
 <p>To check the <code>timesyncd</code> service, run:</p>
@@ -738,7 +905,7 @@ repo</a>.</p>
 <p>To check the login shell from the <code>/etc/passwd</code> file:</p>
 <pre><code class="language-bash">getent passwd $USER | cut -d: -f7
 </code></pre>
-<h2 id="font-1"><a class="header" href="#font-1">Font</a></h2>
+<h2 id="font"><a class="header" href="#font">Font</a></h2>
 <p>To make sure the fonts are available system-wide, refresh the font cache:</p>
 <pre><code class="language-bash">sudo fc-cache -fv
 </code></pre>
@@ -924,215 +1091,6 @@ BROWSERS=(firefox)
 <p>To restart the service:</p>
 <pre><code class="language-bash">systemctl restart libvirtd.service
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="live-environment-1"><a class="header" href="#live-environment-1">Live Environment</a></h1>
-<h2 id="console-configuration-1"><a class="header" href="#console-configuration-1">Console Configuration</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Improve the default font size: <code>setfont ter-222b</code></li>
-<li><input disabled="" type="checkbox"/>
-Change the default keyboard layout, if necessary:</li>
-</ul>
-<pre><code class="language-sh"># for example, to set a brazilian keyboard layout
-loadkeys br-abnt2
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Make sure the system is booted in UEFI mode:</li>
-</ul>
-<pre><code class="language-sh"># the output should be 64 for 64-bit system
-cat /sys/firmware/efi/fw_platform_size
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the internet connection: <code>ping archlinux.org</code></li>
-<li><input disabled="" type="checkbox"/>
-Ensure the system clock is synchronized: <code>timedatectl</code></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="partitions-1"><a class="header" href="#partitions-1">Partitions</a></h1>
-<h2 id="partitioning-the-disk-1"><a class="header" href="#partitioning-the-disk-1">Partitioning the Disk</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Identify available disks: <code>lsblk -o NAME,SIZE</code></li>
-<li><input disabled="" type="checkbox"/>
-Create the partitions:</li>
-</ul>
-<pre><code class="language-sh">cfdisk /dev/the_disk_to_be_partitioned
-</code></pre>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th><th style="text-align: left">Mount point</th></tr></thead><tbody>
-<tr><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td><td style="text-align: left">/efi</td></tr>
-<tr><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">[SWAP]</td></tr>
-<tr><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">/</td></tr>
-</tbody></table>
-</div>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Verify the partitions: <code>fdisk -l /dev/partitioned_disk</code></li>
-</ul>
-<h2 id="formatting-the-partitions"><a class="header" href="#formatting-the-partitions">Formatting the Partitions</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create an <em>Ext4</em> fs for the <strong>root</strong>: <code>mkfs.ext4 /dev/root_partition</code></li>
-<li><input disabled="" type="checkbox"/>
-Initialize the <strong>swap</strong>: <code>mkswap /dev/swap_partition</code></li>
-<li><input disabled="" type="checkbox"/>
-Format the <strong>efi</strong> to <em>FAT32</em>: <code>mkfs.fat -F 32 /dev/efi_system_partition</code></li>
-<li><input disabled="" type="checkbox"/>
-Add a label to the <strong>efi</strong> partition:</li>
-</ul>
-<pre><code class="language-sh">dosfslabel /dev/efi_system_partition ARCHIE
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Verify the result: <code>lsblk /dev/partioned_disk -o NAME,FSTYPE,LABEL</code></li>
-</ul>
-<h2 id="mounting-the-file-system"><a class="header" href="#mounting-the-file-system">Mounting the File System</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Mount the <strong>root</strong> partition to <strong>/mnt</strong>: <code>mount /dev/root_partition /mnt</code></li>
-<li><input disabled="" type="checkbox"/>
-Mount the <strong>efi</strong> partition to <strong>/mnt/efi</strong>: <code>mount --mkdir /dev/efi_system_partition /mnt/efi</code></li>
-<li><input disabled="" type="checkbox"/>
-Enable the <strong>swap</strong>: <code>swapon /dev/swap_partition</code></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-1"><a class="header" href="#installation-1">Installation</a></h1>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the <strong>mirrorlist</strong>:</li>
-</ul>
-<pre><code class="language-sh">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install the essential packages to the new root:</li>
-</ul>
-<pre><code class="language-sh">pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
-</code></pre>
-<h2 id="configuring-the-system"><a class="header" href="#configuring-the-system">Configuring the System</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Generate an <strong>fstab</strong> file: <code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
-<li><input disabled="" type="checkbox"/>
-Change root into the new system: <code>arch-chroot /mnt</code></li>
-<li><input disabled="" type="checkbox"/>
-Set the time zone: <code>ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code></li>
-<li><input disabled="" type="checkbox"/>
-Verify the new local time: <code>date</code></li>
-<li><input disabled="" type="checkbox"/>
-Generate the <em>/etc/adjtime</em>: <code>hwclock --systohc</code></li>
-<li><input disabled="" type="checkbox"/>
-Set up time synchronization:</li>
-</ul>
-<pre><code class="language-sh">systemctl enable systemd-timesyncd.service
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <strong>locale.gen</strong> file:</li>
-</ul>
-<pre><code class="language-sh">nano /etc/locale.gen
-</code></pre>
-<pre><code class="language-txt"># Uncomment this line
-en_US.UTF-8 UTF-8
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Generate the locales: <code>locale-gen</code></li>
-<li><input disabled="" type="checkbox"/>
-Create the <strong>locale.conf</strong> file, setting the <strong>LANG</strong> variable accordingly:</li>
-</ul>
-<pre><code class="language-sh">nano /etc/locale.conf
-</code></pre>
-<pre><code class="language-txt">LANG=en_US.UTF-8
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create the <strong>hostname</strong> file:</li>
-</ul>
-<pre><code class="language-sh">nano /etc/hostname
-</code></pre>
-<pre><code class="language-txt">desktop
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the root password: <code>passwd</code></li>
-</ul>
-<h2 id="creating-new-user-1"><a class="header" href="#creating-new-user-1">Creating New User</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create new user, adding it to the <strong>wheel</strong> group:</li>
-</ul>
-<pre><code class="language-sh">useradd -m -G wheel &lt;username&gt;
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Add a password to the user: <code>passwd &lt;username&gt;</code></li>
-<li><input disabled="" type="checkbox"/>
-Edit the sudoers configuration file:</li>
-</ul>
-<pre><code class="language-sh">EDITOR=nano visudo
-</code></pre>
-<pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
-%wheel ALL=(ALL:ALL) ALL
-</code></pre>
-<h2 id="set-the-boot-loader"><a class="header" href="#set-the-boot-loader">Set the Boot Loader</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>systemd-boot</strong>: <code>bootctl install</code></li>
-<li><input disabled="" type="checkbox"/>
-Edit the <strong>loader.conf</strong> file:</li>
-</ul>
-<pre><code class="language-sh">nano /efi/loader/loader.conf
-</code></pre>
-<pre><code class="language-txt">default  arch.conf
-timeout  4
-console-mode auto
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create the <strong>arch.conf</strong> entry:</li>
-</ul>
-<pre><code class="language-sh">nano /efi/loader/entries/arch.conf
-</code></pre>
-<pre><code class="language-txt">title   Arch Linux
-linux   /vmlinuz-linux
-initrd  /initramfs-linux.img
-options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Append the UUID number:</li>
-</ul>
-<pre><code class="language-sh">blkid -s UUID /dev/root_partition &gt;&gt; /efi/loader/entries/arch.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Copy everything that is inside <strong>/boot</strong> to <strong>/efi</strong> directory:</li>
-</ul>
-<pre><code class="language-sh">cd /efi
-</code></pre>
-<pre><code class="language-sh">cp /boot/* .
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <strong>NetworkManager</strong> service: <code>systemctl enable NetworkManager</code></li>
-</ul>
-<h2 id="finishing-1"><a class="header" href="#finishing-1">Finishing</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Exit the chroot environment: <code>exit</code></li>
-<li><input disabled="" type="checkbox"/>
-Unmount all the partitions: <code>umount -R /mnt</code></li>
-<li><input disabled="" type="checkbox"/>
-Reboot: <code>reboot</code></li>
-</ul>
-<p><em># good luck!</em></p>
-<h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Download <strong>fastfetch</strong>: <code>sudo pacman -S fastfetch</code></li>
-<li><input disabled="" type="checkbox"/>
-Run it: <code>fastfetch</code></li>
-</ul>
-<p><em># enjoy your new achievement!</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation-1"><a class="header" href="#pos-installation-1">Pos-Installation</a></h1>
 <h2 id="double-checking-1"><a class="header" href="#double-checking-1">Double Checking</a></h2>
 <p><em># sorry I'm neurotic</em></p>
@@ -1464,7 +1422,7 @@ Enable the <strong>ly</strong> service: <code>systemctl enable ly</code></li>
 </ul>
 <p>Reboot the system: <code>reboot</code></p>
 <p><em># there's no place like home</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing-2"><a class="header" href="#finishing-2">Finishing</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing-1"><a class="header" href="#finishing-1">Finishing</a></h1>
 <h2 id="catppuccin-1"><a class="header" href="#catppuccin-1">Catppuccin</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>

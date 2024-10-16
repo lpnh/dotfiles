@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html" class="active">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html" class="active">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,76 +177,119 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
-<h2 id="partitioning-the-disk"><a class="header" href="#partitioning-the-disk">Partitioning the Disk</a></h2>
-<h3 id="device-identification"><a class="header" href="#device-identification">Device Identification</a></h3>
-<p>To identify available disks, the <code>fdisk -l</code> command will give you all the
-necessary information, but <code>lsblk</code> can also be used. My favorite flags are
-<code>lsblk -o NAME,SIZE</code> for a concise output and <code>lsblk --fs</code> when I need to check
-file system information.</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Identify available disks</li>
+</ul>
+<pre><code class="language-bash"># rom, loop or airootfs may be ignore
+lsblk -o NAME,SIZE
+</code></pre>
 <div class="warning">
 Always make sure to identify and select the correct device.
-<p>Otherwise, the following steps may result in unintended data loss.</p>
+Otherwise, the following steps may result in unintended data loss.
 </div>
-<h3 id="optimal-logical-sector-size-exclusive-for-nvme-devices"><a class="header" href="#optimal-logical-sector-size-exclusive-for-nvme-devices">Optimal Logical Sector Size (exclusive for NVMe devices)</a></h3>
-<p>To check the formatted logical block address (LBA) size of your NVMe drive:</p>
+<p><em>The next step is for NVMe drives only.</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the formatted logical block address (LBA) size</li>
+</ul>
 <pre><code class="language-bash">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 </code></pre>
+<p>On the output example below the sector size in use (512 bytes) is <strong>not</strong> the
+optimal one:</p>
 <pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
 LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
 </code></pre>
 <p>You can confirm it by running <code>lsblk -td</code> and looking at the <code>LOG-SEC</code> column value.</p>
-<p>Note: On the example above the sector size in use (512 bytes) is <strong>not</strong> the
-optimal one.</p>
 <p>To change the logical block address size, you can use the <code>nvme format</code> command
 specifying the preferred value with the <code>--lbaf</code> parameter:</p>
 <pre><code class="language-bash">nvme format --lbaf=1 /dev/nvme0n1
 </code></pre>
-<h3 id="partition-tables"><a class="header" href="#partition-tables">Partition Tables</a></h3>
-<p>To write the partition tables using <code>cfdisk</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the partitions</li>
+</ul>
 <pre><code class="language-bash">cfdisk /dev/the_disk_to_be_partitioned
 </code></pre>
-<div class="warning">
-Make sure to set the correct type for the <b>efi</b> partition.
-</div>
-<p>Example Layout:</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Mount point</th><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th></tr></thead><tbody>
-<tr><td style="text-align: left">/efi</td><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td></tr>
-<tr><td style="text-align: left">[SWAP]</td><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td></tr>
-<tr><td style="text-align: left">/</td><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th><th style="text-align: left">Mount point</th></tr></thead><tbody>
+<tr><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td><td style="text-align: left">/efi</td></tr>
+<tr><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">[SWAP]</td></tr>
+<tr><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">/</td></tr>
 </tbody></table>
 </div>
-<p>To verify the partitions using <code>fdisk</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the partitions</li>
+</ul>
 <pre><code class="language-bash">fdisk -l /dev/partitioned_disk
 </code></pre>
-<h2 id="formatting-partitions"><a class="header" href="#formatting-partitions">Formatting Partitions</a></h2>
-<p>To create an <em>Ext4</em> file system for the root:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create an <em>Ext4</em> fs for the <strong>root</strong></li>
+</ul>
 <pre><code class="language-bash">mkfs.ext4 /dev/root_partition
 </code></pre>
-<p>To initialize the swap partition:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Initialize the <strong>swap</strong></li>
+</ul>
 <pre><code class="language-bash">mkswap /dev/swap_partition
 </code></pre>
-<p>To format the EFI partition:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Format the <strong>efi</strong> to <em>FAT32</em></li>
+</ul>
 <pre><code class="language-bash">mkfs.fat -F 32 /dev/efi_system_partition
 </code></pre>
-<h2 id="filesystem-label"><a class="header" href="#filesystem-label">Filesystem Label</a></h2>
-<p>Now is a good time to add a label to the efi partition.
-This will be useful later to set the <code>rEFInd</code> configuration.
-Using <code>dosfslabel</code>:</p>
-<pre><code class="language-bash">dosfslabel /dev/efi_system_partition ARCHIE
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a label to the <strong>efi</strong> partition</li>
+</ul>
+<pre><code class="language-sh"># This will be useful later on to set the rEFInd config
+dosfslabel /dev/efi_system_partition ARCHIE
 </code></pre>
-<p>You can verify it using <code>lsblk</code>:</p>
-<pre><code class="language-bash">lsblk -o NAME,LABEL
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the result</li>
+</ul>
+<pre><code class="language-bash">lsblk --fs /dev/partioned_disk
 </code></pre>
-<h2 id="mounting-the-file-systems"><a class="header" href="#mounting-the-file-systems">Mounting the File Systems</a></h2>
-<p>Mount the root volume to <code>/mnt</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Mount the <strong>root</strong> partition to <strong>/mnt</strong></li>
+</ul>
 <pre><code class="language-bash">mount /dev/root_partition /mnt
 </code></pre>
-<p>Mount the EFI partition:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Mount the <strong>efi</strong> partition to <strong>/mnt/efi</strong></li>
+</ul>
 <pre><code class="language-bash">mount --mkdir /dev/efi_system_partition /mnt/efi
 </code></pre>
-<p>Enable the <code>swap</code> volume:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <strong>swap</strong></li>
+</ul>
 <pre><code class="language-bash">swapon /dev/swap_partition
 </code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the mountpoints</li>
+</ul>
+<pre><code class="language-bash">lsblk /dev/partioned_disk
+</code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<ul>
+<li>
+<p>To identify available disks, the <code>fdisk -l</code> command will give you all the
+necessary information, but <code>lsblk</code> can also be used. My favorite flags are
+<code>lsblk -o NAME,SIZE</code> for a concise output and <code>lsblk --fs</code> when I need to check
+file system information</p>
+</li>
+<li>
+<p>Make sure to set the correct type for the <em>efi</em> partition</p>
+</li>
+</ul>
 
                     </main>
 
