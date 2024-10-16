@@ -1,27 +1,27 @@
 # Partitions
 
-## Partitioning the Disk
+- [ ] Identify available disks
 
-### Device Identification
-
-To identify available disks, the `fdisk -l` command will give you all the
-necessary information, but `lsblk` can also be used. My favorite flags are
-`lsblk -o NAME,SIZE` for a concise output and `lsblk --fs` when I need to check
-file system information.
+```bash
+# rom, loop or airootfs may be ignore
+lsblk -o NAME,SIZE
+```
 
 <div class="warning">
 Always make sure to identify and select the correct device.
-
 Otherwise, the following steps may result in unintended data loss.
 </div>
 
-### Optimal Logical Sector Size (exclusive for NVMe devices)
+*The next step is for NVMe drives only.*
 
-To check the formatted logical block address (LBA) size of your NVMe drive:
+- [ ] Check the formatted logical block address (LBA) size
 
 ```bash
 nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 ```
+
+On the output example below the sector size in use (512 bytes) is **not** the
+optimal one:
 
 ```txt
 LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
@@ -30,9 +30,6 @@ LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Perf
 
 You can confirm it by running `lsblk -td` and looking at the `LOG-SEC` column value.
 
-Note: On the example above the sector size in use (512 bytes) is **not** the
-optimal one.
-
 To change the logical block address size, you can use the `nvme format` command
 specifying the preferred value with the `--lbaf` parameter:
 
@@ -40,84 +37,84 @@ specifying the preferred value with the `--lbaf` parameter:
 nvme format --lbaf=1 /dev/nvme0n1
 ```
 
-### Partition Tables
-
-To write the partition tables using `cfdisk`:
+- [ ] Create the partitions
 
 ```bash
 cfdisk /dev/the_disk_to_be_partitioned
 ```
 
-<div class="warning">
-Make sure to set the correct type for the <b>efi</b> partition.
-</div>
+| Purpose        | Suggested size | Partition type   | Mount point |
+|:---------------|:---------------|:-----------------|:------------|
+| efi            | 1 GiB          | EFI System       | /efi        |
+| swap           | 8 GiB          | Linux filesystem | [SWAP]      |
+| root           | Remainder      | Linux filesystem | /           |
 
-Example Layout:
-
-| Mount point | Purpose        | Suggested size | Partition type   |
-|:------------|:---------------|:---------------|:-----------------|
-| /efi        | efi            | 1 GiB          | EFI System       |
-| [SWAP]      | swap           | 8 GiB          | Linux filesystem |
-| /           | root           | Remainder      | Linux filesystem |
-
-To verify the partitions using `fdisk`:
+- [ ] Verify the partitions
 
 ```bash
 fdisk -l /dev/partitioned_disk
 ```
 
-## Formatting Partitions
-
-To create an *Ext4* file system for the root:
+- [ ] Create an *Ext4* fs for the **root**
 
 ```bash
 mkfs.ext4 /dev/root_partition
 ```
 
-To initialize the swap partition:
+- [ ] Initialize the **swap**
 
 ```bash
 mkswap /dev/swap_partition
 ```
 
-To format the EFI partition:
+- [ ] Format the **efi** to *FAT32*
 
 ```bash
 mkfs.fat -F 32 /dev/efi_system_partition
 ```
 
-## Filesystem Label
+- [ ] Add a label to the **efi** partition
 
-Now is a good time to add a label to the efi partition.
-This will be useful later to set the `rEFInd` configuration.
-Using `dosfslabel`:
-
-```bash
+```sh
+# This will be useful later on to set the rEFInd config
 dosfslabel /dev/efi_system_partition ARCHIE
 ```
 
-You can verify it using `lsblk`:
+- [ ] Verify the result
 
 ```bash
-lsblk -o NAME,LABEL
+lsblk --fs /dev/partioned_disk
 ```
 
-## Mounting the File Systems
-
-Mount the root volume to `/mnt`:
+- [ ] Mount the **root** partition to **/mnt**
 
 ```bash
 mount /dev/root_partition /mnt
 ```
 
-Mount the EFI partition:
+- [ ] Mount the **efi** partition to **/mnt/efi**
 
 ```bash
 mount --mkdir /dev/efi_system_partition /mnt/efi
 ```
 
-Enable the `swap` volume:
+- [ ] Enable the **swap**
 
 ```bash
 swapon /dev/swap_partition
 ```
+
+- [ ] Check the mountpoints
+
+```bash
+lsblk /dev/partioned_disk
+```
+
+## Notes
+
+- To identify available disks, the `fdisk -l` command will give you all the
+necessary information, but `lsblk` can also be used. My favorite flags are
+`lsblk -o NAME,SIZE` for a concise output and `lsblk --fs` when I need to check
+file system information
+
+- Make sure to set the correct type for the *efi* partition

@@ -1,78 +1,68 @@
 # Installation
 
-## Mirror List
-
-To update the `mirrorlist` using `reflector`:
+- [ ] Update the **mirrorlist**
 
 ```bash
 reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
-## Install Essential Packages
-
-To install the essential packages to the new root:
+- [ ] Install the essential packages to the new root
 
 ```bash
 pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
 ```
 
-## Fstab
-
-To generate an `fstab` file:
+- [ ] Generate an **fstab** file
 
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-## Chroot
-
-To change root into the new system:
+- [ ] Change root into the new system
 
 ```bash
 arch-chroot /mnt
 ```
 
-## Time
-
-To set the time zone:
+- [ ] Set the time zone
 
 ```bash
-ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+# Example for UTC-3
+ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
 ```
 
-Note: You can verify it using the command `date`:
+- [ ] Verify the new local time
 
 ```bash
 date
 ```
 
-To generate the `/etc/adjtime` file:
+- [ ] Generate the */etc/adjtime*
 
 ```bash
 hwclock --systohc
 ```
 
-To set up time synchronization with `systemd-timesyncd`:
+- [ ] Set up time synchronization
 
 ```bash
 systemctl enable systemd-timesyncd.service
 ```
 
-## Localization
-
-Uncomment the `#en_US.UTF-8 UTF-8` line editing the `/etc/locale.gen` file:
+- [ ] Edit the **/etc/locale.gen** file, uncommenting the `en_US.UTF-8 UTF-8
+` and other needed UTF-8 locales
 
 ```bash
 nano /etc/locale.gen
 ```
 
-To generate the locales:
+- [ ] Generate the locales
 
 ```bash
 locale-gen
 ```
 
-Create the `locale.conf` file, setting the *LANG* variable accordingly:
+- [ ] Create the **locale.conf** file, setting the **LANG** variable accordingly
 
 ```bash
 nano /etc/locale.conf
@@ -82,9 +72,18 @@ nano /etc/locale.conf
 LANG=en_US.UTF-8
 ```
 
-## Hostname
+- [ ] Create the **/etc/vconsole.conf** file, if a different keyboard layout is
+required
 
-To set a hostname create a `hostname` file, adding its name, e.g. *desktop*:
+```bash
+nano /etc/vconsole.conf
+```
+
+```txt
+KEYMAP=br-abnt2
+```
+
+- [ ] Create the **hostname** file
 
 ```bash
 nano /etc/hostname
@@ -94,30 +93,25 @@ nano /etc/hostname
 desktop
 ```
 
-## Root password
-
-To set the root password, run:
+- [ ] Set the root password
 
 ```bash
 passwd
 ```
 
-## Creating New User
-
-To create new user, adding it to the `wheel` group:
+- [ ] Create a new user, adding it to the **wheel** group
 
 ```bash
-useradd -m -G wheel username
+useradd -m -G wheel <username>
 ```
 
-To add a password to the user, run:
+- [ ] Add a password to the user
 
 ```bash
-passwd username
+passwd <username>
 ```
 
-Edit the sudoers configuration file, uncommenting the `# %wheel ALL=(ALL:ALL)
-ALL` line:
+- [ ] Edit the sudoers configuration file
 
 ```bash
 EDITOR=nano visudo
@@ -128,23 +122,15 @@ EDITOR=nano visudo
 %wheel ALL=(ALL:ALL) ALL
 ```
 
-## Enable Network
+## Set the Boot Loader
 
-To enable `NetworkManager` service:
-
-```bash
-systemctl enable NetworkManager
-```
-
-## Boot Loader
-
-Install `systemd-boot`
+- [ ] Install **systemd-boot**
 
 ```bash
 bootctl install
 ```
 
-Edit the `/efi/loader/loader.conf` file:
+- [ ] Edit the **loader.conf** file
 
 ```bash
 nano /efi/loader/loader.conf
@@ -152,11 +138,11 @@ nano /efi/loader/loader.conf
 
 ```txt
 default  arch.conf
-timeout  4
+timeout  3
 console-mode auto
 ```
 
-Create the `/efi/loader/entries/arch.conf` file:
+- [ ] Create the **arch.conf** entry
 
 ```bash
 nano /efi/loader/entries/arch.conf
@@ -169,50 +155,78 @@ initrd  /initramfs-linux.img
 options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
 ```
 
-To make it easy to set the UUID you can use the `blkid` command and append the
-output to the `arch.conf` file.
+*Hint: run the following command to append the UUID number to the `arch.conf`
+file*
 
 ```bash
 blkid -s UUID /dev/root_partition >> /efi/loader/entries/arch.conf
 ```
 
-Copy everything that is inside the `/boot` path to `/efi`.
+- [ ] Copy everything that is inside **/boot** to **/efi** directory
 
-## Reboot
+```bash
+cd /efi
+```
 
-To exit the chroot environment:
+```bash
+cp /boot/* .
+```
+
+- [ ] Enable the **NetworkManager** service
+
+```bash
+systemctl enable NetworkManager
+```
+
+- [ ] Exit the chroot environment
 
 ```bash
 exit
 ```
 
-To unmount all the partitions and reboot:
+- [ ] Unmount all the partitions
 
 ```bash
 umount -R /mnt
 ```
 
+- [ ] Reboot
+
 ```bash
 reboot
 ```
 
-That's it. Good luck!
+*// good luck!*
 
-## By the Way
+## Verifying the Installation
 
-If you have succeeded, there's one last thing to be done.
+*The next step is for wi-fi connections only.*
 
-First download `fastfetch`:
+- [ ] Use `nmcli` to list and to connect to available Wi-Fi networks
+
+```sh
+nmcli device wifi list
+```
+
+```sh
+nmcli device wifi connect <SSID> password <password>
+```
+
+- [ ] Download **fastfetch**
 
 ```bash
 sudo pacman -S fastfetch
 ```
 
-Now run it and enjoy your new achievement:
+- [ ] Run it
 
 ```bash
 fastfetch
 ```
 
-Note: jokes aside, this last step is a simple and efficient way to verify your
+*// enjoy your new achievement!*
+
+## Notes
+
+- Jokes aside, the last step is a simple and efficient way to verify your
 installation.

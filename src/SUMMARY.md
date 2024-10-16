@@ -25,9 +25,6 @@
 
 # Recipes
 
-- [Live Environment](recipes/live_environment.md)
-- [Partitions](recipes/partitions.md)
-- [Installation](recipes/installation.md)
 - [Pos-Installation](recipes/pos_installation.md)
 - [Home Sweet Home](recipes/home_sweet_home.md)
 - [Finishing](recipes/finishing.md)

@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html" class="active">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="../recipes/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../recipes/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../index.html">About</a></li><li class="chapter-item expanded "><a href="../overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="../os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="../os/live_environment.html" class="active">Live Environment</a></li><li class="chapter-item expanded "><a href="../os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="../os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="../os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="../de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="../recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="../recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="../recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="../recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="../recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="../recipes/system_maintenance.html">System Maintenance</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -177,30 +177,60 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
-<h2 id="console-configuration"><a class="header" href="#console-configuration">Console Configuration</a></h2>
-<h3 id="font"><a class="header" href="#font">Font</a></h3>
-<p>First of all, improve the default font size using <code>setfont</code>:</p>
-<pre><code class="language-sh">setfont ter-222b
+<ul>
+<li><input disabled="" type="checkbox"/>
+Improve the default font size</li>
+</ul>
+<pre><code class="language-bash">setfont ter-222b
 </code></pre>
-<h3 id="keyboard"><a class="header" href="#keyboard">Keyboard</a></h3>
-<p>To change the default keyboard layout:</p>
-<pre><code class="language-sh"># for example, to set a brazilian keyboard layout
+<ul>
+<li><input disabled="" type="checkbox"/>
+Change the default keyboard layout (US), if necessary</li>
+</ul>
+<pre><code class="language-bash"># for example, to set a brazilian keyboard layout
 loadkeys br-abnt2
 </code></pre>
-<h2 id="some-verification"><a class="header" href="#some-verification">Some Verification</a></h2>
-<h3 id="uefi-mode"><a class="header" href="#uefi-mode">UEFI Mode</a></h3>
-<p>To make sure the system is booted in UEFI mode, check the output of the
-following command. It should return <code>64</code>, for a 64-bit system:</p>
-<pre><code class="language-sh">cat /sys/firmware/efi/fw_platform_size
+<ul>
+<li><input disabled="" type="checkbox"/>
+Make sure the system is booted in UEFI mode</li>
+</ul>
+<pre><code class="language-sh"># the output should be 64 for 64-bit system
+cat /sys/firmware/efi/fw_platform_size
 </code></pre>
-<h3 id="internet-connection"><a class="header" href="#internet-connection">Internet Connection</a></h3>
-<p>To check the internet connection:</p>
-<pre><code class="language-sh">ping archlinux.org
+<ul>
+<li><input disabled="" type="checkbox"/>
+Connect to the internet</li>
+</ul>
+<p><em>For ethernet, just plug in the cable.</em>
+<em>For wifi, run <code>iwctl</code> and then in the interactive prompt:</em></p>
+<pre><code class="language-bash"># this command will not output anything
+station wlan0 scan
 </code></pre>
-<h3 id="system-clock"><a class="header" href="#system-clock">System Clock</a></h3>
-<p>To ensure the system clock is synchronized, run:</p>
+<pre><code class="language-bash">station wlan0 get-networks
+</code></pre>
+<pre><code class="language-bash">station wlan0 connect "SSID"
+</code></pre>
+<pre><code class="language-bash">station wlan0 show
+</code></pre>
+<pre><code class="language-bash"># Ctrl+d works too
+exit
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the internet connection</li>
+</ul>
+<pre><code class="language-bash">ping archlinux.org
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Ensure the system clock is synchronized</li>
+</ul>
 <pre><code class="language-sh">timedatectl
 </code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<ul>
+<li>You can check the available keyboard layouts running <code>localectl list-keymaps</code></li>
+</ul>
 
                     </main>
 
