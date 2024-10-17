@@ -177,18 +177,21 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
+<div class="warning">
+Always make sure to identify and select the correct device.
+<p>Otherwise, the following steps may result in unintended data loss.</p>
+</div>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Identify available disks</li>
 </ul>
 <pre><code class="language-bash"># rom, loop or airootfs may be ignore
-lsblk -o NAME,SIZE
+lsblk
 </code></pre>
-<div class="warning">
-Always make sure to identify and select the correct device.
-Otherwise, the following steps may result in unintended data loss.
-</div>
-<p><em>The next step is for NVMe drives only.</em></p>
+<details open>
+  <summary>
+    <i>The next step is for NVMe drives only</i>
+  </summary>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Check the formatted logical block address (LBA) size</li>
@@ -205,6 +208,7 @@ LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Perf
 specifying the preferred value with the <code>--lbaf</code> parameter:</p>
 <pre><code class="language-bash">nvme format --lbaf=1 /dev/nvme0n1
 </code></pre>
+</details>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Create the partitions</li>
@@ -246,7 +250,14 @@ Format the <strong>efi</strong> to <em>FAT32</em></li>
 Add a label to the <strong>efi</strong> partition</li>
 </ul>
 <pre><code class="language-sh"># This will be useful later on to set the rEFInd config
-dosfslabel /dev/efi_system_partition ARCHIE
+dosfslabel /dev/efi_system_partition ARCHIE_ESP
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a label to the <strong>root</strong> partition</li>
+</ul>
+<pre><code class="language-sh"># This will be useful later on to set the root device
+e2label /dev/root_partition ARCHIE_ROOT
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -281,10 +292,9 @@ Check the mountpoints</li>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
 <li>
-<p>To identify available disks, the <code>fdisk -l</code> command will give you all the
-necessary information, but <code>lsblk</code> can also be used. My favorite flags are
-<code>lsblk -o NAME,SIZE</code> for a concise output and <code>lsblk --fs</code> when I need to check
-file system information</p>
+<p>To identify available disks, the <code>fdisk -l</code> command provides all the
+necessary information, but <code>lsblk</code> is also a good alternative for a concise
+output</p>
 </li>
 <li>
 <p>Make sure to set the correct type for the <em>efi</em> partition</p>
