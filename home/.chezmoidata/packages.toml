@@ -64,9 +64,6 @@ already_installed = [
     "chezmoi",
 ]
 
-# custom package repository
-aurv = ["niri-nightly", "yazi-nightly"]
-
 # packages that will be automatically installed with chezmoi scripts
 system = [
     "alsa-utils",
@@ -203,10 +200,12 @@ common = [
 aur = [
     "cava",
     "fswatch",
+    "niri-git",
     "pandoc-bin",
     "vesktop-bin",
     "xcursor-breeze",
     "xwayland-satellite",
+    "yazi-git",
 ]
 desktop = ["openrgb", "piper"]
 laptop = ["brightnessctl", "tlp"]
