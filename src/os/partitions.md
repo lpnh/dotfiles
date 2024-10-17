@@ -1,18 +1,22 @@
 # Partitions
 
+<div class="warning">
+Always make sure to identify and select the correct device.
+
+Otherwise, the following steps may result in unintended data loss.
+</div>
+
 - [ ] Identify available disks
 
 ```bash
 # rom, loop or airootfs may be ignore
-lsblk -o NAME,SIZE
+lsblk
 ```
 
-<div class="warning">
-Always make sure to identify and select the correct device.
-Otherwise, the following steps may result in unintended data loss.
-</div>
-
-*The next step is for NVMe drives only.*
+<details open>
+  <summary>
+    <i>The next step is for NVMe drives only</i>
+  </summary>
 
 - [ ] Check the formatted logical block address (LBA) size
 
@@ -36,6 +40,8 @@ specifying the preferred value with the `--lbaf` parameter:
 ```bash
 nvme format --lbaf=1 /dev/nvme0n1
 ```
+
+</details>
 
 - [ ] Create the partitions
 
@@ -77,7 +83,14 @@ mkfs.fat -F 32 /dev/efi_system_partition
 
 ```sh
 # This will be useful later on to set the rEFInd config
-dosfslabel /dev/efi_system_partition ARCHIE
+dosfslabel /dev/efi_system_partition ARCHIE_ESP
+```
+
+- [ ] Add a label to the **root** partition
+
+```sh
+# This will be useful later on to set the root device
+e2label /dev/root_partition ARCHIE_ROOT
 ```
 
 - [ ] Verify the result
@@ -112,9 +125,8 @@ lsblk /dev/partioned_disk
 
 ## Notes
 
-- To identify available disks, the `fdisk -l` command will give you all the
-necessary information, but `lsblk` can also be used. My favorite flags are
-`lsblk -o NAME,SIZE` for a concise output and `lsblk --fs` when I need to check
-file system information
+- To identify available disks, the `fdisk -l` command provides all the
+necessary information, but `lsblk` is also a good alternative for a concise
+output
 
 - Make sure to set the correct type for the *efi* partition

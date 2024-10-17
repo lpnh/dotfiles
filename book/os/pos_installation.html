@@ -177,191 +177,73 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
-<h2 id="double-checking"><a class="header" href="#double-checking">Double Checking</a></h2>
-<p>To check the <code>timesyncd</code> service, run:</p>
-<pre><code class="language-bash">timedatectl status
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <strong>loader.conf</strong> file</li>
+</ul>
+<pre><code class="language-bash">nano /efi/loader/loader.conf
 </code></pre>
-<p>To refresh the entire system:</p>
-<pre><code class="language-bash">sudo pacman -Syyu
+<pre><code class="language-txt">timeout  1
+console-mode auto
 </code></pre>
-<p>Make sure to have some basic system packages installed:</p>
-<pre><code class="language-bash">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install some compilers</li>
+</ul>
+<pre><code class="language-sh">sudo pacman -S clang lua rustup
 </code></pre>
-<h2 id="installing-some-compilers"><a class="header" href="#installing-some-compilers">Installing Some Compilers</a></h2>
-<p>Install <code>clang</code>:</p>
-<pre><code class="language-bash">sudo pacman -S clang
+<pre><code class="language-sh">rustup update stable
 </code></pre>
-<p>Install <code>go</code>:</p>
-<pre><code class="language-bash">sudo pacman -S go
-</code></pre>
-<p>Install <code>lua</code>:</p>
-<pre><code class="language-bash">sudo pacman -S lua
-</code></pre>
-<p>Install <code>rustup</code>:</p>
-<pre><code class="language-bash">sudo pacman -S rustup
-</code></pre>
-<pre><code class="language-bash">rustup update stable
-</code></pre>
-<h2 id="graphic-drivers"><a class="header" href="#graphic-drivers">Graphic Drivers</a></h2>
-<h3 id="opengl"><a class="header" href="#opengl">OpenGL</a></h3>
-<p>Install <code>mesa</code>:</p>
-<pre><code class="language-bash">sudo pacman -S mesa
-</code></pre>
-<h3 id="amd"><a class="header" href="#amd">AMD</a></h3>
-<p>For Vulkan support:</p>
-<pre><code class="language-bash">sudo pacman -S vulkan-radeon
-</code></pre>
-<h3 id="nvidia"><a class="header" href="#nvidia">Nvidia</a></h3>
-<p>Install the <code>nvidia</code> package:</p>
-<pre><code class="language-bash">sudo pacman -S nvidia
-</code></pre>
-<h2 id="uki"><a class="header" href="#uki">UKI</a></h2>
-<h3 id="busybox"><a class="header" href="#busybox">Busybox</a></h3>
-<p>Install <code>busybox</code> to enable an emergency shell in case of a panic during the
-boot process:</p>
-<pre><code class="language-bash">sudo pacman -S busybox
-</code></pre>
-<h3 id="microcode"><a class="header" href="#microcode">Microcode</a></h3>
-<p>Install <code>amd-ucode</code> or <code>intel-ucode</code> according with your CPU.</p>
-<pre><code class="language-sh">sudo pacman -S amd-ucode
-</code></pre>
-<pre><code class="language-sh">sudo pacman -S intel-ucode
-</code></pre>
-<h3 id="booster"><a class="header" href="#booster">Booster</a></h3>
-<p>Install <code>booster</code>:</p>
-<pre><code class="language-sh">sudo pacman -S booster
-</code></pre>
-<p>Set the configuration file accordingly:</p>
-<pre><code class="language-sh">sudo nano /etc/booster.yaml
-</code></pre>
-<pre><code class="language-yaml">extra_files: busybox,fsck,fsck.ext4
-modules_force_load: amdgpu,hid_generic,usbhid
-</code></pre>
-<p>Note: the <code>modules_force_load: amdgpu,hid_generic,usbhid</code> line is not obligatory.</p>
-<p>For <code>NVIDIA</code> you can replace <code>amdgpu</code> with the following:</p>
-<pre><code class="language-yaml">modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm
-</code></pre>
-<h3 id="ukify"><a class="header" href="#ukify">Ukify</a></h3>
-<p>Install <code>systemd-ukify</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <strong>systemd-ukify</strong></li>
+</ul>
 <pre><code class="language-bash">sudo pacman -S systemd-ukify
 </code></pre>
-<p>Set the configuration accordingly:</p>
-<pre><code class="language-bash">sudo nano /etc/ukify.conf
+<ul>
+<li><input disabled="" type="checkbox"/>
+Remove the <code>arch.conf</code> file</li>
+</ul>
+<pre><code class="language-bash">sudo rm /efi/loader/entries/arch.conf
 </code></pre>
-<pre><code class="language-txt">[UKI]
-Linux=/boot/vmlinuz-linux
-Initrd=/boot/amd-ucode.img /boot/booster-linux.img
-Cmdline=@/etc/kernel/cmdline
-OSRelease=@/etc/os-release
-Splash=/usr/share/systemd/bootctl/splash-arch.bmp
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the <code>/efi/loader/loader.conf</code> file</li>
+</ul>
+<pre><code class="language-bash">sudo nano /efi/loader/loader.conf
 </code></pre>
-<p>Note: probably this configuration isn't required because it will be replaced by
-the <code>kernel-install</code> one.</p>
-<h3 id="kernel-install"><a class="header" href="#kernel-install">Kernel-install</a></h3>
-<p>Set the <code>install.conf</code> file:</p>
-<pre><code class="language-bash">sudo nano /etc/kernel/install.conf
+<pre><code class="language-txt">timeout 1
+console-mode auto
 </code></pre>
-<pre><code class="language-txt">layout=uki
-uki_generator=ukify
-</code></pre>
-<p>Set the <code>ukify</code> configuration in the <code>uki.conf</code> file:</p>
-<pre><code class="language-bash">sudo nano /etc/kernel/uki.conf
-</code></pre>
-<pre><code class="language-txt">[UKI]
-Linux=/boot/vmlinuz-linux
-Initrd=/boot/amd-ucode.img /boot/booster-linux.img
-Cmdline=@/etc/kernel/cmdline
-OSRelease=@/etc/os-release
-Splash=/usr/share/systemd/bootctl/splash-arch.bmp
-</code></pre>
-<p>To verify the current <code>kernel-install</code> paths and parameters configuration, run:</p>
-<pre><code class="language-sh">kernel-install inspect
-</code></pre>
-<h3 id="kernel-command-line"><a class="header" href="#kernel-command-line">Kernel Command Line</a></h3>
-<p>To check the parameters your system was booted up with, run:</p>
-<pre><code class="language-sh">cat /proc/cmdline
-</code></pre>
-<p>To include new kernel parameters to the <code>UKI</code>, for example <code>nvme_load=YES</code>, <code>nowatchdog</code>, <code>quiet</code>, <code>splash</code>, etc. use the <code>/etc/kernel/cmdline</code> file:</p>
-<pre><code class="language-sh">sudo nano /etc/kernel/cmdline
-</code></pre>
-<h2 id="refind"><a class="header" href="#refind">rEFInd</a></h2>
-<p>Install <code>refind</code> package:</p>
-<pre><code class="language-sh">sudo pacman -S refind
-</code></pre>
-<p>Install it with the <code>refind-install</code> script:</p>
-<pre><code class="language-sh">refind-install
-</code></pre>
-<p>Note: for comfort I will use the <code>su</code> command that launches an interactive shell
-as root.</p>
-<p>To add the <a href="https://github.com/catppuccin/refind">catppuccin theme</a>, create a
-<code>themes</code> directory inside refind installation path:</p>
-<pre><code class="language-sh">cd /efi/EFI/refind
-mkdir themes
-</code></pre>
-<p>Clone the repo inside the <code>themes</code> folder:</p>
-<pre><code class="language-sh">cd themes
-git clone https://github.com/catppuccin/refind.git catppuccin
-</code></pre>
-<p>It requires a <code>include themes/catppuccin/mocha.conf</code> line to be appended to the
-end of <code>refind.conf</code> file.</p>
-<p>To go back to the <code>refind</code> directory:</p>
-<pre><code class="language-sh">cd /efi/EFI/refind
-</code></pre>
-<p>We can now customize the <code>refind.conf</code> by adding a new <code>menuentry</code> for the
-<code>systemd-boot</code> boot loader. Although it might seem a bit contradictory to use
-rEFInd to launch systemd-boot, rEFInd's role here is to provide a simple and
-customizable interface that can handle a dual-boot scenario for different
-available distros.</p>
-<pre><code class="language-sh">nano refind.conf
-</code></pre>
-<pre><code class="language-no_rust">menuentry "Arch Linux" {
-    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
-    volume "ARCHIE"
-    loader /EFI/systemd/systemd-bootx64.efi
-}
-
-include themes/catppuccin/mocha.conf
-</code></pre>
-<p>Note the catppuccin theme being included in the last line.</p>
-<p>For more info, check rEFInd <a href="https://www.rodsbooks.com/refind/configfile.html">official
-documentation</a></p>
-<p>To exit the interactive shell simply run <code>exit</code>.</p>
 <h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
 <h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
-<p>Update <code>pacman</code> configuration file:</p>
-<pre><code class="language-sh">sudo nano /etc/pacman.conf
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update <strong>pacman</strong> configuration file</li>
+</ul>
+<pre><code class="language-bash">sudo nano /etc/pacman.conf
 </code></pre>
-<p>An example can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
-repo</a>. If you plan to use packages like <code>steam</code>, make sure to enable (uncomment) the <code>[multilib]</code> repository.</p>
+<pre><code class="language-txt"># Misc options
+#UseSyslog
+Color
+ILoveCandy
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists
+ParallelDownloads = 5
+</code></pre>
 <h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
-<p>First, create and <code>cd</code> into an <code>apps</code> directory:</p>
-<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
+<p>Check the parameters your system was booted up with</p>
+<pre><code class="language-bash">cat /proc/cmdline
 </code></pre>
-<p>To install <code>yay</code>:</p>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
-</code></pre>
-<h3 id="additional-pacman-hooks"><a class="header" href="#additional-pacman-hooks">Additional Pacman Hooks</a></h3>
-<p>Install extra pacman hooks for the <code>kernel-install</code>:</p>
-<pre><code class="language-bash">yay -S pacman-hook-kernel-install
-</code></pre>
-<h3 id="pacman-utilities"><a class="header" href="#pacman-utilities">Pacman Utilities</a></h3>
-<p>Install the <code>pacman-contrib</code> package:</p>
-<pre><code class="language-bash">sudo pacman -S pacman-contrib
-</code></pre>
-<p>Enable the <code>paccache.timer</code> to periodically clean the <code>pacman</code> cache:</p>
-<pre><code class="language-bash">systemctl enable paccache.timer
-</code></pre>
-<h2 id="generating-the-uki"><a class="header" href="#generating-the-uki">Generating the UKI</a></h2>
-<p>Reinstall the kernel package to trigger the <code>kernel-install</code> in order to
-generate the unified kernel image:</p>
-<pre><code class="language-bash">sudo pacman -S linux
-</code></pre>
-<p>To list the current available boot entries which have been configured, run:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the current available boot entries:</li>
+</ul>
 <pre><code class="language-bash">sudo bootctl list
 </code></pre>
-<p>If everything seems correct, reboot the system:</p>
-<pre><code class="language-bash">reboot
-</code></pre>
+<p>If everything seems correct, reboot the system: <code>reboot</code></p>
+<p>If everything worked as expected, now you can uninstall mkinitcpio and the initramfs imgs</p>
 
                     </main>
 

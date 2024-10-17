@@ -9,10 +9,26 @@ reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.
 - [ ] Install the essential packages to the new root
 
 ```bash
-pacstrap -K /mnt base linux linux-firmware base-devel git nano networkmanager
+pacstrap -K /mnt base linux linux-firmware
 ```
 
-- [ ] Generate an **fstab** file
+*And also:*
+
+```txt
+base-devel
+git
+amd-code / intel-ucode
+booster
+busybox
+systemd-ukify
+mesa
+vulkan-radeon / nvidia
+networkmanager
+nano
+refind
+```
+
+- [ ] Generate an *fstab* file
 
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -31,7 +47,7 @@ arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
 ```
 
-- [ ] Verify the new local time
+- [ ] Check the new local time
 
 ```bash
 date
@@ -49,11 +65,15 @@ hwclock --systohc
 systemctl enable systemd-timesyncd.service
 ```
 
-- [ ] Edit the **/etc/locale.gen** file, uncommenting the `en_US.UTF-8 UTF-8
-` and other needed UTF-8 locales
+- [ ] Edit the *locale.gen* file, uncommenting all the needed UTF-8 locales
 
 ```bash
 nano /etc/locale.gen
+```
+
+```txt
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
 ```
 
 - [ ] Generate the locales
@@ -62,7 +82,7 @@ nano /etc/locale.gen
 locale-gen
 ```
 
-- [ ] Create the **locale.conf** file, setting the **LANG** variable accordingly
+- [ ] Create the *locale.conf* file, setting the *LANG* variable accordingly
 
 ```bash
 nano /etc/locale.conf
@@ -72,7 +92,7 @@ nano /etc/locale.conf
 LANG=en_US.UTF-8
 ```
 
-- [ ] Create the **/etc/vconsole.conf** file, if a different keyboard layout is
+- [ ] Create the */etc/vconsole.conf* file, if a different keyboard layout is
 required
 
 ```bash
@@ -83,7 +103,7 @@ nano /etc/vconsole.conf
 KEYMAP=br-abnt2
 ```
 
-- [ ] Create the **hostname** file
+- [ ] Create the *hostname* file
 
 ```bash
 nano /etc/hostname
@@ -99,7 +119,7 @@ desktop
 passwd
 ```
 
-- [ ] Create a new user, adding it to the **wheel** group
+- [ ] Create a new user, adding it to the *wheel* group
 
 ```bash
 useradd -m -G wheel <username>
@@ -122,57 +142,82 @@ EDITOR=nano visudo
 %wheel ALL=(ALL:ALL) ALL
 ```
 
-## Set the Boot Loader
-
-- [ ] Install **systemd-boot**
+- [ ] Install *systemd-boot*
 
 ```bash
 bootctl install
 ```
 
-- [ ] Edit the **loader.conf** file
+- [ ] Install *rEFInd*
 
 ```bash
-nano /efi/loader/loader.conf
+refind-install
+```
+
+- [ ] Set booster configuration file
+
+```bash
+nano /etc/booster.yaml
+```
+
+```yaml
+extra_files: busybox,fsck,fsck.ext4
+modules_force_load: amdgpu,hid_generic,usbhid
+```
+
+*for **nvidia** gpu, replace **amdgpu** accordingly:*
+
+```yaml
+modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm,hid_generic,usbhid
+```
+
+- [ ] Set the *install.conf* file
+
+```bash
+nano /etc/kernel/install.conf
 ```
 
 ```txt
-default  arch.conf
-timeout  3
-console-mode auto
+layout=uki
+uki_generator=ukify
 ```
 
-- [ ] Create the **arch.conf** entry
+- [ ] Set the *ukify* configuration
 
 ```bash
-nano /efi/loader/entries/arch.conf
+nano /etc/kernel/uki.conf
 ```
 
 ```txt
-title   Arch Linux
-linux   /vmlinuz-linux
-initrd  /initramfs-linux.img
-options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+[UKI]
+Initrd=/boot/booster-linux.img
+Microcode=/boot/<amd/intel>-ucode.img
+Splash=/usr/share/systemd/bootctl/splash-arch.bmp
 ```
 
-*Hint: run the following command to append the UUID number to the `arch.conf`
-file*
+- [ ] Include the device and other kernel parameters to the *cmdline*
 
 ```bash
-blkid -s UUID /dev/root_partition >> /efi/loader/entries/arch.conf
+nano /etc/kernel/cmdline
 ```
 
-- [ ] Copy everything that is inside **/boot** to **/efi** directory
+```txt
+root=LABEL=ARCHIE_ROOT nvme_load=YES nowatchdog rw quiet
+```
+
+- [ ] Verify the current *kernel-install* configuration
 
 ```bash
-cd /efi
+kernel-install inspect
 ```
+
+- [ ] Check the current available boot entries
 
 ```bash
-cp /boot/* .
+bootctl list
 ```
 
-- [ ] Enable the **NetworkManager** service
+- [ ] Enable the *NetworkManager* service
 
 ```bash
 systemctl enable NetworkManager
@@ -196,11 +241,14 @@ umount -R /mnt
 reboot
 ```
 
-*// good luck!*
+*good luck !*
 
 ## Verifying the Installation
 
-*The next step is for wi-fi connections only.*
+<details open>
+  <summary>
+    <i>for wi-fi connections only</i>
+  </summary>
 
 - [ ] Use `nmcli` to list and to connect to available Wi-Fi networks
 
@@ -211,6 +259,8 @@ nmcli device wifi list
 ```sh
 nmcli device wifi connect <SSID> password <password>
 ```
+
+</details>
 
 - [ ] Download **fastfetch**
 
@@ -224,9 +274,9 @@ sudo pacman -S fastfetch
 fastfetch
 ```
 
-*// enjoy your new achievement!*
+*enjoy your new achievement !*
 
 ## Notes
 
 - Jokes aside, the last step is a simple and efficient way to verify your
-installation.
+installation

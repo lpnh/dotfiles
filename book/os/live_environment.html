@@ -201,20 +201,29 @@ cat /sys/firmware/efi/fw_platform_size
 <li><input disabled="" type="checkbox"/>
 Connect to the internet</li>
 </ul>
-<p><em>For ethernet, just plug in the cable.</em>
-<em>For wifi, run <code>iwctl</code> and then in the interactive prompt:</em></p>
+<p><em>For ethernet, just plug in the cable</em></p>
+<details open>
+  <summary>
+    <i>For wifi, use <b>iwctl</b> interactive prompt</i>
+  </summary>
+<pre><code class="language-bash">iwctl
+</code></pre>
 <pre><code class="language-bash"># this command will not output anything
 station wlan0 scan
 </code></pre>
-<pre><code class="language-bash">station wlan0 get-networks
+<pre><code class="language-bash"># check the available networks
+station wlan0 get-networks
 </code></pre>
-<pre><code class="language-bash">station wlan0 connect "SSID"
+<pre><code class="language-bash"># connect
+station wlan0 connect "SSID"
 </code></pre>
-<pre><code class="language-bash">station wlan0 show
+<pre><code class="language-bash"># check the connection
+station wlan0 show
 </code></pre>
 <pre><code class="language-bash"># Ctrl+d works too
 exit
 </code></pre>
+</details>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Check the internet connection</li>

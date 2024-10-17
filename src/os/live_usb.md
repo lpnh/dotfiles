@@ -16,7 +16,7 @@ ls -l /dev/disk/by-id/usb-*
 lsblk
 ```
 
-- [ ] Write the ISO to the USB drive using `pv`
+- [ ] Write the ISO to the USB drive
 
 ```bash
 sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
