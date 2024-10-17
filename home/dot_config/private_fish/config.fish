@@ -29,9 +29,6 @@ bind -M insert \cy accept-autosuggestion
 
 # aliases
 
-# aurv
-alias aurv /home/aurv/resources/build_pkgs.sh
-
 # bat
 alias b bat
 alias bl 'bat --line-range'
