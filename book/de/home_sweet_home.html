@@ -177,79 +177,166 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
-<h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
-<p>To install <code>chezmoi</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>chezmoi</em></li>
+</ul>
 <pre><code class="language-bash">sudo pacman -S chezmoi
 </code></pre>
-<p>To initialize it:</p>
-<pre><code class="language-bash">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
+<ul>
+<li><input disabled="" type="checkbox"/>
+Initialize it</li>
+</ul>
+<pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
 </code></pre>
-<p>To apply it:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Apply the changes</li>
+</ul>
 <pre><code class="language-bash">chezmoi apply
 </code></pre>
-<p>Note: a lot of packages will be installed. Probably would be a good idea to
-reboot the system after it.</p>
-<p>For the exhaustive list of packages, you can check the
-<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml">packages.toml</a>
-file from the repo.</p>
-<p>Hint: A good reference for essential packages is to check the ones available in
-the Arch Linux live system (ISO). You can find them
-<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>.
-Another good source is to check the packages available in the EndeavourOS ISO.
-You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
-repo</a>.</p>
-<h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
-<p>To launch <code>niri</code> from the <code>tty</code>:</p>
-<pre><code class="language-bash">niri-session
-</code></pre>
-<h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
-<p>To check if <code>fish</code> is in the valid shells list:</p>
-<pre><code class="language-bash">cat /etc/shells
-</code></pre>
-<p>To set <code>fish</code> as login shell:</p>
-<pre><code class="language-bash">chsh -s /usr/bin/fish &lt;user&gt;
-</code></pre>
-<p>To check the login shell from the <code>/etc/passwd</code> file:</p>
-<pre><code class="language-bash">getent passwd $USER | cut -d: -f7
-</code></pre>
-<h2 id="font"><a class="header" href="#font">Font</a></h2>
-<p>To make sure the fonts are available system-wide, refresh the font cache:</p>
-<pre><code class="language-bash">sudo fc-cache -fv
-</code></pre>
-<h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
-<p>To generate a new SSH key:</p>
-<pre><code class="language-bash">ssh-keygen -t ed25519 -C "your_email@example.com"
-</code></pre>
-<p>To check the public key:</p>
-<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
-</code></pre>
-<p>To test the SSH connection:</p>
-<pre><code class="language-bash">ssh -T git@github.com
-</code></pre>
-<h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
-<p>To install and set Neovim nightly using <code>bob</code>:</p>
-<pre><code class="language-bash">bob install nightly
-</code></pre>
-<pre><code class="language-bash">sudo bob use nightly
-</code></pre>
-<p>To increase the maximum number of <code>inotify</code> watches and queued events. Edit the
-<code>/etc/sysctl.conf</code> file:</p>
-<pre><code class="language-bash">sudo nano /etc/sysctl.conf
-</code></pre>
-<pre><code class="language-bash">fs.inotify.max_queued_events=524288
-fs.inotify.max_user_watches=524288
-</code></pre>
-<h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
-<p>To enable the <code>ly</code> service:</p>
-<pre><code class="language-bash">systemctl enable ly
-</code></pre>
-<p>To edit <code>ly</code> default configuration:</p>
-<pre><code class="language-bash">sudo nano /etc/ly/config.ini
-</code></pre>
-<p>Reboot the system (yeah, I'm neurotic):</p>
+<p><em>just watch the magic happen</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Reboot the system</li>
+</ul>
 <pre><code class="language-bash">reboot
 </code></pre>
-<p><em>// there's no place like home</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Launch <em>niri</em> from the tty</li>
+</ul>
+<pre><code class="language-bash">niri-session
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check if <em>fish</em> is in the valid shells list</li>
+</ul>
+<pre><code class="language-bash">cat /etc/shells
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set <em>fish</em> as login shell</li>
+</ul>
+<pre><code class="language-sh">chsh -s /usr/bin/fish &lt;user&gt;
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check it</li>
+</ul>
+<pre><code class="language-sh">getent passwd $USER | cut -d: -f7
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Refresh the font cache to make sure the fonts are available system-wide</li>
+</ul>
+<pre><code class="language-sh">sudo fc-cache -fv
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>xwayland-satellite</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
+</code></pre>
+<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
+</code></pre>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"/>
+Download <em>Bitwarden</em> <a href="https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/">firefox
+extension</a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Login into Firefox</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Apply <em>Catppuccin Mocha Mauve</em> color theme to Firefox <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">by clicking
+here</a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Generate a new SSH key</p>
+</li>
+</ul>
+<pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the public key</li>
+</ul>
+<pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Use <em>github</em> to test the SSH connection</li>
+</ul>
+<pre><code class="language-sh">ssh -T git@github.com
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Rebuild <em>bat</em> cache to include catppuccin's syntax highlighting</li>
+</ul>
+<pre><code class="language-bash">bat cache --build
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check if it's now available</li>
+</ul>
+<pre><code class="language-bash">bat --list-themes | rg "Catppuccin"
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Fetch <em>Yazi</em> plugins</li>
+</ul>
+<pre><code class="language-bash">ya pack -i
+</code></pre>
+<pre><code class="language-bash">ya pack -u
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install and set <em>Neovim nightly</em></li>
+</ul>
+<pre><code class="language-sh">bob install nightly
+</code></pre>
+<pre><code class="language-sh">sudo bob use nightly
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Increase <em>inotify</em> maximum values</li>
+</ul>
+<pre><code class="language-sh">sudo nano /etc/sysctl.conf
+</code></pre>
+<pre><code class="language-txt">fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Launch <em>Neovim</em> to fetch its configuration</li>
+</ul>
+<pre><code class="language-bash">nv
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Include the api-key for the <em>WakaTime</em> plugin</li>
+</ul>
+<pre><code class="language-bash"># launch the website and copy the api key
+start https://wakatime.com/api-key
+</code></pre>
+<pre><code class="language-bash"># run the following cmd inside neovim and paste the key
+WakaTimeApiKey
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>ly</em> service</li>
+</ul>
+<pre><code class="language-bash">systemctl enable ly
+</code></pre>
+<p>Reboot the system</p>
+<pre><code class="language-bash">reboot
+</code></pre>
+<p><em>there's no place like home</em></p>
 
                     </main>
 

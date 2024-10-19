@@ -1,136 +1,168 @@
 # Home Sweet Home
 
-## Bootstrap
-
-To install `chezmoi`:
+- [ ] Install *chezmoi*
 
 ```bash
 sudo pacman -S chezmoi
 ```
 
-To initialize it:
+- [ ] Initialize it
 
-```bash
+```sh
 chezmoi init https://github.com/<user>/dotfiles.git
 ```
 
-To apply it:
+- [ ] Apply the changes
 
 ```bash
 chezmoi apply
 ```
 
-Note: a lot of packages will be installed. Probably would be a good idea to
-reboot the system after it.
+*just watch the magic happen*
 
-For the exhaustive list of packages, you can check the
-[packages.toml](https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml)
-file from the repo.
-
-Hint: A good reference for essential packages is to check the ones available in
-the Arch Linux live system (ISO). You can find them
-[here](https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt).
-Another good source is to check the packages available in the EndeavourOS ISO.
-You can find them in [their
-repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64).
-
-## Graphical Interface
-
-To launch `niri` from the `tty`:
-
-```bash
-niri-session
-```
-
-## Shell
-
-To check if `fish` is in the valid shells list:
-
-```bash
-cat /etc/shells
-```
-
-To set `fish` as login shell:
-
-```bash
-chsh -s /usr/bin/fish <user>
-```
-
-To check the login shell from the `/etc/passwd` file:
-
-```bash
-getent passwd $USER | cut -d: -f7
-```
-
-## Font
-
-To make sure the fonts are available system-wide, refresh the font cache:
-
-```bash
-sudo fc-cache -fv
-```
-
-## SSH
-
-To generate a new SSH key:
-
-```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
-
-To check the public key:
-
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-
-To test the SSH connection:
-
-```bash
-ssh -T git@github.com
-```
-
-## Neovim
-
-To install and set Neovim nightly using `bob`:
-
-```bash
-bob install nightly
-```
-
-```bash
-sudo bob use nightly
-```
-
-To increase the maximum number of `inotify` watches and queued events. Edit the
-`/etc/sysctl.conf` file:
-
-```bash
-sudo nano /etc/sysctl.conf
-```
-```bash
-fs.inotify.max_queued_events=524288
-fs.inotify.max_user_watches=524288
-```
-
-## Display Manager
-
-To enable the `ly` service:
-
-```bash
-systemctl enable ly
-```
-
-To edit `ly` default configuration:
-
-```bash
-sudo nano /etc/ly/config.ini
-```
-
-Reboot the system (yeah, I'm neurotic):
+- [ ] Reboot the system
 
 ```bash
 reboot
 ```
 
-*// there's no place like home*
+- [ ] Launch *niri* from the tty
+
+```bash
+niri-session
+```
+
+- [ ] Check if *fish* is in the valid shells list
+
+```bash
+cat /etc/shells
+```
+
+- [ ] Set *fish* as login shell
+
+```sh
+chsh -s /usr/bin/fish <user>
+```
+
+- [ ] Check it
+
+```sh
+getent passwd $USER | cut -d: -f7
+```
+
+- [ ] Refresh the font cache to make sure the fonts are available system-wide
+
+```sh
+sudo fc-cache -fv
+```
+
+- [ ] Install *xwayland-satellite*
+
+```bash
+git clone https://github.com/Supreeeme/xwayland-satellite.git
+```
+
+```bash
+cd xwayland-satellite && cargo build --release -F systemd
+```
+
+- [ ] Download *Bitwarden* [firefox
+extension](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
+
+- [ ] Login into Firefox
+
+- [ ] Apply *Catppuccin Mocha Mauve* color theme to Firefox [by clicking
+here](https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs)
+
+- [ ] Generate a new SSH key
+
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+- [ ] Check the public key
+
+```sh
+cat ~/.ssh/id_ed25519.pub
+```
+
+- [ ] Use *github* to test the SSH connection
+
+```sh
+ssh -T git@github.com
+```
+
+- [ ] Rebuild *bat* cache to include catppuccin's syntax highlighting
+
+```bash
+bat cache --build
+```
+
+- [ ] Check if it's now available
+
+```bash
+bat --list-themes | rg "Catppuccin"
+```
+
+- [ ] Fetch *Yazi* plugins
+
+```bash
+ya pack -i
+```
+
+```bash
+ya pack -u
+```
+
+- [ ] Install and set *Neovim nightly*
+
+```sh
+bob install nightly
+```
+
+```sh
+sudo bob use nightly
+```
+
+- [ ] Increase *inotify* maximum values
+
+```sh
+sudo nano /etc/sysctl.conf
+```
+
+```txt
+fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
+```
+
+- [ ] Launch *Neovim* to fetch its configuration
+
+```bash
+nv
+```
+
+- [ ] Include the api-key for the *WakaTime* plugin
+
+```bash
+# launch the website and copy the api key
+start https://wakatime.com/api-key
+```
+
+```bash
+# run the following cmd inside neovim and paste the key
+WakaTimeApiKey
+```
+
+- [ ] Enable the *ly* service
+
+```bash
+systemctl enable ly
+```
+
+Reboot the system
+
+```bash
+reboot
+```
+
+*there's no place like home*

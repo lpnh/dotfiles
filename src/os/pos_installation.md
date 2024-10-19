@@ -69,6 +69,18 @@ timeout 1
 console-mode auto
 ```
 
+- [ ] Install *pacman-contrib*
+
+```bash
+sudo pacman -S pacman-contrib
+```
+
+- [ ] Enable the *paccache.timer* to periodically clean the pacman cache
+
+```bash
+systemctl enable paccache.timer
+```
+
 - [ ] Update *pacman* configuration file
 
 ```bash
@@ -86,16 +98,10 @@ VerbosePkgLists
 ParallelDownloads = 5
 ```
 
-- [ ] Install *pacman-contrib*
+- [ ] Update the database
 
 ```bash
-sudo pacman -S pacman-contrib
-```
-
-- [ ] Enable the *paccache.timer* to periodically clean the pacman cache
-
-```bash
-systemctl enable paccache.timer
+pacman -Sy
 ```
 
 - [ ] Install *yay*

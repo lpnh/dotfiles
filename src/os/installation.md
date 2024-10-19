@@ -243,14 +243,12 @@ reboot
 
 *good luck !*
 
-## Verifying the Installation
-
 <details open>
   <summary>
-    <i>for wi-fi connections only</i>
+    <i>for wi-fi based connections only</i>
   </summary>
 
-- [ ] Use `nmcli` to list and to connect to available Wi-Fi networks
+- [ ] Use *nmcli* to list and to connect to available Wi-Fi networks
 
 ```sh
 nmcli device wifi list
@@ -262,7 +260,7 @@ nmcli device wifi connect <SSID> password <password>
 
 </details>
 
-- [ ] Download **fastfetch**
+- [ ] Download *fastfetch*
 
 ```bash
 sudo pacman -S fastfetch
@@ -278,5 +276,11 @@ fastfetch
 
 ## Notes
 
+- A good reference for essential packages is to check the ones available in the
+Arch Linux live system (ISO). You can find them
+[here](https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt)
+Another good source is to check the packages available in the EndeavourOS ISO.
+You can find them in [their
+repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64)
 - Jokes aside, the last step is a simple and efficient way to verify your
 installation

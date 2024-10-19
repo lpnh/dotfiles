@@ -13,6 +13,7 @@ To edit the **sudoers** adding the necessary rights
 ```bash
 sudo visudo
 ```
+
 ```txt
 <username> ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
 ```

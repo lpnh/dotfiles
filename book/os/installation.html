@@ -320,43 +320,6 @@ Install <em>rEFInd</em></li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <em>themes</em> directory inside</li>
-</ul>
-<pre><code class="language-bash">cd /efi/EFI/refind
-</code></pre>
-<pre><code class="language-bash"></code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-On refind installation path, clone the catppuccin repo inside a <em>themes</em>
-directory</li>
-</ul>
-<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
-</code></pre>
-<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
-</code></pre>
-<pre><code class="language-bash">nano catppuccin/mocha.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <em>refind.conf</em>, adding a new <em>menuentry</em> for the <em>systemd-boot</em>
-and also including the <em>mocha.conf</em> file</li>
-</ul>
-<pre><code class="language-bash">nano ../refind.conf
-</code></pre>
-<pre><code class="language-txt">timeout 5
-
-[...]
-
-menuentry "Arch Linux" {
-    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
-    volume "ARCHIE_ESP"
-    loader /EFI/systemd/systemd-bootx64.efi
-}
-
-include themes/catppuccin/mocha.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
 Set booster configuration file</li>
 </ul>
 <pre><code class="language-bash">nano /etc/booster.yaml
@@ -403,37 +366,6 @@ Verify the current <em>kernel-install</em> configuration</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Switch the user</li>
-</ul>
-<pre><code class="language-bash">su - &lt;username&gt;
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create and cd into the <em>apps</em> directory</li>
-</ul>
-<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>yay</em></li>
-</ul>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install extra pacman hooks</li>
-</ul>
-<pre><code class="language-bash">yay -S pacman-hook-kernel-install
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Reinstall the kernel package to trigger the unified kernel image
-generation</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S linux
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
 Check the current available boot entries</li>
 </ul>
 <pre><code class="language-bash">bootctl list
@@ -463,14 +395,13 @@ Reboot</li>
 <pre><code class="language-bash">reboot
 </code></pre>
 <p><em>good luck !</em></p>
-<h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
 <details open>
   <summary>
-    <i>for wi-fi connections only</i>
+    <i>for wi-fi based connections only</i>
   </summary>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Use <code>nmcli</code> to list and to connect to available Wi-Fi networks</li>
+Use <em>nmcli</em> to list and to connect to available Wi-Fi networks</li>
 </ul>
 <pre><code class="language-sh">nmcli device wifi list
 </code></pre>
@@ -479,7 +410,7 @@ Use <code>nmcli</code> to list and to connect to available Wi-Fi networks</li>
 </details>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Download <strong>fastfetch</strong></li>
+Download <em>fastfetch</em></li>
 </ul>
 <pre><code class="language-bash">sudo pacman -S fastfetch
 </code></pre>
@@ -492,6 +423,12 @@ Run it</li>
 <p><em>enjoy your new achievement !</em></p>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
+<li>A good reference for essential packages is to check the ones available in the
+Arch Linux live system (ISO). You can find them
+<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>
+Another good source is to check the packages available in the EndeavourOS ISO.
+You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
+repo</a></li>
 <li>Jokes aside, the last step is a simple and efficient way to verify your
 installation</li>
 </ul>

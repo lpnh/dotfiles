@@ -42,6 +42,16 @@ cat ~/.ssh/id_ed25519.pub
 ssh -T git@github.com
 ```
 
+- [ ] Install *xwayland-satellite*
+
+```bash
+git clone https://github.com/Supreeeme/xwayland-satellite.git
+```
+
+```bash
+cd xwayland-satellite && cargo build --release -F systemd
+```
+
 ## Neovim
 
 - [ ] Install and set **Neovim nightly** using **bob**:
@@ -66,4 +76,4 @@ fs.inotify.max_user_watches=524288
 
 Reboot the system: `reboot`
 
-*# there's no place like home*
+*there's no place like home*
