@@ -27,7 +27,7 @@ optional = [
 # should be manually installed with `cargo install --locked`
 crates = ["cargo-chef", "trunk"]
 
-# packages manually installed during OS installation
+# packages already manually installed
 already_installed = [
     # with pacstrap
     "base",
@@ -37,13 +37,6 @@ already_installed = [
     "git",
     "nano",
     "networkmanager",
-    # after installation
-    "fastfetch",
-    # compilers
-    "clang",
-    "go",
-    "lua",
-    "rustup",
     # graphics
     "mesa",
     "vulkan-radeon", # for AMD GPU
@@ -56,10 +49,19 @@ already_installed = [
     "systemd-ukify",
     # yet another boot manager
     "refind",
+    # after installation
+    "fastfetch",
+    # compilers
+    "clang",
+    "go",
+    "lua",
+    "rustup",
     # package management
     "yay",
     "pacman-hook-kernel-install", # from AUR
     "pacman-contrib",
+    # niri xorg compatibility
+    "xwayland-satellite",
     # bootstrap
     "chezmoi",
 ]
@@ -204,7 +206,6 @@ aur = [
     "pandoc-bin",
     "vesktop-bin",
     "xcursor-breeze",
-    "xwayland-satellite",
     "yazi-git",
 ]
 desktop = ["openrgb", "piper"]
