@@ -179,47 +179,78 @@
                         <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Edit the <strong>loader.conf</strong> file</li>
+Create the <em>themes</em> directory for <em>refind</em></li>
 </ul>
-<pre><code class="language-bash">nano /efi/loader/loader.conf
+<pre><code class="language-bash">cd /efi/EFI/refind
 </code></pre>
-<pre><code class="language-txt">timeout  1
-console-mode auto
+<ul>
+<li><input disabled="" type="checkbox"/>
+On refind installation path, clone the catppuccin repo inside a <em>themes</em>
+directory</li>
+</ul>
+<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
+</code></pre>
+<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <em>mocha.conf</em> file, commenting the last line</li>
+</ul>
+<pre><code class="language-bash">nano catppuccin/mocha.conf
+</code></pre>
+<pre><code class="language-txt">#showtools hidden_tags
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <em>refind.conf</em>, making sure to add a new <em>menuentry</em> for the
+<em>systemd-boot</em> and also including the <em>mocha.conf</em> file</li>
+</ul>
+<pre><code class="language-bash">nano ../refind.conf
+</code></pre>
+<pre><code class="language-txt">timeout 5
+
+[...]
+
+menuentry "Arch Linux" {
+    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
+    volume "ARCHIE_ESP"
+    loader /EFI/systemd/systemd-bootx64.efi
+}
+
+include themes/catppuccin/mocha.conf
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install some compilers</li>
 </ul>
-<pre><code class="language-sh">sudo pacman -S clang lua rustup
+<pre><code class="language-sh">sudo pacman -S clang go lua rustup
 </code></pre>
 <pre><code class="language-sh">rustup update stable
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install <strong>systemd-ukify</strong></li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S systemd-ukify
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Remove the <code>arch.conf</code> file</li>
-</ul>
-<pre><code class="language-bash">sudo rm /efi/loader/entries/arch.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the <code>/efi/loader/loader.conf</code> file</li>
+Update the <em>loader.conf</em> file</li>
 </ul>
 <pre><code class="language-bash">sudo nano /efi/loader/loader.conf
 </code></pre>
 <pre><code class="language-txt">timeout 1
 console-mode auto
 </code></pre>
-<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
-<h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Update <strong>pacman</strong> configuration file</li>
+Install <em>pacman-contrib</em></li>
+</ul>
+<pre><code class="language-bash">sudo pacman -S pacman-contrib
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>paccache.timer</em> to periodically clean the pacman cache</li>
+</ul>
+<pre><code class="language-bash">systemctl enable paccache.timer
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update <em>pacman</em> configuration file</li>
 </ul>
 <pre><code class="language-bash">sudo nano /etc/pacman.conf
 </code></pre>
@@ -232,18 +263,45 @@ ILoveCandy
 VerbosePkgLists
 ParallelDownloads = 5
 </code></pre>
-<h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
-<p>Check the parameters your system was booted up with</p>
-<pre><code class="language-bash">cat /proc/cmdline
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the database</li>
+</ul>
+<pre><code class="language-bash">pacman -Sy
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Check the current available boot entries:</li>
+Install <em>yay</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install extra pacman hooks</li>
+</ul>
+<pre><code class="language-bash">yay -S pacman-hook-kernel-install
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Reinstall the kernel package to trigger the unified kernel image hooks</li>
+</ul>
+<pre><code class="language-bash">sudo pacman -S linux
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the current available boot entries</li>
 </ul>
 <pre><code class="language-bash">sudo bootctl list
 </code></pre>
-<p>If everything seems correct, reboot the system: <code>reboot</code></p>
-<p>If everything worked as expected, now you can uninstall mkinitcpio and the initramfs imgs</p>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<ul>
+<li>For some reason the <em>rEFInd</em> showtools variable is not working properly for
+me anymore, this is why I have to comment that line on catppucin's mocha file</li>
+<li>An example for the <em>pacman.conf</em> file can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
+repo</a>.
+If you plan to use packages like steam, make sure to enable (uncomment) the
+[multilib] repository</li>
+</ul>
 
                     </main>
 

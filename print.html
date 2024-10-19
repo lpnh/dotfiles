@@ -639,43 +639,6 @@ Install <em>rEFInd</em></li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <em>themes</em> directory inside</li>
-</ul>
-<pre><code class="language-bash">cd /efi/EFI/refind
-</code></pre>
-<pre><code class="language-bash"></code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-On refind installation path, clone the catppuccin repo inside a <em>themes</em>
-directory</li>
-</ul>
-<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
-</code></pre>
-<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
-</code></pre>
-<pre><code class="language-bash">nano catppuccin/mocha.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <em>refind.conf</em>, adding a new <em>menuentry</em> for the <em>systemd-boot</em>
-and also including the <em>mocha.conf</em> file</li>
-</ul>
-<pre><code class="language-bash">nano ../refind.conf
-</code></pre>
-<pre><code class="language-txt">timeout 5
-
-[...]
-
-menuentry "Arch Linux" {
-    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
-    volume "ARCHIE_ESP"
-    loader /EFI/systemd/systemd-bootx64.efi
-}
-
-include themes/catppuccin/mocha.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
 Set booster configuration file</li>
 </ul>
 <pre><code class="language-bash">nano /etc/booster.yaml
@@ -722,37 +685,6 @@ Verify the current <em>kernel-install</em> configuration</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Switch the user</li>
-</ul>
-<pre><code class="language-bash">su - &lt;username&gt;
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create and cd into the <em>apps</em> directory</li>
-</ul>
-<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>yay</em></li>
-</ul>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install extra pacman hooks</li>
-</ul>
-<pre><code class="language-bash">yay -S pacman-hook-kernel-install
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Reinstall the kernel package to trigger the unified kernel image
-generation</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S linux
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
 Check the current available boot entries</li>
 </ul>
 <pre><code class="language-bash">bootctl list
@@ -782,14 +714,13 @@ Reboot</li>
 <pre><code class="language-bash">reboot
 </code></pre>
 <p><em>good luck !</em></p>
-<h2 id="verifying-the-installation"><a class="header" href="#verifying-the-installation">Verifying the Installation</a></h2>
 <details open>
   <summary>
-    <i>for wi-fi connections only</i>
+    <i>for wi-fi based connections only</i>
   </summary>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Use <code>nmcli</code> to list and to connect to available Wi-Fi networks</li>
+Use <em>nmcli</em> to list and to connect to available Wi-Fi networks</li>
 </ul>
 <pre><code class="language-sh">nmcli device wifi list
 </code></pre>
@@ -798,7 +729,7 @@ Use <code>nmcli</code> to list and to connect to available Wi-Fi networks</li>
 </details>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Download <strong>fastfetch</strong></li>
+Download <em>fastfetch</em></li>
 </ul>
 <pre><code class="language-bash">sudo pacman -S fastfetch
 </code></pre>
@@ -811,53 +742,90 @@ Run it</li>
 <p><em>enjoy your new achievement !</em></p>
 <h2 id="notes-3"><a class="header" href="#notes-3">Notes</a></h2>
 <ul>
+<li>A good reference for essential packages is to check the ones available in the
+Arch Linux live system (ISO). You can find them
+<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>
+Another good source is to check the packages available in the EndeavourOS ISO.
+You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
+repo</a></li>
 <li>Jokes aside, the last step is a simple and efficient way to verify your
 installation</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Edit the <strong>loader.conf</strong> file</li>
+Create the <em>themes</em> directory for <em>refind</em></li>
 </ul>
-<pre><code class="language-bash">nano /efi/loader/loader.conf
+<pre><code class="language-bash">cd /efi/EFI/refind
 </code></pre>
-<pre><code class="language-txt">timeout  1
-console-mode auto
+<ul>
+<li><input disabled="" type="checkbox"/>
+On refind installation path, clone the catppuccin repo inside a <em>themes</em>
+directory</li>
+</ul>
+<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
+</code></pre>
+<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <em>mocha.conf</em> file, commenting the last line</li>
+</ul>
+<pre><code class="language-bash">nano catppuccin/mocha.conf
+</code></pre>
+<pre><code class="language-txt">#showtools hidden_tags
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <em>refind.conf</em>, making sure to add a new <em>menuentry</em> for the
+<em>systemd-boot</em> and also including the <em>mocha.conf</em> file</li>
+</ul>
+<pre><code class="language-bash">nano ../refind.conf
+</code></pre>
+<pre><code class="language-txt">timeout 5
+
+[...]
+
+menuentry "Arch Linux" {
+    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
+    volume "ARCHIE_ESP"
+    loader /EFI/systemd/systemd-bootx64.efi
+}
+
+include themes/catppuccin/mocha.conf
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install some compilers</li>
 </ul>
-<pre><code class="language-sh">sudo pacman -S clang lua rustup
+<pre><code class="language-sh">sudo pacman -S clang go lua rustup
 </code></pre>
 <pre><code class="language-sh">rustup update stable
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install <strong>systemd-ukify</strong></li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S systemd-ukify
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Remove the <code>arch.conf</code> file</li>
-</ul>
-<pre><code class="language-bash">sudo rm /efi/loader/entries/arch.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the <code>/efi/loader/loader.conf</code> file</li>
+Update the <em>loader.conf</em> file</li>
 </ul>
 <pre><code class="language-bash">sudo nano /efi/loader/loader.conf
 </code></pre>
 <pre><code class="language-txt">timeout 1
 console-mode auto
 </code></pre>
-<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
-<h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Update <strong>pacman</strong> configuration file</li>
+Install <em>pacman-contrib</em></li>
+</ul>
+<pre><code class="language-bash">sudo pacman -S pacman-contrib
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>paccache.timer</em> to periodically clean the pacman cache</li>
+</ul>
+<pre><code class="language-bash">systemctl enable paccache.timer
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update <em>pacman</em> configuration file</li>
 </ul>
 <pre><code class="language-bash">sudo nano /etc/pacman.conf
 </code></pre>
@@ -870,124 +838,207 @@ ILoveCandy
 VerbosePkgLists
 ParallelDownloads = 5
 </code></pre>
-<h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
-<p>Check the parameters your system was booted up with</p>
-<pre><code class="language-bash">cat /proc/cmdline
+<ul>
+<li><input disabled="" type="checkbox"/>
+Update the database</li>
+</ul>
+<pre><code class="language-bash">pacman -Sy
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Check the current available boot entries:</li>
+Install <em>yay</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install extra pacman hooks</li>
+</ul>
+<pre><code class="language-bash">yay -S pacman-hook-kernel-install
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Reinstall the kernel package to trigger the unified kernel image hooks</li>
+</ul>
+<pre><code class="language-bash">sudo pacman -S linux
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the current available boot entries</li>
 </ul>
 <pre><code class="language-bash">sudo bootctl list
 </code></pre>
-<p>If everything seems correct, reboot the system: <code>reboot</code></p>
-<p>If everything worked as expected, now you can uninstall mkinitcpio and the initramfs imgs</p>
+<h2 id="notes-4"><a class="header" href="#notes-4">Notes</a></h2>
+<ul>
+<li>For some reason the <em>rEFInd</em> showtools variable is not working properly for
+me anymore, this is why I have to comment that line on catppucin's mocha file</li>
+<li>An example for the <em>pacman.conf</em> file can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
+repo</a>.
+If you plan to use packages like steam, make sure to enable (uncomment) the
+[multilib] repository</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
-<h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
-<p>To install <code>chezmoi</code>:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>chezmoi</em></li>
+</ul>
 <pre><code class="language-bash">sudo pacman -S chezmoi
 </code></pre>
-<p>To initialize it:</p>
-<pre><code class="language-bash">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
+<ul>
+<li><input disabled="" type="checkbox"/>
+Initialize it</li>
+</ul>
+<pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
 </code></pre>
-<p>To apply it:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Apply the changes</li>
+</ul>
 <pre><code class="language-bash">chezmoi apply
 </code></pre>
-<p>Note: a lot of packages will be installed. Probably would be a good idea to
-reboot the system after it.</p>
-<p>For the exhaustive list of packages, you can check the
-<a href="https://github.com/lpnh/dotfiles/blob/main/home/.chezmoidata/packages.toml">packages.toml</a>
-file from the repo.</p>
-<p>Hint: A good reference for essential packages is to check the ones available in
-the Arch Linux live system (ISO). You can find them
-<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>.
-Another good source is to check the packages available in the EndeavourOS ISO.
-You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
-repo</a>.</p>
-<h2 id="graphical-interface"><a class="header" href="#graphical-interface">Graphical Interface</a></h2>
-<p>To launch <code>niri</code> from the <code>tty</code>:</p>
-<pre><code class="language-bash">niri-session
-</code></pre>
-<h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
-<p>To check if <code>fish</code> is in the valid shells list:</p>
-<pre><code class="language-bash">cat /etc/shells
-</code></pre>
-<p>To set <code>fish</code> as login shell:</p>
-<pre><code class="language-bash">chsh -s /usr/bin/fish &lt;user&gt;
-</code></pre>
-<p>To check the login shell from the <code>/etc/passwd</code> file:</p>
-<pre><code class="language-bash">getent passwd $USER | cut -d: -f7
-</code></pre>
-<h2 id="font"><a class="header" href="#font">Font</a></h2>
-<p>To make sure the fonts are available system-wide, refresh the font cache:</p>
-<pre><code class="language-bash">sudo fc-cache -fv
-</code></pre>
-<h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
-<p>To generate a new SSH key:</p>
-<pre><code class="language-bash">ssh-keygen -t ed25519 -C "your_email@example.com"
-</code></pre>
-<p>To check the public key:</p>
-<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
-</code></pre>
-<p>To test the SSH connection:</p>
-<pre><code class="language-bash">ssh -T git@github.com
-</code></pre>
-<h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
-<p>To install and set Neovim nightly using <code>bob</code>:</p>
-<pre><code class="language-bash">bob install nightly
-</code></pre>
-<pre><code class="language-bash">sudo bob use nightly
-</code></pre>
-<p>To increase the maximum number of <code>inotify</code> watches and queued events. Edit the
-<code>/etc/sysctl.conf</code> file:</p>
-<pre><code class="language-bash">sudo nano /etc/sysctl.conf
-</code></pre>
-<pre><code class="language-bash">fs.inotify.max_queued_events=524288
-fs.inotify.max_user_watches=524288
-</code></pre>
-<h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
-<p>To enable the <code>ly</code> service:</p>
-<pre><code class="language-bash">systemctl enable ly
-</code></pre>
-<p>To edit <code>ly</code> default configuration:</p>
-<pre><code class="language-bash">sudo nano /etc/ly/config.ini
-</code></pre>
-<p>Reboot the system (yeah, I'm neurotic):</p>
+<p><em>just watch the magic happen</em></p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Reboot the system</li>
+</ul>
 <pre><code class="language-bash">reboot
 </code></pre>
-<p><em>// there's no place like home</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing"><a class="header" href="#finishing">Finishing</a></h1>
-<h2 id="catppuccin"><a class="header" href="#catppuccin">Catppuccin</a></h2>
-<h3 id="bat"><a class="header" href="#bat">Bat</a></h3>
-<p>To include the new syntax highlighting theme, rebuild <strong>bat</strong>'s cache:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Launch <em>niri</em> from the tty</li>
+</ul>
+<pre><code class="language-bash">niri-session
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check if <em>fish</em> is in the valid shells list</li>
+</ul>
+<pre><code class="language-bash">cat /etc/shells
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set <em>fish</em> as login shell</li>
+</ul>
+<pre><code class="language-sh">chsh -s /usr/bin/fish &lt;user&gt;
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check it</li>
+</ul>
+<pre><code class="language-sh">getent passwd $USER | cut -d: -f7
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Refresh the font cache to make sure the fonts are available system-wide</li>
+</ul>
+<pre><code class="language-sh">sudo fc-cache -fv
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>xwayland-satellite</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
+</code></pre>
+<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
+</code></pre>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"/>
+Download <em>Bitwarden</em> <a href="https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/">firefox
+extension</a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Login into Firefox</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Apply <em>Catppuccin Mocha Mauve</em> color theme to Firefox <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">by clicking
+here</a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Generate a new SSH key</p>
+</li>
+</ul>
+<pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the public key</li>
+</ul>
+<pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Use <em>github</em> to test the SSH connection</li>
+</ul>
+<pre><code class="language-sh">ssh -T git@github.com
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Rebuild <em>bat</em> cache to include catppuccin's syntax highlighting</li>
+</ul>
 <pre><code class="language-bash">bat cache --build
 </code></pre>
-<p>To check if the Catppuccin theme is now available:</p>
-<pre><code class="language-bash"># the output should be Catppuccin Mocha
-bat --list-themes | rg "Catppuccin"
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check if it's now available</li>
+</ul>
+<pre><code class="language-bash">bat --list-themes | rg "Catppuccin"
 </code></pre>
-<h3 id="firefox"><a class="header" href="#firefox">Firefox</a></h3>
-<p>To apply Catppuccin Mocha Mauve color theme to firefox <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">simply click
-here</a></p>
-<h2 id="neovim-1"><a class="header" href="#neovim-1">Neovim</a></h2>
-<p>To fetch <strong>Neovim</strong> configuration, simply launch it:</p>
-<pre><code class="language-bash">nvim
+<ul>
+<li><input disabled="" type="checkbox"/>
+Fetch <em>Yazi</em> plugins</li>
+</ul>
+<pre><code class="language-bash">ya pack -i
 </code></pre>
-<p>To include the api-key for the <strong>WakaTime</strong> plugin:</p>
+<pre><code class="language-bash">ya pack -u
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install and set <em>Neovim nightly</em></li>
+</ul>
+<pre><code class="language-sh">bob install nightly
+</code></pre>
+<pre><code class="language-sh">sudo bob use nightly
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Increase <em>inotify</em> maximum values</li>
+</ul>
+<pre><code class="language-sh">sudo nano /etc/sysctl.conf
+</code></pre>
+<pre><code class="language-txt">fs.inotify.max_queued_events=524288
+fs.inotify.max_user_watches=524288
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Launch <em>Neovim</em> to fetch its configuration</li>
+</ul>
+<pre><code class="language-bash">nv
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Include the api-key for the <em>WakaTime</em> plugin</li>
+</ul>
 <pre><code class="language-bash"># launch the website and copy the api key
 start https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
 </code></pre>
-<h2 id="yazi"><a class="header" href="#yazi">Yazi</a></h2>
-<p>To fetch the plugins using Yazi package manager:</p>
-<pre><code class="language-bash">ya pack -i
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>ly</em> service</li>
+</ul>
+<pre><code class="language-bash">systemctl enable ly
 </code></pre>
-<pre><code class="language-bash">ya pack -u
+<p>Reboot the system</p>
+<pre><code class="language-bash">reboot
 </code></pre>
-<p>Note: This will install and update the plugins according to the
-<code>yazi/package.toml</code> file.</p>
+<p><em>there's no place like home</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing"><a class="header" href="#finishing">Finishing</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff"><a class="header" href="#dev-stuff">Dev Stuff</a></h1>
 <h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
 <h3 id="toolchains"><a class="header" href="#toolchains">Toolchains</a></h3>
@@ -1301,8 +1352,8 @@ include themes/catppuccin/mocha.conf
 <li><input disabled="" type="checkbox"/>
 Exit the interactive shell: <code>exit</code></li>
 </ul>
-<h2 id="package-manager-1"><a class="header" href="#package-manager-1">Package Manager</a></h2>
-<h3 id="pacman-1"><a class="header" href="#pacman-1">Pacman</a></h3>
+<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
+<h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Update <strong>pacman</strong> configuration file:</li>
@@ -1318,7 +1369,7 @@ ILoveCandy
 VerbosePkgLists
 ParallelDownloads = 5
 </code></pre>
-<h3 id="yay-1"><a class="header" href="#yay-1">Yay</a></h3>
+<h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Create and cd into the <strong>apps</strong> directory:</li>
@@ -1353,7 +1404,7 @@ Check the current available boot entries:</li>
 </code></pre>
 <p>If everything seems correct, reboot the system: <code>reboot</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home-1"><a class="header" href="#home-sweet-home-1">Home Sweet Home</a></h1>
-<h2 id="bootstrap-1"><a class="header" href="#bootstrap-1">Bootstrap</a></h2>
+<h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install <strong>chezmoi</strong>: <code>sudo pacman -S chezmoi</code></li>
@@ -1391,7 +1442,7 @@ Refresh the font cache:</li>
 </ul>
 <pre><code class="language-sh">sudo fc-cache -fv
 </code></pre>
-<h2 id="ssh-1"><a class="header" href="#ssh-1">SSH</a></h2>
+<h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Generate a new SSH key:</li>
@@ -1410,7 +1461,15 @@ Test the SSH connection:</li>
 </ul>
 <pre><code class="language-sh">ssh -T git@github.com
 </code></pre>
-<h2 id="neovim-2"><a class="header" href="#neovim-2">Neovim</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>xwayland-satellite</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
+</code></pre>
+<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
+</code></pre>
+<h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Install and set <strong>Neovim nightly</strong> using <strong>bob</strong>:</li>
@@ -1428,50 +1487,14 @@ Increase <strong>inotify</strong> maximum numbers:</li>
 <pre><code class="language-txt">fs.inotify.max_queued_events=524288
 fs.inotify.max_user_watches=524288
 </code></pre>
-<h2 id="display-manager-1"><a class="header" href="#display-manager-1">Display Manager</a></h2>
+<h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Enable the <strong>ly</strong> service: <code>systemctl enable ly</code></li>
 </ul>
 <p>Reboot the system: <code>reboot</code></p>
-<p><em># there's no place like home</em></p>
+<p><em>there's no place like home</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="finishing-1"><a class="header" href="#finishing-1">Finishing</a></h1>
-<h2 id="catppuccin-1"><a class="header" href="#catppuccin-1">Catppuccin</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Rebuild <strong>bat</strong>'s cache to add the new syntax highlighting: <code>bat cache --build</code></li>
-<li><input disabled="" type="checkbox"/>
-Check if Catppuccin is available:</li>
-</ul>
-<pre><code class="language-bash">bat --list-themes | rg "Catppuccin"
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Apply Catppuccin Mocha Mauve color theme to firefox: <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">simply click
-here</a></li>
-</ul>
-<h2 id="neovim-3"><a class="header" href="#neovim-3">Neovim</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Launch <strong>Neovim</strong> to fetch its configuration: <code>nvim</code></li>
-<li><input disabled="" type="checkbox"/>
-Include the api-key for <strong>WakaTime</strong> plugin:</li>
-</ul>
-<pre><code class="language-bash"># launch the website and copy the api key
-start https://wakatime.com/api-key
-</code></pre>
-<pre><code class="language-bash"># run the following cmd inside neovim and paste the key
-WakaTimeApiKey
-</code></pre>
-<h2 id="yazi-1"><a class="header" href="#yazi-1">Yazi</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Fetch the plugins using Yazi package manager:</li>
-</ul>
-<pre><code class="language-bash">ya pack -i
-</code></pre>
-<pre><code class="language-bash">ya pack -u
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff-1"><a class="header" href="#dev-stuff-1">Dev Stuff</a></h1>
 <h2 id="rust-1"><a class="header" href="#rust-1">Rust</a></h2>
 <ul>

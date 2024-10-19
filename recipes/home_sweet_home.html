@@ -234,6 +234,14 @@ Test the SSH connection:</li>
 </ul>
 <pre><code class="language-sh">ssh -T git@github.com
 </code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>xwayland-satellite</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
+</code></pre>
+<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
+</code></pre>
 <h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -258,7 +266,7 @@ fs.inotify.max_user_watches=524288
 Enable the <strong>ly</strong> service: <code>systemctl enable ly</code></li>
 </ul>
 <p>Reboot the system: <code>reboot</code></p>
-<p><em># there's no place like home</em></p>
+<p><em>there's no place like home</em></p>
 
                     </main>
 
