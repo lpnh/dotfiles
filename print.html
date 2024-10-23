@@ -716,7 +716,7 @@ Reboot</li>
 <p><em>good luck !</em></p>
 <details open>
   <summary>
-    <i>for wi-fi based connections only</i>
+    <i>for laptop only</i>
   </summary>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -725,6 +725,14 @@ Use <em>nmcli</em> to list and to connect to available Wi-Fi networks</li>
 <pre><code class="language-sh">nmcli device wifi list
 </code></pre>
 <pre><code class="language-sh">nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt;
+</code></pre>
+<p>Enable the <em>tlp</em> service</p>
+<pre><code class="language-bash">systemctl enable tlp.service
+</code></pre>
+<p>Mask the <em>rfkill</em> service</p>
+<pre><code class="language-bash">systemctl mask systemd-rfkill.service
+</code></pre>
+<pre><code class="language-bash">systemctl mask systemd-rfkill.socket
 </code></pre>
 </details>
 <ul>
@@ -1023,7 +1031,7 @@ Launch <em>Neovim</em> to fetch its configuration</li>
 Include the api-key for the <em>WakaTime</em> plugin</li>
 </ul>
 <pre><code class="language-bash"># launch the website and copy the api key
-start https://wakatime.com/api-key
+open https://wakatime.com/api-key
 </code></pre>
 <pre><code class="language-bash"># run the following cmd inside neovim and paste the key
 WakaTimeApiKey
@@ -1084,27 +1092,21 @@ Not sure if this will be the case for anyone else.
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
 <h2 id="profile-sync-daemon"><a class="header" href="#profile-sync-daemon">Profile-sync-daemon</a></h2>
-<p>To generate the configuration file and check the current status:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <em>sudoers</em> adding the necessary rights</li>
+</ul>
+<pre><code class="language-bash">EDITOR=nvim sudo visudo
+</code></pre>
+<pre><code class="language-txt">lpnh ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
+</code></pre>
+<p>Check <em>psd</em> current status</p>
 <pre><code class="language-bash">psd preview
 </code></pre>
-<p>To edit the <strong>sudoers</strong> adding the necessary rights</p>
-<pre><code class="language-bash">sudo visudo
-</code></pre>
-<pre><code class="language-txt">&lt;username&gt; ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
-</code></pre>
-<p>To edit the <strong>psd.conf</strong> configuration file:</p>
-<pre><code class="language-bash">sudo nvim .config/psd/psd.conf
-</code></pre>
-<pre><code class="language-txt"># Uncomment and set to "yes" to use overlayfs instead of a full copy to reduce
-# the memory costs and to improve sync/unsync operations. Note that your kernel
-# MUST have this module available in order to use this mode.
-#
-USE_OVERLAYFS="yes"
-</code></pre>
-<pre><code class="language-txt">#
-BROWSERS=(firefox)
-</code></pre>
-<p>To enable the <strong>psd</strong> service:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>psd</em> service</li>
+</ul>
 <pre><code class="language-bash">systemctl --user enable psd.service
 </code></pre>
 <h2 id="networkmanager"><a class="header" href="#networkmanager">NetworkManager</a></h2>
@@ -1116,43 +1118,34 @@ BROWSERS=(firefox)
 <pre><code class="language-bash">nmcli device wifi connect &lt;SSID_or_BSSID&gt; password &lt;password&gt;
 </code></pre>
 <h3 id="update-the-dns-1"><a class="header" href="#update-the-dns-1">Update the DNS</a></h3>
-<p>To get the list of the current active profiles:</p>
+<p>To get the list of the current active profiles</p>
 <pre><code class="language-bash">nmcli connection show --active
 </code></pre>
 <p>To check the current DNS values</p>
 <pre><code class="language-bash">nmcli connection show 'NAME' | rg dns
 </code></pre>
-<p>To update the DNS:</p>
+<p>To update the DNS</p>
 <pre><code class="language-bash">nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
 </code></pre>
-<p>To reconnect:</p>
+<p>To reconnect</p>
 <pre><code class="language-bash">nmcli connection down 'NAME'
 </code></pre>
 <pre><code class="language-bash">nmcli connection up 'NAME'
 </code></pre>
-<h2 id="tlp"><a class="header" href="#tlp">Tlp</a></h2>
-<p>To enable the service:</p>
-<pre><code class="language-bash">systemctl enable tlp.service
-</code></pre>
-<p>To mask the <strong>rfkill</strong>:</p>
-<pre><code class="language-bash">systemctl mask systemd-rfkill.service
-</code></pre>
-<pre><code class="language-bash">systemctl mask systemd-rfkill.socket
-</code></pre>
 <h2 id="virtual-machine"><a class="header" href="#virtual-machine">Virtual Machine</a></h2>
-<p>To check if virtualization is enabled:</p>
+<p>To check if virtualization is enabled</p>
 <pre><code class="language-bash">grep -Ec '(vmx|svm)' /proc/cpuinfo
 </code></pre>
-<p>To install necessary packages:</p>
+<p>To install necessary packages</p>
 <pre><code class="language-bash">sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
 </code></pre>
-<p>To enable <strong>libvirtd</strong> service:</p>
+<p>To enable <strong>libvirtd</strong> service</p>
 <pre><code class="language-bash">sudo systemctl enable --now libvirtd.service
 </code></pre>
-<p>To add the user to the <strong>libvirt</strong> group:</p>
+<p>To add the user to the <strong>libvirt</strong> group</p>
 <pre><code class="language-bash">sudo usermod -aG libvirt $env.USER
 </code></pre>
-<p>To restart the service:</p>
+<p>To restart the service</p>
 <pre><code class="language-bash">systemctl restart libvirtd.service
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation-1"><a class="header" href="#pos-installation-1">Pos-Installation</a></h1>
@@ -1595,7 +1588,7 @@ Reconnect:</li>
 </code></pre>
 <pre><code class="language-sh">nmcli connection up 'NAME'
 </code></pre>
-<h2 id="tlp-1"><a class="header" href="#tlp-1">Tlp</a></h2>
+<h2 id="tlp"><a class="header" href="#tlp">Tlp</a></h2>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Enable the service:</li>

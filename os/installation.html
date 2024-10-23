@@ -397,7 +397,7 @@ Reboot</li>
 <p><em>good luck !</em></p>
 <details open>
   <summary>
-    <i>for wi-fi based connections only</i>
+    <i>for laptop only</i>
   </summary>
 <ul>
 <li><input disabled="" type="checkbox"/>
@@ -406,6 +406,14 @@ Use <em>nmcli</em> to list and to connect to available Wi-Fi networks</li>
 <pre><code class="language-sh">nmcli device wifi list
 </code></pre>
 <pre><code class="language-sh">nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt;
+</code></pre>
+<p>Enable the <em>tlp</em> service</p>
+<pre><code class="language-bash">systemctl enable tlp.service
+</code></pre>
+<p>Mask the <em>rfkill</em> service</p>
+<pre><code class="language-bash">systemctl mask systemd-rfkill.service
+</code></pre>
+<pre><code class="language-bash">systemctl mask systemd-rfkill.socket
 </code></pre>
 </details>
 <ul>
