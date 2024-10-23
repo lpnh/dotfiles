@@ -245,7 +245,7 @@ reboot
 
 <details open>
   <summary>
-    <i>for wi-fi based connections only</i>
+    <i>for laptop only</i>
   </summary>
 
 - [ ] Use *nmcli* to list and to connect to available Wi-Fi networks
@@ -256,6 +256,22 @@ nmcli device wifi list
 
 ```sh
 nmcli device wifi connect <SSID> password <password>
+```
+
+Enable the *tlp* service
+
+```bash
+systemctl enable tlp.service
+```
+
+Mask the *rfkill* service
+
+```bash
+systemctl mask systemd-rfkill.service
+```
+
+```bash
+systemctl mask systemd-rfkill.socket
 ```
 
 </details>

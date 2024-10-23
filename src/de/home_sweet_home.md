@@ -145,7 +145,7 @@ nv
 
 ```bash
 # launch the website and copy the api key
-start https://wakatime.com/api-key
+open https://wakatime.com/api-key
 ```
 
 ```bash
