@@ -1,8 +1,6 @@
-import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+[general]
+import = ["catppuccin-mocha.toml"]
 # live_config_reload = true
-
-[shell]
-program = "/usr/bin/fish"
 
 [env]
 TERM = "xterm-256color"
@@ -13,14 +11,14 @@ opacity = 0.5
 dynamic_title = false
 
 [font]
+normal = { family = "FiraMono Nerd Font", style = "Regular" }
 size = 12.0
-
-[font.normal]
-family = "FiraMono Nerd Font"
-style = "Regular"
 
 [cursor]
 unfocused_hollow = false
+
+[terminal]
+shell = "/usr/bin/fish"
 
 [mouse]
 hide_when_typing = true
