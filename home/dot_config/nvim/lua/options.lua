@@ -44,7 +44,7 @@ opt.listchars = {
 }
 opt.number = true -- Make line numbers default
 opt.relativenumber = true -- Make relative number default
-opt.shell = '/usr/bin/nu' -- Set nushell as default shell
+opt.shell = '/usr/bin/fish' -- Set fish as default shell
 opt.scrolloff = 10 -- Number of screen lines to keep above and below
 opt.shiftwidth = 4 -- Number of spaces tabs count for
 opt.shortmess:append 'sI' -- Disable nvim intro
