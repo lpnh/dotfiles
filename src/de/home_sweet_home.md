@@ -66,6 +66,10 @@ git clone https://github.com/Supreeeme/xwayland-satellite.git
 cd xwayland-satellite && cargo build --release -F systemd
 ```
 
+```bash
+cd target/release && sudo cp xwayland-satellite /usr/bin/
+```
+
 - [ ] Download *Bitwarden* [firefox
 extension](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
 

@@ -2,7 +2,13 @@
 
 ## Profile-sync-daemon
 
-- [ ] Edit the *sudoers* adding the necessary rights
+<div class="warning">
+I haven't had much luck with this so far.
+
+I've tried it twice, and Firefox became very unstable.
+</div>
+
+- [ ] Edit the *sudoers* adding the necessary rights to the end of the file
 
 ```bash
 EDITOR=nvim sudo visudo
