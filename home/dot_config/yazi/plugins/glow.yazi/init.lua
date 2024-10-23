@@ -19,7 +19,7 @@ function M:peek()
 	end
 
 	local limit = self.area.h
-	local i, lines = 0, ""
+	local i, lines = -1, ""
 	repeat
 		local next, event = child:read_line()
 		if event == 1 then
