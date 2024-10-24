@@ -172,7 +172,6 @@ common = [
     "nwg-look",
     "otf-firamono-nerd",
     "otf-font-awesome",
-    "profile-sync-daemon",
     "ripgrep",
     "ripgrep-all",
     "rnote",
