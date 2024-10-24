@@ -33,7 +33,11 @@ window#waybar {
 #battery, /* laptop */
 #pulseaudio {
     margin: 0;
+    {{- if eq .chezmoi.hostname "desktop" }}
     padding: 0 32px;
+    {{- else if eq .chezmoi.hostname "laptop" }}
+    padding: 0 24px;
+    {{- end }}
 }
 
 #workspaces button {
