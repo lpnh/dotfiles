@@ -169,7 +169,6 @@ common = [
     "mdbook",
     "mpv",
     "ncspot",
-    "nwg-look",
     "otf-firamono-nerd",
     "otf-font-awesome",
     "ripgrep",
