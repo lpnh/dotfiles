@@ -196,6 +196,7 @@ common = [
     "wev",
     "wlsunset",
     "zoxide",
+    "zsh",
 ]
 aur = [
     "cava",
