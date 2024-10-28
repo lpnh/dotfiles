@@ -39,7 +39,6 @@ return {
       local servers = {
         clangd = true,
         html = true,
-        htmx = true,
         lua_ls = {
           settings = {
             Lua = {
