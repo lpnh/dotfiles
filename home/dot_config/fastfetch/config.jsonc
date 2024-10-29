@@ -15,7 +15,10 @@
     "os",
     "kernel",
     "packages",
-    "shell",
+    {
+      "type": "shell",
+      "format": "{1}",
+    },
     {
       "type": "display",
       "compactType": "original",
@@ -30,7 +33,10 @@
       "type": "font",
       "format": "{2}",
     },
-    "terminal",
+    {
+      "type": "terminal",
+      "format": "{1}",
+    },
     {
       "type": "terminalfont",
       "format": "{2}",
@@ -42,7 +48,7 @@
     },
     {
       "type": "gpu",
-      "format": "{} {}",
+      "format": "{2}",
       "key": "GPU"
     },
     {
