@@ -8,7 +8,7 @@ I haven't had much luck with this so far.
 I've tried it twice, and Firefox became very unstable.
 </div>
 
-- [ ] Edit the *sudoers* adding the necessary rights to the end of the file
+Edit the *sudoers* adding the necessary rights to the end of the file
 
 ```bash
 EDITOR=nvim sudo visudo
@@ -24,7 +24,7 @@ Check *psd* current status
 psd preview
 ```
 
-- [ ] Enable the *psd* service
+Enable the *psd* service
 
 ```bash
 systemctl --user enable psd.service
@@ -34,13 +34,13 @@ systemctl --user enable psd.service
 
 ### Wi-Fi Connection
 
-To get the list of available Wi-Fi networks
+Get the list of available Wi-Fi networks
 
 ```bash
 nmcli device wifi list
 ```
 
-To connect to a Wi-Fi
+Connect to a Wi-Fi
 
 ```bash
 nmcli device wifi connect <SSID_or_BSSID> password <password>
@@ -48,60 +48,91 @@ nmcli device wifi connect <SSID_or_BSSID> password <password>
 
 ### Update the DNS
 
-To get the list of the current active profiles
+Get the list of the current active profiles
 
 ```bash
 nmcli connection show --active
 ```
 
-To check the current DNS values
+Check the current DNS values
 
 ```bash
 nmcli connection show 'NAME' | rg dns
 ```
 
-To update the DNS
+Update the DNS
 
 ```bash
 nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
 ```
 
-To reconnect
+Reconnect
 
 ```bash
 nmcli connection down 'NAME'
 ```
+
 ```bash
 nmcli connection up 'NAME'
 ```
 
+## Rust
+
+### Toolchains
+
+Install the `nightly` channel
+
+```bash
+rustup toolchain install nightly
+```
+
+Check the installed toolchains
+
+```bash
+rustup toolchain list
+```
+
+### Targets
+
+Include support for the `Wasm` target
+
+```bash
+rustup target add wasm32-unknown-unknown
+```
+
+Check the installed targets
+
+```bash
+rustup target list --installed
+```
+
 ## Virtual Machine
 
-To check if virtualization is enabled
+Check if virtualization is enabled
 
 ```bash
 grep -Ec '(vmx|svm)' /proc/cpuinfo
 ```
 
-To install necessary packages
+Install necessary packages
 
 ```bash
 sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
 ```
 
-To enable **libvirtd** service
+Enable *libvirtd* service
 
 ```bash
 sudo systemctl enable --now libvirtd.service
 ```
 
-To add the user to the **libvirt** group
+Add the user to the *libvirt* group
 
 ```bash
 sudo usermod -aG libvirt $env.USER
 ```
 
-To restart the service
+Restart the service
 
 ```bash
 systemctl restart libvirtd.service

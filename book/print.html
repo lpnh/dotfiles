@@ -89,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="de/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recipes</li><li class="chapter-item expanded "><a href="recipes/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded "><a href="recipes/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="recipes/finishing.html">Finishing</a></li><li class="chapter-item expanded "><a href="recipes/dev_stuff.html">Dev Stuff</a></li><li class="chapter-item expanded "><a href="recipes/miscellaneous.html">Miscellaneous</a></li><li class="chapter-item expanded "><a href="recipes/system_maintenance.html">System Maintenance</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="index.html">About</a></li><li class="chapter-item expanded "><a href="overview/components.html">Components</a></li><li class="chapter-item expanded "><div>Screenshots</div></li><li class="chapter-item expanded affix "><li class="part-title">Operating System</li><li class="chapter-item expanded "><a href="os/live_usb.html">Live USB</a></li><li class="chapter-item expanded "><a href="os/live_environment.html">Live Environment</a></li><li class="chapter-item expanded "><a href="os/partitions.html">Partitions</a></li><li class="chapter-item expanded "><a href="os/installation.html">Installation</a></li><li class="chapter-item expanded "><a href="os/pos_installation.html">Pos-Installation</a></li><li class="chapter-item expanded affix "><li class="part-title">Desktop Environment</li><li class="chapter-item expanded "><a href="de/home_sweet_home.html">Home Sweet Home</a></li><li class="chapter-item expanded "><a href="de/miscellaneous.html">Miscellaneous</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -949,6 +949,8 @@ Install <em>xwayland-satellite</em></li>
 </code></pre>
 <pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
 </code></pre>
+<pre><code class="language-bash">cd target/release &amp;&amp; sudo cp xwayland-satellite /usr/bin/
+</code></pre>
 <ul>
 <li>
 <p><input disabled="" type="checkbox"/>
@@ -1046,56 +1048,13 @@ Enable the <em>ly</em> service</li>
 <pre><code class="language-bash">reboot
 </code></pre>
 <p><em>there's no place like home</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing"><a class="header" href="#finishing">Finishing</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff"><a class="header" href="#dev-stuff">Dev Stuff</a></h1>
-<h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
-<h3 id="toolchains"><a class="header" href="#toolchains">Toolchains</a></h3>
-<p>To install the <code>nightly</code> channel:</p>
-<pre><code class="language-bash">rustup toolchain install nightly
-</code></pre>
-<p>To check the installed toolchains:</p>
-<pre><code class="language-bash">rustup toolchain list
-</code></pre>
-<h3 id="targets"><a class="header" href="#targets">Targets</a></h3>
-<p>To include support for the <code>Wasm</code> target:</p>
-<pre><code class="language-bash">rustup target add wasm32-unknown-unknown
-</code></pre>
-<p>To check the installed targets:</p>
-<pre><code class="language-bash">rustup target list --installed
-</code></pre>
-<h2 id="flyio"><a class="header" href="#flyio">Fly.io</a></h2>
-<h3 id="update-the-dns"><a class="header" href="#update-the-dns">Update the DNS</a></h3>
-<div class="warning">
-This is a necessary step for my environment.
-Not sure if this will be the case for anyone else.
-</div>
-<p>To get the list of the current active profiles:</p>
-<pre><code class="language-bash">nmcli connection show --active
-</code></pre>
-<p>To check the current DNS values</p>
-<pre><code class="language-bash">nmcli connection show 'NAME' | rg dns
-</code></pre>
-<p>To update the DNS:</p>
-<pre><code class="language-bash">nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
-</code></pre>
-<p>To reconnect:</p>
-<pre><code class="language-bash">nmcli connection down 'NAME'
-</code></pre>
-<pre><code class="language-bash">nmcli connection up 'NAME'
-</code></pre>
-<h3 id="flyctl"><a class="header" href="#flyctl">flyctl</a></h3>
-<p>To installing <code>flyctl</code>:</p>
-<pre><code class="language-bash">curl -L https://fly.io/install.sh | sh
-</code></pre>
-<p>To sign in using <code>flyctl</code>:</p>
-<pre><code class="language-bash">fly auth login
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
 <h2 id="profile-sync-daemon"><a class="header" href="#profile-sync-daemon">Profile-sync-daemon</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <em>sudoers</em> adding the necessary rights</li>
-</ul>
+<div class="warning">
+I haven't had much luck with this so far.
+<p>I've tried it twice, and Firefox became very unstable.</p>
+</div>
+<p>Edit the <em>sudoers</em> adding the necessary rights to the end of the file</p>
 <pre><code class="language-bash">EDITOR=nvim sudo visudo
 </code></pre>
 <pre><code class="language-txt">lpnh ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
@@ -1103,551 +1062,63 @@ Edit the <em>sudoers</em> adding the necessary rights</li>
 <p>Check <em>psd</em> current status</p>
 <pre><code class="language-bash">psd preview
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <em>psd</em> service</li>
-</ul>
+<p>Enable the <em>psd</em> service</p>
 <pre><code class="language-bash">systemctl --user enable psd.service
 </code></pre>
 <h2 id="networkmanager"><a class="header" href="#networkmanager">NetworkManager</a></h2>
 <h3 id="wi-fi-connection"><a class="header" href="#wi-fi-connection">Wi-Fi Connection</a></h3>
-<p>To get the list of available Wi-Fi networks</p>
+<p>Get the list of available Wi-Fi networks</p>
 <pre><code class="language-bash">nmcli device wifi list
 </code></pre>
-<p>To connect to a Wi-Fi</p>
+<p>Connect to a Wi-Fi</p>
 <pre><code class="language-bash">nmcli device wifi connect &lt;SSID_or_BSSID&gt; password &lt;password&gt;
 </code></pre>
-<h3 id="update-the-dns-1"><a class="header" href="#update-the-dns-1">Update the DNS</a></h3>
-<p>To get the list of the current active profiles</p>
+<h3 id="update-the-dns"><a class="header" href="#update-the-dns">Update the DNS</a></h3>
+<p>Get the list of the current active profiles</p>
 <pre><code class="language-bash">nmcli connection show --active
 </code></pre>
-<p>To check the current DNS values</p>
+<p>Check the current DNS values</p>
 <pre><code class="language-bash">nmcli connection show 'NAME' | rg dns
 </code></pre>
-<p>To update the DNS</p>
+<p>Update the DNS</p>
 <pre><code class="language-bash">nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
 </code></pre>
-<p>To reconnect</p>
+<p>Reconnect</p>
 <pre><code class="language-bash">nmcli connection down 'NAME'
 </code></pre>
 <pre><code class="language-bash">nmcli connection up 'NAME'
 </code></pre>
-<h2 id="virtual-machine"><a class="header" href="#virtual-machine">Virtual Machine</a></h2>
-<p>To check if virtualization is enabled</p>
-<pre><code class="language-bash">grep -Ec '(vmx|svm)' /proc/cpuinfo
-</code></pre>
-<p>To install necessary packages</p>
-<pre><code class="language-bash">sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
-</code></pre>
-<p>To enable <strong>libvirtd</strong> service</p>
-<pre><code class="language-bash">sudo systemctl enable --now libvirtd.service
-</code></pre>
-<p>To add the user to the <strong>libvirt</strong> group</p>
-<pre><code class="language-bash">sudo usermod -aG libvirt $env.USER
-</code></pre>
-<p>To restart the service</p>
-<pre><code class="language-bash">systemctl restart libvirtd.service
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pos-installation-1"><a class="header" href="#pos-installation-1">Pos-Installation</a></h1>
-<h2 id="double-checking"><a class="header" href="#double-checking">Double Checking</a></h2>
-<p><em># sorry I'm neurotic</em></p>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the <strong>timesyncd</strong> service: <code>timedatectl status</code></li>
-<li><input disabled="" type="checkbox"/>
-Refresh the system, including the package database: <code>sudo pacman -Syyu</code></li>
-<li><input disabled="" type="checkbox"/>
-Make sure some basic system packages are installed:</li>
-</ul>
-<pre><code class="language-sh">sudo pacman -S --needed base-devel bash curl gcc git ncurses xz zstd
-</code></pre>
-<h2 id="installing-some-compilers"><a class="header" href="#installing-some-compilers">Installing Some Compilers</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-clang: <code>sudo pacman -S clang</code></li>
-<li><input disabled="" type="checkbox"/>
-go: <code>sudo pacman -S go</code></li>
-<li><input disabled="" type="checkbox"/>
-lua: <code>sudo pacman -S lua</code></li>
-<li><input disabled="" type="checkbox"/>
-rustup:</li>
-</ul>
-<pre><code class="language-sh">sudo pacman -S rustup
-</code></pre>
-<pre><code class="language-sh">rustup update stable
-</code></pre>
-<h2 id="graphic-drivers"><a class="header" href="#graphic-drivers">Graphic Drivers</a></h2>
-<h3 id="opengl"><a class="header" href="#opengl">OpenGL</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>mesa</strong>:</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S mesa
-</code></pre>
-<h3 id="amd"><a class="header" href="#amd">AMD</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-For Vulkan support:</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S vulkan-radeon
-</code></pre>
-<h3 id="nvidia"><a class="header" href="#nvidia">Nvidia</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install the <strong>nvidia</strong> package:</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S nvidia
-</code></pre>
-<h2 id="uki"><a class="header" href="#uki">UKI</a></h2>
-<h3 id="busybox"><a class="header" href="#busybox">Busybox</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>busybox</strong>:</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S busybox
-</code></pre>
-<h3 id="microcode"><a class="header" href="#microcode">Microcode</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>amd-ucode</strong> or <strong>intel-ucode</strong> according with your CPU.</li>
-</ul>
-<pre><code class="language-sh">sudo pacman -S amd-ucode
-</code></pre>
-<pre><code class="language-sh">sudo pacman -S intel-ucode
-</code></pre>
-<h3 id="booster"><a class="header" href="#booster">Booster</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>booster</strong>:</li>
-</ul>
-<pre><code class="language-sh">sudo pacman -S booster
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the configuration file accordingly:</li>
-</ul>
-<pre><code class="language-sh">sudo nano /etc/booster.yaml
-</code></pre>
-<pre><code class="language-yaml">extra_files: busybox,fsck,fsck.ext4
-modules_force_load: amdgpu,hid_generic,usbhid
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-For <strong>NVIDIA</strong> you can replace <strong>amdgpu</strong> with the following:</li>
-</ul>
-<pre><code class="language-yaml">modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm
-</code></pre>
-<h3 id="ukify"><a class="header" href="#ukify">Ukify</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>systemd-ukify</strong>:</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S systemd-ukify
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the configuration accordingly:</li>
-</ul>
-<pre><code class="language-bash">sudo nano /etc/ukify.conf
-</code></pre>
-<pre><code class="language-txt">[UKI]
-Linux=/boot/vmlinuz-linux
-Initrd=/boot/amd-ucode.img /boot/booster-linux.img
-Cmdline=@/etc/kernel/cmdline
-OSRelease=@/etc/os-release
-Splash=/usr/share/systemd/bootctl/splash-arch.bmp
-</code></pre>
-<h3 id="kernel-install"><a class="header" href="#kernel-install">Kernel-install</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the <strong>install.conf</strong> file:</li>
-</ul>
-<pre><code class="language-bash">sudo nano /etc/kernel/install.conf
-</code></pre>
-<pre><code class="language-txt">layout=uki
-uki_generator=ukify
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the <strong>ukify</strong> configuration:</li>
-</ul>
-<pre><code class="language-bash">sudo nano /etc/kernel/uki.conf
-</code></pre>
-<pre><code class="language-txt">[UKI]
-Linux=/boot/vmlinuz-linux
-Initrd=/boot/amd-ucode.img /boot/booster-linux.img
-Cmdline=@/etc/kernel/cmdline
-OSRelease=@/etc/os-release
-Splash=/usr/share/systemd/bootctl/splash-arch.bmp
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Verify the current <strong>kernel-install</strong> configuration:</li>
-</ul>
-<pre><code class="language-sh">kernel-install inspect
-</code></pre>
-<h3 id="kernel-command-line"><a class="header" href="#kernel-command-line">Kernel Command Line</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the parameters your system was booted up with:</li>
-</ul>
-<pre><code class="language-sh">cat /proc/cmdline
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Include new kernel parameters to the <strong>UKI</strong>:</li>
-</ul>
-<pre><code class="language-sh">sudo nano /etc/kernel/cmdline
-</code></pre>
-<h2 id="refind"><a class="header" href="#refind">rEFInd</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>refind</strong> package: <code>sudo pacman -S refind</code></li>
-<li><input disabled="" type="checkbox"/>
-Install it with the <strong>refind-install</strong> script: <code>refind-install</code></li>
-<li><input disabled="" type="checkbox"/>
-Start an interactive shell as root: <code>su</code></li>
-<li><input disabled="" type="checkbox"/>
-Create the <strong>themes</strong> directory inside refind installation path:</li>
-</ul>
-<pre><code class="language-bash">cd /efi/EFI/refind
-mkdir themes
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Clone the catppuccin repo inside the <strong>themes</strong> directory:</li>
-</ul>
-<pre><code class="language-bash">cd themes
-git clone https://github.com/catppuccin/refind.git catppuccin
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Go back to the <strong>refind</strong> directory:</li>
-</ul>
-<pre><code class="language-bash">cd /efi/EFI/refind
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <strong>refind.conf</strong>, adding a new <strong>menuentry</strong> for the
-<strong>systemd-boot</strong> and also including the <em>mocha.conf</em> file:</li>
-</ul>
-<pre><code class="language-bash">nano refind.conf
-</code></pre>
-<pre><code class="language-no_rust">menuentry "Arch Linux" {
-    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
-    volume "ARCHIE"
-    loader /EFI/systemd/systemd-bootx64.efi
-}
-
-include themes/catppuccin/mocha.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Exit the interactive shell: <code>exit</code></li>
-</ul>
-<h2 id="package-manager"><a class="header" href="#package-manager">Package Manager</a></h2>
-<h3 id="pacman"><a class="header" href="#pacman">Pacman</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update <strong>pacman</strong> configuration file:</li>
-</ul>
-<pre><code class="language-bash">sudo nano /etc/pacman.conf
-</code></pre>
-<pre><code class="language-txt"># Misc options
-#UseSyslog
-Color
-ILoveCandy
-#NoProgressBar
-#CheckSpace
-VerbosePkgLists
-ParallelDownloads = 5
-</code></pre>
-<h3 id="yay"><a class="header" href="#yay">Yay</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create and cd into the <strong>apps</strong> directory:</li>
-</ul>
-<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>yay</strong>:</li>
-</ul>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
-</code></pre>
-<pre><code class="language-bash"># I'm not sure about this one
-yay -Y --gendb
-</code></pre>
-<h3 id="additional-pacman-hooks"><a class="header" href="#additional-pacman-hooks">Additional Pacman Hooks</a></h3>
-<p>Install extra pacman hooks for the <code>kernel-install</code>:</p>
-<pre><code class="language-bash">yay -S pacman-hook-kernel-install
-</code></pre>
-<h2 id="generating-the-uki"><a class="header" href="#generating-the-uki">Generating the UKI</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Reinstall the kernel package to generate the unified kernel image:</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S linux
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the current available boot entries:</li>
-</ul>
-<pre><code class="language-bash">sudo bootctl list
-</code></pre>
-<p>If everything seems correct, reboot the system: <code>reboot</code></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home-1"><a class="header" href="#home-sweet-home-1">Home Sweet Home</a></h1>
-<h2 id="bootstrap"><a class="header" href="#bootstrap">Bootstrap</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <strong>chezmoi</strong>: <code>sudo pacman -S chezmoi</code></li>
-<li><input disabled="" type="checkbox"/>
-Initialize it:</li>
-</ul>
-<pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Apply the changes: <code>chezmoi apply</code></li>
-<li><input disabled="" type="checkbox"/>
-Reboot the system: <code>reboot</code></li>
-</ul>
-<h2 id="not-far-from-home"><a class="header" href="#not-far-from-home">Not Far From Home</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Launch <strong>niri</strong> from the tty: <code>niri-session</code></li>
-<li><input disabled="" type="checkbox"/>
-Check if <strong>fish</strong> is in the valid shells list: <code>cat /etc/shells</code></li>
-<li><input disabled="" type="checkbox"/>
-Set <strong>fish</strong> as login shell:</li>
-</ul>
-<pre><code class="language-sh">chsh -s /usr/bin/fish &lt;user&gt;
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check it:</li>
-</ul>
-<pre><code class="language-sh">getent passwd $USER | cut -d: -f7
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Refresh the font cache:</li>
-</ul>
-<pre><code class="language-sh">sudo fc-cache -fv
-</code></pre>
-<h2 id="ssh"><a class="header" href="#ssh">SSH</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Generate a new SSH key:</li>
-</ul>
-<pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the public key:</li>
-</ul>
-<pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Test the SSH connection:</li>
-</ul>
-<pre><code class="language-sh">ssh -T git@github.com
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>xwayland-satellite</em></li>
-</ul>
-<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
-</code></pre>
-<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
-</code></pre>
-<h2 id="neovim"><a class="header" href="#neovim">Neovim</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install and set <strong>Neovim nightly</strong> using <strong>bob</strong>:</li>
-</ul>
-<pre><code class="language-sh">bob install nightly
-</code></pre>
-<pre><code class="language-sh">sudo bob use nightly
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Increase <strong>inotify</strong> maximum numbers:</li>
-</ul>
-<pre><code class="language-sh">sudo nano /etc/sysctl.conf
-</code></pre>
-<pre><code class="language-txt">fs.inotify.max_queued_events=524288
-fs.inotify.max_user_watches=524288
-</code></pre>
-<h2 id="display-manager"><a class="header" href="#display-manager">Display Manager</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <strong>ly</strong> service: <code>systemctl enable ly</code></li>
-</ul>
-<p>Reboot the system: <code>reboot</code></p>
-<p><em>there's no place like home</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="finishing-1"><a class="header" href="#finishing-1">Finishing</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="dev-stuff-1"><a class="header" href="#dev-stuff-1">Dev Stuff</a></h1>
-<h2 id="rust-1"><a class="header" href="#rust-1">Rust</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install the <strong>nightly</strong> channel:</li>
-</ul>
+<h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
+<h3 id="toolchains"><a class="header" href="#toolchains">Toolchains</a></h3>
+<p>Install the <code>nightly</code> channel</p>
 <pre><code class="language-bash">rustup toolchain install nightly
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Include support for the <strong>Wasm</strong> target:</li>
-</ul>
-<pre><code class="language-bash">rustup target add wasm32-unknown-unknown
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the installation:</li>
-</ul>
+<p>Check the installed toolchains</p>
 <pre><code class="language-bash">rustup toolchain list
 </code></pre>
+<h3 id="targets"><a class="header" href="#targets">Targets</a></h3>
+<p>Include support for the <code>Wasm</code> target</p>
+<pre><code class="language-bash">rustup target add wasm32-unknown-unknown
+</code></pre>
+<p>Check the installed targets</p>
 <pre><code class="language-bash">rustup target list --installed
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous-1"><a class="header" href="#miscellaneous-1">Miscellaneous</a></h1>
-<h2 id="profile-sync-daemon-1"><a class="header" href="#profile-sync-daemon-1">Profile-sync-daemon</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Generate the configuration file and check the current status:</li>
-</ul>
-<pre><code class="language-sh">psd preview
+<h2 id="virtual-machine"><a class="header" href="#virtual-machine">Virtual Machine</a></h2>
+<p>Check if virtualization is enabled</p>
+<pre><code class="language-bash">grep -Ec '(vmx|svm)' /proc/cpuinfo
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <strong>sudoers</strong> adding the necessary rights</li>
-</ul>
-<pre><code class="language-sh">sudo visudo
+<p>Install necessary packages</p>
+<pre><code class="language-bash">sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
 </code></pre>
-<pre><code class="language-txt">&lt;username&gt; ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
+<p>Enable <em>libvirtd</em> service</p>
+<pre><code class="language-bash">sudo systemctl enable --now libvirtd.service
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <strong>psd.conf</strong> configuration file:</li>
-</ul>
-<pre><code class="language-sh">sudo nvim .config/psd/psd.conf
+<p>Add the user to the <em>libvirt</em> group</p>
+<pre><code class="language-bash">sudo usermod -aG libvirt $env.USER
 </code></pre>
-<pre><code class="language-txt"># Uncomment and set to "yes" to use overlayfs instead of a full copy to reduce
-# the memory costs and to improve sync/unsync operations. Note that your kernel
-# MUST have this module available in order to use this mode.
-#
-USE_OVERLAYFS="yes"
+<p>Restart the service</p>
+<pre><code class="language-bash">systemctl restart libvirtd.service
 </code></pre>
-<pre><code class="language-txt">#
-BROWSERS=(firefox)
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <strong>psd</strong> service:</li>
-</ul>
-<pre><code class="language-sh">systemctl --user enable psd.service
-</code></pre>
-<h2 id="networkmanager-1"><a class="header" href="#networkmanager-1">NetworkManager</a></h2>
-<h3 id="wi-fi-connection-1"><a class="header" href="#wi-fi-connection-1">Wi-Fi Connection</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Get the list of available Wi-Fi networks</li>
-</ul>
-<pre><code class="language-sh">nmcli device wifi list
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Connect to a Wi-Fi</li>
-</ul>
-<pre><code class="language-sh">nmcli device wifi connect &lt;SSID_or_BSSID&gt; password &lt;password&gt;
-</code></pre>
-<h3 id="update-the-dns-2"><a class="header" href="#update-the-dns-2">Update the DNS</a></h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Get the list of the current active profiles:</li>
-</ul>
-<pre><code class="language-sh">nmcli connection show --active
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the current DNS values</li>
-</ul>
-<pre><code class="language-sh">nmcli connection show 'NAME' | rg dns
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the DNS:</li>
-</ul>
-<pre><code class="language-sh">nmcli connection modify 'NAME' ipv4.dns "8.8.8.8 1.1.1.1"
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Reconnect:</li>
-</ul>
-<pre><code class="language-sh">nmcli connection down 'NAME'
-</code></pre>
-<pre><code class="language-sh">nmcli connection up 'NAME'
-</code></pre>
-<h2 id="tlp"><a class="header" href="#tlp">Tlp</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the service:</li>
-</ul>
-<pre><code class="language-sh">systemctl enable tlp.service
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Mask the <strong>rfkill</strong>:</li>
-</ul>
-<pre><code class="language-sh">systemctl mask systemd-rfkill.service
-</code></pre>
-<pre><code class="language-sh">systemctl mask systemd-rfkill.socket
-</code></pre>
-<h2 id="virtual-machine-1"><a class="header" href="#virtual-machine-1">Virtual Machine</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check if virtualization is enabled:</li>
-</ul>
-<pre><code class="language-sh">grep -Ec '(vmx|svm)' /proc/cpuinfo
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install necessary packages:</li>
-</ul>
-<pre><code class="language-sh">sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable <strong>libvirtd</strong> service:</li>
-</ul>
-<pre><code class="language-sh">sudo systemctl enable --now libvirtd.service
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Adding the user to the <strong>libvirt</strong> group:</li>
-</ul>
-<pre><code class="language-sh">sudo usermod -aG libvirt $env.USER
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Restarting the libvirtd service:</li>
-</ul>
-<pre><code class="language-sh">systemctl restart libvirtd.service
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="system-maintenance"><a class="header" href="#system-maintenance">System Maintenance</a></h1>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the <strong>mirrorlist</strong>:</li>
-</ul>
-<pre><code class="language-sh">sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Refresh the entire system:</li>
-</ul>
-<pre><code class="language-sh">yay -Syyu
-</code></pre>
-<p><em># work in progress</em></p>
 
                     </main>
 
