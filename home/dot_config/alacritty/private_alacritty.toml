@@ -11,8 +11,11 @@ opacity = 0.5
 dynamic_title = false
 
 [font]
-normal = { family = "FiraMono Nerd Font", style = "Regular" }
 size = 12.0
+
+[font.normal]
+family = "FiraMono Nerd Font"
+style = "Regular"
 
 [cursor]
 unfocused_hollow = false
