@@ -32,14 +32,13 @@
     "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "active": "󰪥",
-            "default": "󰄰"
+            "default": "󰄰",
+            "focused": "󰪥"
         }
     },
     "wlr/taskbar": {
         "format": "{app_id}",
         "tooltip": false,
-        "active-first": true,
         "rewrite": {
             "Alacritty": "",
             "(Ankama).*": "󱏲",
@@ -55,6 +54,7 @@
     },
     "niri/window": {
         "format": "{app_id}",
+        "separate-outputs": true
     },
 
     "clock": {
