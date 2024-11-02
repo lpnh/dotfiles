@@ -7,12 +7,6 @@ optional = [
     # dofus
     "ankama-launcher",
     "wine",            # multilib repo
-    # more specific dev stuff
-    "cargo-generate",
-    "cargo-shuttle",
-    "love",
-    "tiled",
-    "zola",
     # minecraft
     "glfw",
     "prismlauncher",
@@ -24,8 +18,10 @@ optional = [
     "vulkan-tools",        # to check Vulkan is working
 ]
 
-# should be manually installed with `cargo install --locked`
+# also optional, but should be manually installed with `cargo install --locked`
 crates = ["cargo-chef", "trunk"]
+
+dev = ["cargo-aur-bin", "cargo-generate", "cargo-make", "love", "tiled", "zola"]
 
 # packages already manually installed
 already_installed = [
@@ -144,7 +140,6 @@ common = [
     "bat",
     "bob",
     "bottom",
-    "cargo-make",
     "eza",
     "fd",
     "ffmpegthumbnailer",
