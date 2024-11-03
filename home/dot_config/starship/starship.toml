@@ -10,7 +10,7 @@ disabled = true
 [hostname]
 ssh_symbol = ' '
 format = '[$ssh_symbol$hostname]($style) in '
-style = 'green'
+style = 'yellow'
 
 [cmd_duration]
 format = 'took [$duration]($style) '
