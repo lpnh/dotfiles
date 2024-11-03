@@ -1,6 +1,22 @@
 # Sets user-defined palette
 palette = "catppuccin_mocha"
 
+[username]
+style_user = "teal"
+style_root = "maroon"
+format = '[$user ]($style)'
+disabled = true
+
+[hostname]
+ssh_symbol = ' '
+format = '[$ssh_symbol$hostname]($style) in '
+style = 'green'
+
+[cmd_duration]
+format = 'took [$duration]($style) '
+style = 'yellow'
+disabled = true
+
 [character]
 success_symbol = "[♥](pink) "
 error_symbol = "[ ](red)"
