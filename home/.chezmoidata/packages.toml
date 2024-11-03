@@ -19,7 +19,7 @@ optional = [
 ]
 
 # also optional, but should be manually installed with `cargo install --locked`
-crates = ["cargo-chef", "trunk"]
+crates = ["cargo-chef", "ncspot", "trunk"]
 
 dev = ["cargo-aur-bin", "cargo-generate", "cargo-make", "love", "tiled", "zola"]
 
@@ -163,7 +163,6 @@ common = [
     "md-tui",
     "mdbook",
     "mpv",
-    "ncspot",
     "npm",                    # nvim relies on it to install certain LSPs
     "otf-firamono-nerd",
     "otf-font-awesome",
