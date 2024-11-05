@@ -163,6 +163,7 @@ common = [
     "md-tui",
     "mdbook",
     "mpv",
+    "niri",
     "npm",                    # nvim relies on it to install certain LSPs
     "otf-firamono-nerd",
     "otf-font-awesome",
@@ -196,7 +197,6 @@ common = [
 aur = [
     "cava",
     "fswatch",
-    "niri-git",
     "pandoc-bin",
     "vesktop-bin",
     "xcursor-breeze",
