@@ -14,42 +14,52 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      options = {
-        icons_enabled = true,
-        theme = 'catppuccin',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        disabled_filetypes = { 'dashboard' },
-      },
-      sections = {
-        lualine_b = {
-          {
-            'branch',
-            separator = { right = '' },
-            color = { bg = '#363a4f' },
+    config = function()
+      local ok, statusline = pcall(require, 'arrow.statusline')
+
+      local function arrow()
+        if ok then
+          return statusline.text_for_statusline_with_icons()
+        end
+      end
+
+      require('lualine').setup {
+        options = {
+          icons_enabled = true,
+          theme = 'catppuccin',
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
+          disabled_filetypes = { 'dashboard' },
+        },
+        sections = {
+          lualine_b = {
+            {
+              'branch',
+              separator = { right = '' },
+              color = { bg = '#363a4f' },
+            },
+            {
+              'diagnostics',
+              separator = { right = '' },
+              color = { bg = '#363a4f' },
+            },
           },
-          {
-            'diagnostics',
-            separator = { right = '' },
-            color = { bg = '#363a4f' },
+          lualine_c = { 'filename' },
+          lualine_x = { arrow },
+          lualine_y = {
+            {
+              'progress',
+              color = { bg = '#363a4f' },
+            },
           },
         },
-        lualine_c = { 'filename' },
-        lualine_x = { 'grapple' },
-        lualine_y = {
-          {
-            'progress',
-            color = { bg = '#363a4f' },
-          },
+        extensions = {
+          'lazy',
+          'mason',
+          'oil',
         },
-      },
-      extensions = {
-        'lazy',
-        'mason',
-        'oil',
-      },
-    },
+      }
+    end,
   },
 
   -- Take care of messages, cmdline and popupmenu
