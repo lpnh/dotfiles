@@ -84,27 +84,22 @@ return {
     end,
   },
 
-  -- Grapple
+  -- Arrow
   {
-    'cbochs/grapple.nvim',
+    'otavioschwanck/arrow.nvim',
     dependencies = {
-      { 'nvim-tree/nvim-web-devicons', lazy = true },
+      { 'echasnovski/mini.icons' },
     },
-    opts = {
-      scope = 'git', -- also try out "git_branch"
-    },
-    event = { 'BufReadPost', 'BufNewFile' },
-    cmd = 'Grapple',
-    keys = {
-      { '<A-m>', '<cmd>Grapple toggle<cr>', desc = 'Grapple toggle tag' },
-      { '<A-e>', '<cmd>Grapple toggle_tags<cr>', desc = 'Grapple open tags window' },
-      { '<A-l>', '<cmd>Grapple cycle_tags next<cr>', desc = 'Grapple cycle next tag' },
-      { '<A-h>', '<cmd>Grapple cycle_tags prev<cr>', desc = 'Grapple cycle previous tag' },
-      { '<A-1>', '<cmd>Grapple select index=1<cr>', desc = 'Select first tag' },
-      { '<A-2>', '<cmd>Grapple select index=2<cr>', desc = 'Select second tag' },
-      { '<A-3>', '<cmd>Grapple select index=3<cr>', desc = 'Select third tag' },
-      { '<A-4>', '<cmd>Grapple select index=4<cr>', desc = 'Select fourth tag' },
-    },
+    config = function()
+      require('arrow').setup {
+        show_icons = true,
+        leader_key = '<A-a>',
+        buffer_leader_key = 'm',
+      }
+
+      vim.keymap.set('n', '<A-h>', require('arrow.persist').previous)
+      vim.keymap.set('n', '<A-l>', require('arrow.persist').next)
+    end,
   },
 
   {
