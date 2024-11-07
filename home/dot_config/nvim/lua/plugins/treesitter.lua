@@ -4,12 +4,15 @@ return {
     dependencies = { 'nushell/tree-sitter-nu' },
     build = ':TSUpdate',
     lazy = vim.fn.argc(-1) == 0,
+    main = 'nvim-treesitter.configs',
     opts = {
       ensure_installed = {
         'bash',
         'c',
         'css',
         'diff',
+        'dockerfile',
+        'fish',
         'html',
         'json',
         'jsonc',

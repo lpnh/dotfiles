@@ -29,7 +29,7 @@ return {
           theme = 'catppuccin',
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
-          disabled_filetypes = { 'dashboard' },
+          disabled_filetypes = { statusline = { 'dashboard' } },
         },
         sections = {
           lualine_b = {

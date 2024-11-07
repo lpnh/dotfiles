@@ -8,24 +8,25 @@ return {
   config = function()
     require('catppuccin').setup {
       transparent_background = true,
-      custom_highlights = function(colors)
-        return {
-          IblScope = { fg = colors.overlay0 },
-          IblIndent = { fg = colors.surface1 },
-          Comment = { fg = colors.overlay1 },
-          LineNr = { fg = colors.overlay0 },
-          WarningMsg = { style = { 'italic' } },
-          ErrorMsg = { style = { 'italic' } },
-          CursorLine = { bg = colors.surface0 },
-          FloatBorder = { fg = colors.lavender },
-          DashboardFooter = { fg = colors.pink },
-          LazyButton = { bg = colors.mantle },
-          LazyButtonActive = { bg = colors.surface0 },
-          TelescopeSelection = { fg = colors.rosewater },
-          Visual = { bg = colors.surface0 },
-        }
-      end,
+      -- custom_highlights = function(colors)
+      --   return {
+      --     IblScope = { fg = colors.overlay0 },
+      --     IblIndent = { fg = colors.surface1 },
+      --     Comment = { fg = colors.overlay1 },
+      --     LineNr = { fg = colors.overlay0 },
+      --     WarningMsg = { style = { 'italic' } },
+      --     ErrorMsg = { style = { 'italic' } },
+      --     CursorLine = { bg = colors.surface0 },
+      --     FloatBorder = { fg = colors.lavender },
+      --     DashboardFooter = { fg = colors.pink },
+      --     LazyButton = { bg = colors.mantle },
+      --     LazyButtonActive = { bg = colors.surface0 },
+      --     TelescopeSelection = { fg = colors.rosewater },
+      --     Visual = { bg = colors.surface0 },
+      --   }
+      -- end,
       integrations = {
+        beacon = true,
         indent_blankline = {
           enabled = true,
           scope_color = 'surface1',
@@ -36,6 +37,7 @@ return {
         which_key = true,
       },
     }
+
     vim.cmd.colorscheme 'catppuccin'
   end,
 }
