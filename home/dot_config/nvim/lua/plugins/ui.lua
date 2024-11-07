@@ -9,8 +9,7 @@ return {
     end,
   },
 
-  -- Set lualine as statusline
-  -- See `:help lualine.txt`
+  -- Lualine
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
