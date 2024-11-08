@@ -1,5 +1,5 @@
 [plugin]
-deps = [ { use = "dedukun/relative-motions", rev = "1d6d686" }, { use = "yazi-rs/plugins:smart-filter", rev = "102a0cd" }, { use = "yazi-rs/plugins:chmod", rev = "102a0cd" }, { use = "yazi-rs/plugins:diff", rev = "102a0cd" }, { use = "lpnh/fg", rev = "43fb735" }, { use = "yazi-rs/plugins:mime-ext", rev = "102a0cd" }, ]
+deps = [ { use = "dedukun/relative-motions", rev = "1d6d686" }, { use = "yazi-rs/plugins:smart-filter", rev = "4adba4e" }, { use = "yazi-rs/plugins:chmod", rev = "4adba4e" }, { use = "yazi-rs/plugins:diff", rev = "4adba4e" }, { use = "lpnh/fg", rev = "43fb735" }, { use = "yazi-rs/plugins:mime-ext", rev = "4adba4e" }, ]
 
 [flavor]
 deps = []
