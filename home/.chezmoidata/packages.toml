@@ -140,6 +140,7 @@ common = [
     "bat",
     "bob",
     "bottom",
+    "cargo-update",
     "eza",
     "fd",
     "ffmpegthumbnailer",
