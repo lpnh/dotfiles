@@ -15,6 +15,9 @@ set -gx FZF_DEFAULT_OPTS "\
 --color=selected-bg:#45475a \
 --multi"
 
+# yazi zoxide ui
+set -gx YAZI_ZOXIDE_OPTS "--no-border --preview='eza --color=always --group-directories-first --icons {2}'"
+
 # cursor style
 set -gx fish_vi_force_cursor 1
 set -gx fish_cursor_default block
