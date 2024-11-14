@@ -17,6 +17,7 @@
     "modules-right": [
         "tray",
         "niri/language",
+        "bluetooth",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
         "battery",
@@ -67,17 +68,26 @@
         "spacing": 10
     },
     "niri/language": {
-        "format": "xkb: {}",
-        "format-en": "English",
-        "format-en-intl": "English (intl)",
-        "format-pt": "Brazilian"
+        "format": "{} 󰥻",
+        "format-en": "en",
+        "format-en-intl": "en-intl",
+        "format-pt": "br"
+    },
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "{status} 󰂯",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": "{num_connections} connected 󰂯",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
-        "format-ethernet": "eth ",
+        "format-ethernet": "eth 󰈀",
         "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP) ",
+        "format-linked": "{ifname} (No IP) 󰈀",
         "format-disconnected": "disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
