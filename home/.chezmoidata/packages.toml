@@ -66,6 +66,8 @@ already_installed = [
 system = [
     "alsa-utils",
     "b43-fwcutter",
+    "bluez",
+    "bluez-utils",
     "breeze-icons",
     "device-mapper",
     "diffutils",
