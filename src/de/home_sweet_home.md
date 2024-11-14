@@ -157,6 +157,23 @@ open https://wakatime.com/api-key
 WakaTimeApiKey
 ```
 
+- [ ] Enable the *bluetooth* service
+
+```bash
+systemctl enable bluetooth.service
+```
+
+- [ ] Update the *main.conf* file to set the startup state as **off**
+
+```bash
+sudo nano /etc/bluetooth/main.conf
+```
+
+```txt
+[Policy]
+AutoEnable=false
+```
+
 - [ ] Enable the *ly* service
 
 ```bash
