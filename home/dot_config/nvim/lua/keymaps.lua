@@ -18,9 +18,8 @@ map.set('n', '<esc>', '<cmd>nohlsearch<CR>')
 map.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Diagnostic
+-- Open diagnostic float window
 map.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show diagnostic error messages' })
-map.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 
 -- Move to window using the <ctrl> hjkl keys
 map.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to left window' })

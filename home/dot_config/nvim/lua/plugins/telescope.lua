@@ -26,7 +26,6 @@ return {
           horizontal = {
             prompt_position = 'top',
             -- preview_width = 0.55,
-            -- results_width = 0.8,
           },
           vertical = {
             mirror = false,
@@ -89,13 +88,25 @@ return {
     vim.keymap.set('n', '<leader>sh', builtin.oldfiles, { desc = 'Search in recent files' })
     vim.keymap.set('n', '<leader>ssd', builtin.builtin, { desc = 'Search symbols in document' })
     vim.keymap.set('n', '<leader>ssw', builtin.builtin, { desc = 'Search symbols in workspace' })
-    vim.keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Find existing buffers' })
 
-    -- Slightly advanced example of overriding default behavior and theme
+    vim.keymap.set('n', '<Tab>', function()
+      builtin.buffers(require('telescope.themes').get_ivy {
+        ignore_current_buffer = false,
+        layout_config = { height = 0.25 },
+        path_display = { 'tail' },
+      })
+    end, { desc = 'Find existing buffers' })
+
+    vim.keymap.set('n', '<leader>ds', function()
+      builtin.diagnostics(require('telescope.themes').get_ivy {
+        path_display = { 'tail' },
+        previewer = false,
+      })
+    end, { desc = 'Search diagnostics' })
+
     vim.keymap.set('n', '<leader>/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
         previewer = false,
       })
     end, { desc = 'Fuzzily search in current buffer' })
