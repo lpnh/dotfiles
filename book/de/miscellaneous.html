@@ -211,9 +211,15 @@ I haven't had much luck with this so far.
 <pre><code class="language-bash">rustup target list --installed
 </code></pre>
 <h2 id="virtual-machine"><a class="header" href="#virtual-machine">Virtual Machine</a></h2>
-<p>Check if virtualization is enabled</p>
-<pre><code class="language-bash">grep -Ec '(vmx|svm)' /proc/cpuinfo
+<p>Check the hardware virtualization support</p>
+<pre><code class="language-bash"># the output should be &gt; 0
+grep -Ec '(vmx|svm)' /proc/cpuinfo
 </code></pre>
+<div class="warning">
+Make sure the virtualization is enabled in the BIOS
+<p>For AMD, look for the SVM option
+For Intel, look for the VMX option</p>
+</div>
 <p>Install necessary packages</p>
 <pre><code class="language-bash">sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
 </code></pre>

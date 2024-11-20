@@ -108,11 +108,19 @@ rustup target list --installed
 
 ## Virtual Machine
 
-Check if virtualization is enabled
+Check the hardware virtualization support
 
 ```bash
+# the output should be > 0
 grep -Ec '(vmx|svm)' /proc/cpuinfo
 ```
+
+<div class="warning">
+Make sure the virtualization is enabled in the BIOS
+
+For AMD, look for the SVM option
+For Intel, look for the VMX option
+</div>
 
 Install necessary packages
 
