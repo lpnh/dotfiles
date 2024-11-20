@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Pos-Installation - dotfiles cookbook</title>
+        <title>Live USB - dotfiles cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -155,142 +155,54 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
+                        <h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
+<h2 id="creating-a-bootable-usb-containing-the-iso"><a class="header" href="#creating-a-bootable-usb-containing-the-iso">Creating a bootable USB containing the ISO</a></h2>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Create the <em>themes</em> directory for <em>refind</em></li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Download the ISO file from the <a href="https://archlinux.org/download/">Arch Linux website</a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"/>
+Find the USB drive name</p>
+</li>
 </ul>
-<pre><code class="language-bash">cd /efi/EFI/refind
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-On refind installation path, clone the catppuccin repo inside a <em>themes</em>
-directory</li>
-</ul>
-<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
-</code></pre>
-<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <em>mocha.conf</em> file, commenting the last line</li>
-</ul>
-<pre><code class="language-bash">nano catppuccin/mocha.conf
-</code></pre>
-<pre><code class="language-txt">#showtools hidden_tags
+<pre><code class="language-bash">ls -l /dev/disk/by-id/usb-*
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Edit the <em>refind.conf</em>, making sure to add a new <em>menuentry</em> for the
-<em>systemd-boot</em> and also including the <em>mocha.conf</em> file</li>
+Make sure it is <strong>not</strong> mounted (the MOUNTPOINTS column should be empty)</li>
 </ul>
-<pre><code class="language-bash">nano ../refind.conf
-</code></pre>
-<pre><code class="language-txt">timeout 5
-
-[...]
-
-menuentry "Arch Linux" {
-    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
-    volume "ARCHIE_ESP"
-    loader /EFI/systemd/systemd-bootx64.efi
-}
-
-include themes/catppuccin/mocha.conf
+<pre><code class="language-bash">lsblk
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install some compilers</li>
+Write the ISO to the USB drive</li>
 </ul>
-<pre><code class="language-sh">sudo pacman -S clang go lua rustup
-</code></pre>
-<pre><code class="language-sh">rustup update stable
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the <em>loader.conf</em> file</li>
-</ul>
-<pre><code class="language-bash">sudo nano /efi/loader/loader.conf
-</code></pre>
-<pre><code class="language-txt">timeout 1
-console-mode auto
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>pacman-contrib</em></li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S pacman-contrib
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <em>paccache.timer</em> to periodically clean the pacman cache</li>
-</ul>
-<pre><code class="language-bash">systemctl enable paccache.timer
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update <em>pacman</em> configuration file</li>
-</ul>
-<pre><code class="language-bash">sudo nano /etc/pacman.conf
-</code></pre>
-<pre><code class="language-txt"># Misc options
-#UseSyslog
-Color
-ILoveCandy
-#NoProgressBar
-#CheckSpace
-VerbosePkgLists
-ParallelDownloads = 5
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the database</li>
-</ul>
-<pre><code class="language-bash">pacman -Sy
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>yay</em></li>
-</ul>
-<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install extra pacman hooks</li>
-</ul>
-<pre><code class="language-bash">yay -S pacman-hook-kernel-install
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Reinstall the kernel package to trigger the unified kernel image hooks</li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S linux
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the current available boot entries</li>
-</ul>
-<pre><code class="language-bash">sudo bootctl list
+<pre><code class="language-bash">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
 </code></pre>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
-<li>For some reason the <em>rEFInd</em> showtools variable is not working properly for
-me anymore, this is why I have to comment that line on catppucin's mocha file</li>
-<li>An example for the <em>pacman.conf</em> file can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
-repo</a>.
-If you plan to use packages like steam, make sure to enable (uncomment) the
-[multilib] repository</li>
+<li>
+<p>The BitTorrent Download is the recommended option and the file will look
+like this: <code>archlinux-version-x86_64.iso.torrent</code></p>
+</li>
+<li>
+<p>The USB drive name should look something like
+<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>. Make sure
+to <strong>not</strong> append any partition like <em>-part1</em></p>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../os/installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../overview/components.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../de/home_sweet_home.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../recipes/live_environment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -300,11 +212,11 @@ If you plan to use packages like steam, make sure to enable (uncomment) the
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../os/installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../overview/components.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../de/home_sweet_home.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../recipes/live_environment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

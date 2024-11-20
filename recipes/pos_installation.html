@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installation - dotfiles cookbook</title>
+        <title>Pos-Installation - dotfiles cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -155,280 +155,142 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+                        <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Update the <strong>mirrorlist</strong></li>
+Create the <em>themes</em> directory for <em>refind</em></li>
 </ul>
-<pre><code class="language-bash">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install the essential packages to the new root</li>
-</ul>
-<pre><code class="language-bash">pacstrap -K /mnt base linux linux-firmware
-</code></pre>
-<p><em>And also:</em></p>
-<pre><code class="language-txt">base-devel
-git
-amd-code / intel-ucode
-booster
-busybox
-systemd-ukify
-mesa
-vulkan-radeon / nvidia
-networkmanager
-nano
-refind
+<pre><code class="language-bash">cd /efi/EFI/refind
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Generate an <em>fstab</em> file</li>
+On refind installation path, clone the catppuccin repo inside a <em>themes</em>
+directory</li>
 </ul>
-<pre><code class="language-bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
+</code></pre>
+<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Change root into the new system</li>
+Edit the <em>mocha.conf</em> file, commenting the last line</li>
 </ul>
-<pre><code class="language-bash">arch-chroot /mnt
+<pre><code class="language-bash">nano catppuccin/mocha.conf
+</code></pre>
+<pre><code class="language-txt">#showtools hidden_tags
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Set the time zone</li>
+Edit the <em>refind.conf</em>, making sure to add a new <em>menuentry</em> for the
+<em>systemd-boot</em> and also including the <em>mocha.conf</em> file</li>
 </ul>
-<pre><code class="language-bash"># Example for UTC-3
-ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
+<pre><code class="language-bash">nano ../refind.conf
+</code></pre>
+<pre><code class="language-txt">timeout 5
+
+[...]
+
+menuentry "Arch Linux" {
+    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
+    volume "ARCHIE_ESP"
+    loader /EFI/systemd/systemd-bootx64.efi
+}
+
+include themes/catppuccin/mocha.conf
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Check the new local time</li>
+Install some compilers</li>
 </ul>
-<pre><code class="language-bash">date
+<pre><code class="language-sh">sudo pacman -S clang go lua rustup
+</code></pre>
+<pre><code class="language-sh">rustup update stable
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Generate the <em>/etc/adjtime</em></li>
+Update the <em>loader.conf</em> file</li>
 </ul>
-<pre><code class="language-bash">hwclock --systohc
+<pre><code class="language-bash">sudo nano /efi/loader/loader.conf
+</code></pre>
+<pre><code class="language-txt">timeout 1
+console-mode auto
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Set up time synchronization</li>
+Install <em>pacman-contrib</em></li>
 </ul>
-<pre><code class="language-bash">systemctl enable systemd-timesyncd.service
+<pre><code class="language-bash">sudo pacman -S pacman-contrib
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Edit the <em>locale.gen</em> file, uncommenting all the needed UTF-8 locales</li>
+Enable the <em>paccache.timer</em> to periodically clean the pacman cache</li>
 </ul>
-<pre><code class="language-bash">nano /etc/locale.gen
-</code></pre>
-<pre><code class="language-txt">en_US.UTF-8 UTF-8
-#en_US ISO-8859-1
+<pre><code class="language-bash">systemctl enable paccache.timer
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Generate the locales</li>
+Update <em>pacman</em> configuration file</li>
 </ul>
-<pre><code class="language-bash">locale-gen
+<pre><code class="language-bash">sudo nano /etc/pacman.conf
+</code></pre>
+<pre><code class="language-txt"># Misc options
+#UseSyslog
+Color
+ILoveCandy
+#NoProgressBar
+#CheckSpace
+VerbosePkgLists
+ParallelDownloads = 5
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <em>locale.conf</em> file, setting the <em>LANG</em> variable accordingly</li>
+Update the database</li>
 </ul>
-<pre><code class="language-bash">nano /etc/locale.conf
-</code></pre>
-<pre><code class="language-txt">LANG=en_US.UTF-8
+<pre><code class="language-bash">pacman -Sy
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <em>/etc/vconsole.conf</em> file, if a different keyboard layout is
-required</li>
+Install <em>yay</em></li>
 </ul>
-<pre><code class="language-bash">nano /etc/vconsole.conf
-</code></pre>
-<pre><code class="language-txt">KEYMAP=br-abnt2
+<pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <em>hostname</em> file</li>
+Install extra pacman hooks</li>
 </ul>
-<pre><code class="language-bash">nano /etc/hostname
-</code></pre>
-<pre><code class="language-txt">desktop
+<pre><code class="language-bash">yay -S pacman-hook-kernel-install
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Set the root password</li>
+Reinstall the kernel package to trigger the unified kernel image hooks</li>
 </ul>
-<pre><code class="language-bash">passwd
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Create a new user, adding it to the <em>wheel</em> group</li>
-</ul>
-<pre><code class="language-bash">useradd -m -G wheel &lt;username&gt;
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Add a password to the user</li>
-</ul>
-<pre><code class="language-bash">passwd &lt;username&gt;
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the sudoers configuration file</li>
-</ul>
-<pre><code class="language-bash">EDITOR=nano visudo
-</code></pre>
-<pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
-%wheel ALL=(ALL:ALL) ALL
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>systemd-boot</em></li>
-</ul>
-<pre><code class="language-bash">bootctl install
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>rEFInd</em></li>
-</ul>
-<pre><code class="language-bash">refind-install
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set booster configuration file</li>
-</ul>
-<pre><code class="language-bash">nano /etc/booster.yaml
-</code></pre>
-<pre><code class="language-yaml">extra_files: busybox,fsck,fsck.ext4
-modules_force_load: amdgpu,hid_generic,usbhid
-</code></pre>
-<p><em>for <strong>nvidia</strong> gpu, replace <strong>amdgpu</strong> accordingly:</em></p>
-<pre><code class="language-yaml">modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm,hid_generic,usbhid
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the <em>install.conf</em> file</li>
-</ul>
-<pre><code class="language-bash">nano /etc/kernel/install.conf
-</code></pre>
-<pre><code class="language-txt">layout=uki
-uki_generator=ukify
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set the <em>ukify</em> configuration</li>
-</ul>
-<pre><code class="language-bash">nano /etc/kernel/uki.conf
-</code></pre>
-<pre><code class="language-txt">[UKI]
-Initrd=/boot/booster-linux.img
-Microcode=/boot/&lt;amd/intel&gt;-ucode.img
-Splash=/usr/share/systemd/bootctl/splash-arch.bmp
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Include the device and other kernel parameters to the <em>cmdline</em></li>
-</ul>
-<pre><code class="language-bash">nano /etc/kernel/cmdline
-</code></pre>
-<pre><code class="language-txt">root=LABEL=ARCHIE_ROOT nvme_load=YES nowatchdog rw quiet
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Verify the current <em>kernel-install</em> configuration</li>
-</ul>
-<pre><code class="language-bash">kernel-install inspect
+<pre><code class="language-bash">sudo pacman -S linux
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Check the current available boot entries</li>
 </ul>
-<pre><code class="language-bash">bootctl list
+<pre><code class="language-bash">sudo bootctl list
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <em>NetworkManager</em> service</li>
-</ul>
-<pre><code class="language-bash">systemctl enable NetworkManager
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Exit the chroot environment</li>
-</ul>
-<pre><code class="language-bash">exit
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Unmount all the partitions</li>
-</ul>
-<pre><code class="language-bash">umount -R /mnt
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Reboot</li>
-</ul>
-<pre><code class="language-bash">reboot
-</code></pre>
-<p><em>good luck !</em></p>
-<details open>
-  <summary>
-    <i>for laptop only</i>
-  </summary>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Use <em>nmcli</em> to list and to connect to available Wi-Fi networks</li>
-</ul>
-<pre><code class="language-sh">nmcli device wifi list
-</code></pre>
-<pre><code class="language-sh">nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt;
-</code></pre>
-<p>Enable the <em>tlp</em> service</p>
-<pre><code class="language-bash">systemctl enable tlp.service
-</code></pre>
-<p>Mask the <em>rfkill</em> service</p>
-<pre><code class="language-bash">systemctl mask systemd-rfkill.service
-</code></pre>
-<pre><code class="language-bash">systemctl mask systemd-rfkill.socket
-</code></pre>
-</details>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Download <em>fastfetch</em></li>
-</ul>
-<pre><code class="language-bash">sudo pacman -S fastfetch
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Run it</li>
-</ul>
-<pre><code class="language-bash">fastfetch
-</code></pre>
-<p><em>enjoy your new achievement !</em></p>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
-<li>A good reference for essential packages is to check the ones available in the
-Arch Linux live system (ISO). You can find them
-<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>
-Another good source is to check the packages available in the EndeavourOS ISO.
-You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
-repo</a></li>
-<li>Jokes aside, the last step is a simple and efficient way to verify your
-installation</li>
+<li>For some reason the <em>rEFInd</em> showtools variable is not working properly for
+me anymore, this is why I have to comment that line on catppucin's mocha file</li>
+<li>An example for the <em>pacman.conf</em> file can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
+repo</a>.
+If you plan to use packages like steam, make sure to enable (uncomment) the
+[multilib] repository</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../os/partitions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../recipes/installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../os/pos_installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../recipes/home_sweet_home.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -438,11 +300,11 @@ installation</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../os/partitions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../recipes/installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../os/pos_installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../recipes/home_sweet_home.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

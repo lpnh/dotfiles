@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Live USB - dotfiles cookbook</title>
+        <title>Live Environment - dotfiles cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -155,54 +155,80 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="live-usb"><a class="header" href="#live-usb">Live USB</a></h1>
-<h2 id="creating-a-bootable-usb-containing-the-iso"><a class="header" href="#creating-a-bootable-usb-containing-the-iso">Creating a bootable USB containing the ISO</a></h2>
+                        <h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
 <ul>
-<li>
-<p><input disabled="" type="checkbox"/>
-Download the ISO file from the <a href="https://archlinux.org/download/">Arch Linux website</a></p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"/>
-Find the USB drive name</p>
-</li>
+<li><input disabled="" type="checkbox"/>
+Improve the default font size</li>
 </ul>
-<pre><code class="language-bash">ls -l /dev/disk/by-id/usb-*
+<pre><code class="language-bash">setfont ter-222b
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Make sure it is <strong>not</strong> mounted (the MOUNTPOINTS column should be empty)</li>
+Change the default keyboard layout (US), if necessary</li>
 </ul>
-<pre><code class="language-bash">lsblk
+<pre><code class="language-bash"># for example, to set a brazilian keyboard layout
+loadkeys br-abnt2
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Write the ISO to the USB drive</li>
+Make sure the system is booted in UEFI mode</li>
 </ul>
-<pre><code class="language-bash">sudo pv path/to/archlinux-version-x86_64.iso -Yo /dev/disk/by-id/usb-My_flash_drive-0:0
+<pre><code class="language-sh"># the output should be 64 for 64-bit system
+cat /sys/firmware/efi/fw_platform_size
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Connect to the internet</li>
+</ul>
+<p><em>For ethernet, just plug in the cable</em></p>
+<details open>
+  <summary>
+    <i>For wifi, use <b>iwctl</b> interactive prompt</i>
+  </summary>
+<pre><code class="language-bash">iwctl
+</code></pre>
+<pre><code class="language-bash"># this command will not output anything
+station wlan0 scan
+</code></pre>
+<pre><code class="language-bash"># check the available networks
+station wlan0 get-networks
+</code></pre>
+<pre><code class="language-bash"># connect
+station wlan0 connect "SSID"
+</code></pre>
+<pre><code class="language-bash"># check the connection
+station wlan0 show
+</code></pre>
+<pre><code class="language-bash"># Ctrl+d works too
+exit
+</code></pre>
+</details>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the internet connection</li>
+</ul>
+<pre><code class="language-bash">ping archlinux.org
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Ensure the system clock is synchronized</li>
+</ul>
+<pre><code class="language-sh">timedatectl
 </code></pre>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
-<li>
-<p>The BitTorrent Download is the recommended option and the file will look
-like this: <code>archlinux-version-x86_64.iso.torrent</code></p>
-</li>
-<li>
-<p>The USB drive name should look something like
-<code>/dev/disk/by-id/usb-SanDisk_Cruzer_Blade_4C530000100920118104-0:0</code>. Make sure
-to <strong>not</strong> append any partition like <em>-part1</em></p>
-</li>
+<li>You can check the available keyboard layouts running <code>localectl list-keymaps</code></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../overview/components.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../recipes/live_usb.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../os/live_environment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../recipes/partitions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -212,11 +238,11 @@ to <strong>not</strong> append any partition like <em>-part1</em></p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../overview/components.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../recipes/live_usb.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../os/live_environment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../recipes/partitions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

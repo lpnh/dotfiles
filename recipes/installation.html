@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Home Sweet Home - dotfiles cookbook</title>
+        <title>Installation - dotfiles cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -155,194 +155,280 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
+                        <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install <em>chezmoi</em></li>
+Update the <strong>mirrorlist</strong></li>
 </ul>
-<pre><code class="language-bash">sudo pacman -S chezmoi
+<pre><code class="language-bash">reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Initialize it</li>
+Install the essential packages to the new root</li>
 </ul>
-<pre><code class="language-sh">chezmoi init https://github.com/&lt;user&gt;/dotfiles.git
+<pre><code class="language-bash">pacstrap -K /mnt base linux linux-firmware
+</code></pre>
+<p><em>And also:</em></p>
+<pre><code class="language-txt">base-devel
+git
+amd-code / intel-ucode
+booster
+busybox
+systemd-ukify
+mesa
+vulkan-radeon / nvidia
+networkmanager
+nano
+refind
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Apply the changes</li>
+Generate an <em>fstab</em> file</li>
 </ul>
-<pre><code class="language-bash">chezmoi apply
+<pre><code class="language-bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre>
-<p><em>just watch the magic happen</em></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Reboot the system</li>
+Change root into the new system</li>
+</ul>
+<pre><code class="language-bash">arch-chroot /mnt
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the time zone</li>
+</ul>
+<pre><code class="language-bash"># Example for UTC-3
+ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the new local time</li>
+</ul>
+<pre><code class="language-bash">date
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Generate the <em>/etc/adjtime</em></li>
+</ul>
+<pre><code class="language-bash">hwclock --systohc
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set up time synchronization</li>
+</ul>
+<pre><code class="language-bash">systemctl enable systemd-timesyncd.service
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the <em>locale.gen</em> file, uncommenting all the needed UTF-8 locales</li>
+</ul>
+<pre><code class="language-bash">nano /etc/locale.gen
+</code></pre>
+<pre><code class="language-txt">en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Generate the locales</li>
+</ul>
+<pre><code class="language-bash">locale-gen
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <em>locale.conf</em> file, setting the <em>LANG</em> variable accordingly</li>
+</ul>
+<pre><code class="language-bash">nano /etc/locale.conf
+</code></pre>
+<pre><code class="language-txt">LANG=en_US.UTF-8
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <em>/etc/vconsole.conf</em> file, if a different keyboard layout is
+required</li>
+</ul>
+<pre><code class="language-bash">nano /etc/vconsole.conf
+</code></pre>
+<pre><code class="language-txt">KEYMAP=br-abnt2
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create the <em>hostname</em> file</li>
+</ul>
+<pre><code class="language-bash">nano /etc/hostname
+</code></pre>
+<pre><code class="language-txt">desktop
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the root password</li>
+</ul>
+<pre><code class="language-bash">passwd
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create a new user, adding it to the <em>wheel</em> group</li>
+</ul>
+<pre><code class="language-bash">useradd -m -G wheel &lt;username&gt;
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a password to the user</li>
+</ul>
+<pre><code class="language-bash">passwd &lt;username&gt;
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Edit the sudoers configuration file</li>
+</ul>
+<pre><code class="language-bash">EDITOR=nano visudo
+</code></pre>
+<pre><code class="language-txt">## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL:ALL) ALL
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>systemd-boot</em></li>
+</ul>
+<pre><code class="language-bash">bootctl install
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>rEFInd</em></li>
+</ul>
+<pre><code class="language-bash">refind-install
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set booster configuration file</li>
+</ul>
+<pre><code class="language-bash">nano /etc/booster.yaml
+</code></pre>
+<pre><code class="language-yaml">extra_files: busybox,fsck,fsck.ext4
+modules_force_load: amdgpu,hid_generic,usbhid
+</code></pre>
+<p><em>for <strong>nvidia</strong> gpu, replace <strong>amdgpu</strong> accordingly:</em></p>
+<pre><code class="language-yaml">modules_force_load: nvidia,nvidia_modeset,nvidia_uvm,nvidia_drm,hid_generic,usbhid
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the <em>install.conf</em> file</li>
+</ul>
+<pre><code class="language-bash">nano /etc/kernel/install.conf
+</code></pre>
+<pre><code class="language-txt">layout=uki
+uki_generator=ukify
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Set the <em>ukify</em> configuration</li>
+</ul>
+<pre><code class="language-bash">nano /etc/kernel/uki.conf
+</code></pre>
+<pre><code class="language-txt">[UKI]
+Initrd=/boot/booster-linux.img
+Microcode=/boot/&lt;amd/intel&gt;-ucode.img
+Splash=/usr/share/systemd/bootctl/splash-arch.bmp
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Include the device and other kernel parameters to the <em>cmdline</em></li>
+</ul>
+<pre><code class="language-bash">nano /etc/kernel/cmdline
+</code></pre>
+<pre><code class="language-txt">root=LABEL=ARCHIE_ROOT nvme_load=YES nowatchdog rw quiet
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the current <em>kernel-install</em> configuration</li>
+</ul>
+<pre><code class="language-bash">kernel-install inspect
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the current available boot entries</li>
+</ul>
+<pre><code class="language-bash">bootctl list
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>NetworkManager</em> service</li>
+</ul>
+<pre><code class="language-bash">systemctl enable NetworkManager
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Exit the chroot environment</li>
+</ul>
+<pre><code class="language-bash">exit
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Unmount all the partitions</li>
+</ul>
+<pre><code class="language-bash">umount -R /mnt
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Reboot</li>
 </ul>
 <pre><code class="language-bash">reboot
 </code></pre>
+<p><em>good luck !</em></p>
+<details open>
+  <summary>
+    <i>for laptop only</i>
+  </summary>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Launch <em>niri</em> from the tty</li>
+Use <em>nmcli</em> to list and to connect to available Wi-Fi networks</li>
 </ul>
-<pre><code class="language-bash">niri-session
+<pre><code class="language-sh">nmcli device wifi list
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check if <em>fish</em> is in the valid shells list</li>
-</ul>
-<pre><code class="language-bash">cat /etc/shells
+<pre><code class="language-sh">nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt;
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Set <em>fish</em> as login shell</li>
-</ul>
-<pre><code class="language-sh">chsh -s /usr/bin/fish &lt;user&gt;
+<p>Enable the <em>tlp</em> service</p>
+<pre><code class="language-bash">systemctl enable tlp.service
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check it</li>
-</ul>
-<pre><code class="language-sh">getent passwd $USER | cut -d: -f7
+<p>Mask the <em>rfkill</em> service</p>
+<pre><code class="language-bash">systemctl mask systemd-rfkill.service
 </code></pre>
+<pre><code class="language-bash">systemctl mask systemd-rfkill.socket
+</code></pre>
+</details>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Refresh the font cache to make sure the fonts are available system-wide</li>
+Download <em>fastfetch</em></li>
 </ul>
-<pre><code class="language-sh">sudo fc-cache -fv
+<pre><code class="language-bash">sudo pacman -S fastfetch
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Install <em>xwayland-satellite</em></li>
+Run it</li>
 </ul>
-<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
+<pre><code class="language-bash">fastfetch
 </code></pre>
-<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
-</code></pre>
-<pre><code class="language-bash">cd target/release &amp;&amp; sudo cp xwayland-satellite /usr/bin/
-</code></pre>
+<p><em>enjoy your new achievement !</em></p>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
-<li>
-<p><input disabled="" type="checkbox"/>
-Download <em>Bitwarden</em> <a href="https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/">firefox
-extension</a></p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"/>
-Login into Firefox</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"/>
-Apply <em>Catppuccin Mocha Mauve</em> color theme to Firefox <a href="https://color.firefox.com/?theme=XQAAAAJEBAAAAAAAAABBqYhm849SCicxcUcPX38oKRicm6da8pFtMcajvXaAE3RJ0F_F447xQs-L1kFlGgDKq4IIvWciiy4upusW7OvXIRinrLrwLvjXB37kvhN5ElayHo02fx3o8RrDShIhRpNiQMOdww5V2sCMLAfehhpkvCNGPFQ9qpGpx7BgGSYPGUMFXC1Ua9FaxHdWOc93hEJrTCm7pTY2gENlkIGOUk-0q5koU7B1u0Ej-oMph40xEOeck_YUJD52Bwer09STdlto8FTe2opihD2FyRdpJyZydtlY3dK_RO373JUB4GPAs2saJone2-92ozhdZDXTzFe1BzECDYiTLKw8wgkHlYGBfEaHwiRhB6Xx67wrqMSr8VhLm8d-NCA1DySJVtxxWJN-qabWQpDds2gw6dhs97Ngt5Z_6ZhJ5vv31xfjj2v6iK816VOdJaIaQu4xsqHAytxXRLJQ8LtmF0BsXZI5kUVsRJUHALGJAvl388n-yyQfaq8ZWzVK-rrBoAJJqwlvJaa-7K1eFh6NaMojpf5pl-eqKMtg1KMmYlS4DjK6Z__leZhs">by clicking
-here</a></p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"/>
-Generate a new SSH key</p>
-</li>
+<li>A good reference for essential packages is to check the ones available in the
+Arch Linux live system (ISO). You can find them
+<a href="https://geo.mirror.pkgbuild.com/iso/latest/arch/pkglist.x86_64.txt">here</a>
+Another good source is to check the packages available in the EndeavourOS ISO.
+You can find them in <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64">their
+repo</a></li>
+<li>Jokes aside, the last step is a simple and efficient way to verify your
+installation</li>
 </ul>
-<pre><code class="language-sh">ssh-keygen -t ed25519 -C "your_email@example.com"
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check the public key</li>
-</ul>
-<pre><code class="language-sh">cat ~/.ssh/id_ed25519.pub
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Use <em>github</em> to test the SSH connection</li>
-</ul>
-<pre><code class="language-sh">ssh -T git@github.com
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Rebuild <em>bat</em> cache to include catppuccin's syntax highlighting</li>
-</ul>
-<pre><code class="language-bash">bat cache --build
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Check if it's now available</li>
-</ul>
-<pre><code class="language-bash">bat --list-themes | rg "Catppuccin"
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Fetch <em>Yazi</em> plugins</li>
-</ul>
-<pre><code class="language-bash">ya pack -i
-</code></pre>
-<pre><code class="language-bash">ya pack -u
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install and set <em>Neovim nightly</em></li>
-</ul>
-<pre><code class="language-sh">bob install nightly
-</code></pre>
-<pre><code class="language-sh">sudo bob use nightly
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Increase <em>inotify</em> maximum values</li>
-</ul>
-<pre><code class="language-sh">sudo nano /etc/sysctl.conf
-</code></pre>
-<pre><code class="language-txt">fs.inotify.max_queued_events=524288
-fs.inotify.max_user_watches=524288
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Launch <em>Neovim</em> to fetch its configuration</li>
-</ul>
-<pre><code class="language-bash">nv
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Include the api-key for the <em>WakaTime</em> plugin</li>
-</ul>
-<pre><code class="language-bash"># launch the website and copy the api key
-open https://wakatime.com/api-key
-</code></pre>
-<pre><code class="language-bash"># run the following cmd inside neovim and paste the key
-WakaTimeApiKey
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <em>bluetooth</em> service</li>
-</ul>
-<pre><code class="language-bash">systemctl enable bluetooth.service
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Update the <em>main.conf</em> file to set the startup state as <strong>off</strong></li>
-</ul>
-<pre><code class="language-bash">sudo nano /etc/bluetooth/main.conf
-</code></pre>
-<pre><code class="language-txt">[Policy]
-AutoEnable=false
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Enable the <em>ly</em> service</li>
-</ul>
-<pre><code class="language-bash">systemctl enable ly
-</code></pre>
-<p>Reboot the system</p>
-<pre><code class="language-bash">reboot
-</code></pre>
-<p><em>there's no place like home</em></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../os/pos_installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../recipes/partitions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../de/miscellaneous.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../recipes/pos_installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -352,11 +438,11 @@ Enable the <em>ly</em> service</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../os/pos_installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../recipes/partitions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../de/miscellaneous.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../recipes/pos_installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
