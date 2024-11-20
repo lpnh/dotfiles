@@ -4,7 +4,15 @@ return {
     'echasnovski/mini.icons',
     version = false,
     config = function()
-      require('mini.icons').setup()
+      require('mini.icons').setup {
+        file = {
+          ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
+        },
+        extension = {
+          db = { glyph = '' },
+          lock = { glyph = '' },
+        },
+      }
       MiniIcons.mock_nvim_web_devicons()
     end,
   },
@@ -28,7 +36,7 @@ return {
           theme = 'catppuccin',
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
-          disabled_filetypes = { statusline = { 'dashboard' } },
+          disabled_filetypes = { 'snacks_dashboard' },
         },
         sections = {
           lualine_b = {
