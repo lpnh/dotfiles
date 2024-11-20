@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Live Environment - dotfiles cookbook</title>
+        <title>Partitions - dotfiles cookbook</title>
 
 
         <!-- Custom HTML head -->
@@ -155,80 +155,140 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="live-environment"><a class="header" href="#live-environment">Live Environment</a></h1>
+                        <h1 id="partitions"><a class="header" href="#partitions">Partitions</a></h1>
+<div class="warning">
+Always make sure to identify and select the correct device.
+<p>Otherwise, the following steps may result in unintended data loss.</p>
+</div>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Improve the default font size</li>
+Identify available disks</li>
 </ul>
-<pre><code class="language-bash">setfont ter-222b
+<pre><code class="language-bash"># rom, loop or airootfs may be ignore
+lsblk
 </code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Change the default keyboard layout (US), if necessary</li>
-</ul>
-<pre><code class="language-bash"># for example, to set a brazilian keyboard layout
-loadkeys br-abnt2
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Make sure the system is booted in UEFI mode</li>
-</ul>
-<pre><code class="language-sh"># the output should be 64 for 64-bit system
-cat /sys/firmware/efi/fw_platform_size
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Connect to the internet</li>
-</ul>
-<p><em>For ethernet, just plug in the cable</em></p>
 <details open>
   <summary>
-    <i>For wifi, use <b>iwctl</b> interactive prompt</i>
+    <i>The next step is for NVMe drives only</i>
   </summary>
-<pre><code class="language-bash">iwctl
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the formatted logical block address (LBA) size</li>
+</ul>
+<pre><code class="language-bash">nvme id-ns -H /dev/nvme0n1 | grep "Relative Performance"
 </code></pre>
-<pre><code class="language-bash"># this command will not output anything
-station wlan0 scan
+<p>On the output example below the sector size in use (512 bytes) is <strong>not</strong> the
+optimal one:</p>
+<pre><code class="language-txt">LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
+LBA Format  1 : Metadata Size: 0   bytes - Data Size: 4096 bytes - Relative Performance: 0x1 Better
 </code></pre>
-<pre><code class="language-bash"># check the available networks
-station wlan0 get-networks
-</code></pre>
-<pre><code class="language-bash"># connect
-station wlan0 connect "SSID"
-</code></pre>
-<pre><code class="language-bash"># check the connection
-station wlan0 show
-</code></pre>
-<pre><code class="language-bash"># Ctrl+d works too
-exit
+<p>You can confirm it by running <code>lsblk -td</code> and looking at the <code>LOG-SEC</code> column value.</p>
+<p>To change the logical block address size, you can use the <code>nvme format</code> command
+specifying the preferred value with the <code>--lbaf</code> parameter:</p>
+<pre><code class="language-bash">nvme format --lbaf=1 /dev/nvme0n1
 </code></pre>
 </details>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Check the internet connection</li>
+Create the partitions</li>
 </ul>
-<pre><code class="language-bash">ping archlinux.org
+<pre><code class="language-bash">cfdisk /dev/the_disk_to_be_partitioned
+</code></pre>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Purpose</th><th style="text-align: left">Suggested size</th><th style="text-align: left">Partition type</th><th style="text-align: left">Mount point</th></tr></thead><tbody>
+<tr><td style="text-align: left">efi</td><td style="text-align: left">1 GiB</td><td style="text-align: left">EFI System</td><td style="text-align: left">/efi</td></tr>
+<tr><td style="text-align: left">swap</td><td style="text-align: left">8 GiB</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">[SWAP]</td></tr>
+<tr><td style="text-align: left">root</td><td style="text-align: left">Remainder</td><td style="text-align: left">Linux filesystem</td><td style="text-align: left">/</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the partitions</li>
+</ul>
+<pre><code class="language-bash">fdisk -l /dev/partitioned_disk
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Ensure the system clock is synchronized</li>
+Create an <em>Ext4</em> fs for the <strong>root</strong></li>
 </ul>
-<pre><code class="language-sh">timedatectl
+<pre><code class="language-bash">mkfs.ext4 /dev/root_partition
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Initialize the <strong>swap</strong></li>
+</ul>
+<pre><code class="language-bash">mkswap /dev/swap_partition
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Format the <strong>efi</strong> to <em>FAT32</em></li>
+</ul>
+<pre><code class="language-bash">mkfs.fat -F 32 /dev/efi_system_partition
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a label to the <strong>efi</strong> partition</li>
+</ul>
+<pre><code class="language-sh"># This will be useful later on to set the rEFInd config
+dosfslabel /dev/efi_system_partition ARCHIE_ESP
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add a label to the <strong>root</strong> partition</li>
+</ul>
+<pre><code class="language-sh"># This will be useful later on to set the root device
+e2label /dev/root_partition ARCHIE_ROOT
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Verify the result</li>
+</ul>
+<pre><code class="language-bash">lsblk --fs /dev/partioned_disk
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Mount the <strong>root</strong> partition to <strong>/mnt</strong></li>
+</ul>
+<pre><code class="language-bash">mount /dev/root_partition /mnt
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Mount the <strong>efi</strong> partition to <strong>/mnt/efi</strong></li>
+</ul>
+<pre><code class="language-bash">mount --mkdir /dev/efi_system_partition /mnt/efi
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <strong>swap</strong></li>
+</ul>
+<pre><code class="language-bash">swapon /dev/swap_partition
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Check the mountpoints</li>
+</ul>
+<pre><code class="language-bash">lsblk /dev/partioned_disk
 </code></pre>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
-<li>You can check the available keyboard layouts running <code>localectl list-keymaps</code></li>
+<li>
+<p>To identify available disks, the <code>fdisk -l</code> command provides all the
+necessary information, but <code>lsblk</code> is also a good alternative for a concise
+output</p>
+</li>
+<li>
+<p>Make sure to set the correct type for the <em>efi</em> partition</p>
+</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../os/live_usb.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../recipes/live_environment.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../os/partitions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../recipes/installation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -238,11 +298,11 @@ Ensure the system clock is synchronized</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../os/live_usb.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../recipes/live_environment.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../os/partitions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../recipes/installation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

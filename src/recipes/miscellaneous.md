@@ -118,17 +118,16 @@ grep -Ec '(vmx|svm)' /proc/cpuinfo
 <div class="warning">
 Make sure the virtualization is enabled in the BIOS
 
-For AMD, look for the SVM option
-For Intel, look for the VMX option
+For AMD, look for the SVM option. For Intel, look for the VMX option
 </div>
 
-Install necessary packages
+Install the necessary packages
 
 ```bash
 sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
 ```
 
-Enable *libvirtd* service
+Enable the *libvirtd* service
 
 ```bash
 sudo systemctl enable --now libvirtd.service

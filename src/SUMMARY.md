@@ -6,15 +6,12 @@
 - [Components](overview/components.md)
 - [Screenshots]()
 
-# Operating System
+# Recipes
 
-- [Live USB](os/live_usb.md)
-- [Live Environment](os/live_environment.md)
-- [Partitions](os/partitions.md)
-- [Installation](os/installation.md)
-- [Pos-Installation](os/pos_installation.md)
-
-# Desktop Environment
-
-- [Home Sweet Home](de/home_sweet_home.md)
-- [Miscellaneous](de/miscellaneous.md)
+- [Live USB](recipes/live_usb.md)
+- [Live Environment](recipes/live_environment.md)
+- [Partitions](recipes/partitions.md)
+- [Installation](recipes/installation.md)
+- [Pos-Installation](recipes/pos_installation.md)
+- [Home Sweet Home](recipes/home_sweet_home.md)
+- [Miscellaneous](recipes/miscellaneous.md)
