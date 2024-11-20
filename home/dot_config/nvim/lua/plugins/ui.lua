@@ -76,14 +76,6 @@ return {
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module='...'` entries
       'MunifTanjim/nui.nvim',
-      -- optional: enable notification view
-      {
-        'rcarriga/nvim-notify',
-        opts = {
-          background_colour = '#000000',
-          timeout = '1500',
-        },
-      },
     },
     opts = {
       cmdline = {
