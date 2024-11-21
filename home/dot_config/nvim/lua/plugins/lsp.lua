@@ -52,7 +52,6 @@ return {
             },
           },
         },
-        markdown_oxide = true,
         nushell = { manual_install = true },
         rust_analyzer = {
           manual_install = true,
@@ -187,16 +186,6 @@ return {
   {
     'stevearc/conform.nvim',
     lazy = false,
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
-        end,
-        mode = '',
-        desc = 'Format buffer',
-      },
-    },
     opts = {
       notify_on_error = false,
       format_on_save = {
@@ -205,6 +194,16 @@ return {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
+      },
+    },
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_format = 'fallback' }
+        end,
+        mode = '',
+        desc = 'Format buffer',
       },
     },
   },

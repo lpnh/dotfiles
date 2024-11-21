@@ -28,7 +28,7 @@ map.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to upper window' })
 map.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to right window' })
 
 -- Alternate buffer
-map.set('n', '<A-Tab>', '<cmd>b#<CR>', { desc = 'Close current buffer', silent = true })
+map.set('n', '<A-Tab>', '<cmd>b#<CR>', { desc = 'Alternate buffer', silent = true })
 
 -- Close buffer
 map.set('n', '<leader>x', '<C-w>c', { desc = 'Close current buffer' })

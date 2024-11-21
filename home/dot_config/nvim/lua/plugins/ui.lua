@@ -117,20 +117,17 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
-    opts = {},
-    config = function()
-      require('ibl').setup {
-        indent = { char = '▏' },
-        scope = {
-          show_start = false,
+    opts = {
+      indent = { char = '▏' },
+      scope = {
+        show_start = false,
+      },
+      exclude = {
+        filetypes = {
+          'dashboard',
         },
-        exclude = {
-          filetypes = {
-            'dashboard',
-          },
-        },
-      }
-    end,
+      },
+    },
   },
 
   -- Add git related signs to the gutter and other utilities
