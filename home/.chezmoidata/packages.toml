@@ -164,6 +164,7 @@ common = [
     "glow",
     "imv",
     "jq",
+    "lazygit",
     "libqalculate",
     "lld",
     "lua51",
