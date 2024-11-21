@@ -21,7 +21,15 @@ optional = [
 # also optional, but should be manually installed with `cargo install --locked`
 crates = ["cargo-chef", "ncspot", "trunk"]
 
-dev = ["cargo-aur-bin", "cargo-generate", "cargo-make", "love", "tiled", "zola"]
+dev = [
+    "cargo-aur-bin",
+    "cargo-generate",
+    "cargo-make",
+    "just",
+    "love",
+    "tiled",
+    "zola",
+]
 
 # packages already manually installed
 already_installed = [
@@ -156,7 +164,6 @@ common = [
     "glow",
     "imv",
     "jq",
-    "just",
     "libqalculate",
     "lld",
     "lua51",
