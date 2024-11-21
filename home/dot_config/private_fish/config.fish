@@ -87,6 +87,9 @@ alias gst 'git status'
 alias la 'ls -a'
 alias ll 'ls -l'
 
+# lazygit
+alias lg lazygit
+
 # neovim
 alias nv nvim
 
