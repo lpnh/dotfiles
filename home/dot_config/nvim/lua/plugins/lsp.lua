@@ -136,7 +136,6 @@ return {
           map('gd', builtin.lsp_definitions, 'Go to definition')
           map('gD', vim.lsp.buf.declaration, 'Go to declaration')
           map('gR', builtin.lsp_references, 'Go to references')
-          map('gI', builtin.lsp_implementations, 'Go to implementation')
           map('gt', builtin.lsp_type_definitions, 'Go to type definition')
 
           -- Fuzzy find all the symbols in the current document or workspace
@@ -145,7 +144,7 @@ return {
 
           -- Highlight references of the word under the cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -166,13 +165,6 @@ return {
                 vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
               end,
             })
-          end
-
-          -- Enable inlay hints if the language server supports them
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>h', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, 'Toggle inlay hints')
           end
         end,
       })
