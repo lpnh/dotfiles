@@ -41,6 +41,13 @@ return {
     },
   },
 
+  -- Sessions
+  {
+    'folke/persistence.nvim',
+    event = 'BufReadPre',
+    opts = {},
+  },
+
   -- Mini modules
   {
     'echasnovski/mini.nvim',

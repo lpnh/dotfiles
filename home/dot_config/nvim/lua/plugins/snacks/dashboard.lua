@@ -20,7 +20,7 @@ return {
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
       { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
       { icon = ' ', key = 'h', desc = 'History', action = ":lua Snacks.dashboard.pick('oldfiles')" },
-      -- { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+      { icon = '󱀸 ', key = 's', desc = 'Restore Session', section = 'session' },
       { icon = ' ', key = 'o', desc = 'Oil', action = ':Oil' },
       { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
       { icon = '󰒲 ', key = 'u', desc = 'Update Lazy', action = ':Lazy update', enabled = package.loaded.lazy ~= nil },
@@ -28,7 +28,6 @@ return {
     },
     -- Used by the `header` section
     header = [[
-
 
 
 ░░░    ░░  ░░░░░░░   ░░░░░░   ░░    ░░  ░░  ░░░    ░░░
