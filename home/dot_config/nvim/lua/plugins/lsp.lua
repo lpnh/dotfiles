@@ -210,35 +210,24 @@ return {
         markdown = { 'markdownlint' },
       }
 
-      -- Create autocommand which carries out the actual linting
-      -- on the specified events.
-      local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-        group = lint_augroup,
+        group = vim.api.nvim_create_augroup('lint', { clear = true }),
         callback = function()
-          require('lint').try_lint()
+          lint.try_lint()
         end,
       })
 
-      -- Toggle MD031 and MD032 rules
-      local mdl_rules_enabled = true
-      local mdl = require('lint').linters.markdownlint
-
-      local function toggle_mdl_rules()
-        if mdl_rules_enabled then
-          mdl.args = { '--disable', 'MD031', 'MD032' }
-          print 'markdownlint: MD031 and MD032 disabled'
+      local is_enabled = true
+      local function toggle_md_lint()
+        if is_enabled then
+          vim.diagnostic.reset(lint.get_namespace 'markdownlint')
         else
-          mdl.args = {}
-          print 'markdownlint: MD031 and MD032 enabled'
+          lint.try_lint()
         end
-        mdl_rules_enabled = not mdl_rules_enabled
-        require('lint').try_lint()
+        is_enabled = not is_enabled
       end
 
-      vim.api.nvim_create_user_command('ToggleMdlRules', toggle_mdl_rules, {})
-
-      vim.keymap.set('n', '<leader>mr', toggle_mdl_rules, { desc = 'Toggle markdownlint rules' })
+      vim.keymap.set('n', '<leader>ml', toggle_md_lint, { desc = 'Toggle MD linting' })
     end,
   },
 

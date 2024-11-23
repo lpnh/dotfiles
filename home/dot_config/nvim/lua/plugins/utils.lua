@@ -65,12 +65,12 @@ return {
   {
     'stevearc/oil.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
     opts = {
       view_options = {
         show_hidden = true,
       },
     },
-    cmd = { 'Oil' },
     keys = {
       { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' },
     },
@@ -108,6 +108,21 @@ return {
     'saecki/crates.nvim',
     event = { 'BufRead Cargo.toml' },
     opts = {},
+  },
+
+  -- Markdown
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
+    ft = { 'markdown' },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {
+      enabled = false,
+    },
+    keys = {
+      { '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', desc = 'Toggle MD rendering' },
+    },
   },
 
   -- Tailwind QOL
