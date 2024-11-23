@@ -186,7 +186,6 @@ common = [
     "sqlitebrowser",
     "starship",
     "stylua",
-    "sway",
     "swaybg",
     "swayidle",
     "swaylock",
