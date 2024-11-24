@@ -34,6 +34,7 @@ return {
         mason = true,
         noice = true,
         notify = true,
+        snacks = true,
         which_key = true,
       },
     }
