@@ -1,3 +1,10 @@
+# Custom linemode
+
+[[manager.prepend_keymap]]
+on = ["m", "c"]
+run = "linemode custom"
+desc = "Linemode: custom"
+
 # Custom layout
 
 [[manager.prepend_keymap]]
