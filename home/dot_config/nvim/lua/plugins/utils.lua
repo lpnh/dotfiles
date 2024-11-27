@@ -12,7 +12,7 @@ return {
     opts = {},
   },
 
-  -- Find and Replace
+  -- Find and replace
   {
     'MagicDuck/grug-far.nvim',
     opts = {},
@@ -41,7 +41,7 @@ return {
     },
   },
 
-  -- Sessions
+  -- Implement sessions
   {
     'folke/persistence.nvim',
     event = 'BufReadPre',
@@ -103,7 +103,7 @@ return {
     },
   },
 
-  -- Crates dependencies QOL
+  -- Crates dependencies
   {
     'saecki/crates.nvim',
     event = { 'BufRead Cargo.toml' },
@@ -125,7 +125,7 @@ return {
     },
   },
 
-  -- Tailwind QOL
+  -- Tailwind
   {
     'luckasRanarison/tailwind-tools.nvim',
     name = 'tailwind-tools',
