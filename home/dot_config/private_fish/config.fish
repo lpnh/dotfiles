@@ -34,12 +34,10 @@ bind -M insert \ef forward-word
 # aliases
 
 # bat
-alias b bat
-alias bl 'bat --line-range'
+alias b 'bat --plain'
+alias bl 'bat --plain --line-range'
 alias bn 'bat --number'
 alias bnl 'bat --number --line-range'
-alias bp 'bat --plain'
-alias bpl 'bat --plain --line-range'
 
 # chezmoi
 alias ch chezmoi
