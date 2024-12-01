@@ -20,6 +20,23 @@ return {
     },
   },
   keys = {
+    -- Scratch
+    {
+      '<leader>.',
+      function()
+        Snacks.scratch()
+      end,
+      desc = 'Toggle Scratch Buffer',
+    },
+    {
+      '<leader>S',
+      function()
+        Snacks.scratch.select()
+      end,
+      desc = 'Select Scratch Buffer',
+    },
+
+    -- Git
     {
       '<leader>gg',
       function()
@@ -55,6 +72,8 @@ return {
       end,
       desc = 'Lazygit Log (cwd)',
     },
+
+    -- Rename
     {
       'grf',
       function()
@@ -62,6 +81,8 @@ return {
       end,
       desc = 'Rename File',
     },
+
+    -- ???
     {
       ']]',
       function()
@@ -92,10 +113,16 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        -- Create some toggle mappings
+        -- Toggle wrap (useful for html stuff)
         Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>w'
+
+        -- Maybe I'll still use this... someday, we'll see
         Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>n'
+
+        -- Diagnostics
         Snacks.toggle.diagnostics():map '<leader>dd'
+
+        -- Inlay hints
         Snacks.toggle.inlay_hints():map '<leader>h'
       end,
     })
