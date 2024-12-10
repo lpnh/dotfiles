@@ -6,6 +6,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = require 'plugins.snacks.dashboard',
+    indent = {},
     notifier = require 'plugins.snacks.notifier',
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },

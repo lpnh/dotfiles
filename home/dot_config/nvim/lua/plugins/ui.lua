@@ -112,24 +112,6 @@ return {
     },
   },
 
-  -- Add indentation guides even on blank lines
-  -- See `:help ibl`
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    opts = {
-      indent = { char = '▏' },
-      scope = {
-        show_start = false,
-      },
-      exclude = {
-        filetypes = {
-          'dashboard',
-        },
-      },
-    },
-  },
-
   -- Add git related signs to the gutter and other utilities
   -- See `:help gitsigns`
   {
