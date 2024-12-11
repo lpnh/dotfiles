@@ -158,48 +158,6 @@
                         <h1 id="pos-installation"><a class="header" href="#pos-installation">Pos-Installation</a></h1>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Create the <em>themes</em> directory for <em>refind</em></li>
-</ul>
-<pre><code class="language-bash">cd /efi/EFI/refind
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-On refind installation path, clone the catppuccin repo inside a <em>themes</em>
-directory</li>
-</ul>
-<pre><code class="language-bash">mkdir themes &amp;&amp; cd themes
-</code></pre>
-<pre><code class="language-bash">git clone https://github.com/catppuccin/refind.git catppuccin
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <em>mocha.conf</em> file, commenting the last line</li>
-</ul>
-<pre><code class="language-bash">nano catppuccin/mocha.conf
-</code></pre>
-<pre><code class="language-txt">#showtools hidden_tags
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Edit the <em>refind.conf</em>, making sure to add a new <em>menuentry</em> for the
-<em>systemd-boot</em> and also including the <em>mocha.conf</em> file</li>
-</ul>
-<pre><code class="language-bash">nano ../refind.conf
-</code></pre>
-<pre><code class="language-txt">timeout 5
-
-[...]
-
-menuentry "Arch Linux" {
-    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
-    volume "ARCHIE_ESP"
-    loader /EFI/systemd/systemd-bootx64.efi
-}
-
-include themes/catppuccin/mocha.conf
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
 Install some compilers</li>
 </ul>
 <pre><code class="language-sh">sudo pacman -S clang go lua rustup

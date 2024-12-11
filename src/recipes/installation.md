@@ -148,12 +148,6 @@ EDITOR=nano visudo
 bootctl install
 ```
 
-- [ ] Install *rEFInd*
-
-```bash
-refind-install
-```
-
 - [ ] Set booster configuration file
 
 ```bash

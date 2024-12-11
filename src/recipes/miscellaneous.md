@@ -106,6 +106,62 @@ Check the installed targets
 rustup target list --installed
 ```
 
+## rEFInd
+
+- [ ] Install *rEFInd*
+
+```bash
+refind-install
+```
+
+- [ ] Create the *themes* directory for *refind*
+
+```bash
+cd /efi/EFI/refind
+```
+
+- [ ] On refind installation path, clone the catppuccin repo inside a *themes*
+directory
+
+```bash
+mkdir themes && cd themes
+```
+
+```bash
+git clone https://github.com/catppuccin/refind.git catppuccin
+```
+
+- [ ] Edit the *mocha.conf* file, commenting the last line
+
+```bash
+nano catppuccin/mocha.conf
+```
+
+```txt
+#showtools hidden_tags
+```
+
+- [ ] Edit the *refind.conf*, making sure to add a new *menuentry* for the
+*systemd-boot* and also including the *mocha.conf* file
+
+```bash
+nano ../refind.conf
+```
+
+```txt
+timeout 5
+
+[...]
+
+menuentry "Arch Linux" {
+    icon /EFI/refind/themes/catppuccin/assets/mocha/icons/os_arch.png
+    volume "ARCHIE_ESP"
+    loader /EFI/systemd/systemd-bootx64.efi
+}
+
+include themes/catppuccin/mocha.conf
+```
+
 ## Virtual Machine
 
 Check the hardware virtualization support
