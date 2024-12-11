@@ -16,6 +16,8 @@ optional = [
     "lib32-vulkan-radeon", # for AMD GPU
     "steam",
     "vulkan-tools",        # to check Vulkan is working
+    # yet another boot manager
+    "refind",
 ]
 
 # also optional, but should be manually installed with `cargo install --locked`
@@ -51,8 +53,6 @@ already_installed = [
     "intel-ucode",   # for Intel CPU
     "booster",
     "systemd-ukify",
-    # yet another boot manager
-    "refind",
     # after installation
     "fastfetch",
     # compilers
