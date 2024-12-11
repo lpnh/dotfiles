@@ -4,7 +4,7 @@ The main building blocks, a.k.a packages[^note]
 
 ### System
 
-* Boot Manager: [rEFInd](https://www.rodsbooks.com/refind/)  
+* Boot Manager: [systemd-boot](https://github.com/systemd/systemd)  
 * Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)  
 * Initramfs Generator: [Booster](https://github.com/anatol/booster)  
 * UKI Generator: [systemd-ukify](https://github.com/systemd/systemd)
