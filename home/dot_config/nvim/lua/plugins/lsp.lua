@@ -43,8 +43,8 @@ return {
           settings = {
             Lua = {
               diagnostics = {
-                -- LÖVE: handle the "Undefined global `love`" warn
-                globals = { 'love' },
+                -- handle the "Undefined global" warnings
+                globals = { 'love', 'Snacks' },
               },
               completion = {
                 callSnippet = 'Replace',
