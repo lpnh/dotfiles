@@ -2,11 +2,10 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     dashboard = require 'plugins.snacks.dashboard',
-    indent = {},
+    indent = { enabled = true },
     notifier = require 'plugins.snacks.notifier',
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
@@ -21,85 +20,18 @@ return {
     },
   },
   keys = {
-    -- Scratch
-    {
-      '<leader>.',
-      function()
-        Snacks.scratch()
-      end,
-      desc = 'Toggle Scratch Buffer',
-    },
-    {
-      '<leader>S',
-      function()
-        Snacks.scratch.select()
-      end,
-      desc = 'Select Scratch Buffer',
-    },
-
-    -- Git
-    {
-      '<leader>gg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
-    },
-    {
-      '<leader>gb',
-      function()
-        Snacks.git.blame_line()
-      end,
-      desc = 'Git Blame Line',
-    },
-    {
-      '<leader>gB',
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = 'Git Browse',
-    },
-    {
-      '<leader>gf',
-      function()
-        Snacks.lazygit.log_file()
-      end,
-      desc = 'Lazygit Current File History',
-    },
-    {
-      '<leader>gl',
-      function()
-        Snacks.lazygit.log()
-      end,
-      desc = 'Lazygit Log (cwd)',
-    },
-
-    -- Rename
-    {
-      'grf',
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = 'Rename File',
-    },
-
-    -- ???
-    {
-      ']]',
-      function()
-        Snacks.words.jump(vim.v.count1)
-      end,
-      desc = 'Next Reference',
-      mode = { 'n', 't' },
-    },
-    {
-      '[[',
-      function()
-        Snacks.words.jump(-vim.v.count1)
-      end,
-      desc = 'Prev Reference',
-      mode = { 'n', 't' },
-    },
+    -- stylua: ignore start
+    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle scratch buffer' },
+    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select scratch buffer' },
+    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
+    { '<leader>gb', function() Snacks.git.blame_line() end, desc = 'Git Blame Line' },
+    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse' },
+    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Lazygit Current File History' },
+    { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Lazygit Log (cwd)' },
+    { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
+    { ']r', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next reference', mode = { 'n', 't' }, },
+    { '[r', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev reference', mode = { 'n', 't' }, },
+    -- stylua: ignore end
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
@@ -128,10 +60,8 @@ return {
       end,
     })
 
-    ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
     local progress = vim.defaulttable()
     vim.api.nvim_create_autocmd('LspProgress', {
-      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
       callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         local value = ev.data.params.value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
@@ -155,7 +85,7 @@ return {
           end
         end
 
-        local msg = {} ---@type string[]
+        local msg = {}
         progress[client.id] = vim.tbl_filter(function(v)
           return table.insert(msg, v.msg) or not v.done
         end, p)

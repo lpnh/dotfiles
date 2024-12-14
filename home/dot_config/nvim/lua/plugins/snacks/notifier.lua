@@ -1,5 +1,3 @@
----@class snacks.notifier.Config
----@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
 return {
   timeout = 3000, -- default timeout in ms
   width = { min = 40, max = 0.4 },
@@ -21,7 +19,6 @@ return {
   keep = function(notif)
     return vim.fn.getcmdpos() > 0
   end,
-  ---@type snacks.notifier.style
   style = 'fancy',
   top_down = false, -- place notifications from top to bottom
   date_format = '%R', -- time format for notifications

@@ -1,6 +1,3 @@
----@class snacks.dashboard.Config
----@field sections snacks.dashboard.Section
----@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
 return {
   width = 40,
   row = nil, -- dashboard position. nil for center
@@ -10,12 +7,10 @@ return {
   -- These settings are used by some built-in sections
   preset = {
     -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
-    ---@type fun(cmd:string, opts:table)|nil
     pick = nil,
     -- Used by the `keys` section to show keymaps.
     -- Set your curstom keymaps here.
     -- When using a function, the `items` argument are the default keymaps.
-    ---@type snacks.dashboard.Item[]
     keys = {
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
       { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
