@@ -12,7 +12,7 @@ return {
         return {
           SnacksIndentScope = { fg = colors.surface2 },
           SnacksIndent = { fg = colors.surface0 },
-          --     Comment = { fg = colors.overlay1 },
+          Comment = { fg = colors.surface2 },
           --     LineNr = { fg = colors.overlay0 },
           --     WarningMsg = { style = { 'italic' } },
           --     ErrorMsg = { style = { 'italic' } },

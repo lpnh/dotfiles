@@ -10,6 +10,10 @@ return {
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    zen = {
+      toggles = { indent = false },
+    },
+
     styles = {
       notification = {
         wo = { wrap = true },
@@ -17,6 +21,7 @@ return {
       ['notification.history'] = {
         title = ' Notification History ',
       },
+      zen = { minimal = true },
     },
   },
   keys = {
@@ -46,17 +51,11 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        -- Toggle wrap (useful for html stuff)
-        Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>w'
-
-        -- Maybe I'll still use this... someday, we'll see
-        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>n'
-
-        -- Diagnostics
         Snacks.toggle.diagnostics():map '<leader>d'
-
-        -- Inlay hints
         Snacks.toggle.inlay_hints():map '<leader>h'
+        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>n'
+        Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>w' -- useful for html stuff
+        Snacks.toggle.zen():map '<leader>z'
       end,
     })
 
