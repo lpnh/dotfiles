@@ -53,7 +53,7 @@ return {
         Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>n'
 
         -- Diagnostics
-        Snacks.toggle.diagnostics():map '<leader>dd'
+        Snacks.toggle.diagnostics():map '<leader>d'
 
         -- Inlay hints
         Snacks.toggle.inlay_hints():map '<leader>h'

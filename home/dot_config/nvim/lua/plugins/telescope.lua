@@ -97,13 +97,6 @@ return {
       })
     end, { desc = 'Find existing buffers' })
 
-    vim.keymap.set('n', '<leader>ds', function()
-      builtin.diagnostics(require('telescope.themes').get_ivy {
-        path_display = { 'tail' },
-        previewer = false,
-      })
-    end, { desc = 'Search diagnostics' })
-
     vim.keymap.set('n', '<leader>/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
