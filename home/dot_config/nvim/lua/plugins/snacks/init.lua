@@ -11,7 +11,7 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     zen = {
-      toggles = { indent = false },
+      toggles = { diagnostics = false, indent = false },
     },
 
     styles = {
