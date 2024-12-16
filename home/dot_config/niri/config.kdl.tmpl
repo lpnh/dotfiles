@@ -502,7 +502,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(Aseprite|Dofus|firefox|ncspot|neovim|steam|thunderbird|vesktop|yazi)"
+    match app-id="(Aseprite|Dofus|firefox-nightly|ncspot|neovim|steam|thunderbird|vesktop|yazi)"
     match title="Minecraft"
     open-maximized true
 }
@@ -514,7 +514,7 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id="firefox"
+    match at-startup=true app-id="firefox-nightly"
     open-on-workspace "browser"
 }
 
@@ -678,7 +678,7 @@ binds {
 // Startup [[[
 
 spawn-at-startup "alacritty"
-spawn-at-startup "firefox"
+spawn-at-startup "firefox-nightly"
 spawn-at-startup "niri" "msg" "action" "focus-workspace" "main"
 
 // ]]]
