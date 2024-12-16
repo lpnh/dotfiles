@@ -779,6 +779,24 @@ ParallelDownloads = 5
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
+If you plan to use packages like steam, make sure to enable (uncomment)
+the <em>multilib</em> repository</li>
+</ul>
+<pre><code class="language-txt">[multilib]
+Include = /etc/pacman.d/mirrorlist
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Include the <a href="https://bbs.archlinux.org/viewtopic.php?id=117157">heftig's
+repo</a> to have access to the
+<em>firefox-nightly</em> package</li>
+</ul>
+<pre><code class="language-txt">[heftig]
+SigLevel = Optional
+Server = https://pkgbuild.com/~heftig/repo/$arch
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
 Update the database</li>
 </ul>
 <pre><code class="language-bash">pacman -Sy
@@ -809,12 +827,8 @@ Check the current available boot entries</li>
 </code></pre>
 <h2 id="notes-4"><a class="header" href="#notes-4">Notes</a></h2>
 <ul>
-<li>For some reason the <em>rEFInd</em> showtools variable is not working properly for
-me anymore, this is why I have to comment that line on catppucin's mocha file</li>
 <li>An example for the <em>pacman.conf</em> file can be found on <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf">EndeavourOS
-repo</a>.
-If you plan to use packages like steam, make sure to enable (uncomment) the
-[multilib] repository</li>
+repo</a>.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="home-sweet-home"><a class="header" href="#home-sweet-home">Home Sweet Home</a></h1>
 <ul>
@@ -1079,6 +1093,8 @@ Edit the <em>mocha.conf</em> file, commenting the last line</li>
 </code></pre>
 <pre><code class="language-txt">#showtools hidden_tags
 </code></pre>
+<p><em>For some reason the <em>rEFInd</em> showtools variable is not working properly for
+me anymore, this is why I have to comment this line on catppucin's mocha file</em></p>
 <ul>
 <li><input disabled="" type="checkbox"/>
 Edit the <em>refind.conf</em>, making sure to add a new <em>menuentry</em> for the
