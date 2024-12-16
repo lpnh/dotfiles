@@ -18,7 +18,7 @@ return {
       notification = {
         wo = { wrap = true },
       },
-      ['notification.history'] = {
+      notification_history = {
         title = ' Notification History ',
       },
       zen = { minimal = true },
