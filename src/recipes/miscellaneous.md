@@ -141,6 +141,9 @@ nano catppuccin/mocha.conf
 #showtools hidden_tags
 ```
 
+*For some reason the *rEFInd* showtools variable is not working properly for
+me anymore, this is why I have to comment this line on catppucin's mocha file*
+
 - [ ] Edit the *refind.conf*, making sure to add a new *menuentry* for the
 *systemd-boot* and also including the *mocha.conf* file
 

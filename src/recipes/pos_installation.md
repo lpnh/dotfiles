@@ -50,6 +50,24 @@ VerbosePkgLists
 ParallelDownloads = 5
 ```
 
+- [ ] If you plan to use packages like steam, make sure to enable (uncomment)
+the *multilib* repository
+
+```txt
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
+- [ ] Include the [heftig's
+repo](https://bbs.archlinux.org/viewtopic.php?id=117157) to have access to the
+*firefox-nightly* package
+
+```txt
+[heftig]
+SigLevel = Optional
+Server = https://pkgbuild.com/~heftig/repo/$arch
+```
+
 - [ ] Update the database
 
 ```bash
@@ -82,9 +100,5 @@ sudo bootctl list
 
 ## Notes
 
-- For some reason the *rEFInd* showtools variable is not working properly for
-me anymore, this is why I have to comment that line on catppucin's mocha file
 - An example for the *pacman.conf* file can be found on [EndeavourOS
 repo](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/airootfs/etc/pacman.conf).
-If you plan to use packages like steam, make sure to enable (uncomment) the
-[multilib] repository
