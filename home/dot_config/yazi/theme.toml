@@ -1,11 +1,30 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
 [flavor]
 dark = "catppuccin-mocha"
-light = "catppuccin-mocha"
 
 [manager]
 preview_hovered = { underline = false }
 
+# : Icons {{{
+
 [icon]
+
+globs = []
+dirs = [
+	{ name = ".config", text = "" },
+	{ name = ".git", text = "" },
+	{ name = "Desktop", text = "" },
+	{ name = "Development", text = "" },
+	{ name = "Documents", text = "" },
+	{ name = "Downloads", text = "" },
+	{ name = "Library", text = "" },
+	{ name = "Movies", text = "" },
+	{ name = "Music", text = "" },
+	{ name = "Pictures", text = "" },
+	{ name = "Public", text = "" },
+	{ name = "Videos", text = "" },
+]
 files = [
 	{ name = ".babelrc", text = "", fg = "#f9e2af" },
 	{ name = ".bash_profile", text = "", fg = "#a6e3a1" },
@@ -615,3 +634,21 @@ exts = [
 	{ name = "zst", text = "", fg = "#fab387" },
 	{ name = "🔥", text = "", fg = "#fab387" },
 ]
+conds = [
+	# Special files
+	{ if = "orphan", text = "" },
+	{ if = "link", text = "" },
+	{ if = "block", text = "" },
+	{ if = "char", text = "" },
+	{ if = "fifo", text = "" },
+	{ if = "sock", text = "" },
+	{ if = "sticky", text = "" },
+	{ if = "dummy", text = "" },
+
+	# Fallback
+	{ if = "dir", text = "󰉋" },
+	{ if = "exec", text = "" },
+	{ if = "!dir", text = "󰈔" },
+]
+
+# : }}}
