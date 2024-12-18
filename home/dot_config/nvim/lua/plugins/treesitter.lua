@@ -1,7 +1,6 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'nushell/tree-sitter-nu' },
     build = ':TSUpdate',
     lazy = vim.fn.argc(-1) == 0,
     main = 'nvim-treesitter.configs',
@@ -22,7 +21,6 @@ return {
         'luadoc',
         'markdown',
         'markdown_inline',
-        'nu',
         'query',
         'regex',
         'ron',
