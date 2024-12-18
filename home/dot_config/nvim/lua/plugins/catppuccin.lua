@@ -27,10 +27,7 @@ return {
       end,
       integrations = {
         beacon = true,
-        indent_blankline = {
-          enabled = true,
-          scope_color = 'surface1',
-        },
+        blink_cmp = true,
         mason = true,
         noice = true,
         notify = true,
