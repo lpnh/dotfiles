@@ -33,9 +33,9 @@ return {
     config = function()
       -- Diagnostic Options
       vim.diagnostic.config {
+        signs = false,
         virtual_text = false,
         underline = false,
-        signs = false,
       }
 
       -- Capabilities
@@ -136,18 +136,15 @@ return {
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          local builtin = require 'telescope.builtin'
-
           -- Jump to the <target> of the word under the cursor
           --  To jump back, press <C-t>
-          map('gd', builtin.lsp_definitions, 'Go to definition')
           map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-          map('gR', builtin.lsp_references, 'Go to references')
-          map('gt', builtin.lsp_type_definitions, 'Go to type definition')
 
-          -- Fuzzy find all the symbols in the current document or workspace
-          map('<leader>ssd', builtin.lsp_document_symbols, 'Search symbols in document')
-          map('<leader>ssw', builtin.lsp_dynamic_workspace_symbols, 'Search symbols in workspace')
+          local fzf_lua = require 'fzf-lua'
+          map('gd', fzf_lua.lsp_definitions, 'Go to definition')
+          map('gR', fzf_lua.lsp_references, 'Go to references')
+          map('gI', fzf_lua.lsp_implementations, 'Go to implementation')
+          map('gy', fzf_lua.lsp_typedefs, 'Go to type definition')
 
           -- Highlight references of the word under the cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)

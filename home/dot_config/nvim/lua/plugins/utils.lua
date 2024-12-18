@@ -142,8 +142,8 @@ return {
       },
     },
     keys = {
-      { '<leader>stc', '<cmd>Telescope tailwind classes<CR>', desc = 'Search classes in the current document' },
-      { '<leader>stu', '<cmd>Telescope tailwind utilities<CR>', desc = 'Search all utility classes available' }, -- TODO: fix this
+      { '<leader>stc', '<cmd>FzfLua tailwind classes<CR>', desc = 'Search tailwind classes' },
+      { '<leader>stu', '<cmd>FzfLua tailwind utilities<CR>', desc = 'Search all tailwind utility classes' }, -- TODO: fix this
       { '<leader>tc', '<cmd>TailwindConcealToggle<CR>', desc = 'Toggle tailwind conceal' },
       { '<leader>ts', '<cmd>TailwindSort<CR>', desc = 'Sort tailwind classes' },
       { '<leader>tp', '<cmd>TailwindPrevClass<CR>', desc = 'Move to the next class' },
