@@ -23,9 +23,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
-
-      -- Allows extra capabilities provided by nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
+      { 'saghen/blink.cmp' },
 
       -- Schema information
       'b0o/SchemaStore.nvim',
@@ -39,8 +37,7 @@ return {
       }
 
       -- Capabilities
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('blink.cmp').get_lsp_capabilities())
 
       -- Servers
       local servers = {
