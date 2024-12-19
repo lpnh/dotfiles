@@ -17,13 +17,13 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
+      { 'saghen/blink.cmp' },
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
-      { 'saghen/blink.cmp' },
 
       -- Schema information
       'b0o/SchemaStore.nvim',

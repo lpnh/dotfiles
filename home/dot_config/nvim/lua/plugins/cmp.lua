@@ -1,8 +1,14 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = 'rafamadriz/friendly-snippets',
+  dependencies = { 'rafamadriz/friendly-snippets', 'saghen/blink.compat' },
   build = 'cargo build --release',
+  event = 'InsertEnter',
+  opts_extend = {
+    'sources.compat',
+    'sources.completion.enabled_providers',
+    'sources.default',
+  },
   opts = {
     -- 'default' for mappings similar to built-in completion
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
@@ -41,8 +47,4 @@ return {
     -- experimental signature help support
     -- signature = { enabled = true }
   },
-
-  -- allows extending the providers array elsewhere in your config
-  -- without having to redefine it
-  opts_extend = { 'sources.default' },
 }
