@@ -41,23 +41,23 @@ desc = "Smart filter"
 
 [[manager.prepend_keymap]]
 on = ["f", "f"]
-run = "plugin fg --args='fzf'"
+run = "plugin fz --args='fzf'"
 desc = "Find file by filename"
 
 [[manager.prepend_keymap]]
-on = ["f", "g"]
-run = "plugin fg"
+on = ["f", "z"]
+run = "plugin fz"
 desc = "Find file by content (fuzzy match)"
 
 [[manager.prepend_keymap]]
-on = ["f", "a"]
-run = "plugin fg --args='rga'"
-desc = "Find file by content (ripgrep-all)"
+on = ["f", "g"]
+run = "plugin fz --args='rg'"
+desc = "Find file by content (ripgrep match)"
 
 [[manager.prepend_keymap]]
-on = ["f", "G"]
-run = "plugin fg --args='rg'"
-desc = "Find file by content (ripgrep match)"
+on = ["f", "a"]
+run = "plugin fz --args='rga'"
+desc = "Find file by content (ripgrep-all)"
 
 # Chmod
 
