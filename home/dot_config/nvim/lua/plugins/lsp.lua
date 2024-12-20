@@ -52,16 +52,6 @@ return {
         },
       }
 
-      -- See: https://github.com/folke/lazy.nvim/issues/796
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'lazy',
-        callback = function()
-          vim.diagnostic.config {
-            virtual_lines = false,
-          }
-        end,
-      })
-
       -- Capabilities
       local capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('blink.cmp').get_lsp_capabilities())
 
