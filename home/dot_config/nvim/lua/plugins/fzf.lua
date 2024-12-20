@@ -8,10 +8,10 @@ return {
       -- ['--border'] = 'none',
     },
     defaults = {
-      -- formatter = 'path.filename_first',
-      formatter = 'path.dirname_first',
+      formatter = 'path.filename_first',
+      -- formatter = 'path.dirname_first',
     },
-    files = { cwd_prompt = false, git_icons = false, header = false },
+    files = { cwd_prompt = false, git_icons = false },
     diagnostics = { file_icons = false },
     winopts = {
       fullscreen = true,

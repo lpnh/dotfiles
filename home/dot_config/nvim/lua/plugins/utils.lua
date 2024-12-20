@@ -53,10 +53,7 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
-      -- Better Around/Inside textobjects
       require('mini.ai').setup { n_lines = 500 }
-
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
       require('mini.surround').setup()
     end,
   },
@@ -70,6 +67,7 @@ return {
       view_options = {
         show_hidden = true,
       },
+      skip_confirm_for_simple_edits = true,
     },
     keys = {
       { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' },
