@@ -1,16 +1,6 @@
 return {
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
   -- Wakatime
   { 'wakatime/vim-wakatime', lazy = false },
-
-  -- Autopairs
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    opts = {},
-  },
 
   -- Find and replace
   {
@@ -55,6 +45,7 @@ return {
     config = function()
       require('mini.ai').setup { n_lines = 500 }
       require('mini.surround').setup()
+      require('mini.pairs').setup()
     end,
   },
 
@@ -112,9 +103,7 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
-    ft = { 'markdown' },
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
+    ft = 'markdown',
     opts = {
       enabled = false,
     },
@@ -140,8 +129,6 @@ return {
       },
     },
     keys = {
-      { '<leader>stc', '<cmd>FzfLua tailwind classes<CR>', desc = 'Search tailwind classes' },
-      { '<leader>stu', '<cmd>FzfLua tailwind utilities<CR>', desc = 'Search all tailwind utility classes' }, -- TODO: fix this
       { '<leader>tc', '<cmd>TailwindConcealToggle<CR>', desc = 'Toggle tailwind conceal' },
       { '<leader>ts', '<cmd>TailwindSort<CR>', desc = 'Sort tailwind classes' },
       { '<leader>tp', '<cmd>TailwindPrevClass<CR>', desc = 'Move to the next class' },

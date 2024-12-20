@@ -42,7 +42,7 @@ return {
     { '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document diagnostics' },
     { '<leader>sD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = 'Workspace diagnostics' },
     { '<leader>sf', '<cmd>FzfLua files<cr>', desc = 'Find files' },
-    { '<leader>sg', '<cmd>FzfLua git_files<cr>', desc = 'Find files (git-files)' },
+    { '<leader>sg', '<cmd>FzfLua live_grep<cr>', desc = 'Live grep' },
     { '<leader>sh', '<cmd>FzfLua help_tags<cr>', desc = 'Help pages' },
     { '<leader>sH', '<cmd>FzfLua highlights<cr>', desc = 'Search highlight groups' },
     { '<leader>sj', '<cmd>FzfLua jumps<cr>', desc = 'Jumplist' },

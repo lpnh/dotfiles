@@ -232,14 +232,8 @@ return {
         markdown = { 'markdownlint' },
       }
 
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-        group = vim.api.nvim_create_augroup('lint', { clear = true }),
-        callback = function()
-          lint.try_lint()
-        end,
-      })
+      local is_enabled = false
 
-      local is_enabled = true
       local function toggle_md_lint()
         if is_enabled then
           vim.diagnostic.reset(lint.get_namespace 'markdownlint')
@@ -248,6 +242,15 @@ return {
         end
         is_enabled = not is_enabled
       end
+
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
+        group = vim.api.nvim_create_augroup('lint', { clear = true }),
+        callback = function()
+          if is_enabled then
+            lint.try_lint()
+          end
+        end,
+      })
 
       vim.keymap.set('n', '<leader>ml', toggle_md_lint, { desc = 'Toggle MD linting' })
     end,

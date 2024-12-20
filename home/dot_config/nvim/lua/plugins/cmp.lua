@@ -23,6 +23,18 @@ return {
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
+      providers = {
+        snippets = {
+          score_offset = -5,
+          opts = {
+            extended_filetypes = {
+              html = { 'loremipsum' },
+              markdown = { 'loremipsum' },
+              rust = { 'html' },
+            },
+          },
+        },
+      },
     },
   },
 }
