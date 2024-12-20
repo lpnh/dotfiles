@@ -14,6 +14,7 @@ return {
     keys = {
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
       { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = ' ', key = 'g', desc = 'Live Grep', action = ':FzfLua live_grep_native' },
       { icon = ' ', key = 'h', desc = 'History', action = ":lua Snacks.dashboard.pick('oldfiles')" },
       { icon = '󱀸 ', key = 's', desc = 'Restore Session', section = 'session' },
       { icon = ' ', key = 'o', desc = 'Oil', action = ':Oil' },
