@@ -26,11 +26,30 @@ return {
       { 'saghen/blink.cmp' },
     },
     config = function()
-      -- Diagnostic Options
+      -- Diagnostic options
+      local signs = {
+        ERROR = '',
+        WARN = '',
+        HINT = '󰌵',
+        INFO = '',
+      }
       vim.diagnostic.config {
+        severity_sort = true,
         signs = false,
-        virtual_text = false,
         underline = false,
+        virtual_lines = { only_current_line = true },
+        virtual_text = {
+          format = function(diagnostic)
+            local colon_index = string.find(diagnostic.message, ':')
+            if colon_index then
+              return string.sub(diagnostic.message, 1, colon_index - 1)
+            end
+            return diagnostic.message
+          end,
+          prefix = function(diagnostic)
+            return signs[vim.diagnostic.severity[diagnostic.severity]]
+          end,
+        },
       }
 
       -- See: https://github.com/folke/lazy.nvim/issues/796
@@ -142,7 +161,7 @@ return {
 
       -- Attach
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+        group = vim.api.nvim_create_augroup('lsp-setup', { clear = true }),
         callback = function(event)
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -161,7 +180,7 @@ return {
           -- Highlight references of the word under the cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+            local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -175,18 +194,15 @@ return {
             })
 
             vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+              group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
               callback = function(event2)
                 vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+                vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
               end,
             })
           end
         end,
       })
-
-      -- Border
-      require('lspconfig.ui.windows').default_options.border = 'single'
     end,
   },
 
