@@ -1,32 +1,29 @@
 return {
   {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    --    used for completion, annotations and signatures of Neovim apis
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-
-  { 'Bilal2453/luvit-meta', lazy = true },
-
-  {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'saghen/blink.cmp' },
-      -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true },
+      {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            -- Load luvit types when the `vim.uv` word is found
+            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+          },
+        },
+      },
+      { 'Bilal2453/luvit-meta', lazy = true },
+      'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' },
+      -- Diagnostics virtual lines
+      'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 
       -- Schema information
       'b0o/SchemaStore.nvim',
+
+      { 'saghen/blink.cmp' },
     },
     config = function()
       -- Diagnostic Options
@@ -51,8 +48,17 @@ return {
 
       -- Servers
       local servers = {
+        -- bashls = true,
         clangd = true,
         html = true,
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {
