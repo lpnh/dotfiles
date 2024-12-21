@@ -13,7 +13,9 @@ optional = [
     # osu!
     "osu-lazer-bin",
     # steam (multilib repo)
+    "lib32-mesa",          # for both AMD and NVIDIA
     "lib32-vulkan-radeon", # for AMD GPU
+    "lib32-nvidia-utils",  # for NVIDIA GPU
     "steam",
     "vulkan-tools",        # to check Vulkan is working
     # yet another boot manager
