@@ -15,8 +15,15 @@ set -gx FZF_DEFAULT_OPTS "\
 --color=selected-bg:#45475a \
 --multi"
 
-# yazi zoxide ui
-set -gx YAZI_ZOXIDE_OPTS "--no-border --preview='eza --color=always --group-directories-first --icons {2}'"
+# yazi z command opts
+set -gx YAZI_ZOXIDE_OPTS "--no-border --no-scrollbar --info=hidden \
+--preview='eza --color=always --group-directories-first --icons {2}'"
+
+# zi fzf opts
+set -gx _ZO_FZF_OPTS "\
+--exact --no-sort --exit-0 --bind=ctrl-z:ignore,btab:up,tab:down \
+--cycle --keep-right --height=45% --layout=reverse --tabstop=1 \
+--preview-window=down $FZF_DEFAULT_OPTS $YAZI_ZOXIDE_OPTS"
 
 # cursor style
 set -gx fish_vi_force_cursor 1
