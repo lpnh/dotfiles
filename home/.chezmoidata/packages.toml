@@ -12,6 +12,7 @@ optional = [
     "prismlauncher",
     # osu!
     "osu-lazer-bin",
+    "opentabletdriver", # for tablet support
     # steam (multilib repo)
     "lib32-mesa",          # for both AMD and NVIDIA
     "lib32-vulkan-radeon", # for AMD GPU
