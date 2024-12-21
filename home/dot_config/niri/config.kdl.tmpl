@@ -570,7 +570,6 @@ binds {
     Mod+Space { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+A { spawn "alacritty"; }
     Mod+B { spawn "firefox-nightly"; }
-    Mod+D { spawn "env" "DISPLAY=:0" "ankama-launcher"; }
     Mod+G { spawn "env" "DISPLAY=:0" "steam"; }
     Mod+M { spawn "prismlauncher"; }
     Mod+N { spawn "alacritty" "--class" "neovim" "-T" "neovim" "-e" "nvim"; }
@@ -580,6 +579,12 @@ binds {
     Mod+T { spawn "thunderbird"; }
     Mod+V { spawn "vesktop"; }
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
+
+    {{- if eq .chezmoi.hostname "desktop" }}
+    Mod+D { spawn "env" "DISPLAY=:0" "ankama-launcher"; }
+    {{- else if eq .chezmoi.hostname "laptop" }}
+    Mod+D { spawn "env" "__NV_PRIME_RENDER_OFFLOAD=0" "__GLX_VENDOR_LIBRARY_NAME=nvidia" "DISPLAY=:0" "ankama-launcher"; }
+    {{- end }}
 
     // ]]]
 
