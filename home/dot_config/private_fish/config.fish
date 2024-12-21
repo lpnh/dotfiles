@@ -120,10 +120,10 @@ alias yal 'ya pack --list'
 alias yau 'ya pack --upgrade'
 
 # yay
-abbr yayl 'yay -Ql'
-abbr yayq 'yay -Qi'
-abbr yayr 'yay -Rns'
-abbr yays 'yay -Ss'
+abbr yl 'yay -Ql'
+abbr yq 'yay -Qi'
+abbr yr 'yay -Rns'
+abbr ys 'yay -Ss'
 
 # the enthusiasm level determines the scope
 function yay!
@@ -132,11 +132,9 @@ function yay!
 end
 
 function yay!!
-    yay --noconfirm
     rustup update
     cargo install-update --all
     tldr --update
-    bob update nightly
 end
 
 # external setups
