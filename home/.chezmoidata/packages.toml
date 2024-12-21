@@ -179,6 +179,7 @@ common = [
     "mpv",
     "niri",
     "npm",                    # nvim relies on it to install certain LSPs
+    "nvtop",
     "otf-firamono-nerd",
     "otf-font-awesome",
     "ripgrep",
