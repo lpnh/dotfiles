@@ -218,4 +218,4 @@ aur = [
     "yazi-git",
 ]
 desktop = ["openrgb", "piper"]
-laptop = ["brightnessctl", "tlp"]
+laptop = ["brightnessctl", "nvidia-prime", "nvidia-utils", "tlp"]
