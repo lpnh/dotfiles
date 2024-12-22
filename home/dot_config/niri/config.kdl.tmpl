@@ -40,6 +40,12 @@ input {
         // click-method "clickfinger"
     }
 
+    tablet {
+        {{- if eq .chezmoi.hostname "desktop" }}
+        map-to-output "HDMI-A-1"
+        {{- end }}
+    }
+
     // Make the mouse warp to the center of newly focused windows
     warp-mouse-to-focus
 }
