@@ -46,6 +46,9 @@ alias bl 'bat --plain --line-range'
 alias bn 'bat --number'
 alias bnl 'bat --number --line-range'
 
+# bob
+alias bu 'bob update nightly'
+
 # chezmoi
 alias ch chezmoi
 alias chad 'chezmoi add'
