@@ -119,7 +119,6 @@ return {
     build = ':UpdateRemotePlugins',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
-      'nvim-telescope/telescope.nvim',
     },
     opts = {
       extension = {
