@@ -19,9 +19,9 @@
         "niri/language",
         "network",
         {{- if eq .chezmoi.hostname "laptop" }}
-        "battery",
-        "backlight",
         "bluetooth",
+        "backlight",
+        "battery",
         {{- end }}
         "pulseaudio"
     ],
