@@ -1,2 +1,2 @@
-lock.png: https://wallhaven.cc/w/85rr7k
-waifu.png: https://wallhaven.cc/w/gjyoq7
+lock.png: https://wallhaven.cc/w/gjyoq7
+bg.png: https://wallhaven.cc/w/d6j79o
