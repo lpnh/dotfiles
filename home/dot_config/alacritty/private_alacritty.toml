@@ -11,7 +11,7 @@ opacity = 0.9
 dynamic_title = false
 
 [font]
-size = 14.0
+size = 12.0
 
 [font.normal]
 family = "FiraMono Nerd Font"
