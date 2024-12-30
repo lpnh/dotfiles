@@ -220,6 +220,7 @@ gaming = [
     "wine",            # multilib - required
     # minecraft
     "glfw",
+    "jre21-openjdk",
     "prismlauncher",
     # osu!
     "osu-lazer-bin",    # aur
