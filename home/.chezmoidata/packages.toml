@@ -2,30 +2,15 @@
 
 # should be manually installed
 optional = [
-    # audio editor
-    "ocenaudio-bin",
-    # dofus
-    "ankama-launcher",
-    "wine",            # multilib repo
-    # minecraft
-    "glfw",
-    "prismlauncher",
-    # osu!
-    "osu-lazer-bin",
-    "opentabletdriver", # for tablet support
-    # steam (multilib repo)
-    "lib32-mesa",          # for both AMD and NVIDIA
-    "lib32-vulkan-radeon", # for AMD GPU
-    "lib32-nvidia-utils",  # for NVIDIA GPU
-    "steam",
-    "vulkan-tools",        # to check Vulkan is working
-    # yet another boot manager
-    "refind",
+    "ocenaudio-bin", # audio editor
+    "refind",        # yet another boot manager
+    "vulkan-tools",  # to check Vulkan is working
 ]
 
-# also optional, but should be manually installed with `cargo install --locked`
-crates = ["cargo-chef", "ncspot", "trunk"]
+# should be manually installed with `cargo install --locked`
+crates = ["cargo-chef", "trunk"]
 
+# also optional
 dev = [
     "cargo-aur-bin",
     "cargo-generate",
@@ -36,7 +21,7 @@ dev = [
     "zola",
 ]
 
-# packages already manually installed
+# packages already installed during OS setup
 already_installed = [
     # with pacstrap
     "base",
@@ -44,12 +29,9 @@ already_installed = [
     "linux",
     "linux-firmware",
     "git",
+    "mesa",
     "nano",
     "networkmanager",
-    # graphics
-    "mesa",
-    "vulkan-radeon", # for AMD GPU
-    "nvidia",        # for NVIDIA GPU
     # UKI
     "busybox",
     "amd-ucode",     # for AMD CPU
@@ -149,6 +131,7 @@ system = [
     "xdg-utils",
     "xorg-xwayland",
 ]
+
 common = [
     "alacritty",
     "bacon",
@@ -178,8 +161,9 @@ common = [
     "md-tui",
     "mdbook",
     "mpv",
+    "ncspot",
     "niri",
-    "npm",                    # nvim relies on it to install certain LSPs
+    "npm",
     "nvtop",
     "otf-firamono-nerd",
     "otf-font-awesome",
@@ -209,6 +193,7 @@ common = [
     "zoxide",
     "zsh",
 ]
+
 aur = [
     "cava",
     "fswatch",
@@ -217,5 +202,29 @@ aur = [
     "xcursor-breeze",
     "yazi-git",
 ]
-desktop = ["openrgb", "piper"]
-laptop = ["brightnessctl", "nvidia-prime", "nvidia-utils", "tlp"]
+
+desktop = ["lib32-vulkan-radeon", "openrgb", "piper", "vulkan-radeon"]
+
+laptop = [
+    "brightnessctl",
+    "lib32-nvidia-utils",
+    "nvidia",
+    "nvidia-prime",
+    "nvidia-utils",
+    "tlp",
+]
+
+gaming = [
+    # dofus
+    "ankama-launcher", # aur
+    "wine",            # multilib - required
+    # minecraft
+    "glfw",
+    "prismlauncher",
+    # osu!
+    "osu-lazer-bin",    # aur
+    "opentabletdriver", # aur - for tablet support
+    # steam (multilib repo)
+    "lib32-mesa",
+    "steam",
+]

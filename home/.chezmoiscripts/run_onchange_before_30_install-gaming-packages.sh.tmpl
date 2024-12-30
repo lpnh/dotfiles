@@ -1,0 +1,5 @@
+#!/bin/sh
+
+{{ range .packages.gaming -}}
+yay -S --needed {{ . | quote }}
+{{ end -}}
