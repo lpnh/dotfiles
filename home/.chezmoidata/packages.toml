@@ -140,6 +140,7 @@ common = [
     "bottom",
     "cargo-update",
     "eza",
+    "fcitx5-im",
     "fd",
     "firefox",
     "fish",
