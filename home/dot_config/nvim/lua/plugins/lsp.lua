@@ -52,10 +52,6 @@ return {
         },
       }
 
-      -- Capabilities
-      local capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('blink.cmp').get_lsp_capabilities())
-
-      -- Servers
       local servers = {
         -- bashls = true,
         clangd = true,
@@ -118,7 +114,6 @@ return {
         end
       end, vim.tbl_keys(servers))
 
-      -- Mason
       require('mason').setup()
 
       local ensure_installed = {
@@ -135,21 +130,16 @@ return {
         if config == true then
           config = {}
         end
-        config = vim.tbl_deep_extend('force', {}, {
-          capabilities = capabilities,
-        }, config)
 
         require('lspconfig')[name].setup(config)
       end
 
-      -- Improve filetypes
       vim.filetype.add {
         pattern = {
           ['.*/templates/.*%.html'] = 'html',
         },
       }
 
-      -- Attach
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-setup', { clear = true }),
         callback = function(event)
