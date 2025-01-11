@@ -65,6 +65,7 @@ return {
           },
         },
         lua_ls = {
+          manual_install = true,
           settings = {
             Lua = {
               diagnostics = {
@@ -96,7 +97,7 @@ return {
             },
           },
         },
-        taplo = true,
+        taplo = { manual_install = true },
         typos_lsp = {
           init_options = {
             -- Equivalent to the typos `--config` cli argument
