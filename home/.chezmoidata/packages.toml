@@ -139,6 +139,7 @@ common = [
     "bob",
     "bottom",
     "cargo-update",
+    "chafa",
     "eza",
     "fcitx5-im",
     "fcitx5-mozc",
