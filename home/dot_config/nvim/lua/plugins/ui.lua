@@ -1,26 +1,7 @@
 return {
-  -- Icons
-  {
-    'echasnovski/mini.icons',
-    version = false,
-    config = function()
-      require('mini.icons').setup {
-        file = {
-          ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
-        },
-        extension = {
-          db = { glyph = '' },
-          lock = { glyph = '' },
-        },
-      }
-      MiniIcons.mock_nvim_web_devicons()
-    end,
-  },
-
   -- Lualine
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local ok, statusline = pcall(require, 'arrow.statusline')
 
@@ -87,7 +68,6 @@ return {
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
           ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
         },
       },
       -- enable a preset for easier configuration

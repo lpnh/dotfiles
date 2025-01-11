@@ -26,13 +26,14 @@ return {
   },
   keys = {
     -- stylua: ignore start
-    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle scratch buffer' },
-    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select scratch buffer' },
+    { '<leader>b', function() Snacks.scratch() end, desc = 'Toggle scratch buffer' },
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
-    { '<leader>gb', function() Snacks.git.blame_line() end, desc = 'Git Blame Line' },
-    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse' },
-    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Lazygit Current File History' },
+    { '<leader>gb', function() Snacks.git.blame_line() end, desc = 'Git blame line' },
+    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git browse' },
+    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Lazygit current file history' },
     { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Lazygit Log (cwd)' },
+    { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Show notification history' },
+    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select scratch buffer' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     { ']r', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next reference', mode = { 'n', 't' }, },
     { '[r', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev reference', mode = { 'n', 't' }, },
@@ -53,8 +54,8 @@ return {
 
         Snacks.toggle.diagnostics():map '<leader>d'
         Snacks.toggle.inlay_hints():map '<leader>h'
-        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>n'
-        Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>w' -- useful for html stuff
+        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>tn'
+        Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>tw' -- useful for html stuff
         Snacks.toggle.zen():map '<leader>z'
       end,
     })

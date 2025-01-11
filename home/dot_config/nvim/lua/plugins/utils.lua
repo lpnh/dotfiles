@@ -46,13 +46,22 @@ return {
       require('mini.ai').setup { n_lines = 500 }
       require('mini.surround').setup()
       require('mini.pairs').setup()
+      require('mini.icons').setup {
+        file = {
+          ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
+        },
+        extension = {
+          db = { glyph = '' },
+          lock = { glyph = '' },
+        },
+      }
+      MiniIcons.mock_nvim_web_devicons()
     end,
   },
 
   -- Oil
   {
     'stevearc/oil.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
     opts = {
       view_options = {
@@ -68,9 +77,6 @@ return {
   -- Arrow
   {
     'otavioschwanck/arrow.nvim',
-    dependencies = {
-      { 'echasnovski/mini.icons' },
-    },
     opts = {
       show_icons = true,
       leader_key = '<A-a>',
@@ -102,7 +108,6 @@ return {
   -- Markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
     ft = 'markdown',
     opts = {
       enabled = false,
@@ -128,10 +133,10 @@ return {
       },
     },
     keys = {
-      { '<leader>tc', '<cmd>TailwindConcealToggle<CR>', desc = 'Toggle tailwind conceal' },
-      { '<leader>ts', '<cmd>TailwindSort<CR>', desc = 'Sort tailwind classes' },
-      { '<leader>tp', '<cmd>TailwindPrevClass<CR>', desc = 'Move to the next class' },
-      { '<leader>tn', '<cmd>TailwindNextClass<CR>', desc = 'Move to the previous class' },
+      { '<leader>Tc', '<cmd>TailwindConcealToggle<CR>', desc = 'Toggle tailwind conceal' },
+      { '<leader>Ts', '<cmd>TailwindSort<CR>', desc = 'Sort tailwind classes' },
+      { '<leader>Tp', '<cmd>TailwindPrevClass<CR>', desc = 'Move to the next class' },
+      { '<leader>Tn', '<cmd>TailwindNextClass<CR>', desc = 'Move to the previous class' },
     },
   },
 }
