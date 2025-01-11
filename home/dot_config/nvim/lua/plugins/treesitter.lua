@@ -2,7 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    lazy = vim.fn.argc(-1) == 0,
+    lazy = false,
     main = 'nvim-treesitter.configs',
     opts = {
       ensure_installed = {
@@ -47,54 +47,11 @@ return {
           node_decremental = '<M-space>',
         },
       },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['aa'] = { query = '@parameter.outer', desc = '[A]round [A]rgument' },
-            ['ia'] = { query = '@parameter.inner', desc = '[I]nside [A]rgument' },
-            ['af'] = { query = '@function.outer', desc = '[A]round [F]unction' },
-            ['if'] = { query = '@function.inner', desc = '[I]nside [F]unction' },
-            ['ac'] = { query = '@class.outer', desc = '[A]round [C]lass' },
-            ['ic'] = { query = '@class.inner', desc = '[I]nside [C]lass' },
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            [']f'] = '@function.outer',
-            -- [']]'] = '@class.outer',
-          },
-          goto_next_end = {
-            [']F'] = '@function.outer',
-            [']['] = '@class.outer',
-          },
-          goto_previous_start = {
-            ['[f'] = '@function.outer',
-            -- ['[['] = '@class.outer',
-          },
-          goto_previous_end = {
-            ['[F'] = '@function.outer',
-            ['[]'] = '@class.outer',
-          },
-          goto_next = {
-            [']c'] = '@conditional.outer',
-          },
-          goto_previous = {
-            ['[c'] = '@conditional.outer',
-          },
-        },
-      },
     },
     config = function(_, opts)
       require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
     end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
   },
 }
