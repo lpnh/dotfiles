@@ -1,7 +1,3 @@
-require("zoxide"):setup({
-	update_db = true,
-})
-
 function Linemode:custom()
 	local year = os.date("%Y")
 	local time = (self._file.cha.mtime or 0) // 1
@@ -14,3 +10,11 @@ function Linemode:custom()
 
 	return ui.Line(string.format("%s", time))
 end
+
+require("mime-ext"):setup({
+	fallback_file1 = true,
+})
+
+require("zoxide"):setup({
+	update_db = true,
+})
