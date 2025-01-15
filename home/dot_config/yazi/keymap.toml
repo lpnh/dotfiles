@@ -1,127 +1,46 @@
-[[manager.prepend_keymap]]
-on = "T"
-run = "plugin hide-preview"
-desc = "Hide or show preview"
-
-# Custom linemode
+# custom plugins
 
 [[manager.prepend_keymap]]
 on = ["m", "c"]
 run = "linemode custom"
 desc = "Linemode: custom"
 
-# Custom layout
-
 [[manager.prepend_keymap]]
 on = ["F"]
 run = "plugin custom-layout"
 
-# Add navigation in insert mode
+# fr plugin
 
-[[completion.prepend_keymap]]
-on = ["<C-p>"]
-run = "arrow -1"
-desc = "Move cursor up"
+[[manager.prepend_keymap]]
+on = ["f", "f"]
+run = "plugin fr --args='ff'"
+desc = "Find file by content (fuzzy match)"
 
-[[completion.prepend_keymap]]
-on = ["<C-n>"]
-run = "arrow 1"
-desc = "Move cursor down"
+[[manager.prepend_keymap]]
+on = ["f", "r"]
+run = "plugin fr --args='fr'"
+desc = "Find file by content (ripgrep match)"
 
-# Empty the filename then move the cursor to start
+[[manager.prepend_keymap]]
+on = ["f", "a"]
+run = "plugin fr --args='fa'"
+desc = "Find file by content (ripgrep-all)"
+
+# quality of life
 
 [[manager.prepend_keymap]]
 on = ["R"]
 run = "rename --empty=stem --cursor=start"
 desc = "Easy rename"
 
-# Search with Smart filter
-
-[[manager.prepend_keymap]]
-on = ["S"]
-run = "plugin smart-filter"
-desc = "Smart filter"
-
-# fg plugin keymaps
-
-[[manager.prepend_keymap]]
-on = ["f", "f"]
-run = "plugin fz --args='fzf'"
-desc = "Find file by filename"
-
-[[manager.prepend_keymap]]
-on = ["f", "z"]
-run = "plugin fz"
-desc = "Find file by content (fuzzy match)"
-
-[[manager.prepend_keymap]]
-on = ["f", "g"]
-run = "plugin fz --args='rg'"
-desc = "Find file by content (ripgrep match)"
-
-[[manager.prepend_keymap]]
-on = ["f", "a"]
-run = "plugin fz --args='rga'"
-desc = "Find file by content (ripgrep-all)"
-
-# Chmod
-
-[[manager.prepend_keymap]]
-on = ["c", "m"]
-run = "plugin chmod"
-desc = "Chmod on selected files"
-
-# Smart Enter
+# https://github.com/yazi-rs/plugins
 
 [[manager.prepend_keymap]]
 on = ["l"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-# Relative Motions
-# https://github.com/dedukun/relative-motions.yazi
-
 [[manager.prepend_keymap]]
-on = ["1"]
-run = "plugin relative-motions --args=1"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["2"]
-run = "plugin relative-motions --args=2"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["3"]
-run = "plugin relative-motions --args=3"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["4"]
-run = "plugin relative-motions --args=4"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["5"]
-run = "plugin relative-motions --args=5"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["6"]
-run = "plugin relative-motions --args=6"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["7"]
-run = "plugin relative-motions --args=7"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["8"]
-run = "plugin relative-motions --args=8"
-desc = "Move in relative steps"
-
-[[manager.prepend_keymap]]
-on = ["9"]
-run = "plugin relative-motions --args=9"
-desc = "Move in relative steps"
+on = "T"
+run = "plugin hide-preview"
+desc = "Hide or show preview"
