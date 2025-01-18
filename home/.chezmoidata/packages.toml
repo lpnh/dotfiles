@@ -116,6 +116,7 @@ system = [
     "ttf-dejavu",
     "ttf-liberation",
     "ttf-opensans",
+    "udisks2",
     "unrar",
     "unzip",
     "usb_modeswitch",
