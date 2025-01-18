@@ -18,6 +18,7 @@ return {
           SnacksIndentScope = { fg = colors.surface2 },
           SnacksIndent = { fg = colors.surface0 },
           Visual = { bg = colors.surface0 },
+          -- DiagnosticVirtualTextInfo = { fg = colors.teal },
           -- LineNr = { fg = colors.overlay0 },
           -- WarningMsg = { style = { 'italic' } },
           -- ErrorMsg = { style = { 'italic' } },
