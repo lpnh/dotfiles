@@ -53,7 +53,9 @@ return {
       }
 
       local servers = {
-        -- bashls = true,
+        bashls = {
+          manual_install = true,
+        },
         clangd = true,
         html = true,
         jsonls = {
@@ -90,6 +92,7 @@ return {
           },
         },
         tailwindcss = {
+          manual_install = true,
           filetypes = { 'html', 'rust' },
           init_options = {
             userLanguages = {
@@ -116,14 +119,8 @@ return {
       end, vim.tbl_keys(servers))
 
       require('mason').setup()
-
-      local ensure_installed = {
-        'codelldb',
-        'markdownlint',
-      }
-      vim.list_extend(ensure_installed, servers_to_install)
       require('mason-tool-installer').setup {
-        ensure_installed = ensure_installed,
+        ensure_installed = servers_to_install,
         auto_update = true,
       }
 
