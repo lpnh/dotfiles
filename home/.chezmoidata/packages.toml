@@ -12,6 +12,7 @@ crates = ["cargo-chef", "trunk"]
 
 # also optional
 dev = [
+    "bacon",
     "cargo-aur-bin",
     "cargo-generate",
     "cargo-make",
@@ -19,6 +20,20 @@ dev = [
     "love",
     "tiled",
     "zola",
+]
+
+lsp = [
+    "bash-language-server",
+    "lua-language-server",
+    "rust-analyzer",
+    "tailwindcss-language-server",
+    "taplo-cli",
+]
+
+fmt_lint = [
+    "markdownlint-cli",
+    "shellcheck-bin",   # AUR
+    "shfmt",
 ]
 
 # packages already installed during OS setup
@@ -135,7 +150,6 @@ system = [
 
 common = [
     "alacritty",
-    "bacon",
     "bat",
     "bob",
     "bottom",
@@ -159,7 +173,6 @@ common = [
     "lazygit",
     "libqalculate",
     "lld",
-    "lua-language-server",
     "lua51",
     "luarocks",
     "ly",
@@ -177,14 +190,12 @@ common = [
     "ripgrep-all",
     "rnote",
     "rofimoji",
-    "rust-analyzer",
     "sqlitebrowser",
     "starship",
     "stylua",
     "swaybg",
     "swayidle",
     "swaylock",
-    "taplo-cli",
     "thunderbird",
     "tokei",
     "transmission-cli",
