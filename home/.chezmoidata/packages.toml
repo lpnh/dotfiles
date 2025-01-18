@@ -45,12 +45,12 @@ already_installed = [
     "go",
     "lua",
     "rustup",
+    # niri xorg compatibility
+    "xwayland-satellite",
     # package management
     "yay",
     "pacman-hook-kernel-install", # from AUR
     "pacman-contrib",
-    # niri xorg compatibility
-    "xwayland-satellite",
     # bootstrap
     "chezmoi",
 ]
@@ -146,6 +146,7 @@ common = [
     "fcitx5-mozc",
     "fd",
     "firefox",
+    "firefox-nightly",
     "fish",
     "foot",
     "fuzzel",
