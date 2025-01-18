@@ -803,8 +803,26 @@ Update the database</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
+Create a directory for custom apps and packages</li>
+</ul>
+<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>xwayland-satellite</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git &amp;&amp; cd xwayland-satellite
+</code></pre>
+<pre><code class="language-bash">cargo build --release -F systemd
+</code></pre>
+<pre><code class="language-bash">sudo mv target/release/xwayland-satellite /usr/bin
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
 Install <em>yay</em></li>
 </ul>
+<pre><code class="language-bash">cd ~/apps
+</code></pre>
 <pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
 <ul>
@@ -885,16 +903,6 @@ Check it</li>
 Refresh the font cache to make sure the fonts are available system-wide</li>
 </ul>
 <pre><code class="language-sh">sudo fc-cache -fv
-</code></pre>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Install <em>xwayland-satellite</em></li>
-</ul>
-<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git
-</code></pre>
-<pre><code class="language-bash">cd xwayland-satellite &amp;&amp; cargo build --release -F systemd
-</code></pre>
-<pre><code class="language-bash">cd target/release &amp;&amp; sudo cp xwayland-satellite /usr/bin/
 </code></pre>
 <ul>
 <li>
@@ -997,6 +1005,12 @@ Update the <em>main.conf</em> file to set the startup state as <strong>off</stro
 </code></pre>
 <pre><code class="language-txt">[Policy]
 AutoEnable=false
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Enable the <em>xwayland-satellite</em> service</li>
+</ul>
+<pre><code class="language-bash">systemctl --user enable xwayland-satellite
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>

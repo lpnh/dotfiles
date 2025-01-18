@@ -226,8 +226,26 @@ Update the database</li>
 </code></pre>
 <ul>
 <li><input disabled="" type="checkbox"/>
+Create a directory for custom apps and packages</li>
+</ul>
+<pre><code class="language-bash">mkdir apps &amp;&amp; cd apps
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Install <em>xwayland-satellite</em></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/Supreeeme/xwayland-satellite.git &amp;&amp; cd xwayland-satellite
+</code></pre>
+<pre><code class="language-bash">cargo build --release -F systemd
+</code></pre>
+<pre><code class="language-bash">sudo mv target/release/xwayland-satellite /usr/bin
+</code></pre>
+<ul>
+<li><input disabled="" type="checkbox"/>
 Install <em>yay</em></li>
 </ul>
+<pre><code class="language-bash">cd ~/apps
+</code></pre>
 <pre><code class="language-bash">git clone https://aur.archlinux.org/yay.git &amp;&amp; cd yay &amp;&amp; makepkg -si
 </code></pre>
 <ul>

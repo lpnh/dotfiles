@@ -56,20 +56,6 @@ getent passwd $USER | cut -d: -f7
 sudo fc-cache -fv
 ```
 
-- [ ] Install *xwayland-satellite*
-
-```bash
-git clone https://github.com/Supreeeme/xwayland-satellite.git
-```
-
-```bash
-cd xwayland-satellite && cargo build --release -F systemd
-```
-
-```bash
-cd target/release && sudo cp xwayland-satellite /usr/bin/
-```
-
 - [ ] Download *Bitwarden* [firefox
 extension](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
 
@@ -172,6 +158,12 @@ sudo nano /etc/bluetooth/main.conf
 ```txt
 [Policy]
 AutoEnable=false
+```
+
+- [ ] Enable the *xwayland-satellite* service
+
+```bash
+systemctl --user enable xwayland-satellite
 ```
 
 - [ ] Enable the *ly* service

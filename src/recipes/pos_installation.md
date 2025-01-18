@@ -74,7 +74,31 @@ Server = https://pkgbuild.com/~heftig/repo/$arch
 pacman -Sy
 ```
 
+- [ ] Create a directory for custom apps and packages
+
+```bash
+mkdir apps && cd apps
+```
+
+- [ ] Install *xwayland-satellite*
+
+```bash
+git clone https://github.com/Supreeeme/xwayland-satellite.git && cd xwayland-satellite
+```
+
+```bash
+cargo build --release -F systemd
+```
+
+```bash
+sudo mv target/release/xwayland-satellite /usr/bin
+```
+
 - [ ] Install *yay*
+
+```bash
+cd ~/apps
+```
 
 ```bash
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
