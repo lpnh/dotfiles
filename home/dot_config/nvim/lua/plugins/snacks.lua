@@ -9,6 +9,7 @@ return {
     input = { enabled = true },
     notifier = require 'plugins.snacks.notifier',
     quickfile = { enabled = true },
+    scope = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
     zen = {
