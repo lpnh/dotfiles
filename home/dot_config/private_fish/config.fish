@@ -129,6 +129,10 @@ abbr yq 'yay -Qi'
 abbr yr 'yay -Rns'
 abbr ys 'yay -Ss'
 
+# date and time
+alias dt 'notify-send -t 1800 coucou \n(date "+%A %d")'
+alias hr 'notify-send -t 1800 coucou \n(date +%R)'
+
 # the enthusiasm level determines the scope
 function yay!
     yay --noconfirm
