@@ -19,6 +19,7 @@ dev = [
     "just",
     "love",
     "tiled",
+    "tokei",
     "zola",
 ]
 
@@ -197,7 +198,6 @@ common = [
     "swayidle",
     "swaylock",
     "thunderbird",
-    "tokei",
     "transmission-cli",
     "transmission-gtk",
     "tree-sitter-cli",
