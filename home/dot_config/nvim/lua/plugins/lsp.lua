@@ -55,6 +55,9 @@ return {
         bacon_ls = {
           manual_install = true,
           root_dir = require('lspconfig.util').root_pattern('.git/', 'Cargo.lock', 'Cargo.toml'),
+          init_options = {
+            locationsFile = 'bacon_locations',
+          },
         },
         bashls = {
           manual_install = true,
