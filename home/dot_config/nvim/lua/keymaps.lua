@@ -11,6 +11,9 @@ map({ 'n', 'v' }, ';', ':', { desc = 'Enter command-line mode' })
 -- Clear highlight (search)
 map('n', '<esc>', '<cmd>nohlsearch<CR>')
 
+-- Diagnostic
+map('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show diagnostic messages' })
+
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

@@ -13,12 +13,11 @@ return {
         },
       },
       { 'Bilal2453/luvit-meta', lazy = true },
+
+      -- Mason x.x
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-      -- Diagnostics virtual lines
-      'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 
       -- Schema information
       'b0o/SchemaStore.nvim',
@@ -26,28 +25,28 @@ return {
       { 'saghen/blink.cmp' },
     },
     config = function()
-      -- Diagnostic options
-      local signs = {
+      local custom_signs = {
         ERROR = '',
         WARN = '',
         HINT = '󰌵',
         INFO = '',
       }
       vim.diagnostic.config {
+        float = {
+          border = 'rounded',
+          header = '',
+          prefix = '',
+          severity_sort = false,
+        },
         severity_sort = true,
         signs = false,
         underline = false,
-        virtual_lines = { only_current_line = true },
         virtual_text = {
-          format = function(diagnostic)
-            local colon_index = string.find(diagnostic.message, ':')
-            if colon_index then
-              return string.sub(diagnostic.message, 1, colon_index - 1)
-            end
-            return diagnostic.message
+          format = function()
+            return ''
           end,
           prefix = function(diagnostic)
-            return signs[vim.diagnostic.severity[diagnostic.severity]]
+            return custom_signs[vim.diagnostic.severity[diagnostic.severity]]
           end,
         },
       }
