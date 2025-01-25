@@ -69,8 +69,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd('VimLeavePre', {
   callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_clients { bufnr = bufnr }
+    local clients = vim.lsp.get_clients { name = 'bacon_ls' }
     for _, client in ipairs(clients) do
       if client.name == 'bacon_ls' then
         local file_path = client.config.root_dir .. '/bacon_locations'
