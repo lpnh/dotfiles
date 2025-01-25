@@ -54,7 +54,7 @@ return {
         end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        Snacks.toggle.diagnostics():map '<leader>dd'
+        Snacks.toggle.diagnostics():map '<leader>D'
         Snacks.toggle.inlay_hints():map '<leader>h'
         Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>tn'
         Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>tw' -- useful for html stuff

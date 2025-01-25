@@ -12,7 +12,7 @@ map({ 'n', 'v' }, ';', ':', { desc = 'Enter command-line mode' })
 map('n', '<esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic
-map('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show diagnostic messages' })
+map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic messages' })
 
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
