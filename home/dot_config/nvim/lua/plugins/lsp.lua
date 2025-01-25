@@ -53,6 +53,9 @@ return {
       }
 
       local servers = {
+        bacon_ls = {
+          manual_install = true,
+        },
         bashls = {
           manual_install = true,
         },
@@ -84,10 +87,10 @@ return {
           manual_install = true,
           settings = {
             ['rust-analyzer'] = {
-              cargo = { allFeatures = true, loadOutDirsFromCheck = true },
-              checkOnSave = { command = 'clippy' },
-              procMacro = { enable = true },
+              checkOnSave = { enable = false },
               diagnostics = { enable = false },
+              procMacro = { enable = true },
+              rustfmt = { extraArgs = { '+nightly' } },
             },
           },
         },
