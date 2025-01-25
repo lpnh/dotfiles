@@ -1,22 +1,12 @@
-local signs = {
-  ERROR = '',
-  WARN = '',
-  HINT = '󰌵',
-  INFO = '',
-}
 vim.diagnostic.config {
-  virtual_lines = false,
-  virtual_text = {
+  float = {
+    border = 'rounded',
     format = function(diagnostic)
-      local space_index = string.find(diagnostic.message, ' ')
-      if space_index then
-        return string.sub(diagnostic.message, space_index)
-      end
-      return diagnostic.message
+      local extracted = string.match(diagnostic.message, '%s([^%[]+)')
+      return extracted or diagnostic.message
     end,
-    prefix = function(diagnostic)
-      return signs[vim.diagnostic.severity[diagnostic.severity]]
-    end,
-    spacing = 0,
+    header = '',
+    prefix = '',
+    severity_sort = false,
   },
 }
