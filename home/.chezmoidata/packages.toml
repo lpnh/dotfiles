@@ -8,7 +8,7 @@ optional = [
 ]
 
 # should be manually installed with `cargo install --locked`
-crates = ["cargo-chef", "trunk"]
+crates = ["bacon-ls", "cargo-chef", "trunk"]
 
 # also optional
 dev = [
