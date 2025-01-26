@@ -5,21 +5,20 @@ local custom_signs = {
   INFO = '',
 }
 
-local function get_vt_config(enabled)
+local vim_config = vim.diagnostic.config
+
+local function vt_config(enabled)
   return {
-    format = enabled and (vim.diagnostic.config().float.format or function(diagnostic)
-      return diagnostic.message
-    end) or function()
-      return ''
-    end,
-    prefix = function(diagnostic)
-      return custom_signs[vim.diagnostic.severity[diagnostic.severity]]
-    end,
+    format = enabled and (vim_config().float.format or function(d) return d.message end)
+      or function() return '' end,
+    prefix = function(d) return custom_signs[vim.diagnostic.severity[d.severity]] end,
     spacing = 0,
   }
 end
 
-vim.diagnostic.config {
+local vt_enabled = false
+
+vim_config {
   float = {
     border = 'rounded',
     header = '',
@@ -29,29 +28,23 @@ vim.diagnostic.config {
   severity_sort = true,
   signs = false,
   underline = false,
-  virtual_text = get_vt_config(false),
+  virtual_text = vt_config(vt_enabled),
 }
 
-local diagnostics_namespace = vim.api.nvim_create_namespace 'custom_diagnostics'
-
-local is_vt_enabled = false
-
 local function toggle_virtual_text()
-  is_vt_enabled = not is_vt_enabled
+  vt_enabled = not vt_enabled
 
-  local status = is_vt_enabled and 'Enabled' or 'Disabled'
+  local status = vt_enabled and 'Enabled' or 'Disabled'
   Snacks.notify(status .. ' **Virtual Text**', {
     title = 'Virtual Text',
     level = vim.log.levels.INFO,
   })
 
-  vim.diagnostic.config { virtual_text = get_vt_config(is_vt_enabled) }
+  vim_config { virtual_text = vt_config(vt_enabled) }
 end
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  callback = function()
-    vim.diagnostic.config { virtual_text = get_vt_config(is_vt_enabled) }
-  end,
+  callback = function() vim_config { virtual_text = vt_config(vt_enabled) } end,
 })
 
 vim.keymap.set('n', '<leader>v', toggle_virtual_text, { desc = 'Toggle Virtual Text' })
