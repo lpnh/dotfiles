@@ -10,6 +10,8 @@
 
 require 'options'
 
+require 'diagnostics'
+
 require 'keymaps'
 
 require 'lazy-bootstrap'
