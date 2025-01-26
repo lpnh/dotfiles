@@ -31,6 +31,16 @@ return {
         HINT = '󰌵',
         INFO = '',
       }
+      local vt_config = {
+        format = function()
+          return ''
+        end,
+        prefix = function(diagnostic)
+          return custom_signs[vim.diagnostic.severity[diagnostic.severity]]
+        end,
+        spacing = 0,
+      }
+
       vim.diagnostic.config {
         float = {
           border = 'rounded',
@@ -41,15 +51,20 @@ return {
         severity_sort = true,
         signs = false,
         underline = false,
-        virtual_text = {
-          format = function()
-            return ''
-          end,
-          prefix = function(diagnostic)
-            return custom_signs[vim.diagnostic.severity[diagnostic.severity]]
-          end,
-        },
+        virtual_text = vt_config,
       }
+
+      local virtual_text_on = true
+      function ToggleVirtualText()
+        Snacks.notify((virtual_text_on and 'Enabled' or 'Disabled') .. ' **Virtual Text**', {
+          title = 'Virtual Text',
+          level = vim.log.levels.INFO,
+        })
+        vim.diagnostic.config { virtual_text = virtual_text_on or vt_config }
+        virtual_text_on = not virtual_text_on
+      end
+
+      vim.keymap.set('n', '<leader>v', ToggleVirtualText, { desc = 'Toggle Virtual Text' })
 
       local servers = {
         bacon_ls = {
@@ -226,27 +241,12 @@ return {
         markdown = { 'markdownlint' },
       }
 
-      local is_enabled = false
-
-      local function toggle_md_lint()
-        if is_enabled then
-          vim.diagnostic.reset(lint.get_namespace 'markdownlint')
-        else
-          lint.try_lint()
-        end
-        is_enabled = not is_enabled
-      end
-
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
         group = vim.api.nvim_create_augroup('lint', { clear = true }),
         callback = function()
-          if is_enabled then
-            lint.try_lint()
-          end
+          lint.try_lint()
         end,
       })
-
-      vim.keymap.set('n', '<leader>ml', toggle_md_lint, { desc = 'Toggle MD linting' })
     end,
   },
 
