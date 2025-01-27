@@ -4,10 +4,10 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
-    dashboard = require 'plugins.snacks.dashboard',
+    dashboard = require 'plugins.config.snacks.dashboard',
     indent = { enabled = true },
     input = { enabled = true },
-    notifier = require 'plugins.snacks.notifier',
+    notifier = require 'plugins.config.snacks.notifier',
     quickfile = { enabled = true },
     scope = { enabled = true },
     statuscolumn = { enabled = true },
@@ -46,12 +46,8 @@ return {
       pattern = 'VeryLazy',
       callback = function()
         -- Setup some globals for debugging (lazy-loaded)
-        _G.dd = function(...)
-          Snacks.debug.inspect(...)
-        end
-        _G.bt = function()
-          Snacks.debug.backtrace()
-        end
+        _G.dd = function(...) Snacks.debug.inspect(...) end
+        _G.bt = function() Snacks.debug.backtrace() end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
         Snacks.toggle.diagnostics():map '<leader>D'
@@ -88,16 +84,18 @@ return {
         end
 
         local msg = {}
-        progress[client.id] = vim.tbl_filter(function(v)
-          return table.insert(msg, v.msg) or not v.done
-        end, p)
+        progress[client.id] = vim.tbl_filter(
+          function(v) return table.insert(msg, v.msg) or not v.done end,
+          p
+        )
 
         local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
         vim.notify(table.concat(msg, '\n'), 'info', {
           id = 'lsp_progress',
           title = client.name,
           opts = function(notif)
-            notif.icon = #progress[client.id] == 0 and ' ' or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+            notif.icon = #progress[client.id] == 0 and ' '
+              or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
           end,
         })
       end,
