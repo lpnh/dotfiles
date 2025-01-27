@@ -33,6 +33,13 @@ on = ["R"]
 run = "rename --empty=stem --cursor=start"
 desc = "Easy rename"
 
+# https://yazi-rs.github.io/docs/tips
+
+[[manager.prepend_keymap]]
+on = "2"
+run = "plugin switch-tab --args=1"
+desc = "Switch or create tab 2"
+
 # https://github.com/yazi-rs/plugins
 
 [[manager.prepend_keymap]]
