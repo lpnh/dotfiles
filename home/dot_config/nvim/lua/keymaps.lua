@@ -50,11 +50,11 @@ map('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
 map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 
--- Disable arrow keys in normal mode
-map('n', '<left>', '<cmd>echo "TJ does not allow this"<CR>')
-map('n', '<right>', '<cmd>echo "TJ does not allow this"<CR>')
-map('n', '<up>', '<cmd>echo "TJ does not allow this"<CR>')
-map('n', '<down>', '<cmd>echo "TJ does not allow this"<CR>')
+-- Just in case lol
+map('n', '<left>', '<cmd>echo "use the home row instead"<CR>')
+map('n', '<right>', '<cmd>echo "use the home row instead"<CR>')
+map('n', '<up>', '<cmd>echo "use the home row instead"<CR>')
+map('n', '<down>', '<cmd>echo "use the home row instead"<CR>')
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
