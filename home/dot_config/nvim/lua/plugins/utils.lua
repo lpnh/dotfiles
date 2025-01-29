@@ -9,9 +9,7 @@ return {
     keys = {
       {
         '<leader>r',
-        function()
-          require('grug-far').open { prefills = { search = vim.fn.expand '<cword>' } }
-        end,
+        function() require('grug-far').open { prefills = { search = vim.fn.expand '<cword>' } } end,
         desc = 'Replace word under the cursor',
       },
     },
@@ -85,15 +83,11 @@ return {
     keys = {
       {
         '<A-h>',
-        function()
-          require('arrow.persist').previous()
-        end,
+        function() require('arrow.persist').previous() end,
       },
       {
         '<A-l>',
-        function()
-          require('arrow.persist').next()
-        end,
+        function() require('arrow.persist').next() end,
       },
     },
   },
@@ -103,18 +97,6 @@ return {
     'saecki/crates.nvim',
     event = { 'BufRead Cargo.toml' },
     opts = {},
-  },
-
-  -- Markdown
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = 'markdown',
-    opts = {
-      enabled = false,
-    },
-    keys = {
-      { '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', desc = 'Toggle MD rendering' },
-    },
   },
 
   -- Tailwind
