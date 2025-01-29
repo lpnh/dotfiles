@@ -9,8 +9,9 @@ return {
     keys = {
       {
         '<leader>r',
-        function() require('grug-far').open { prefills = { search = vim.fn.expand '<cword>' } } end,
-        desc = 'Replace word under the cursor',
+        [[:<C-u>lua require('grug-far').with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })<cr>]],
+        mode = 'v',
+        desc = 'Replace current visual selection',
       },
     },
   },
@@ -24,9 +25,7 @@ return {
         border = 'single',
       },
     },
-    keys = {
-      { '<leader>k', '<cmd>WhichKey<CR>', desc = 'WhichKey' },
-    },
+    keys = { { '<leader>k', '<cmd>WhichKey<CR>', desc = 'WhichKey' } },
   },
 
   -- Implement sessions
@@ -45,9 +44,8 @@ return {
       require('mini.surround').setup()
       require('mini.pairs').setup()
       require('mini.icons').setup {
-        file = {
-          ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
-        },
+        directory = { nvim = { hl = 'MiniIconsAzure' } },
+        file = { ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' } },
         extension = {
           db = { glyph = '' },
           lock = { glyph = '' },
@@ -67,9 +65,7 @@ return {
       },
       skip_confirm_for_simple_edits = true,
     },
-    keys = {
-      { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' },
-    },
+    keys = { { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' } },
   },
 
   -- Arrow
@@ -81,14 +77,8 @@ return {
       buffer_leader_key = 'm',
     },
     keys = {
-      {
-        '<A-h>',
-        function() require('arrow.persist').previous() end,
-      },
-      {
-        '<A-l>',
-        function() require('arrow.persist').next() end,
-      },
+      { '<A-h>', function() require('arrow.persist').previous() end },
+      { '<A-l>', function() require('arrow.persist').next() end },
     },
   },
 
@@ -104,9 +94,6 @@ return {
     'luckasRanarison/tailwind-tools.nvim',
     name = 'tailwind-tools',
     build = ':UpdateRemotePlugins',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
     opts = {
       extension = {
         patterns = { -- a map of filetypes to Lua pattern lists
