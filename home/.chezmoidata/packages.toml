@@ -190,6 +190,7 @@ common = [
     "ripgrep-all",
     "rnote",
     "rofimoji",
+    "sdcv",
     "sqlitebrowser",
     "starship",
     "stylua",
