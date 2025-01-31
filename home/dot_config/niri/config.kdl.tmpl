@@ -577,7 +577,7 @@ binds {
     Mod+P { spawn "steam" "steam://rungameid/431730"; }
     Mod+N { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
     Mod+T { spawn "thunderbird"; }
-    Mod+V { spawn "vesktop"; }
+    Mod+V { spawn "env" "DISPLAY=:0" "discord"; }
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     {{- if eq .chezmoi.hostname "desktop" }}
