@@ -55,19 +55,6 @@ return {
     end,
   },
 
-  -- Oil
-  {
-    'stevearc/oil.nvim',
-    lazy = false,
-    opts = {
-      view_options = {
-        show_hidden = true,
-      },
-      skip_confirm_for_simple_edits = true,
-    },
-    keys = { { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' } },
-  },
-
   -- Arrow
   {
     'otavioschwanck/arrow.nvim',

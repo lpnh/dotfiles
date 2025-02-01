@@ -2,6 +2,9 @@ local map = vim.keymap.set
 
 map({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 
+-- Netrw
+map('n', '-', '<cmd>Explore<cr>', { silent = true })
+
 -- Favor `surround` keybindings instead
 map('n', 's', '<nop>', { noremap = true, silent = true })
 

@@ -10,18 +10,19 @@ return {
     pick = nil,
     -- Used by the `keys` section to show keymaps.
     -- Set your curstom keymaps here.
-    -- When using a function, the `items` argument are the default keymaps.
+    -- stylua: ignore start
     keys = {
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
-      { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+      { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')", },
       { icon = ' ', key = 'g', desc = 'Live Grep', action = ':FzfLua live_grep_native' },
-      { icon = ' ', key = 'h', desc = 'History', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+      { icon = ' ', key = 'h', desc = 'History', action = ":lua Snacks.dashboard.pick('oldfiles')", },
       { icon = '󱀸 ', key = 's', desc = 'Restore Session', section = 'session' },
-      { icon = ' ', key = 'o', desc = 'Oil', action = ':Oil' },
-      { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-      { icon = '󰒲 ', key = 'u', desc = 'Update Lazy', action = ':Lazy update', enabled = package.loaded.lazy ~= nil },
+      { icon = ' ', key = 'e', desc = 'Netrw', action = ':Explore' },
+      { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})", },
+      { icon = '󰒲 ', key = 'u', desc = 'Lazy Update', action = ':Lazy update', enabled = package.loaded.lazy ~= nil, },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
     },
+    -- stylua: ignore end
     -- Used by the `header` section
     header = [[
 
@@ -46,7 +47,8 @@ return {
       local fname = vim.fn.fnamemodify(item.file, ':~')
       fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
       local dir, file = fname:match '^(.*)/(.+)$'
-      return dir and { { dir .. '/', hl = 'dir' }, { file, hl = 'file' } } or { { fname, hl = 'file' } }
+      return dir and { { dir .. '/', hl = 'dir' }, { file, hl = 'file' } }
+        or { { fname, hl = 'file' } }
     end,
   },
   sections = {
