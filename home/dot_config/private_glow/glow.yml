@@ -2,11 +2,11 @@
 
 # style name or JSON path (default "auto")
 style: "~/.config/glow/mocha.json"
-# show local files only; no network (TUI-mode only)
-local: false 
-# mouse support (TUI-mode only)
+# mouse wheel support (TUI-mode only)
 mouse: false
 # use pager to display markdown
-pager: false
-# word-wrap at width
+pager: true
+# at which column should we word wrap?
 width: 80
+# show all files, including hidden and ignored.
+all: true
