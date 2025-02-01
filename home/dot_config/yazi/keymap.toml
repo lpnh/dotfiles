@@ -1,3 +1,8 @@
+[[manager.prepend_keymap]]
+on = ["g", "j"]
+run = "plugin last-jump"
+desc = "Goto last jump"
+
 # custom plugins
 
 [[manager.prepend_keymap]]
