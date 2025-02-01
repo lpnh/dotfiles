@@ -178,7 +178,6 @@ common = [
     "luarocks",
     "ly",
     "mako",
-    "md-tui",
     "mdbook",
     "mpv",
     "ncspot",
