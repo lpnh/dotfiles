@@ -18,6 +18,14 @@ desc = "Linemode: custom"
 on = ["F"]
 run = "plugin custom-layout"
 
+# fdp plugin
+
+[[manager.prepend_keymap]]
+on = ["f", "d"]
+run = "plugin fdp"
+desc = "fd with preview"
+
+
 # fr plugin
 
 [[manager.prepend_keymap]]
