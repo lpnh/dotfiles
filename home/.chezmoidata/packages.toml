@@ -149,6 +149,7 @@ system = [
 ]
 
 common = [
+    "aichat",
     "alacritty",
     "bat",
     "bob",
