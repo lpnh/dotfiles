@@ -7,7 +7,9 @@ return {
       { '<leader>g', icon = '󰊢', group = 'Git' },
       { '<leader>k', icon = '󰌆' },
       { '<leader>l', icon = '', group = 'LÖVE' },
+      { '<leader>s', icon = '', group = 'Search' },
       { '<leader>t', icon = '', group = 'Toggle' },
+      { '<leader>T', icon = '󱏿', group = 'Tailwind' },
     },
     win = {
       border = 'single',

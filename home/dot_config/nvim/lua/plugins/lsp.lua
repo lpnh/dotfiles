@@ -13,7 +13,6 @@ return {
         },
       },
       { 'Bilal2453/luvit-meta', lazy = true },
-
       -- Mason x.x
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -74,8 +73,8 @@ return {
     cmd = 'LoveRun',
     opts = {},
     keys = {
-      { '<leader>vv', '<cmd>LoveRun<cr>', ft = 'lua', desc = 'Run LÖVE' },
-      { '<leader>vs', '<cmd>LoveStop<cr>', ft = 'lua', desc = 'Stop LÖVE' },
+      { '<leader>lr', '<cmd>LoveRun<cr>', ft = 'lua', desc = 'Run LÖVE' },
+      { '<leader>ls', '<cmd>LoveStop<cr>', ft = 'lua', desc = 'Stop LÖVE' },
     },
   },
 }

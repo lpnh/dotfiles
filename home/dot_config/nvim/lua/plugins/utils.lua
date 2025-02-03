@@ -16,18 +16,6 @@ return {
     },
   },
 
-  -- WhichKey
-  {
-    'folke/which-key.nvim',
-    event = 'VimEnter',
-    opts = {
-      win = {
-        border = 'single',
-      },
-    },
-    keys = { { '<leader>k', '<cmd>WhichKey<CR>', desc = 'WhichKey' } },
-  },
-
   -- Implement sessions
   {
     'folke/persistence.nvim',
@@ -89,10 +77,30 @@ return {
       },
     },
     keys = {
-      { '<leader>Tc', '<cmd>TailwindConcealToggle<CR>', desc = 'Toggle tailwind conceal' },
-      { '<leader>Ts', '<cmd>TailwindSort<CR>', desc = 'Sort tailwind classes' },
-      { '<leader>Tp', '<cmd>TailwindPrevClass<CR>', desc = 'Move to the next class' },
-      { '<leader>Tn', '<cmd>TailwindNextClass<CR>', desc = 'Move to the previous class' },
+      {
+        '<leader>Tc',
+        '<cmd>TailwindConcealToggle<CR>',
+        ft = { 'html', 'rust' },
+        desc = 'Toggle tailwind conceal',
+      },
+      {
+        '<leader>Ts',
+        '<cmd>TailwindSort<CR>',
+        ft = { 'html', 'rust' },
+        desc = 'Sort tailwind classes',
+      },
+      {
+        '<leader>Tp',
+        '<cmd>TailwindPrevClass<CR>',
+        ft = { 'html', 'rust' },
+        desc = 'Move to the next class',
+      },
+      {
+        '<leader>Tn',
+        '<cmd>TailwindNextClass<CR>',
+        ft = { 'html', 'rust' },
+        desc = 'Move to the previous class',
+      },
     },
   },
 }
