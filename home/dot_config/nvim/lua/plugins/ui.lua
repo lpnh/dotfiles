@@ -106,4 +106,16 @@ return {
       },
     },
   },
+
+  -- Markdown
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    ft = 'markdown',
+    opts = {
+      enabled = false,
+    },
+    keys = {
+      { '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', desc = 'Toggle MD rendering' },
+    },
+  },
 }
