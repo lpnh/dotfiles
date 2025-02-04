@@ -120,13 +120,15 @@ alias xt 'eza --color=always --group-directories-first --icons --tree'
 alias xta 'eza --color=always --group-directories-first --icons --tree --all'
 
 # ya
+alias yaa 'ya pack --add'
+alias yad 'ya pack --delete'
 alias yal 'ya pack --list'
 alias yau 'ya pack --upgrade'
 
 # yay
+abbr yi 'yay -Qi'
 abbr yl 'yay -Ql'
-abbr yq 'yay -Qi'
-abbr yr 'yay -Rns'
+abbr yr 'yay -Rnsc'
 abbr ys 'yay -Ss'
 
 # zoxide
