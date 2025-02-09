@@ -19,7 +19,6 @@ run = "glow"
 
 [[plugin.prepend_fetchers]]
 id = "mime"
-if = "!mime"
 name = "*"
 run = "mime-ext"
 prio = "high"

@@ -11,10 +11,27 @@ function Linemode:custom()
 	return ui.Line(string.format("%s", time))
 end
 
-require("mime-ext"):setup({
-	fallback_file1 = true,
-})
+require("fr"):setup {
+	fzf = [[--info-command='echo -e "$FZF_INFO 💛"'  --no-scrollbar --pointer '󰼛']],
+	rg = "--colors 'line:fg:red' --colors 'match:style:nobold'",
+	bat = "--style 'header,grid'",
+	rga = {
+		"--hidden",
+		"--follow",
+		"--no-ignore",
+	},
+	rga_preview = {
+		"--colors 'line:fg:red'"
+			.. " --colors 'match:fg:blue'"
+			.. " --colors 'match:bg:black'"
+			.. " --colors 'match:style:nobold'",
+	},
+}
 
-require("zoxide"):setup({
+-- require("mime-ext"):setup {
+-- 	fallback_file1 = true,
+-- }
+
+require("zoxide"):setup {
 	update_db = true,
-})
+}
