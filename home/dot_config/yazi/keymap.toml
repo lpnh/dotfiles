@@ -48,7 +48,7 @@ run = "plugin fr rg"
 desc = "rg search"
 
 [[manager.prepend_keymap]]
-on = ["f", "A"]
+on = ["f", "a"]
 run = "plugin fr rga"
 desc = "rga search"
 
