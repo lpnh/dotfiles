@@ -18,7 +18,7 @@ require("fr"):setup {
 	rga = {
 		"--hidden",
 		"--follow",
-		"--no-ignore",
+		"--glob '!.git'",
 	},
 	rga_preview = {
 		"--colors 'line:fg:red'"
