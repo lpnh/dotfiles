@@ -18,7 +18,7 @@ local servers = {
       Lua = {
         diagnostics = {
           -- handle the "Undefined global" warnings
-          globals = { 'love', 'Snacks' },
+          globals = { 'ya' },
         },
         completion = {
           callSnippet = 'Replace',
