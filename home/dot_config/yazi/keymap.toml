@@ -1,4 +1,8 @@
 [[manager.prepend_keymap]]
+on = "M"
+run = "plugin mount"
+
+[[manager.prepend_keymap]]
 on = ["g", "j"]
 run = "plugin last-jump"
 desc = "Goto last jump"

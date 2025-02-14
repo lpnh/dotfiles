@@ -30,8 +30,8 @@ return {
     -- stylua: ignore start
     { '<leader>b', function() Snacks.scratch() end, desc = 'Toggle scratch buffer' },
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
-    { '<leader>gb', function() Snacks.git.blame_line() end, desc = 'Git blame line' },
-    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git browse' },
+    { '<leader>gB', function() Snacks.git.blame_line() end, desc = 'Git blame line' },
+    { '<leader>gb', function() Snacks.gitbrowse() end, desc = 'Git browse' },
     { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Lazygit current file history' },
     { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Lazygit Log (cwd)' },
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Show notification history' },

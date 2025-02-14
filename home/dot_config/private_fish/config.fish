@@ -8,6 +8,9 @@ set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
 set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
 set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
 
+# eza colors
+set -gx EZA_COLORS hd=0
+
 # fzf mocha theme
 set -gx FZF_DEFAULT_OPTS "\
 --color=bg+:#313244,spinner:#f5e0dc,hl:#cba6f7 \

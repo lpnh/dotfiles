@@ -11,6 +11,21 @@ return {
         end
       end
 
+      local mode_map = {
+        n = '(ᴗ_ ᴗ。)',
+        nt = '(ᴗ_ ᴗ。)',
+        i = '(•̀ - •́ )',
+        R = '( •̯́ ₃ •̯̀)',
+        v = '(⊙ _ ⊙ )',
+        V = '(⊙ _ ⊙ )',
+        no = 'Σ(°△°ꪱꪱꪱ)',
+        ['\22'] = '(⊙ _ ⊙ )',
+        t = '(⌐■_■)',
+        ['!'] = 'Σ(°△°ꪱꪱꪱ)',
+        c = 'Σ(°△°ꪱꪱꪱ)',
+        s = 'SUB',
+      }
+
       require('lualine').setup {
         options = {
           icons_enabled = true,
@@ -20,32 +35,23 @@ return {
           disabled_filetypes = { 'snacks_dashboard' },
         },
         sections = {
+          lualine_a = {
+            {
+              'mode',
+              fmt = function()
+                return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
+              end,
+            },
+          },
           lualine_b = {
-            {
-              'branch',
-              separator = { right = '' },
-              color = { bg = '#363a4f' },
-            },
-            {
-              'diagnostics',
-              separator = { right = '' },
-              color = { bg = '#363a4f' },
-            },
+            { 'branch', separator = { right = '' }, color = { bg = '#363a4f' } },
+            { 'diagnostics', separator = { right = '' }, color = { bg = '#363a4f' } },
           },
           lualine_c = { 'filename' },
           lualine_x = { arrow },
-          lualine_y = {
-            {
-              'progress',
-              color = { bg = '#363a4f' },
-            },
-          },
+          lualine_y = { { 'progress', color = { bg = '#363a4f' } } },
         },
-        extensions = {
-          'lazy',
-          'mason',
-          'oil',
-        },
+        extensions = { 'lazy', 'mason' },
       }
     end,
   },
@@ -55,13 +61,10 @@ return {
     'folke/noice.nvim',
     event = 'VeryLazy',
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module='...'` entries
       'MunifTanjim/nui.nvim',
     },
     opts = {
-      cmdline = {
-        -- view = "cmdline",
-      },
+      cmdline = {},
       lsp = {
         progress = { enabled = false },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -93,7 +96,6 @@ return {
   },
 
   -- Add git related signs to the gutter and other utilities
-  -- See `:help gitsigns`
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -113,9 +115,8 @@ return {
     ft = 'markdown',
     opts = {
       enabled = false,
+      latex = { enabled = false },
     },
-    keys = {
-      { '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', desc = 'Toggle MD rendering' },
-    },
+    keys = { { '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', desc = 'Toggle MD rendering' } },
   },
 }
