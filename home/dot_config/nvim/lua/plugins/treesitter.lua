@@ -12,6 +12,7 @@ return {
         'diff',
         'dockerfile',
         'fish',
+        'gotmpl',
         'html',
         'json',
         'jsonc',

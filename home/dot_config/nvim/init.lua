@@ -24,3 +24,5 @@ require('lazy').setup('plugins', {
     colorscheme = { 'catppuccin' },
   },
 })
+
+require 'autocmds'

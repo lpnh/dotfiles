@@ -20,17 +20,11 @@
         "tray",
         "niri/language",
         "network",
-        {
-            {- if eq .chezmoi.hostname "laptop"
-            }
-        }
+        {{- if eq .chezmoi.hostname "laptop" }}
         "bluetooth",
         "backlight",
         "battery",
-        {
-            {- end
-            }
-        }
+        {{- end }}
         "pulseaudio"
     ],
     "custom/arch": {
@@ -95,10 +89,7 @@
         "format-disconnected": "disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    {
-        {- if eq .chezmoi.hostname "laptop"
-        }
-    }
+    {{- if eq .chezmoi.hostname "laptop" }}
     "battery": {
         "states": {
             // "good": 95,
@@ -134,10 +125,7 @@
             ""
         ]
     },
-    {
-        {- end
-        }
-    }
+    {{- end }}
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "tooltip": false,
@@ -151,4 +139,3 @@
         }
     }
 }
-// vim:ft=jsonc

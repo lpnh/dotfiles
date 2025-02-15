@@ -3,6 +3,7 @@ local servers = {
     manual_install = true,
   },
   clangd = true,
+  -- gopls = { manual_install = true },
   html = true,
   jsonls = {
     settings = {
