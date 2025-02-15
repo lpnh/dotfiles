@@ -7,26 +7,32 @@
     "margin-left": 8,
     "margin-right": 8,
     "mode": "overlay",
-
     "modules-left": [
         "custom/arch",
         "niri/workspaces",
         "wlr/taskbar",
         "niri/window"
     ],
-    "modules-center": ["clock"],
+    "modules-center": [
+        "clock"
+    ],
     "modules-right": [
         "tray",
         "niri/language",
         "network",
-        {{- if eq .chezmoi.hostname "laptop" }}
+        {
+            {- if eq .chezmoi.hostname "laptop"
+            }
+        }
         "bluetooth",
         "backlight",
         "battery",
-        {{- end }}
+        {
+            {- end
+            }
+        }
         "pulseaudio"
     ],
-
     "custom/arch": {
         "format": "",
         "tooltip": false
@@ -59,11 +65,9 @@
         "format": "{app_id}",
         "separate-outputs": true
     },
-
     "clock": {
         "format": "{:%d %b %R}"
     },
-
     "tray": {
         "spacing": 10
     },
@@ -91,7 +95,10 @@
         "format-disconnected": "disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    {{- if eq .chezmoi.hostname "laptop" }}
+    {
+        {- if eq .chezmoi.hostname "laptop"
+        }
+    }
     "battery": {
         "states": {
             // "good": 95,
@@ -105,19 +112,42 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-    {{- end }}
+    {
+        {- end
+        }
+    }
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "tooltip": false,
         "format-muted": "muted ",
         "format-icons": {
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         }
     }
 }
