@@ -1,0 +1,27 @@
+-- chezmoi tmpl
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = vim.api.nvim_create_augroup('chezmoi-tmpl', { clear = true }),
+  pattern = '*.tmpl',
+  callback = function()
+    local buf_path = vim.fn.expand '%:p'
+    if not string.match(buf_path, '%.local/share/chezmoi') then
+      return
+    end
+
+    local base_ft = vim.fn.expand '%:r:e'
+    if base_ft == '' then
+      return
+    end
+
+    vim.treesitter.query.set(
+      'gotmpl',
+      'injections',
+      string.format(
+        [===[((text) @injection.content (#set! injection.language "%s") (#set! injection.combined))]===],
+        base_ft
+      )
+    )
+
+    vim.bo.filetype = 'gotmpl' -- this must come after the injection x.x
+  end,
+})
