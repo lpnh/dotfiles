@@ -5,11 +5,8 @@ map({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 -- Netrw
 map('n', '-', '<cmd>Explore<cr>', { silent = true })
 
--- Favor `surround` keybindings instead
+-- Favor `surround` instead
 map('n', 's', '<nop>', { noremap = true, silent = true })
-
--- Remap `;` to `:` for convenience
-map({ 'n', 'v' }, ';', ':', { desc = 'Enter command-line mode' })
 
 -- Clear highlight (search)
 map('n', '<esc>', '<cmd>nohlsearch<CR>')
@@ -30,16 +27,12 @@ map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to right window' })
 -- Alternate buffer
 map('n', '<A-Tab>', '<cmd>b#<CR>', { desc = 'Alternate buffer', silent = true })
 
--- Close buffer
-map('n', '<leader>c', '<C-w>c', { desc = 'Close current buffer' })
+-- Close window
+map('n', '<leader>c', '<C-w>c', { desc = 'Close window' })
 
--- Center buffer while navigating
-map('n', '<C-d>', '<C-d>zz')
-map('n', '<C-u>', '<C-u>zz')
-
--- Make replace less painful
-map('x', '<leader>p', [["_dP]], { desc = 'Replace while pasting' })
-map('v', '<leader>d', [["_d]], { desc = 'Deleting using black hole' })
+-- Paste and delete using the black hole
+map('x', '<leader>p', '"_dP', { desc = 'Paste' })
+map('v', '<leader>d', '"_d', { desc = 'Delete' })
 
 -- Split window vertically - New window on the right
 map('n', '<C-S-l>', '<C-w>v', { noremap = true, silent = true, desc = 'Split window vertically' })
@@ -58,10 +51,3 @@ map('n', '<left>', '<cmd>echo "use the home row instead"<CR>')
 map('n', '<right>', '<cmd>echo "use the home row instead"<CR>')
 map('n', '<up>', '<cmd>echo "use the home row instead"<CR>')
 map('n', '<down>', '<cmd>echo "use the home row instead"<CR>')
-
--- Highlight when yanking text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function() vim.highlight.on_yank() end,
-})

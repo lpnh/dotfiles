@@ -25,3 +25,9 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     vim.bo.filetype = 'gotmpl' -- this must come after the injection x.x
   end,
 })
+
+-- highlight when yanking text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function() vim.highlight.on_yank() end,
+})

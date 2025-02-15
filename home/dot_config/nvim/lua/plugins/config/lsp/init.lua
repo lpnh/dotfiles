@@ -88,20 +88,6 @@ vim.filetype.add {
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-setup', { clear = true }),
   callback = function(event)
-    local map = function(keys, func, desc)
-      vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-    end
-
-    -- Jump to the <target> of the word under the cursor
-    --  To jump back, press <C-t>
-    map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-
-    local fzf_lua = require 'fzf-lua'
-    map('gd', fzf_lua.lsp_definitions, 'Go to definition')
-    map('gR', fzf_lua.lsp_references, 'Go to references')
-    map('gI', fzf_lua.lsp_implementations, 'Go to implementation')
-    map('gy', fzf_lua.lsp_typedefs, 'Go to type definition')
-
     -- Highlight references of the word under the cursor
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if
