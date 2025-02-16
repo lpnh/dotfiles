@@ -28,14 +28,10 @@ return {
   },
   keys = {
     -- stylua: ignore start
-    { '<leader>b', function() Snacks.scratch() end, desc = 'Toggle scratch buffer' },
-    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
-    { '<leader>gB', function() Snacks.git.blame_line() end, desc = 'Git blame line' },
-    { '<leader>gb', function() Snacks.gitbrowse() end, desc = 'Git browse' },
-    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Lazygit current file history' },
-    { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Lazygit Log (cwd)' },
-    { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Show notification history' },
-    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select scratch buffer' },
+    { '<leader>bn', function() Snacks.scratch() end, desc = 'Scratch buffer new' },
+    { '<leader>bs', function() Snacks.scratch.select() end, desc = 'Scratch buffer select' },
+    { '<leader>or', function() Snacks.gitbrowse() end, desc = 'Open repo' },
+    { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     { ']r', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next reference', mode = { 'n', 't' }, },
     { '[r', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev reference', mode = { 'n', 't' }, },
@@ -50,11 +46,11 @@ return {
         _G.bt = function() Snacks.debug.backtrace() end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        Snacks.toggle.diagnostics():map '<leader>D'
+        Snacks.toggle.diagnostics():map '<leader>td'
         Snacks.toggle.inlay_hints():map '<leader>h'
-        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>tn'
-        Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>tw' -- useful for html stuff
         Snacks.toggle.zen():map '<leader>z'
+        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>tr'
+        Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>tw' -- useful for html stuff
       end,
     })
 
@@ -62,7 +58,7 @@ return {
     vim.api.nvim_create_autocmd('LspProgress', {
       callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        local value = ev.data.params.value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+        local value = ev.data.params.value
         if not client or type(value) ~= 'table' then
           return
         end
