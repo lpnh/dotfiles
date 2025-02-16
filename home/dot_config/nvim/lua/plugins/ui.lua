@@ -117,6 +117,13 @@ return {
       enabled = false,
       latex = { enabled = false },
     },
-    keys = { { '<leader>mr', '<cmd>RenderMarkdown toggle<CR>', desc = 'Toggle MD rendering' } },
+    keys = {
+      {
+        '<leader>m',
+        '<cmd>RenderMarkdown toggle<CR>',
+        ft = 'markdown',
+        desc = 'Toggle MD rendering',
+      },
+    },
   },
 }

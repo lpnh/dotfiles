@@ -4,7 +4,7 @@ return {
   opts = {
     delay = 0,
     spec = {
-      { '<leader>g', icon = '󰊢', group = 'Git' },
+      { '<leader>b', icon = '', group = 'Scratch Buffer' },
       { '<leader>k', icon = '󰌆' },
       { '<leader>l', icon = '', group = 'LÖVE' },
       { '<leader>s', icon = '', group = 'Search' },
