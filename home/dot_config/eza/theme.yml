@@ -92,7 +92,9 @@ punctuation: {foreground: "#7F849C"}
 date: {foreground: "#F9E2AF"}
 inode: {foreground: "#A6ADC8"}
 blocks: {foreground: "#9399B2"}
-header: {foreground: "#CDD6F4"}
+header: 
+  foreground: "#CDD6F4"
+  is_underline: false
 octal: {foreground: "#94E2D5"}
 flags: {foreground: "#CBA6F7"}
 

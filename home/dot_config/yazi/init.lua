@@ -12,7 +12,7 @@ function Linemode:custom()
 end
 
 require("fr"):setup {
-	fzf = [[--info-command='echo -e "$FZF_INFO 💛"'  --no-scrollbar --pointer '󰼛']],
+	fzf = [[--info-command='echo -e "$FZF_INFO 💛"' --no-scrollbar --pointer '󰼛']],
 	rg = "--colors 'line:fg:red' --colors 'match:style:nobold'",
 	bat = "--style 'header,grid'",
 	rga = {
