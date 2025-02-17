@@ -7,12 +7,10 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     if not string.match(buf_path, '%.local/share/chezmoi') then
       return
     end
-
     local base_ft = vim.fn.expand '%:r:e'
     if base_ft == '' then
       return
     end
-
     vim.treesitter.query.set(
       'gotmpl',
       'injections',
@@ -21,7 +19,6 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
         base_ft
       )
     )
-
     vim.bo.filetype = 'gotmpl' -- this must come after the injection x.x
   end,
 })
@@ -52,23 +49,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-setup', { clear = true }),
   callback = function(event)
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if
-      client
-      and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
-    then
+    local document_highlight = vim.lsp.protocol.Methods.textDocument_documentHighlight
+    if client and client:supports_method(document_highlight) then
       local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,
         group = highlight_augroup,
         callback = vim.lsp.buf.document_highlight,
       })
-
       vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
         buffer = event.buf,
         group = highlight_augroup,
         callback = vim.lsp.buf.clear_references,
       })
-
       vim.api.nvim_create_autocmd('LspDetach', {
         group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
         callback = function(event2)
