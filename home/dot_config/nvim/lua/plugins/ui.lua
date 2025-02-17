@@ -51,7 +51,7 @@ return {
           lualine_x = { arrow },
           lualine_y = { { 'progress', color = { bg = '#363a4f' } } },
         },
-        extensions = { 'lazy', 'mason' },
+        extensions = { 'lazy', 'mason', 'oil' },
       }
     end,
   },
@@ -83,10 +83,7 @@ return {
       },
       -- https://github.com/folke/noice.nvim/wiki/Configuration-Recipes#show-recording-messages
       routes = {
-        {
-          view = 'notify',
-          filter = { event = 'msg_showmode' },
-        },
+        { view = 'notify', filter = { event = 'msg_showmode' } },
         {
           filter = { event = 'notify', find = '^.*WARNING.*vim.treesitter.get_parser.*$' },
           opts = { skip = true },

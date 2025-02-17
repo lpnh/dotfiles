@@ -31,3 +31,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function() vim.highlight.on_yank() end,
 })
+
+-- oil autosave and discard
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged' }, {
+  pattern = 'oil://*',
+  callback = function()
+    if vim.bo.modified then
+      local oil = require 'oil'
+      oil.save({ confirm = true }, function(canceled)
+        if canceled then
+          oil.discard_all_changes()
+        end
+      end)
+    end
+  end,
+})
