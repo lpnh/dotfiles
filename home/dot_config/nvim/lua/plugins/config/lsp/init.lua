@@ -1,7 +1,5 @@
 local servers = {
-  bashls = {
-    manual_install = true,
-  },
+  bashls = { manual_install = true },
   clangd = true,
   -- gopls = { manual_install = true },
   html = true,
@@ -17,13 +15,9 @@ local servers = {
     manual_install = true,
     settings = {
       Lua = {
-        diagnostics = {
-          -- handle the "Undefined global" warnings
-          globals = { 'ya' },
-        },
-        completion = {
-          callSnippet = 'Replace',
-        },
+        -- handle the "Undefined global" warnings
+        diagnostics = { globals = { 'ya' } },
+        completion = { callSnippet = 'Replace' },
       },
     },
   },
@@ -42,17 +36,12 @@ local servers = {
     manual_install = true,
     filetypes = { 'html', 'rust' },
     init_options = {
-      userLanguages = {
-        rust = 'html',
-      },
+      userLanguages = { rust = 'html' },
     },
   },
   taplo = { manual_install = true },
   typos_lsp = {
-    init_options = {
-      -- Equivalent to the typos `--config` cli argument
-      config = '~/.config/typos/typos.toml',
-    },
+    init_options = { config = '~/.config/typos/typos.toml' },
   },
 }
 
@@ -79,11 +68,7 @@ for name, config in pairs(servers) do
   require('lspconfig')[name].setup(config)
 end
 
-vim.filetype.add {
-  pattern = {
-    ['.*/templates/.*%.html'] = 'html',
-  },
-}
+vim.filetype.add { pattern = { ['.*/templates/.*%.html'] = 'html' } }
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-setup', { clear = true }),

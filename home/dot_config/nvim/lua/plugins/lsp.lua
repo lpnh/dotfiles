@@ -23,7 +23,77 @@ return {
 
       { 'saghen/blink.cmp' },
     },
-    config = function() require 'plugins.config.lsp' end,
+    config = function()
+      local servers = {
+        bashls = { manual_install = true },
+        clangd = true,
+        -- gopls = { manual_install = true },
+        html = true,
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+        lua_ls = {
+          manual_install = true,
+          settings = {
+            Lua = {
+              -- handle the "Undefined global" warnings
+              diagnostics = { globals = { 'ya' } },
+              completion = { callSnippet = 'Replace' },
+            },
+          },
+        },
+        rust_analyzer = {
+          manual_install = true,
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = { command = 'clippy' },
+              diagnostics = { enable = false },
+              procMacro = { enable = true },
+              rustfmt = { extraArgs = { '+nightly' } },
+            },
+          },
+        },
+        tailwindcss = {
+          manual_install = true,
+          filetypes = { 'html', 'rust' },
+          init_options = {
+            userLanguages = { rust = 'html' },
+          },
+        },
+        taplo = { manual_install = true },
+        typos_lsp = {
+          init_options = { config = '~/.config/typos/typos.toml' },
+        },
+      }
+
+      local servers_to_install = vim.tbl_filter(function(key)
+        local t = servers[key]
+        if type(t) == 'table' then
+          return not t.manual_install
+        else
+          return t
+        end
+      end, vim.tbl_keys(servers))
+
+      require('mason').setup()
+      require('mason-tool-installer').setup {
+        ensure_installed = servers_to_install,
+        auto_update = true,
+      }
+
+      for name, config in pairs(servers) do
+        if config == true then
+          config = {}
+        end
+
+        require('lspconfig')[name].setup(config)
+      end
+    end,
   },
 
   -- Autoformat
