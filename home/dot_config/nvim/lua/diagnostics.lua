@@ -47,4 +47,4 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   callback = function() vim_config { virtual_text = vt_config(vt_enabled) } end,
 })
 
-vim.keymap.set('n', '<leader>v', toggle_virtual_text, { desc = 'Toggle Virtual Text' })
+vim.keymap.set('n', '<leader>tv', toggle_virtual_text, { desc = 'Toggle Virtual Text' })
