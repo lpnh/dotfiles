@@ -81,6 +81,8 @@ return {
     name = 'tailwind-tools',
     build = ':UpdateRemotePlugins',
     opts = {
+      server = { override = false },
+      -- conceal = { enabled = true }, broken ?
       extension = {
         patterns = { -- a map of filetypes to Lua pattern lists
           rust = { 'class=["\']([^"\']+)["\']' },
@@ -91,25 +93,25 @@ return {
       {
         '<leader>Tc',
         '<cmd>TailwindConcealToggle<CR>',
-        ft = { 'html', 'rust' },
+        ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Toggle tailwind conceal',
       },
       {
         '<leader>Ts',
         '<cmd>TailwindSort<CR>',
-        ft = { 'html', 'rust' },
+        ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Sort tailwind classes',
       },
       {
         '<leader>Tp',
         '<cmd>TailwindPrevClass<CR>',
-        ft = { 'html', 'rust' },
+        ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Move to the next class',
       },
       {
         '<leader>Tn',
         '<cmd>TailwindNextClass<CR>',
-        ft = { 'html', 'rust' },
+        ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Move to the previous class',
       },
     },

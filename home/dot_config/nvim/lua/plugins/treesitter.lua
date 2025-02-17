@@ -14,6 +14,7 @@ return {
         'fish',
         'gotmpl',
         'html',
+        'htmldjango', -- TODO: htmlrinja
         'json',
         'jsonc',
         'just',

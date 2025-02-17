@@ -20,15 +20,15 @@ return {
 
       -- Schema information
       'b0o/SchemaStore.nvim',
-
-      { 'saghen/blink.cmp' },
     },
     config = function()
       local servers = {
         bashls = { manual_install = true },
         clangd = true,
         -- gopls = { manual_install = true },
-        html = true,
+        html = {
+          filetypes = { 'htmldjango' },
+        },
         jsonls = {
           settings = {
             json = {
@@ -60,7 +60,7 @@ return {
         },
         tailwindcss = {
           manual_install = true,
-          filetypes = { 'html', 'rust' },
+          filetypes = { 'html', 'htmldjango', 'rust' },
           init_options = {
             userLanguages = { rust = 'html' },
           },
@@ -90,7 +90,6 @@ return {
         if config == true then
           config = {}
         end
-
         require('lspconfig')[name].setup(config)
       end
     end,
@@ -131,6 +130,7 @@ return {
 
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
         group = vim.api.nvim_create_augroup('lint', { clear = true }),
+        pattern = '*.md',
         callback = function() lint.try_lint() end,
       })
     end,

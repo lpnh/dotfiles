@@ -45,4 +45,4 @@ opt.undofile = true -- Save undo history
 opt.updatetime = 250 -- Decrease update time
 
 -- Filetype
-vim.filetype.add { pattern = { ['.*/templates/.*%.html'] = 'html' } }
+-- vim.filetype.add { pattern = { ['.*/templates/.*%.html'] = 'html' } }
