@@ -11,8 +11,16 @@ function Linemode:custom()
 	return ui.Line(string.format("%s", time))
 end
 
+require("fdp"):setup {
+	fzf = [[--info-command 'echo -e "$FZF_INFO 💛"' --no-scrollbar --pointer '󰼛']],
+	fd = "--hidden",
+	bat = "--style 'header,grid'",
+	eza = "",
+	eza_meta = "--total-size",
+}
+
 require("fr"):setup {
-	fzf = [[--info-command='echo -e "$FZF_INFO 💛"' --no-scrollbar --pointer '󰼛']],
+	fzf = [[--info-command 'echo -e "$FZF_INFO 💛"' --no-scrollbar --pointer '󰼛']],
 	rg = "--colors 'line:fg:red' --colors 'match:style:nobold'",
 	bat = "--style 'header,grid'",
 	rga = {
