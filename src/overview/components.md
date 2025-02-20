@@ -4,35 +4,25 @@ The main building blocks, a.k.a packages[^note]
 
 ### System
 
-* Boot Manager: [systemd-boot](https://github.com/systemd/systemd)  
-* Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)  
 * Initramfs Generator: [Booster](https://github.com/anatol/booster)  
-* UKI Generator: [systemd-ukify](https://github.com/systemd/systemd)
+* UKI Generator: [systemd-ukify](https://github.com/systemd/systemd)  
+* Boot Manager: [systemd-boot](https://github.com/systemd/systemd)
 
 ### Desktop
 
-* App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
-* Wayland Compositor: [Niri](https://github.com/YaLTeR/niri)  
 * Display Manager: [Ly](https://github.com/fairyglade/ly)  
+* Wayland Compositor: [Niri](https://github.com/YaLTeR/niri)  
 * Notification: [Mako](https://wayland.emersion.fr/mako/)  
+* Status Bar: [Waybar](https://github.com/Alexays/Waybar)  
+* App Launcher: [Fuzzel](https://codeberg.org/dnkl/fuzzel)  
 * Screen Locker [Swaylock](https://github.com/swaywm/swaylock)  
-* Status Bar: [Waybar](https://github.com/Alexays/Waybar)
-
-### Theme
-
-* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
-* Fonts and Glyphs: [FiraMono Nerd
-Font](https://www.nerdfonts.com/)  
-* Gtk: [Materia-dark](https://github.com/nana-4/materia-theme)  
-* Icons:
-[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
-* Palette: [Catppuccin Mocha](https://catppuccin.com/)
+* Dotfile Manager: [Chezmoi](https://www.chezmoi.io/)
 
 ### Terminal
 
-* Prompt: [Starship](https://starship.rs/)  
+* Terminal Emulator: [Alacritty](https://alacritty.org/)  
 * Shell: [Fish](https://fishshell.com/)  
-* Terminal Emulator: [Alacritty](https://alacritty.org/)
+* Prompt: [Starship](https://starship.rs/)
 
 ### Tools
 
@@ -43,8 +33,17 @@ Font](https://www.nerdfonts.com/)
 ### Clients
 
 * BitTorrent: [Transmission](https://transmissionbt.com/)  
-* Discord: [Vesktop](https://github.com/Vencord/Vesktop)  
 * Spotify: [Ncspot](https://github.com/hrkfdn/ncspot)
+
+### Theme
+
+* Gtk: [Materia-dark](https://github.com/nana-4/materia-theme)  
+* Cursor: [Breeze](https://kde.org/plasma-desktop/)  
+* Fonts and Glyphs: [FiraMono Nerd
+Font](https://www.nerdfonts.com/)  
+* Icons:
+[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
+* Palette: [Catppuccin Mocha](https://catppuccin.com/)
 
 ### Utilities and Quality of Life
 

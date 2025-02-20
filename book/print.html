@@ -157,53 +157,33 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="about"><a class="header" href="#about">About</a></h1>
-<p>For those seeking documentation, the <a href="https://wiki.archlinux.org">ArchWiki</a> is
-the best resource available. In fact, it's so good that it can be a perfect
-trap for the curious people. My goal here is to gather the information I find
-relevant for my own use case, allowing me to setup and maintain a simple and
-aesthetic <a href="https://archlinux.org/">Arch Linux</a>
-<a href="https://wayland.freedesktop.org/">Wayland</a> environment while minimizing the
-chances of falling down a rabbit hole.</p>
-<blockquote>
-<p>it's called "dotfiles" because that folder ".config" starts with a dot and is
-therefor hidden</p>
-<p>and we customize these hidden text files for ~20 programs because we're
-neurotic lovers of beauty 🤷</p>
-<p>-- <cite>from a Reddit user on r/unixporn</cite></p>
-</blockquote>
+<p>This cookbook is a collection of instructions, tips, and notes, mostly gathered
+from the <a href="https://wiki.archlinux.org">ArchWiki</a>, and arranged like recipes. I
+treat it as a README for my Arch Linux Wayland setup — something I can refer
+back to whenever needed.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="components"><a class="header" href="#components">Components</a></h1>
 <p>The main building blocks, a.k.a packages<sup class="footnote-reference"><a href="#note">1</a></sup></p>
 <h3 id="system"><a class="header" href="#system">System</a></h3>
 <ul>
-<li>Boot Manager: <a href="https://github.com/systemd/systemd">systemd-boot</a></li>
-<li>Dotfile Manager: <a href="https://www.chezmoi.io/">Chezmoi</a></li>
 <li>Initramfs Generator: <a href="https://github.com/anatol/booster">Booster</a></li>
 <li>UKI Generator: <a href="https://github.com/systemd/systemd">systemd-ukify</a></li>
+<li>Boot Manager: <a href="https://github.com/systemd/systemd">systemd-boot</a></li>
 </ul>
 <h3 id="desktop"><a class="header" href="#desktop">Desktop</a></h3>
 <ul>
-<li>App Launcher: <a href="https://codeberg.org/dnkl/fuzzel">Fuzzel</a></li>
-<li>Wayland Compositor: <a href="https://github.com/YaLTeR/niri">Niri</a></li>
 <li>Display Manager: <a href="https://github.com/fairyglade/ly">Ly</a></li>
+<li>Wayland Compositor: <a href="https://github.com/YaLTeR/niri">Niri</a></li>
 <li>Notification: <a href="https://wayland.emersion.fr/mako/">Mako</a></li>
-<li>Screen Locker <a href="https://github.com/swaywm/swaylock">Swaylock</a></li>
 <li>Status Bar: <a href="https://github.com/Alexays/Waybar">Waybar</a></li>
-</ul>
-<h3 id="theme"><a class="header" href="#theme">Theme</a></h3>
-<ul>
-<li>Cursor: <a href="https://kde.org/plasma-desktop/">Breeze</a></li>
-<li>Fonts and Glyphs: <a href="https://www.nerdfonts.com/">FiraMono Nerd
-Font</a></li>
-<li>Gtk: <a href="https://github.com/nana-4/materia-theme">Materia-dark</a></li>
-<li>Icons:
-<a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">Papirus</a></li>
-<li>Palette: <a href="https://catppuccin.com/">Catppuccin Mocha</a></li>
+<li>App Launcher: <a href="https://codeberg.org/dnkl/fuzzel">Fuzzel</a></li>
+<li>Screen Locker <a href="https://github.com/swaywm/swaylock">Swaylock</a></li>
+<li>Dotfile Manager: <a href="https://www.chezmoi.io/">Chezmoi</a></li>
 </ul>
 <h3 id="terminal"><a class="header" href="#terminal">Terminal</a></h3>
 <ul>
-<li>Prompt: <a href="https://starship.rs/">Starship</a></li>
-<li>Shell: <a href="https://fishshell.com/">Fish</a></li>
 <li>Terminal Emulator: <a href="https://alacritty.org/">Alacritty</a></li>
+<li>Shell: <a href="https://fishshell.com/">Fish</a></li>
+<li>Prompt: <a href="https://starship.rs/">Starship</a></li>
 </ul>
 <h3 id="tools"><a class="header" href="#tools">Tools</a></h3>
 <ul>
@@ -214,8 +194,17 @@ Font</a></li>
 <h3 id="clients"><a class="header" href="#clients">Clients</a></h3>
 <ul>
 <li>BitTorrent: <a href="https://transmissionbt.com/">Transmission</a></li>
-<li>Discord: <a href="https://github.com/Vencord/Vesktop">Vesktop</a></li>
 <li>Spotify: <a href="https://github.com/hrkfdn/ncspot">Ncspot</a></li>
+</ul>
+<h3 id="theme"><a class="header" href="#theme">Theme</a></h3>
+<ul>
+<li>Gtk: <a href="https://github.com/nana-4/materia-theme">Materia-dark</a></li>
+<li>Cursor: <a href="https://kde.org/plasma-desktop/">Breeze</a></li>
+<li>Fonts and Glyphs: <a href="https://www.nerdfonts.com/">FiraMono Nerd
+Font</a></li>
+<li>Icons:
+<a href="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme">Papirus</a></li>
+<li>Palette: <a href="https://catppuccin.com/">Catppuccin Mocha</a></li>
 </ul>
 <h3 id="utilities-and-quality-of-life"><a class="header" href="#utilities-and-quality-of-life">Utilities and Quality of Life</a></h3>
 <ul>
