@@ -67,7 +67,7 @@ desc = "Easy rename"
 
 [[manager.prepend_keymap]]
 on = "2"
-run = "plugin switch-tab --args=1"
+run = "plugin switch-tab 1"
 desc = "Switch or create tab 2"
 
 # https://github.com/yazi-rs/plugins
