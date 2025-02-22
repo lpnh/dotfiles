@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.tmpl',
   callback = function()
     local buf_path = vim.fn.expand '%:p'
-    if not string.match(buf_path, '%.local/share/chezmoi') then
+    if not string.match(buf_path, '%andromeda/chezmoi') then
       return
     end
     local base_ft = vim.fn.expand '%:r:e'
@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd('LspProgress', {
   callback = function(ev)
     local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
-    vim.notify(vim.lsp.status(), 'info', {
+    vim.notify(vim.lsp.status(), 2, {
       id = 'lsp_progress',
       title = 'LSP Progress',
       opts = function(notif)
