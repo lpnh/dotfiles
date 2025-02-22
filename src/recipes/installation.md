@@ -9,23 +9,21 @@ reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.
 - [ ] Install the essential packages to the new root
 
 ```bash
-pacstrap -K /mnt base linux linux-firmware
+pacstrap -K /mnt base base-devel linux linux-firmware
 ```
 
 *And also:*
 
 ```txt
-base-devel
 git
+nano
+networkmanager
 amd-code / intel-ucode
 booster
 busybox
 systemd-ukify
 mesa
 vulkan-radeon / nvidia
-networkmanager
-nano
-refind
 ```
 
 - [ ] Generate an *fstab* file
@@ -73,7 +71,6 @@ nano /etc/locale.gen
 
 ```txt
 en_US.UTF-8 UTF-8
-#en_US ISO-8859-1
 ```
 
 - [ ] Generate the locales
@@ -92,8 +89,12 @@ nano /etc/locale.conf
 LANG=en_US.UTF-8
 ```
 
-- [ ] Create the */etc/vconsole.conf* file, if a different keyboard layout is
-required
+<details>
+  <summary>
+    <i>for <b>non-US keyboard layouts</b> only</i>
+  </summary>
+
+- [ ] Create the */etc/vconsole.conf* file and set the keymap accordingly:
 
 ```bash
 nano /etc/vconsole.conf
@@ -102,6 +103,8 @@ nano /etc/vconsole.conf
 ```txt
 KEYMAP=br-abnt2
 ```
+
+</details>
 
 - [ ] Create the *hostname* file
 
@@ -235,11 +238,9 @@ umount -R /mnt
 reboot
 ```
 
-*good luck !*
-
-<details open>
+<details>
   <summary>
-    <i>for laptop only</i>
+    <i>for <b>laptop</b> only</i>
   </summary>
 
 - [ ] Use *nmcli* to list and to connect to available Wi-Fi networks
@@ -281,8 +282,6 @@ sudo pacman -S fastfetch
 ```bash
 fastfetch
 ```
-
-*enjoy your new achievement !*
 
 ## Notes
 
