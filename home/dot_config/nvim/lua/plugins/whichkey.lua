@@ -4,7 +4,7 @@ return {
   opts = {
     delay = 0,
     spec = {
-      { '<leader>b', icon = '', group = 'Scratch Buffer' },
+      { '<leader>b', icon = '', group = 'Scratch' },
       { '<leader>k', icon = '󰌆' },
       { '<leader>l', icon = '', group = 'LÖVE' },
       { '<leader>s', icon = '', group = 'Search' },
@@ -15,5 +15,5 @@ return {
       border = 'single',
     },
   },
-  keys = { { '<leader>k', '<cmd>WhichKey<CR>', desc = 'WhichKey' } },
+  keys = { { '<leader>k', '<cmd>WhichKey<cr>', desc = 'WhichKey' } },
 }

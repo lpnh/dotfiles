@@ -6,10 +6,10 @@ map({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 map('n', 's', '<nop>', { noremap = true, silent = true })
 
 -- Clear highlight (search)
-map('n', '<esc>', '<cmd>nohlsearch<CR>')
+map('n', '<esc>', '<cmd>nohlsearch<cr>')
 
--- Diagnostic
-map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic messages' })
+-- Open diagnostic float window
+map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Diagnostic float window' })
 
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -22,7 +22,7 @@ map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to upper window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to right window' })
 
 -- Alternate buffer
-map('n', '<A-Tab>', '<cmd>b#<CR>', { desc = 'Alternate buffer', silent = true })
+map('n', '<A-Tab>', '<cmd>b#<cr>', { desc = 'Alternate buffer', silent = true })
 
 -- Close window
 map('n', '<leader>c', '<C-w>c', { desc = 'Close window' })
@@ -44,10 +44,10 @@ map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 
 -- Just in case lol
-map('n', '<left>', '<cmd>echo "use the home row instead"<CR>')
-map('n', '<right>', '<cmd>echo "use the home row instead"<CR>')
-map('n', '<up>', '<cmd>echo "use the home row instead"<CR>')
-map('n', '<down>', '<cmd>echo "use the home row instead"<CR>')
+map('n', '<left>', '<cmd>echo "Use the home row instead"<cr>')
+map('n', '<right>', '<cmd>echo "Use the home row instead"<cr>')
+map('n', '<up>', '<cmd>echo "Use the home row instead"<cr>')
+map('n', '<down>', '<cmd>echo "Use the home row instead"<cr>')
 
 -- Let's have some fun
 local function create_toggle_nav_keys()
@@ -59,7 +59,7 @@ local function create_toggle_nav_keys()
       for _, key in ipairs(nav_keys) do
         vim.keymap.del('n', key)
       end
-      Snacks.notify('navigation keys **enabled**', {
+      Snacks.notify('Navigation keys **enabled**', {
         title = 'the party is over',
         level = vim.log.levels.INFO,
       })

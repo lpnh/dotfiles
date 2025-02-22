@@ -27,11 +27,11 @@ return {
     { '<c-j>', '<c-j>', ft = 'fzf', mode = 't', nowait = true },
     { '<c-k>', '<c-k>', ft = 'fzf', mode = 't', nowait = true },
     -- lsp
-    { 'gd', '<cmd>FzfLua lsp_definitions<CR>', desc = 'Definitions'},
-    { 'gD', '<cmd>FzfLua lsp_declarations<CR>', desc = 'Declarations' },
-    { 'gR', '<cmd>FzfLua lsp_references<CR>', desc = 'References'},
-    { 'gI', '<cmd>FzfLua lsp_implementations<CR>', desc = 'Implementation'},
-    { 'gy', '<cmd>FzfLua lsp_typedefs<CR>', desc = 'Type definition'},
+    { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = 'Definitions'},
+    { 'gD', '<cmd>FzfLua lsp_declarations<cr>', desc = 'Declarations' },
+    { 'gR', '<cmd>FzfLua lsp_references<cr>', desc = 'References'},
+    { 'gI', '<cmd>FzfLua lsp_implementations<cr>', desc = 'Implementation'},
+    { 'gy', '<cmd>FzfLua lsp_typedefs<cr>', desc = 'Type definition'},
     { 'gs', function() require('fzf-lua').lsp_document_symbols { regex_filter = true } end, desc = 'Symbols' },
     { 'gsw', function() require('fzf-lua').lsp_live_workspace_symbols { regex_filter = true } end, desc = 'Symbols (workspace)' },
     -- misc

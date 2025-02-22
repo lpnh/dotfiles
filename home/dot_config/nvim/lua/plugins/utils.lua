@@ -51,7 +51,7 @@ return {
       view_options = { show_hidden = true },
       confirmation = { min_width = { 20, 0.2 } },
     },
-    keys = { { '-', '<cmd>Oil<CR>', desc = 'Open parent directory' } },
+    keys = { { '-', '<cmd>Oil<cr>', desc = 'Open parent directory' } },
   },
 
   -- Arrow
@@ -92,25 +92,25 @@ return {
     keys = {
       {
         '<leader>Tc',
-        '<cmd>TailwindConcealToggle<CR>',
+        '<cmd>TailwindConcealToggle<cr>',
         ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Toggle tailwind conceal',
       },
       {
         '<leader>Ts',
-        '<cmd>TailwindSort<CR>',
+        '<cmd>TailwindSort<cr>',
         ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Sort tailwind classes',
       },
       {
         '<leader>Tp',
-        '<cmd>TailwindPrevClass<CR>',
+        '<cmd>TailwindPrevClass<cr>',
         ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Move to the next class',
       },
       {
         '<leader>Tn',
-        '<cmd>TailwindNextClass<CR>',
+        '<cmd>TailwindNextClass<cr>',
         ft = { 'html', 'htmldjango', 'rust' },
         desc = 'Move to the previous class',
       },
