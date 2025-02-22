@@ -28,6 +28,12 @@ check the [cookbook](https://lpnh.io/dotfiles/)
 ├─ [waybar](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/waybar)  
 └─ [yazi](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/yazi)
 
+## usage
+
+```sh
+chezmoi init --apply lpnh
+```
+
 ## dot_config ?
 
 if this repo seems unfamiliar, it might be due to using `chezmoi` as the

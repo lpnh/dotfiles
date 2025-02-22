@@ -48,3 +48,42 @@ map('n', '<left>', '<cmd>echo "use the home row instead"<CR>')
 map('n', '<right>', '<cmd>echo "use the home row instead"<CR>')
 map('n', '<up>', '<cmd>echo "use the home row instead"<CR>')
 map('n', '<down>', '<cmd>echo "use the home row instead"<CR>')
+
+-- Let's have some fun
+local function create_toggle_nav_keys()
+  local is_disabled = false
+  local nav_keys = { 'h', 'j', 'k', 'l' }
+
+  local function toggle_fn()
+    if is_disabled then
+      for _, key in ipairs(nav_keys) do
+        vim.keymap.del('n', key)
+      end
+      Snacks.notify('navigation keys **enabled**', {
+        title = 'the party is over',
+        level = vim.log.levels.INFO,
+      })
+    else
+      for _, key in ipairs(nav_keys) do
+        map('n', key, '<nop>', { noremap = true, silent = true })
+      end
+      Snacks.notify('Navigation keys **disabled**', {
+        title = 'have fun',
+        level = vim.log.levels.INFO,
+      })
+    end
+    is_disabled = not is_disabled
+  end
+
+  return toggle_fn
+end
+
+local toggle_nav_keys = create_toggle_nav_keys()
+
+vim.api.nvim_create_user_command('ToggleNavKeys', function() toggle_nav_keys() end, {})
+
+map('n', '<leader>tn', toggle_nav_keys, {
+  noremap = true,
+  silent = true,
+  desc = 'Toggle navigation keys',
+})
