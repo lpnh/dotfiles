@@ -3,23 +3,13 @@ return {
   lazy = false,
   opts = {
     'default-title',
-    fzf_opts = {
-      ['--no-scrollbar'] = true,
-      -- ['--border'] = 'none',
-    },
-    defaults = {
-      formatter = 'path.filename_first',
-      -- formatter = 'path.dirname_first',
-    },
+    fzf_opts = { ['--no-scrollbar'] = true },
+    defaults = { formatter = 'path.filename_first' },
     files = { cwd_prompt = false, git_icons = false },
     diagnostics = { file_icons = false },
     winopts = {
       fullscreen = true,
-      preview = {
-        winopts = {
-          number = false,
-        },
-      },
+      preview = { winopts = { number = false } },
     },
   },
   keys = {
