@@ -61,7 +61,7 @@ alias chma 'chezmoi managed'
 alias chre 'chezmoi re-add --verbose'
 alias chst 'chezmoi status'
 alias chup 'chezmoi update --verbose'
-alias chz 'cd ~/.local/share/chezmoi'
+alias chz 'cd ~/andromeda/chezmoi'
 
 # cargo
 alias cargo-upgrade 'cargo +nightly -Zunstable-options update --breaking'
