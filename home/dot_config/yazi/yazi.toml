@@ -17,8 +17,8 @@ for = "unix"
 name = "*.md"
 run = "glow"
 
-[[plugin.prepend_fetchers]]
-id = "mime"
-name = "*"
-run = "mime-ext"
-prio = "high"
+# [[plugin.prepend_fetchers]]
+# id = "mime"
+# name = "*"
+# run = "mime-ext"
+# prio = "high"

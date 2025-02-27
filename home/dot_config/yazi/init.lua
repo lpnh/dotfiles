@@ -20,7 +20,11 @@ require("fdp"):setup {
 }
 
 require("fr"):setup {
-	fzf = [[--info-command 'echo -e "$FZF_INFO 💛"' --no-scrollbar --pointer '󰼛']],
+	fzf = {
+		[[--info-command 'echo -e "$FZF_INFO 💛"']],
+		"--no-scrollbar --pointer '󰼛'",
+		"--bind 'ctrl-o:execute:nvim {1} +{2}'",
+	},
 	rg = "--colors 'line:fg:red' --colors 'match:style:nobold'",
 	bat = "--style 'header,grid'",
 	rga = {
