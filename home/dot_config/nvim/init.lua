@@ -10,9 +10,11 @@
 
 require 'options'
 
+require 'keymaps'
+
 require 'diagnostics'
 
-require 'keymaps'
+require 'autocmds'
 
 require 'lazy-bootstrap'
 
@@ -24,5 +26,3 @@ require('lazy').setup('plugins', {
     colorscheme = { 'catppuccin' },
   },
 })
-
-require 'autocmds'
