@@ -11,27 +11,21 @@ function Linemode:custom()
 	return ui.Line(string.format("%s", time))
 end
 
-require("fdp"):setup {
-	fzf = [[--info-command 'echo -e "$FZF_INFO 💛"' --no-scrollbar --pointer '󰼛']],
-	fd = "--hidden",
-	bat = "--style 'header,grid'",
-	eza = "",
-	eza_meta = "--total-size",
-}
-
-require("fr"):setup {
+require("frank"):setup {
 	fzf = {
 		[[--info-command 'echo -e "$FZF_INFO 💛"']],
 		"--no-scrollbar --pointer '󰼛'",
-		"--bind 'ctrl-o:execute:nvim {1} +{2}'",
 	},
 	rg = "--colors 'line:fg:red' --colors 'match:style:nobold'",
-	bat = "--style 'header,grid'",
 	rga = {
 		"--hidden",
 		"--follow",
 		"--glob '!.git'",
 	},
+	fd = "--hidden",
+	bat = "--style 'header,grid'",
+	eza = "",
+	eza_meta = "--total-size",
 	rga_preview = {
 		"--colors 'line:fg:red'"
 			.. " --colors 'match:fg:blue'"
