@@ -21,6 +21,16 @@ run = "plugin custom-layout"
 # frank plugin
 
 [[manager.prepend_keymap]]
+on = ["f", "r"]
+run = "plugin frank content"
+desc = "rg search"
+
+[[manager.prepend_keymap]]
+on = ["f", "a"]
+run = "plugin frank 'content rga'"
+desc = "rga search"
+
+[[manager.prepend_keymap]]
 on = ["f", "d"]
 run = "plugin frank name"
 desc = "fd search (all)"
@@ -39,16 +49,6 @@ desc = "fd search (file)"
 on = ["f", "c"]
 run = "plugin frank 'name cwd'"
 desc = "fd search (cwd)"
-
-[[manager.prepend_keymap]]
-on = ["f", "r"]
-run = "plugin frank content"
-desc = "rg search"
-
-[[manager.prepend_keymap]]
-on = ["f", "a"]
-run = "plugin frank 'content rga'"
-desc = "rga search"
 
 # quality of life
 
