@@ -155,6 +155,7 @@ common = [
     "bob",
     "bottom",
     "cargo-update",
+    "cava",
     "chafa",
     "discord",
     "eza",
@@ -213,7 +214,7 @@ common = [
     "zsh",
 ]
 
-aur = ["cava", "fswatch", "pandoc-bin", "tlrc", "xcursor-breeze", "yazi-git"]
+aur = ["fswatch", "pandoc-bin", "tlrc", "xcursor-breeze", "yazi-git"]
 
 desktop = ["lib32-vulkan-radeon", "openrgb", "piper", "vulkan-radeon"]
 
