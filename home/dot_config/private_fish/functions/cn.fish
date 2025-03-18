@@ -1,3 +1,7 @@
 function cn
-	cargo new $argv --vcs=none
+    set repo $argv
+	cargo new $repo --vcs=none
+    builtin cd $repo
+    echo "/target" >> .gitignore
+    jj git init
 end
