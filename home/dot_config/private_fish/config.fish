@@ -39,7 +39,10 @@ set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cy accept-autosuggestion
 bind -M insert \ef forward-word
 
-# aliases
+# aliases & abbrs
+
+# reflector
+alias alice 'sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
 
 # bat
 alias b 'bat --plain'
@@ -93,6 +96,13 @@ alias grmc 'git rm --cached'
 alias grv 'git remote --verbose'
 alias gst 'git status'
 
+# jujutsu, or as I've recently taken to calling it, jujuba
+alias jd 'jj describe'
+alias jdm 'jj describe -m'
+alias jl 'jj log'
+alias jn 'jj new'
+alias js 'jj st'
+
 # ls
 alias la 'ls -a'
 alias ll 'ls -l'
@@ -102,12 +112,6 @@ alias lg lazygit
 
 # neovim
 alias nv nvim
-
-# sudo
-alias please sudo
-
-# reflector
-alias reflexo 'sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
 
 # eza
 alias x 'eza --color=always --group-directories-first --icons --oneline'
