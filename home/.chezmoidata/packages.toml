@@ -173,6 +173,7 @@ common = [
     "glow",
     "imv",
     "jq",
+    "jujutsu",
     "lazygit",
     "libqalculate",
     "lld",
