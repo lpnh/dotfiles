@@ -97,11 +97,17 @@ alias grv 'git remote --verbose'
 alias gst 'git status'
 
 # jujutsu, or as I've recently taken to calling it, jujuba
-alias jd 'jj describe'
+alias ja 'jj abandon'
+alias jd 'jj diff'
+alias jde 'jj describe'
 alias jdm 'jj describe -m'
+alias je 'jj edit'
+alias ji 'jj git init'
 alias jl 'jj log'
 alias jn 'jj new'
 alias js 'jj st'
+alias jsq 'jj squash'
+alias jsqi 'jj squash -i'
 
 # ls
 alias la 'ls -a'
