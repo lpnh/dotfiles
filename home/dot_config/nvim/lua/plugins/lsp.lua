@@ -67,6 +67,7 @@ return {
         },
         taplo = { manual_install = true },
         typos_lsp = {
+          manual_install = true,
           init_options = { config = '~/.config/typos/typos.toml' },
         },
       }
