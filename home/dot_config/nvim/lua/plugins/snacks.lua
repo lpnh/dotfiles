@@ -55,7 +55,7 @@ return {
     { '<leader>bs', function() Snacks.scratch.select() end, desc = 'Select buffer' },
     { '<leader>g', function() Snacks.lazygit() end, desc = 'Open lazygit' },
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
-    { '<leader>o', function() Snacks.gitbrowse() end, desc = 'Open repository' },
+    { '<leader>r', function() Snacks.gitbrowse() end, desc = 'Open repository' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next reference', mode = { 'n', 't' } },
     { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev reference', mode = { 'n', 't' } },
