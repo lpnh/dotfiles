@@ -36,6 +36,7 @@ return {
     },
     indent = { enabled = true },
     input = { enabled = true },
+    lazygit = { enabled = true },
     notifier = { style = 'fancy', top_down = false },
     quickfile = { enabled = true },
     scope = { enabled = true },
@@ -52,8 +53,9 @@ return {
     -- stylua: ignore start
     { '<leader>bn', function() Snacks.scratch() end, desc = 'New buffer' },
     { '<leader>bs', function() Snacks.scratch.select() end, desc = 'Select buffer' },
-    { '<leader>o', function() Snacks.gitbrowse() end, desc = 'Open repository' },
+    { '<leader>g', function() Snacks.lazygit() end, desc = 'Open lazygit' },
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
+    { '<leader>o', function() Snacks.gitbrowse() end, desc = 'Open repository' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next reference', mode = { 'n', 't' } },
     { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev reference', mode = { 'n', 't' } },
