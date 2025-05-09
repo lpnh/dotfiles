@@ -105,7 +105,7 @@ alias je 'jj edit'
 alias ji 'jj git init'
 alias jl 'jj log'
 alias jn 'jj new'
-alias js 'jj st'
+alias jst 'jj st'
 alias jsq 'jj squash'
 alias jsqi 'jj squash -i'
 
