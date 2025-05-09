@@ -212,11 +212,12 @@ common = [
     "waybar",
     "wev",
     "wlsunset",
+    "yazi",
     "zoxide",
     "zsh",
 ]
 
-aur = ["fswatch", "pandoc-bin", "tlrc", "xcursor-breeze", "yazi-git"]
+aur = ["fswatch", "pandoc-bin", "tlrc", "xcursor-breeze"]
 
 desktop = ["lib32-vulkan-radeon", "openrgb", "piper", "vulkan-radeon"]
 
