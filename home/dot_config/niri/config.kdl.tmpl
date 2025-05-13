@@ -513,6 +513,7 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id="Alacritty"
+    match title="Minecraft"
     open-on-workspace "main"
 }
 
@@ -524,13 +525,6 @@ window-rule {
 window-rule {
     match app-id="(ncspot|discord)"
     open-on-workspace "lounge"
-}
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
 }
 
 // ]]]
