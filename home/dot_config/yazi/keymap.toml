@@ -18,17 +18,19 @@ desc = "Linemode: custom"
 on = ["F"]
 run = "plugin custom-layout"
 
-# frank plugin
+# fr plugin
 
 [[manager.prepend_keymap]]
 on = ["f", "r"]
-run = "plugin frank content"
+run = "plugin fr rg"
 desc = "rg search"
 
 [[manager.prepend_keymap]]
 on = ["f", "a"]
-run = "plugin frank 'content rga'"
+run = "plugin fr rga"
 desc = "rga search"
+
+# frank plugin
 
 [[manager.prepend_keymap]]
 on = ["f", "d"]
