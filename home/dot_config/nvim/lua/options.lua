@@ -20,7 +20,7 @@ opt.fillchars = {
 }
 opt.foldtext = 'getline(v:foldstart)'
 opt.hlsearch = true -- Set search highlight as default
-opt.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search
+opt.ignorecase = true -- Case-insensitive searching unless \C or capital in search
 opt.inccommand = 'split' -- Preview substitutions live, as you type
 opt.list = true -- Sets how neovim will display certain whitespaces
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
@@ -43,6 +43,3 @@ opt.termguicolors = true -- True color support
 opt.timeoutlen = 300 -- Decrease update time
 opt.undofile = true -- Save undo history
 opt.updatetime = 250 -- Decrease update time
-
--- Filetype
--- vim.filetype.add { pattern = { ['.*/templates/.*%.html'] = 'html' } }
