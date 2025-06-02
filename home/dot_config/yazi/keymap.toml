@@ -1,83 +1,83 @@
 # custom plugins
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<C-P>"
 run = "plugin playground"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "j"]
 run = "plugin last-jump"
 desc = "Goto last jump"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["m", "c"]
 run = "linemode custom"
 desc = "Linemode: custom"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["F"]
 run = "plugin custom-layout"
 
 # fr plugin
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["f", "r"]
 run = "plugin fr rg"
 desc = "rg search"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["f", "a"]
 run = "plugin fr rga"
 desc = "rga search"
 
 # frank plugin
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["f", "d"]
 run = "plugin frank name"
 desc = "fd search (all)"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["f", "D"]
 run = "plugin frank 'name dir'"
 desc = "fd search (dir)"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["f", "f"]
 run = "plugin frank 'name file'"
 desc = "fd search (file)"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["f", "c"]
 run = "plugin frank 'name cwd'"
 desc = "fd search (cwd)"
 
 # quality of life
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["R"]
 run = "rename --empty=stem --cursor=start"
 desc = "Easy rename"
 
 # https://yazi-rs.github.io/docs/tips
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "2"
 run = "plugin switch-tab 1"
 desc = "Switch or create tab 2"
 
 # https://github.com/yazi-rs/plugins
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "M"
 run = 'plugin mount'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["l"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "T"
 run = "plugin hide-preview"
 desc = "Hide or show preview"
