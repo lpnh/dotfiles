@@ -130,10 +130,10 @@ alias xt 'eza --color=always --group-directories-first --icons --tree'
 alias xta 'eza --color=always --group-directories-first --icons --tree --all'
 
 # ya
-alias yaa 'ya pack --add'
-alias yad 'ya pack --delete'
-alias yal 'ya pack --list'
-alias yau 'ya pack --upgrade'
+alias yaa 'ya pkg add'
+alias yad 'ya pkg delete'
+alias yal 'ya pkg list'
+alias yau 'ya pkg upgrade'
 
 # yay
 abbr yi 'yay -Qi'
