@@ -4,7 +4,7 @@ local M = {}
 
 function M:peek(job)
 	local child = Command("glow")
-		:args({
+		:arg({
 			"--style",
 			-- "dark",
 			home .. "/.config/glow/mocha.json",
