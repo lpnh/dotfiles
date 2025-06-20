@@ -1,7 +1,7 @@
 # dotfiles
 
-a simple and aesthetic Arch Linux Wayland environment. for more information,
-check the [cookbook](https://lpnh.io/dotfiles/)
+a simple and aesthetic Arch Linux setup. for more information, check the
+[cookbook](https://lpnh.io/dotfiles/)
 
 > it's called "dotfiles" because that folder ".config" starts with a dot and is
 > therefor hidden
