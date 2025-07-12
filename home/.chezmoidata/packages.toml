@@ -219,13 +219,7 @@ common = [
 
 aur = ["fswatch", "pandoc-bin", "tlrc", "xcursor-breeze"]
 
-desktop = [
-    "lib32-vulkan-radeon",
-    "openrgb",
-    "piper",
-    "vulkan-intel",
-    "vulkan-radeon",
-]
+desktop = ["lib32-vulkan-radeon", "openrgb", "piper", "vulkan-radeon"]
 
 laptop = [
     "brightnessctl",
@@ -234,6 +228,7 @@ laptop = [
     "nvidia-prime",
     "nvidia-utils",
     "tlp",
+    "vulkan-intel",
 ]
 
 gaming = [
