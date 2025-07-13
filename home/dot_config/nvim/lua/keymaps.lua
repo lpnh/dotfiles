@@ -43,12 +43,6 @@ map('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
 map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 
--- Just in case lol
-map('n', '<left>', '<cmd>echo "Use the home row instead"<cr>')
-map('n', '<right>', '<cmd>echo "Use the home row instead"<cr>')
-map('n', '<up>', '<cmd>echo "Use the home row instead"<cr>')
-map('n', '<down>', '<cmd>echo "Use the home row instead"<cr>')
-
 -- Let's have some fun
 local function create_toggle_nav_keys()
   local is_disabled = false
