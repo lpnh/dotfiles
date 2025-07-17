@@ -580,7 +580,7 @@ binds {
     Mod+B { spawn "firefox-nightly"; }
     Mod+Shift+B { spawn "blender"; }
     Mod+C { spawn "steam" "steam://rungameid/730"; }
-    Mod+Shift+D { spawn "env" "DISPLAY=:0" "discord"; }
+    Mod+D { spawn "env" "DISPLAY=:0" "discord"; }
     Mod+M { spawn "prismlauncher"; }
     Mod+P { spawn "steam" "steam://rungameid/431730"; }
     Mod+N { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
@@ -588,11 +588,11 @@ binds {
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     {{- if eq .chezmoi.hostname "desktop" }}
-    Mod+D { spawn "env" "DISPLAY=:0" "ankama-launcher"; }
+    Mod+Shift+D { spawn "env" "DISPLAY=:0" "ankama-launcher"; }
     Mod+O { spawn "osu-lazer"; }
     Mod+S { spawn "env" "DISPLAY=:0" "steam"; }
     {{- else if eq .chezmoi.hostname "laptop" }}
-    Mod+D { spawn "env" "DISPLAY=:0" "prime-run" "ankama-launcher"; }
+    Mod+Shift+D { spawn "env" "DISPLAY=:0" "prime-run" "ankama-launcher"; }
     Mod+O { spawn "prime-run" "osu-lazer"; }
     Mod+S { spawn "env" "DISPLAY=:0" "prime-run" "steam"; }
     {{- end }}
