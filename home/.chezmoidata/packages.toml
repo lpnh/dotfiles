@@ -164,7 +164,6 @@ common = [
     "fcitx5-mozc",
     "fd",
     "firefox",
-    "firefox-nightly",
     "fish",
     "foot",
     "fuzzel",
