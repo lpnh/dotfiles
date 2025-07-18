@@ -520,7 +520,7 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id="firefox-nightly"
+    match at-startup=true app-id="firefox"
     open-on-workspace "browser"
 }
 
@@ -577,7 +577,7 @@ binds {
     Mod+Return { spawn "fuzzel"; }
     Mod+Space { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+A { spawn "alacritty"; }
-    Mod+B { spawn "firefox-nightly"; }
+    Mod+B { spawn "firefox"; }
     Mod+Shift+B { spawn "blender"; }
     Mod+C { spawn "steam" "steam://rungameid/730"; }
     Mod+D { spawn "env" "DISPLAY=:0" "discord"; }
@@ -693,7 +693,7 @@ binds {
 // Startup [[[
 
 spawn-at-startup "alacritty"
-spawn-at-startup "firefox-nightly"
+spawn-at-startup "firefox"
 spawn-at-startup "niri" "msg" "action" "focus-workspace" "main"
 
 // ]]]
