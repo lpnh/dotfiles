@@ -20,17 +20,27 @@ run = "plugin custom-layout"
 
 # fr plugin
 
+# [[mgr.prepend_keymap]]
+# on = ["f", "r"]
+# run = "plugin fr rg"
+# desc = "rg search"
+#
+# [[mgr.prepend_keymap]]
+# on = ["f", "a"]
+# run = "plugin fr rga"
+# desc = "rga search"
+
+# frank plugin
+
 [[mgr.prepend_keymap]]
 on = ["f", "r"]
-run = "plugin fr rg"
+run = "plugin frank 'content rg'"
 desc = "rg search"
 
 [[mgr.prepend_keymap]]
 on = ["f", "a"]
-run = "plugin fr rga"
+run = "plugin frank 'content rga'"
 desc = "rga search"
-
-# frank plugin
 
 [[mgr.prepend_keymap]]
 on = ["f", "d"]
