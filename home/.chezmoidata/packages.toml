@@ -62,8 +62,6 @@ already_installed = [
     "go",
     "lua",
     "rustup",
-    # niri xorg compatibility
-    "xwayland-satellite",
     # package management
     "yay",
     "pacman-hook-kernel-install", # from AUR
@@ -147,6 +145,7 @@ system = [
     "xdg-user-dirs",
     "xdg-utils",
     "xorg-xwayland",
+    "xwayland-satellite",
 ]
 
 common = [
