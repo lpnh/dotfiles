@@ -117,25 +117,7 @@ return {
     },
   },
 
-  -- llm
-  {
-    'olimorris/codecompanion.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {
-      strategies = {
-        chat = {
-          adapter = 'gemini',
-        },
-        inline = {
-          adapter = 'gemini',
-        },
-        cmd = {
-          adapter = 'gemini',
-        },
-      },
-    },
-  },
-
+  -- T.T
   {
     'm4xshen/hardtime.nvim',
     lazy = false,
