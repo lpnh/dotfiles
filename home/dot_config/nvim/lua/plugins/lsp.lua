@@ -23,9 +23,9 @@ return {
     },
     config = function()
       local servers = {
-        bashls = { manual_install = true },
+        bashls = true,
         clangd = true,
-        -- gopls = { manual_install = true },
+        -- gopls = true,
         html = {
           filetypes = { 'htmldjango' },
         },
@@ -38,7 +38,6 @@ return {
           },
         },
         lua_ls = {
-          manual_install = true,
           settings = {
             Lua = {
               -- handle the "Undefined global" warnings
@@ -48,7 +47,6 @@ return {
           },
         },
         rust_analyzer = {
-          manual_install = true,
           settings = {
             ['rust-analyzer'] = {
               checkOnSave = { command = 'clippy' },
@@ -59,39 +57,28 @@ return {
           },
         },
         tailwindcss = {
-          manual_install = true,
           filetypes = { 'html', 'htmldjango', 'rust' },
           init_options = {
             userLanguages = { rust = 'html' },
           },
         },
-        taplo = { manual_install = true },
+        taplo = true,
         typos_lsp = {
-          manual_install = true,
           init_options = { config = '~/.config/typos/typos.toml' },
         },
       }
 
-      local servers_to_install = vim.tbl_filter(function(key)
-        local t = servers[key]
-        if type(t) == 'table' then
-          return not t.manual_install
-        else
-          return t
-        end
-      end, vim.tbl_keys(servers))
-
       require('mason').setup()
       require('mason-tool-installer').setup {
-        ensure_installed = servers_to_install,
+        ensure_installed = { 'clangd', 'html', 'jsonls' },
         auto_update = true,
       }
 
       for name, config in pairs(servers) do
-        if config == true then
-          config = {}
+        if type(config) == 'table' then
+          vim.lsp.config[name] = config
         end
-        require('lspconfig')[name].setup(config)
+        vim.lsp.enable(name)
       end
     end,
   },
