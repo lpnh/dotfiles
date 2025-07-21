@@ -46,6 +46,17 @@ return {
             },
           },
         },
+        rue = {
+          cmd = {
+            'cargo',
+            'run',
+            '-p',
+            'rue-lsp',
+            '--bin',
+            'rue-lsp',
+          },
+          filetypes = { 'rue' },
+        },
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
@@ -66,6 +77,10 @@ return {
         typos_lsp = {
           init_options = { config = '~/.config/typos/typos.toml' },
         },
+      }
+
+      vim.filetype.add {
+        extension = { rue = 'rue' },
       }
 
       require('mason').setup()
