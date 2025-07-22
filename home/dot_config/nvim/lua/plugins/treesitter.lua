@@ -96,5 +96,17 @@ return {
       },
     },
   },
-  config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
+  config = function(_, opts)
+    require('nvim-treesitter.configs').setup(opts)
+
+    require('nvim-treesitter.parsers').get_parser_configs().rue = {
+      install_info = {
+        url = '~/repos/parsers/tree-sitter-rue',
+        files = { 'src/parser.c' },
+        branch = 'main',
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+    }
+  end,
 }
