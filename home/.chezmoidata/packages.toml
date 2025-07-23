@@ -3,39 +3,36 @@
 # should be manually installed
 optional = [
     "ocenaudio-bin", # audio editor
-    "refind",        # yet another boot manager
     "vulkan-tools",  # to check Vulkan is working
 ]
 
 # should be manually installed with `cargo install --locked`
 crates = ["cargo-chef", "trunk"]
 
-# also optional
-dev = [
+npm = [
+    "bash-language-server",
+    "markdownlint-cli",
+    "@tailwindcss/language-server",
+    "vscode-langservers-extracted",
+]
+
+# also optional dev tools
+optional_dev = [
     "bacon",
     "cargo-aur-bin",
     "cargo-generate",
     "cargo-make",
     "just",
     "love",
-    "tiled",
-    "tokei",
-    "zola",
-]
-
-lsp = [
-    "bash-language-server",
     "lua-language-server",
     "rust-analyzer",
-    "tailwindcss-language-server",
-    "taplo-cli",
-    "typos-lsp",
-]
-
-fmt_lint = [
-    "markdownlint-cli",
-    "shellcheck-bin",   # AUR
+    "shellcheck-bin",      # AUR
     "shfmt",
+    "taplo-cli",
+    "tiled",
+    "typos-lsp",
+    "tokei",
+    "zola",
 ]
 
 # packages already installed during OS setup
