@@ -13,10 +13,6 @@ return {
           },
         },
       },
-      -- Mason x.x
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Schema information
       'b0o/SchemaStore.nvim',
@@ -84,12 +80,6 @@ return {
 
       vim.filetype.add {
         extension = { rue = 'rue' },
-      }
-
-      require('mason').setup()
-      require('mason-tool-installer').setup {
-        ensure_installed = { 'clangd', 'html', 'jsonls' },
-        auto_update = true,
       }
 
       for name, config in pairs(servers) do
