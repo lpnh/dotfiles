@@ -69,9 +69,12 @@ return {
         },
         tailwindcss = {
           filetypes = { 'html', 'htmldjango', 'rust' },
-          init_options = {
-            userLanguages = { rust = 'html' },
+          settings = {
+            tailwindCSS = {
+              userLanguages = { rust = 'html' },
+            },
           },
+          root_markers = { 'input.css', '.git' },
         },
         taplo = true,
         typos_lsp = {

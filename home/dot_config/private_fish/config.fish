@@ -163,3 +163,6 @@ end
 # external setups
 starship init fish | source
 zoxide init fish | source
+
+alias mi "~/.local/bin/mise"
+mi activate fish | source
