@@ -51,7 +51,7 @@ return {
           lualine_x = { arrow },
           lualine_y = { { 'progress', color = { bg = '#363a4f' } } },
         },
-        extensions = { 'lazy', 'mason', 'oil' },
+        extensions = { 'lazy', 'oil' },
       }
     end,
   },

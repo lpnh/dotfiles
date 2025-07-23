@@ -20,7 +20,6 @@ return {
       end,
       integrations = {
         blink_cmp = true,
-        mason = true,
         noice = true,
         snacks = { enabled = true, indent_scope_color = 'surface2' },
         which_key = true,
