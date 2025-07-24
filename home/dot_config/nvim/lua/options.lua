@@ -27,7 +27,7 @@ opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 opt.number = true -- Make line numbers default
 opt.relativenumber = true -- Make relative number default
 opt.shell = '/usr/bin/fish' -- Set fish as default shell
-opt.scrolloff = 10 -- Number of screen lines to keep above and below
+opt.scrolloff = 999 -- The cursor will always be in the middle of the window
 opt.shiftwidth = 4 -- Number of spaces tabs count for
 opt.shortmess:append 'sI' -- Disable nvim intro
 opt.showmode = false -- Fix noice notification

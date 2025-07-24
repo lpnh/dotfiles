@@ -11,6 +11,9 @@ map('n', '<esc>', '<cmd>nohlsearch<cr>')
 -- Open diagnostic float window
 map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Diagnostic float window' })
 
+map({ 'n', 'v' }, '<C-d>', '5j', { noremap = true })
+map({ 'n', 'v' }, '<C-u>', '5k', { noremap = true })
+
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
