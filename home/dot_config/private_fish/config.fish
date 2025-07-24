@@ -119,6 +119,11 @@ alias lg lazygit
 # neovim
 alias nv nvim
 
+# tree-sitter
+
+alias tg 'tree-sitter generate'
+alias tt 'tree-sitter test'
+
 # eza
 alias x 'eza --color=always --group-directories-first --icons --oneline'
 alias xx 'eza --color=always --group-directories-first --icons'
