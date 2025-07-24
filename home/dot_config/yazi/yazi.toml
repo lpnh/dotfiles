@@ -15,7 +15,7 @@ for = "unix"
 
 [[plugin.prepend_previewers]]
 name = "*.md"
-run = "glow"
+run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=$HOME/.config/glow/mocha.json "$1"'
 
 # [[plugin.prepend_fetchers]]
 # id = "mime"
