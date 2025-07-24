@@ -41,7 +41,6 @@ return {
     quickfile = { enabled = true },
     scope = { enabled = true },
     statuscolumn = { enabled = true },
-    words = { enabled = true },
     zen = { toggles = { diagnostics = false, indent = false } },
     styles = {
       notification = { wo = { wrap = true } },
@@ -57,8 +56,6 @@ return {
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
     { '<leader>r', function() Snacks.gitbrowse() end, desc = 'Open repository' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
-    { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next reference', mode = { 'n', 't' } },
-    { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev reference', mode = { 'n', 't' } },
     -- stylua: ignore end
   },
   init = function()
