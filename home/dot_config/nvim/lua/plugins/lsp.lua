@@ -43,14 +43,7 @@ return {
           },
         },
         rue = {
-          cmd = {
-            'cargo',
-            'run',
-            '-p',
-            'rue-lsp',
-            '--bin',
-            'rue-lsp',
-          },
+          cmd = { 'rue-lsp' },
           filetypes = { 'rue' },
         },
         rust_analyzer = {
