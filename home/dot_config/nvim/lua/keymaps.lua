@@ -46,6 +46,20 @@ map('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Move up' })
 map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 
+-- Open new terminal
+local function alacritty_split()
+  vim.api.nvim_command '!niri msg action maximize-column'
+  vim.fn.jobstart { 'alacritty', '-T', 'alacritty_split' }
+end
+
+vim.api.nvim_create_user_command('AlacrittySplit', function() alacritty_split() end, {})
+
+map('n', '<leader>a', alacritty_split, {
+  noremap = true,
+  silent = true,
+  desc = 'Open new terminal',
+})
+
 -- Let's have some fun
 local function create_toggle_nav_keys()
   local is_disabled = false
