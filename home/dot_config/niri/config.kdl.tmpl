@@ -514,6 +514,11 @@ window-rule {
 }
 
 window-rule {
+    match title="alacritty_split"
+    open-maximized false
+}
+
+window-rule {
     match at-startup=true app-id="Alacritty"
     match title="Minecraft"
     open-on-workspace "main"
@@ -577,6 +582,7 @@ binds {
     Mod+Return { spawn "fuzzel"; }
     Mod+Space { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+A { spawn "alacritty"; }
+    Mod+Shift+A { spawn "alacritty" "-T" "alacritty_split"; }
     Mod+B { spawn "firefox"; }
     Mod+Shift+B { spawn "blender"; }
     Mod+C { spawn "steam" "steam://rungameid/730"; }
