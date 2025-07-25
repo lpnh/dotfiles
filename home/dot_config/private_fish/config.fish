@@ -39,8 +39,6 @@ set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cy accept-autosuggestion
 bind -M insert \ef forward-word
 
-# aliases & abbrs
-
 # the enthusiasm level determines the scope
 function yay!
     yay --noconfirm
