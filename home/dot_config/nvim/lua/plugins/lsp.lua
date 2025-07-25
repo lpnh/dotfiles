@@ -21,6 +21,7 @@ return {
       local servers = {
         bashls = true,
         clangd = true,
+        fish_lsp = true,
         -- gopls = true,
         html = {
           filetypes = { 'htmldjango' },
