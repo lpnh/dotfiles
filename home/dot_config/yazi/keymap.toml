@@ -14,10 +14,6 @@ on = ["m", "c"]
 run = "linemode custom"
 desc = "Linemode: custom"
 
-[[mgr.prepend_keymap]]
-on = ["F"]
-run = "plugin custom-layout"
-
 # fr plugin
 
 # [[mgr.prepend_keymap]]
@@ -77,6 +73,11 @@ run = "plugin switch-tab 1"
 desc = "Switch or create tab 2"
 
 # https://github.com/yazi-rs/plugins
+
+[[mgr.prepend_keymap]]
+on   = "F"
+run  = "plugin toggle-pane min-parent"
+desc = "Custom layout"
 
 [[mgr.prepend_keymap]]
 on = "M"
