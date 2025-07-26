@@ -39,20 +39,12 @@ set -g fish_key_bindings fish_vi_key_bindings
 bind -M insert \cy accept-autosuggestion
 bind -M insert \ef forward-word
 
-# the enthusiasm level determines the scope
+# \o/
 function yay!
     yay --noconfirm
-    bob update nightly
-end
-
-function yay!!
-    rustup update
-    cargo install-update --all
-    tldr --update
 end
 
 # external setups
 starship init fish | source
 zoxide init fish | source
-
 mi activate fish | source
