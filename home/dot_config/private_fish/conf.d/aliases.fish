@@ -8,7 +8,7 @@ function aliased --description 'edit conf.d/aliases.fish'
     and source ~/.config/fish/conf.d/aliases.fish
 
     if test $status -eq 0
-        set_color blue --bold && echo -n 'SUCCESS: ' && set_color normal
+        set_color green --bold && echo -n 'SUCCESS: ' && set_color normal
         echo "~/.config/fish/conf.d/aliases.fish sourced"
     else
         set_color red --bold && echo -n 'ERROR: ' && set_color normal
@@ -26,7 +26,7 @@ alias bn 'bat --number'
 alias bnl 'bat --number --line-range'
 
 # bob
-alias bu 'bob update nightly'
+alias bun 'bob update nightly'
 
 # chezmoi
 alias ch chezmoi
@@ -113,10 +113,10 @@ alias xt 'eza --color=always --group-directories-first --icons --tree'
 alias xta 'eza --color=always --group-directories-first --icons --tree --all'
 
 # ya
-alias yaa 'ya pkg add'
-alias yad 'ya pkg delete'
-alias yal 'ya pkg list'
-alias yau 'ya pkg upgrade'
+alias yza 'ya pkg add'
+alias yzd 'ya pkg delete'
+alias yzl 'ya pkg list'
+alias yzu 'ya pkg upgrade'
 
 # zoxide
 alias zz zi
