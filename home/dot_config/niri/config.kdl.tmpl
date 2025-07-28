@@ -589,9 +589,10 @@ binds {
     Mod+D { spawn "env" "DISPLAY=:0" "discord"; }
     Mod+E { spawn "rofimoji" "--selector" "fuzzel"; }
     Mod+M { spawn "prismlauncher"; }
-    Mod+P { spawn "steam" "steam://rungameid/431730"; }
     Mod+N { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
+    Mod+P { spawn "steam" "steam://rungameid/431730"; }
     Mod+T { spawn "thunderbird"; }
+    Mod+W repeat=false { spawn "nick"; }
     Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     {{- if eq .chezmoi.hostname "desktop" }}
