@@ -34,9 +34,9 @@ require("frank"):setup {
 	},
 }
 
--- require("mime-ext"):setup {
--- 	fallback_file1 = true,
--- }
+require("mime-ext"):setup {
+	fallback_file1 = true,
+}
 
 require("zoxide"):setup {
 	update_db = true,
