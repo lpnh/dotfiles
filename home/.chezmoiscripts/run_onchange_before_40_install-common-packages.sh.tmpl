@@ -1,6 +1,6 @@
 #!/bin/sh
 
 {{ range .packages.npm -}}
-echo installing {{ . | quote }}
+echo -e "\ninstalling {{ . | quote }}"
 npm install -g --no-fund {{ . | quote }}
 {{ end -}}
