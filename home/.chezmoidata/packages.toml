@@ -180,6 +180,7 @@ common = [
     "mpv",
     "ncspot",
     "niri",
+    "nodejs",
     "npm",
     "nvtop",
     "otf-firamono-nerd",
