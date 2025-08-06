@@ -1,5 +1,6 @@
 #!/bin/sh
 
 {{ range .packages.npm -}}
+echo installing {{ . | quote }}
 npm install -g --no-fund {{ . | quote }}
 {{ end -}}
