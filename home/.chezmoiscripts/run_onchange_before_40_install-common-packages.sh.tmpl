@@ -1,0 +1,5 @@
+#!/bin/sh
+
+{{ range .packages.npm -}}
+npm install -g {{ . | quote }}
+{{ end -}}
