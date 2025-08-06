@@ -91,9 +91,6 @@ alias ll 'ls -l'
 # lazygit
 alias lg lazygit
 
-# mise
-alias mi "~/.local/bin/mise"
-
 # neovim
 alias nv nvim
 

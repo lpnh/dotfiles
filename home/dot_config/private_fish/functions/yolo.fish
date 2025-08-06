@@ -2,8 +2,6 @@ function yolo
     set -l commands \
         "rustup update" \
         "cargo install-update --all" \
-        "mise self-update --yes" \
-        "mise upgrade --yes" \
         "npm update --global" \
         "ya pkg upgrade" \
         "tldr --update"

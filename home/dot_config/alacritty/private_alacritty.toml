@@ -1,6 +1,5 @@
 [general]
 import = ["catppuccin-mocha.toml"]
-# live_config_reload = true
 
 [env]
 TERM = "xterm-256color"

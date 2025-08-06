@@ -47,4 +47,3 @@ end
 # external setups
 starship init fish | source
 zoxide init fish | source
-mi activate fish | source
