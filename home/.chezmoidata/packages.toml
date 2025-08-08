@@ -11,6 +11,7 @@ crates = ["cargo-chef", "trunk"]
 
 npm = [
     "bash-language-server",
+    "fish-lsp",
     "@google/gemini-cli",
     "markdownlint-cli",
     "@tailwindcss/language-server",
