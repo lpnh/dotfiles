@@ -22,7 +22,6 @@ return {
         bashls = true,
         clangd = true,
         fish_lsp = true,
-        -- gopls = true,
         html = {
           filetypes = { 'htmldjango' },
         },
@@ -67,6 +66,7 @@ return {
           root_markers = { 'input.css', '.git' },
         },
         taplo = true,
+        ts_ls = true,
         typos_lsp = {
           init_options = { config = '~/.config/typos/typos.toml' },
         },
