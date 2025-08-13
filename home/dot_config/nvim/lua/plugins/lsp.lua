@@ -43,7 +43,9 @@ return {
           },
         },
         rue = {
-          cmd = { 'rue-lsp' },
+          cmd = (#vim.fs.find('Cargo.toml', { upward = true }) > 0)
+              and { 'cargo', 'run', '-p', 'rue-lsp' }
+            or { 'rue-lsp' },
           filetypes = { 'rue' },
         },
         rust_analyzer = {
