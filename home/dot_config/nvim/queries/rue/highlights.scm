@@ -1,5 +1,6 @@
-(identifier) @variable
+(type_identifier) @type
 (primitive_type) @type.builtin
+(field_identifier) @property
 
 (call_expression
   function: (identifier) @function)
@@ -13,12 +14,15 @@
 [
   "("
   ")"
+  "["
+  "]"
   "{"
   "}"
 ] @punctuation.bracket
 
 [
   ","
+  ":"
   ";"
 ] @punctuation.delimiter
 
@@ -31,6 +35,7 @@
   "if"
   "else"
   "while"
+  "struct"
 ] @keyword
 
 (boolean_literal) @boolean

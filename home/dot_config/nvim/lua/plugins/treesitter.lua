@@ -108,5 +108,25 @@ return {
         requires_generate_from_grammar = false,
       },
     }
+
+    require('nvim-treesitter.parsers').get_parser_configs().askama = {
+      install_info = {
+        url = '~/repos/parsers/tree-sitter-askama',
+        files = { 'src/parser.c' },
+        branch = 'main',
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+    }
+
+    require('nvim-treesitter.parsers').get_parser_configs().yarn_spinner = {
+      install_info = {
+        url = '~/repos/parsers/tree-sitter-yarn-spinner',
+        files = { 'src/parser.c', 'src/scanner.c' },
+        branch = 'main',
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+    }
   end,
 }

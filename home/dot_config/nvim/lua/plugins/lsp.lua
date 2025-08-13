@@ -23,7 +23,7 @@ return {
         clangd = true,
         fish_lsp = true,
         html = {
-          filetypes = { 'htmldjango' },
+          filetypes = { 'askama', 'htmldjango' },
         },
         jsonls = {
           settings = {
@@ -57,7 +57,7 @@ return {
           },
         },
         tailwindcss = {
-          filetypes = { 'html', 'htmldjango', 'rust' },
+          filetypes = { 'askama', 'html', 'htmldjango', 'rust' },
           settings = {
             tailwindCSS = {
               userLanguages = { rust = 'html' },
@@ -73,7 +73,15 @@ return {
       }
 
       vim.filetype.add {
+        pattern = {
+          ['.*/templates/.*%.html'] = { 'askama', { priority = 10 } },
+        },
+      }
+      vim.filetype.add {
         extension = { rue = 'rue' },
+      }
+      vim.filetype.add {
+        extension = { yarn = 'yarn_spinner' },
       }
 
       for name, config in pairs(servers) do
