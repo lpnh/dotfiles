@@ -27,6 +27,7 @@ optional_dev = [
     "just",
     "love",
     "lua-language-server",
+    "prettier",
     "rust-analyzer",
     "shellcheck-bin",      # AUR
     "shfmt",
