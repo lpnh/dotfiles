@@ -112,7 +112,7 @@ return {
     require('nvim-treesitter.parsers').get_parser_configs().askama = {
       install_info = {
         url = '~/repos/parsers/tree-sitter-askama',
-        files = { 'src/parser.c' },
+        files = { 'src/parser.c', 'src/scanner.c' },
         branch = 'main',
         generate_requires_npm = false,
         requires_generate_from_grammar = false,
