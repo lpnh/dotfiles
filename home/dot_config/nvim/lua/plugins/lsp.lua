@@ -74,18 +74,6 @@ return {
         },
       }
 
-      vim.filetype.add {
-        pattern = {
-          ['.*/templates/.*%.html'] = { 'askama', { priority = 10 } },
-        },
-      }
-      vim.filetype.add {
-        extension = { rue = 'rue' },
-      }
-      vim.filetype.add {
-        extension = { yarn = 'yarn_spinner' },
-      }
-
       for name, config in pairs(servers) do
         if type(config) == 'table' then
           vim.lsp.config[name] = config

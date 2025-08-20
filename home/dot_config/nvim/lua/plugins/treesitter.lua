@@ -3,7 +3,6 @@ return {
   dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
   build = ':TSUpdate',
   lazy = false,
-  main = 'nvim-treesitter.configs',
   opts = {
     ensure_installed = {
       'bash',
@@ -14,7 +13,6 @@ return {
       'fish',
       'gotmpl',
       'html',
-      'htmldjango', -- TODO: htmlrinja
       'json',
       'jsonc',
       'just',
@@ -99,20 +97,20 @@ return {
   config = function(_, opts)
     require('nvim-treesitter.configs').setup(opts)
 
-    require('nvim-treesitter.parsers').get_parser_configs().rue = {
+    require('nvim-treesitter.parsers').get_parser_configs().askama = {
       install_info = {
-        url = '~/repos/parsers/tree-sitter-rue',
-        files = { 'src/parser.c' },
+        url = '~/repos/parsers/tree-sitter-askama',
+        files = { 'src/parser.c', 'src/scanner.c' },
         branch = 'main',
         generate_requires_npm = false,
         requires_generate_from_grammar = false,
       },
     }
 
-    require('nvim-treesitter.parsers').get_parser_configs().askama = {
+    require('nvim-treesitter.parsers').get_parser_configs().rue = {
       install_info = {
-        url = '~/repos/parsers/tree-sitter-askama',
-        files = { 'src/parser.c', 'src/scanner.c' },
+        url = '~/repos/parsers/tree-sitter-rue',
+        files = { 'src/parser.c' },
         branch = 'main',
         generate_requires_npm = false,
         requires_generate_from_grammar = false,
@@ -127,6 +125,20 @@ return {
         generate_requires_npm = false,
         requires_generate_from_grammar = false,
       },
+    }
+
+    vim.filetype.add {
+      pattern = {
+        ['.*/templates/.*%.html'] = { 'askama', { priority = 10 } },
+      },
+    }
+
+    vim.filetype.add {
+      extension = { rue = 'rue' },
+    }
+
+    vim.filetype.add {
+      extension = { yarn = 'yarn_spinner' },
     }
   end,
 }
