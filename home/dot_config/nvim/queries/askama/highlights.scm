@@ -7,25 +7,25 @@
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
-(path_expression
+(scoped_identifier
   path: (identifier) @module)
 
-(path_expression
+(scoped_identifier
   name: (identifier) @module)
 
-(path_expression
+(scoped_identifier
   path: (identifier) @type
   (#lua-match? @type "^[A-Z]"))
 
-(path_expression
+(scoped_identifier
   name: (identifier) @type
   (#lua-match? @type "^[A-Z]"))
 
-((path_expression
+((scoped_identifier
   name: (identifier) @constant)
   (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
-((path_expression
+((scoped_identifier
   path: (identifier) @type
   name: (identifier) @constant)
   (#lua-match? @type "^[A-Z]")
@@ -50,36 +50,38 @@
   ")"
   "["
   "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 ; Operators
 [
-  "|"
-] @punctuation.bracket
-
-[
   "!"
+  "!="
+  "%"
   "&"
-  "~"
-  "="
-  ".."
-  "..="
-  "bitor"
-  "xor"
-  "bitand"
   "&&"
-  "||"
+  "*"
   "+"
   "-"
-  "*"
+  ".."
+  "..="
   "/"
-  "%"
   "<"
+  "<<"
   "<="
+  "="
+  "=="
   ">"
   ">="
-  "=="
-  "!="
+  ">>"
+  "?"
+  "bitand"
+  "bitor"
+  "xor"
+  "|"
+  "||"
+  "~"
 ] @operator
 
 ; Keywords
@@ -100,6 +102,8 @@
 [
   "for"
   "in"
+  (break_statement)
+  (continue_statement)
   (endfor_statement)
 ] @keyword.repeat
 
@@ -120,19 +124,21 @@
   "endmacro"
   "call"
   (endcall_statement)
+  "raw"
+  "endraw"
 ] @keyword
 
 [
-  "extends"
-  "include"
-  "import"
   "as"
+  "extends"
+  "import"
+  "include"
 ] @keyword.import
 
 [
   "let"
-  "set"
   "mut"
+  "set"
 ] @keyword
 
 ; Delimiters
@@ -159,10 +165,10 @@
 ] @keyword.directive
 
 ; Field variables
-(field_access_expression
+(field_expression
   field: (field_identifier) @variable.member)
 
-(field_access_expression
+(field_expression
   field: (number_literal) @variable.member)
 
 ; Function calls
@@ -170,11 +176,11 @@
   function: (identifier) @function.call)
 
 (call_expression
-  (field_access_expression
+  (field_expression
     field: (field_identifier) @function.call))
 
 (call_expression
-  (path_expression
+  (scoped_identifier
     name: (identifier) @function))
 
 ; Macro invocations
@@ -182,15 +188,11 @@
   macro: (identifier) @constant.macro)
 
 (macro_invocation
-  macro: (path_expression
+  macro: (scoped_identifier
     (identifier) @constant.macro .))
 
 (macro_invocation
   "!" @constant.macro)
-
-(call_expression
-  function: (identifier) @constant.builtin
-  (#any-of? @constant.builtin "caller"))
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin "Some" "None" "Ok" "Err"))
@@ -198,9 +200,23 @@
 ((identifier) @module
   (#any-of? @module "crate" "super" "self"))
 
+; Builtin
+(field_expression
+  value: (identifier) @constant.builtin
+  field: (field_identifier) @constant.builtin
+  (#any-of? @constant.builtin "loop"))
+
+(call_expression
+  function: (identifier) @constant.builtin
+  (#eq? @constant.builtin "caller"))
+
+(call_expression
+  function: (identifier) @constant.macro
+  (#eq? @constant.macro "super" ))
+
 ; Filter names
-(filter
-  name: (identifier) @function.builtin)
+(filter_expression
+  filter: (identifier) @function.builtin)
 
 ; Comments
 (comment) @comment @spell
@@ -208,4 +224,4 @@
 ; Specials
 (placeholder) @character.special
 
-(wildcard) @character.special
+(remaining_field) @character.special
