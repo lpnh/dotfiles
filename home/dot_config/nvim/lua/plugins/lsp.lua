@@ -43,8 +43,8 @@ return {
           },
         },
         rue = {
-          cmd = (#vim.fs.find('Cargo.toml', { upward = true }) > 0)
-              and { 'cargo', 'run', '-p', 'rue-lsp' }
+          cmd = (#vim.fs.find('BUCK', { upward = true }) > 0)
+              and { 'buck2', 'run', '//crates/rue-lsp' }
             or { 'rue-lsp' },
           filetypes = { 'rue' },
         },
