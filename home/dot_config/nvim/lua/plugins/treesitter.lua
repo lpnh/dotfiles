@@ -117,9 +117,9 @@ return {
       },
     }
 
-    require('nvim-treesitter.parsers').get_parser_configs().yarn_spinner = {
+    require('nvim-treesitter.parsers').get_parser_configs().yarn = {
       install_info = {
-        url = '~/repos/parsers/tree-sitter-yarn-spinner',
+        url = '~/repos/parsers/tree-sitter-yarn',
         files = { 'src/parser.c', 'src/scanner.c' },
         branch = 'main',
         generate_requires_npm = false,
@@ -138,7 +138,7 @@ return {
     }
 
     vim.filetype.add {
-      extension = { yarn = 'yarn_spinner' },
+      extension = { yarn = 'yarn' },
     }
   end,
 }
