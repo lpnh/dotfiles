@@ -14,6 +14,8 @@ npm = [
     "fish-lsp",
     "@google/gemini-cli",
     "markdownlint-cli",
+    "prettier",
+    "prettier-plugin-tailwindcss",
     "tailwindcss",
     "@tailwindcss/cli",
     "@tailwindcss/language-server",
