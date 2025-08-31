@@ -37,5 +37,7 @@ return {
         },
       },
     },
+
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
   },
 }

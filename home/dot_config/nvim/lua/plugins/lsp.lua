@@ -21,6 +21,11 @@ return {
       local servers = {
         bashls = true,
         clangd = true,
+        cssls = true,
+        eslint = true,
+        stylelint_lsp = {
+          filetypes = { 'askama', 'html' },
+        },
         fish_lsp = true,
         html = {
           filetypes = { 'askama', 'html' },
@@ -97,8 +102,11 @@ return {
         lsp_format = 'fallback',
       },
       formatters_by_ft = {
-        lua = { 'stylua' },
+        askama = { 'prettier' },
+        css = { 'prettier' },
+        html = { 'prettier' },
         javascript = { 'prettier', 'eslint_d' },
+        lua = { 'stylua' },
         typescript = { 'prettier', 'eslint_d' },
       },
     },
