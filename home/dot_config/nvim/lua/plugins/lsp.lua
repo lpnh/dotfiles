@@ -23,7 +23,7 @@ return {
         clangd = true,
         fish_lsp = true,
         html = {
-          filetypes = { 'askama', 'htmldjango' },
+          filetypes = { 'askama', 'html' },
         },
         jsonls = {
           settings = {
@@ -62,9 +62,13 @@ return {
           filetypes = { 'askama', 'html', 'rust' },
           settings = {
             tailwindCSS = {
-              userLanguages = { rust = 'html' },
+              includeLanguages = {
+                askama = 'html',
+              },
+              userLanguages = { askama = 'html', rust = 'html' },
             },
           },
+          root_markers = { 'input.css', '.git' },
         },
         taplo = true,
         ts_ls = true,
