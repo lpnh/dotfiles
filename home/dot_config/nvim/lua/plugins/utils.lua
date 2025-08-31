@@ -75,48 +75,6 @@ return {
     opts = {},
   },
 
-  -- Tailwind
-  {
-    'luckasRanarison/tailwind-tools.nvim',
-    name = 'tailwind-tools',
-    build = ':UpdateRemotePlugins',
-    opts = {
-      server = { override = false },
-      -- conceal = { enabled = true }, broken ?
-      extension = {
-        patterns = { -- a map of filetypes to Lua pattern lists
-          rust = { 'class=["\']([^"\']+)["\']' },
-        },
-      },
-    },
-    keys = {
-      {
-        '<leader>Tc',
-        '<cmd>TailwindConcealToggle<cr>',
-        ft = { 'html', 'htmldjango', 'rust' },
-        desc = 'Toggle tailwind conceal',
-      },
-      {
-        '<leader>Ts',
-        '<cmd>TailwindSort<cr>',
-        ft = { 'html', 'htmldjango', 'rust' },
-        desc = 'Sort tailwind classes',
-      },
-      {
-        '<leader>Tp',
-        '<cmd>TailwindPrevClass<cr>',
-        ft = { 'html', 'htmldjango', 'rust' },
-        desc = 'Move to the previous class',
-      },
-      {
-        '<leader>Tn',
-        '<cmd>TailwindNextClass<cr>',
-        ft = { 'html', 'htmldjango', 'rust' },
-        desc = 'Move to the next class',
-      },
-    },
-  },
-
   -- T.T
   {
     'm4xshen/hardtime.nvim',

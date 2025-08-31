@@ -59,13 +59,12 @@ return {
           },
         },
         tailwindcss = {
-          filetypes = { 'askama', 'html', 'htmldjango', 'rust' },
+          filetypes = { 'askama', 'html', 'rust' },
           settings = {
             tailwindCSS = {
               userLanguages = { rust = 'html' },
             },
           },
-          root_markers = { 'input.css', '.git' },
         },
         taplo = true,
         ts_ls = true,
