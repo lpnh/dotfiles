@@ -7,7 +7,7 @@ optional = [
 ]
 
 # should be manually installed with `cargo install --locked`
-crates = ["cargo-chef", "trunk"]
+crates = ["trunk"]
 
 # also optional dev tools
 npm = [
