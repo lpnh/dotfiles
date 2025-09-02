@@ -9,6 +9,7 @@ optional = [
 # should be manually installed with `cargo install --locked`
 crates = ["cargo-chef", "trunk"]
 
+# also optional dev tools
 npm = [
     "bash-language-server",
     "fish-lsp",
@@ -22,12 +23,9 @@ npm = [
     "vscode-langservers-extracted",
 ]
 
-# also optional dev tools
 optional_dev = [
     "bacon",
-    "cargo-aur-bin",
     "cargo-generate",
-    "cargo-make",
     "just",
     "love",
     "lua-language-server",
@@ -37,8 +35,8 @@ optional_dev = [
     "shfmt",
     "taplo-cli",
     "tiled",
-    "typos-lsp",
     "tokei",
+    "typos-lsp",
     "zola",
 ]
 
@@ -152,7 +150,6 @@ system = [
 ]
 
 common = [
-    "aichat",
     "alacritty",
     "bat",
     "bob",
@@ -234,9 +231,6 @@ laptop = [
 ]
 
 gaming = [
-    # dofus
-    "ankama-launcher", # aur
-    "wine",            # multilib - required
     # minecraft
     "glfw",
     "jre21-openjdk",
