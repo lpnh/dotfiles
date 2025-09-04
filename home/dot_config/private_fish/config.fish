@@ -2,6 +2,7 @@
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.npm-global/bin
 fish_add_path ~/.fly/bin
+fish_add_path ~/.local/bin # required by `pipx` x.x
 
 # ENV
 set -gx EDITOR nvim

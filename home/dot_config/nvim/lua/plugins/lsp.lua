@@ -8,7 +8,6 @@ return {
         opts = {
           library = {
             { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-            -- { path = '${3rd}/love2d/library', words = { 'love' } },
             { path = 'snacks.nvim', words = { 'Snacks' } },
           },
         },
@@ -23,9 +22,6 @@ return {
         clangd = true,
         cssls = true,
         eslint = true,
-        stylelint_lsp = {
-          filetypes = { 'askama', 'html' },
-        },
         fish_lsp = true,
         html = {
           filetypes = { 'askama', 'html' },
@@ -136,15 +132,4 @@ return {
       })
     end,
   },
-
-  -- LÖVE
-  -- {
-  --   'S1M0N38/love2d.nvim',
-  --   cmd = 'LoveRun',
-  --   opts = {},
-  --   keys = {
-  --     { '<leader>lr', '<cmd>LoveRun<cr>', ft = 'lua', desc = 'Run LÖVE' },
-  --     { '<leader>ls', '<cmd>LoveStop<cr>', ft = 'lua', desc = 'Stop LÖVE' },
-  --   },
-  -- },
 }
