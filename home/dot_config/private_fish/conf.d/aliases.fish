@@ -71,6 +71,10 @@ alias grmc 'git rm --cached'
 alias grv 'git remote --verbose'
 alias gst 'git status'
 
+# insta
+alias ic 'cargo insta test --check'
+alias ir 'cargo insta test --review'
+
 # jujutsu, or as I've recently taken to calling it, jujuba
 alias ja 'jj abandon'
 alias jd 'jj diff'
