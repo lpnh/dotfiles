@@ -78,6 +78,7 @@
   "?"
   "bitand"
   "bitor"
+  "or"
   "xor"
   "|"
   "||"
