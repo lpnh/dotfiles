@@ -204,12 +204,15 @@
 ; Builtin
 (field_expression
   value: (identifier) @constant.builtin
+  (#eq? @constant.builtin "loop"))
+
+(field_expression
   field: (field_identifier) @constant.builtin
-  (#any-of? @constant.builtin "loop"))
+  (#any-of? @constant.builtin "index" "index0" "first" "last"))
 
 (call_expression
-  function: (identifier) @constant.builtin
-  (#eq? @constant.builtin "caller"))
+  function: (identifier) @constant.macro
+  (#eq? @constant.macro "caller"))
 
 (call_expression
   function: (identifier) @constant.macro
@@ -217,7 +220,7 @@
 
 ; Filter names
 (filter_expression
-  filter: (identifier) @function.builtin)
+  filter: (identifier) @function.call)
 
 ; Comments
 (comment) @comment @spell
