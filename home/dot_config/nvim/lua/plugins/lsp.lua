@@ -98,12 +98,22 @@ return {
         lsp_format = 'fallback',
       },
       formatters_by_ft = {
-        askama = { 'prettier' },
+        askama = { 'kirei' },
         css = { 'prettier' },
         html = { 'prettier' },
         javascript = { 'prettier', 'eslint_d' },
         lua = { 'stylua' },
         typescript = { 'prettier', 'eslint_d' },
+      },
+      formatters = {
+        kirei = {
+          command = 'kirei',
+          args = {
+            '--stdin-filepath',
+            '$FILENAME',
+            '-',
+          },
+        },
       },
     },
     keys = {
