@@ -129,7 +129,7 @@ return {
 
     vim.filetype.add {
       pattern = {
-        ['.*/templates/.*%.html'] = { 'askama', { priority = 10 } },
+        ['.*/templates/.*%.html'] = 'askama',
       },
     }
 
