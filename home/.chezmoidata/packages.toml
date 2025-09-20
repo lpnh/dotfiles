@@ -11,9 +11,9 @@ crates = ["trunk"]
 
 # also optional dev tools
 npm = [
+    "@anthropic-ai/claude-code",
     "bash-language-server",
     "fish-lsp",
-    "@google/gemini-cli",
     "markdownlint-cli",
     "prettier",
     "prettier-plugin-tailwindcss",
