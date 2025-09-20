@@ -6,10 +6,7 @@ optional = [
     "vulkan-tools",  # to check Vulkan is working
 ]
 
-# should be manually installed with `cargo install --locked`
-crates = ["trunk"]
-
-# also optional dev tools
+# optional dev tools
 npm = [
     "@anthropic-ai/claude-code",
     "bash-language-server",
@@ -36,6 +33,7 @@ optional_dev = [
     "taplo-cli",
     "tiled",
     "tokei",
+    "trunk",
     "typos-lsp",
     "zola",
 ]
