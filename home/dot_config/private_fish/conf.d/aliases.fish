@@ -99,8 +99,8 @@ alias lg lazygit
 alias nv nvim
 
 # tree-sitter
-
 alias tg 'tree-sitter generate'
+alias tp 'tree-sitter parse'
 alias tt 'tree-sitter test'
 
 # eza
