@@ -28,6 +28,10 @@ alias bnl 'bat --number --line-range'
 # bob
 alias bun 'bob update nightly'
 
+# cargo
+alias cq 'cargo test --no-fail-fast --quiet'
+alias cargo-upgrade 'cargo +nightly -Zunstable-options update --breaking'
+
 # chezmoi
 alias ch chezmoi
 alias chad 'chezmoi add'
@@ -40,9 +44,6 @@ alias chre 'chezmoi re-add --verbose'
 alias chst 'chezmoi status'
 alias chup 'chezmoi update --verbose'
 alias chz 'cd ~/andromeda/chezmoi'
-
-# cargo
-alias cargo-upgrade 'cargo +nightly -Zunstable-options update --breaking'
 
 # journal
 alias err 'journalctl -b -p err'
