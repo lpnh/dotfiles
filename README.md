@@ -11,25 +11,24 @@ a simple and aesthetic Arch Linux setup. for more information, check the
 >
 > -- <cite>from a Reddit user on r/unixporn</cite>
 
-## some shortcuts
+## shortcuts
 
-*.config/*  
-├─ [alacritty](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/alacritty)  
-├─ [bat](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/bat)  
-├─ [cava](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/cava)  
-├─ [fastfetch](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/fastfetch)  
-├─ [fish](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/private_fish)  
-├─ [fuzzel](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/fuzzel)  
-├─ [gitui](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/gitui)  
-├─ [mako](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/mako)  
-├─ [niri](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/niri)  
-├─ [nvim](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/nvim)  
-├─ [starship](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/starship)  
-├─ [waybar](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/waybar)  
-└─ [yazi](https://github.com/lpnh/dotfiles/tree/main/home/dot_config/yazi)
+*~/.config/*  
+├─ [alacritty](home/dot_config/alacritty)  
+├─ [bat](home/dot_config/bat)  
+├─ [cava](home/dot_config/cava)  
+├─ [fastfetch](home/dot_config/fastfetch)  
+├─ [fish](home/dot_config/private_fish)  
+├─ [fuzzel](home/dot_config/fuzzel)  
+├─ [gitui](home/dot_config/gitui)  
+├─ [mako](home/dot_config/mako)  
+├─ [niri](home/dot_config/niri)  
+├─ [nvim](home/dot_config/nvim)  
+├─ [starship](home/dot_config/starship)  
+├─ [waybar](home/dot_config/waybar)  
+└─ [yazi](home/dot_config/yazi)
 
 ## dot_config ?
 
-if this repo seems unfamiliar, it might be due to using `chezmoi` as the
-dotfile manager. check out their [website](https://www.chezmoi.io/) for more
-information
+yep, this repo uses `chezmoi` as a dotfile manager.  
+check out their [website](https://www.chezmoi.io/) for more info
