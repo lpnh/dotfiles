@@ -155,6 +155,7 @@ common = [
     "cargo-update",
     "cava",
     "chafa",
+    "difftastic",
     "discord",
     "eza",
     "fcitx5-im",
