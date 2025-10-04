@@ -1,32 +1,39 @@
 [core]
 	pager = delta
 
-[diff]
-	colorMoved = no
-
-[merge]
-	conflictstyle = diff3
-
-[interactive]
-	diffFilter = delta --color-only
-
-[user]
-	email = paniguel.lpnh@gmail.com
-	name = lpnh
-
-[url "git@github.com:lpnh/"]
-	insteadOf = https://github.com/lpnh/
-
-[include]
-	path = ~/.config/delta/catppuccin.gitconfig
-
 [delta]
 	features = catppuccin-mocha
 	navigate = true
 	side-by-side = true
+
+[diff]
+    external = difft
+    tool = difftastic
+
+[difftool]
+    prompt = false
 
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+[include]
+	path = ~/.config/delta/catppuccin.gitconfig
+
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = diff3
+
+[pager]
+    difftool = true
+
+[url "git@github.com:lpnh/"]
+	insteadOf = https://github.com/lpnh/
+
+[user]
+	email = paniguel.lpnh@gmail.com
+	name = lpnh

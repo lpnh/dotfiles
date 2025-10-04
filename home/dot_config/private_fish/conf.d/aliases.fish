@@ -36,7 +36,7 @@ alias cargo-upgrade 'cargo +nightly -Zunstable-options update --breaking'
 alias ch chezmoi
 alias chad 'chezmoi add'
 alias chap 'chezmoi apply'
-alias chdi 'chezmoi diff'
+alias chdi 'chezmoi diff --reverse'
 alias chda 'chezmoi data'
 alias ched 'chezmoi edit'
 alias chma 'chezmoi managed'
@@ -44,6 +44,9 @@ alias chre 'chezmoi re-add --verbose'
 alias chst 'chezmoi status'
 alias chup 'chezmoi update --verbose'
 alias chz 'cd ~/andromeda/chezmoi'
+
+# difftastic
+alias d difft
 
 # journal
 alias err 'journalctl -b -p err'
@@ -63,13 +66,14 @@ alias gcb 'git checkout -b'
 alias gd 'git diff'
 alias gdca 'git diff --cached'
 alias gds 'git diff --staged'
-alias gl 'git log'
+alias gl 'git log -p --ext-diff'
 alias glo 'git log --oneline --decorate'
 alias gp 'git push'
 alias gpf! 'git push --force'
 alias grm 'git rm'
 alias grmc 'git rm --cached'
 alias grv 'git remote --verbose'
+alias gs 'git show --ext-diff'
 alias gst 'git status'
 
 # insta

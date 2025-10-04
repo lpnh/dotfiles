@@ -5,6 +5,7 @@ fish_add_path ~/.fly/bin
 fish_add_path ~/.local/bin # required by `pipx` x.x
 
 # ENV
+set -gx DFT_COLOR always
 set -gx EDITOR nvim
 set -gx RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
 set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
