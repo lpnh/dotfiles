@@ -39,11 +39,9 @@ return {
     quickfile = { enabled = true },
     scope = { enabled = true },
     statuscolumn = { enabled = true },
-    zen = { toggles = { diagnostics = false, indent = false } },
     styles = {
       notification = { wo = { wrap = true } },
       notification_history = { title = ' Notification History ' },
-      zen = { minimal = true },
     },
   },
   keys = {
@@ -51,7 +49,6 @@ return {
     { '<leader>bn', function() Snacks.scratch() end, desc = 'New buffer' },
     { '<leader>bs', function() Snacks.scratch.select() end, desc = 'Select buffer' },
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
-    { '<leader>g', function() Snacks.gitbrowse() end, desc = 'Open repository' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     -- stylua: ignore end
   },
@@ -64,11 +61,10 @@ return {
         _G.bt = function() Snacks.debug.backtrace() end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-        Snacks.toggle.diagnostics():map '<leader>td'
+        Snacks.toggle.diagnostics():map '<leader>D'
         Snacks.toggle.inlay_hints():map '<leader>h'
-        Snacks.toggle.zen():map '<leader>z'
-        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>tr'
-        Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>tw' -- useful for html stuff
+        Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>l'
+        -- Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>w' -- useful for html stuff
       end,
     })
   end,

@@ -5,9 +5,6 @@ map({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 -- Clear highlight (search)
 map('n', '<esc>', '<cmd>nohlsearch<cr>')
 
--- Open diagnostic float window
-map('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Diagnostic float window' })
-
 map({ 'n', 'v' }, '<C-d>', '5j', { noremap = true })
 map({ 'n', 'v' }, '<C-u>', '5k', { noremap = true })
 
