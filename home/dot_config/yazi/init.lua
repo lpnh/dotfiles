@@ -18,9 +18,11 @@ require("frank"):setup {
 	},
 	rg = "--colors 'line:fg:red' --colors 'match:style:nobold'",
 	rga = {
-		"--hidden",
 		"--follow",
+		"--hidden",
 		"--glob '!.git'",
+		"--glob '!node_modules'",
+		"--word-regexp",
 	},
 	fd = "--hidden",
 	bat = "--style 'header,grid'",

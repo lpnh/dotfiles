@@ -43,7 +43,7 @@ alias chma 'chezmoi managed'
 alias chre 'chezmoi re-add --verbose'
 alias chst 'chezmoi status'
 alias chup 'chezmoi update --verbose'
-alias chz 'cd ~/andromeda/chezmoi'
+alias chz 'cd ~/tori/chezmoi'
 
 # difftastic
 alias d difft

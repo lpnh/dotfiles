@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*.tmpl',
   callback = function()
     local buf_path = vim.fn.expand '%:p'
-    if not string.match(buf_path, '%andromeda/chezmoi') then
+    if not string.match(buf_path, '%tori/chezmoi') then
       return
     end
     local base_ft = vim.fn.expand '%:r:e'
