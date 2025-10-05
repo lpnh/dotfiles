@@ -2,9 +2,6 @@ local map = vim.keymap.set
 
 map({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 
--- Favor `surround` instead
-map('n', 's', '<nop>', { noremap = true, silent = true })
-
 -- Clear highlight (search)
 map('n', '<esc>', '<cmd>nohlsearch<cr>')
 
