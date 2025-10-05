@@ -5,24 +5,19 @@
 
    ▄▀▀ ▄▀▀▄ █▄ █ █▀ █ ▄▀
    ▀▄▄ ▀▄▄▀ █ ▀█ █▀ █ ▀▄█
- 
+
 --]]
 
-require 'options'
+local config = {
+  'options',
+  'keymaps',
+  'user_cmds',
+  'diagnostics',
+  'autocmds',
+}
 
-require 'keymaps'
+for _, item in ipairs(config) do
+  require('config.' .. item)
+end
 
-require 'diagnostics'
-
-require 'autocmds'
-
-require 'lazy-bootstrap'
-
-require('lazy').setup('plugins', {
-  change_detection = {
-    notify = false,
-  },
-  install = {
-    colorscheme = { 'catppuccin' },
-  },
-})
+require 'config.lazy'
