@@ -16,7 +16,7 @@ return {
       -- 'html',
       -- 'json',
       -- 'jsonc',
-      -- 'just',
+      'just',
       'kdl',
       'lua',
       -- 'luadoc',
