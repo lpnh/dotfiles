@@ -8,7 +8,7 @@ return {
     local ensure_installed = {
       -- 'bash',
       -- 'c',
-      -- 'css',
+      'css',
       -- 'diff',
       -- 'dockerfile',
       -- 'fish',
