@@ -1,15 +1,12 @@
 # dotfiles
 
-a simple and aesthetic Arch Linux setup. for more information, check the
-[cookbook](https://lpnh.io/dotfiles/)
-
 > it's called "dotfiles" because that folder ".config" starts with a dot and is
 > therefor hidden
 >
 > and we customize these hidden text files for ~20 programs because we're
 > neurotic lovers of beauty 🤷
 >
-> -- <cite>from a Reddit user on r/unixporn</cite>
+> -- from a Reddit user on r/unixporn
 
 ## shortcuts
 
@@ -30,5 +27,6 @@ a simple and aesthetic Arch Linux setup. for more information, check the
 
 ## dot_config ?
 
-yep, this repo uses `chezmoi` as a dotfile manager.  
-check out their [website](https://www.chezmoi.io/) for more info
+[chezmoi uses weird
+filenames](https://www.chezmoi.io/user-guide/frequently-asked-questions/design/#why-does-chezmoi-use-weird-filenames)
+and that's perfectly fine
