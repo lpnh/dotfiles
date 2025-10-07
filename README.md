@@ -1,5 +1,7 @@
 # dotfiles
 
+dotfiles for a simple, charming Arch Linux setup
+
 > it's called "dotfiles" because that folder ".config" starts with a dot and is
 > therefor hidden
 >
