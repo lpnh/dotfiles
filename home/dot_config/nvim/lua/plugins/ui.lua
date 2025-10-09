@@ -37,7 +37,14 @@ return {
   },
 
   -- Cafetière :3
-  { dir = '~/repos/prod/cafetiere.nvim', opts = {} },
+  {
+    'lpnh/cafetiere.nvim',
+    dependencies = {
+      'catppuccin/nvim',
+      'nvim-web-devicons',
+    },
+    opts = {},
+  },
 
   -- Lualine
   {
