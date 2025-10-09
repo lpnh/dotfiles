@@ -1,4 +1,44 @@
 return {
+  -- Icons
+  { 'nvim-tree/nvim-web-devicons', opts = {} },
+
+  -- Catppuccin
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        transparent_background = true,
+        float = {
+          transparent = true,
+          solid = false,
+        },
+        custom_highlights = function(colors)
+          return {
+            -- Comment = { fg = colors.surface2 },
+            CursorVisual = { bg = colors.surface0 },
+            Visual = { bg = colors.surface0 },
+            FzfLuaHeaderText = { fg = colors.pink },
+            FzfLuaLiveSym = { fg = colors.pink },
+            FzfLuaBufFlagCur = { fg = colors.pink },
+          }
+        end,
+        -- https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
+        integrations = {
+          noice = true,
+          snacks = { enabled = true, indent_scope_color = 'surface2' },
+          which_key = true,
+        },
+      }
+
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+
+  -- Cafetière :3
+  { dir = '~/repos/prod/cafetiere.nvim', opts = {} },
+
   -- Lualine
   {
     'nvim-lualine/lualine.nvim',

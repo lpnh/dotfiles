@@ -31,15 +31,6 @@ return {
       require('mini.ai').setup()
       require('mini.surround').setup()
       require('mini.pairs').setup()
-      require('mini.icons').setup {
-        directory = { nvim = { hl = 'MiniIconsAzure' } },
-        file = { ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' } },
-        extension = {
-          db = { glyph = '' },
-          lock = { glyph = '' },
-        },
-      }
-      MiniIcons.mock_nvim_web_devicons()
     end,
   },
 
