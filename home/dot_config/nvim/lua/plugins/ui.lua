@@ -16,8 +16,6 @@ return {
         },
         custom_highlights = function(colors)
           return {
-            -- Comment = { fg = colors.surface2 },
-            CursorVisual = { bg = colors.surface0 },
             Visual = { bg = colors.surface0 },
             FzfLuaHeaderText = { fg = colors.pink },
             FzfLuaLiveSym = { fg = colors.pink },
@@ -37,14 +35,7 @@ return {
   },
 
   -- Cafetière :3
-  {
-    'lpnh/cafetiere.nvim',
-    dependencies = {
-      'catppuccin/nvim',
-      'nvim-web-devicons',
-    },
-    opts = {},
-  },
+  { 'lpnh/cafetiere.nvim', opts = {} },
 
   -- Lualine
   {
