@@ -23,7 +23,7 @@ local function create_toggle_nav_keys()
         vim.keymap.del('n', key)
       end
       Snacks.notify('Navigation keys **enabled**', {
-        title = 'the party is over',
+        title = 'vim motions are my passion',
         level = vim.log.levels.INFO,
       })
     else
@@ -31,7 +31,7 @@ local function create_toggle_nav_keys()
         vim.keymap.set('n', key, '<nop>', { noremap = true, silent = true })
       end
       Snacks.notify('Navigation keys **disabled**', {
-        title = 'have fun',
+        title = 'lol. good luck!',
         level = vim.log.levels.INFO,
       })
     end
@@ -44,9 +44,3 @@ end
 local toggle_nav_keys = create_toggle_nav_keys()
 
 vim.api.nvim_create_user_command('ToggleNavKeys', function() toggle_nav_keys() end, {})
-
-vim.keymap.set('n', '<leader>tn', toggle_nav_keys, {
-  noremap = true,
-  silent = true,
-  desc = 'Toggle navigation keys',
-})

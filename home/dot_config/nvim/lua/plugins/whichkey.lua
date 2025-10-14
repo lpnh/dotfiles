@@ -4,12 +4,10 @@ return {
   opts = {
     delay = 0,
     spec = {
-      { '<leader>b', icon = '', group = 'Scratch' },
+      { '<leader>b', icon = '󰐁', group = 'Bacon' },
       { '<leader>k', icon = '󰌆' },
-      { '<leader>l', icon = '', group = 'LÖVE' },
+      { '<leader>p', icon = '', group = 'Playground' },
       { '<leader>s', icon = '', group = 'Search' },
-      { '<leader>t', icon = '', group = 'Toggle' },
-      { '<leader>T', icon = '󱏿', group = 'Tailwind' },
     },
     win = {
       border = 'single',

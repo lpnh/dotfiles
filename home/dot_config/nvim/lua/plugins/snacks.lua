@@ -46,8 +46,8 @@ return {
   },
   keys = {
     -- stylua: ignore start
-    { '<leader>bn', function() Snacks.scratch() end, desc = 'New buffer' },
-    { '<leader>bs', function() Snacks.scratch.select() end, desc = 'Select buffer' },
+    { '<leader>pn', function() Snacks.scratch() end, desc = 'New buffer' },
+    { '<leader>ps', function() Snacks.scratch.select() end, desc = 'Select buffer' },
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     -- stylua: ignore end
@@ -65,6 +65,49 @@ return {
         Snacks.toggle.inlay_hints():map '<leader>h'
         Snacks.toggle.option('relativenumber', { name = 'relative number' }):map '<leader>l'
         -- Snacks.toggle.option('wrap', { name = 'wrap' }):map '<leader>w' -- useful for html stuff
+
+        local custom_signs = {
+          ERROR = '',
+          WARN = '',
+          HINT = '󰌵',
+          INFO = '',
+        }
+
+        local vim_config = vim.diagnostic.config
+        local vt_enabled = false
+
+        local function vt_config(enabled)
+          return {
+            format = enabled and (vim_config().float.format or function(d) return d.message end)
+              or function() return '' end,
+            prefix = function(d) return custom_signs[vim.diagnostic.severity[d.severity]] end,
+            spacing = 0,
+          }
+        end
+
+        -- Initial diagnostic configuration
+        vim_config {
+          float = { border = 'rounded', header = '', prefix = '', severity_sort = false },
+          severity_sort = true,
+          signs = false,
+          underline = false,
+          virtual_text = vt_config(vt_enabled),
+        }
+
+        Snacks.toggle
+          .new({
+            name = 'Virtual Text',
+            get = function() return vt_enabled end,
+            set = function(state)
+              vt_enabled = state
+              vim_config { virtual_text = vt_config(state) }
+            end,
+          })
+          :map('<leader>v', { desc = 'Toggle Virtual Text' })
+
+        vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+          callback = function() vim_config { virtual_text = vt_config(vt_enabled) } end,
+        })
       end,
     })
   end,

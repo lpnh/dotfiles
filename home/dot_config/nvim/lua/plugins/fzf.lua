@@ -26,8 +26,8 @@ return {
     { 'gsw', function() require('fzf-lua').lsp_live_workspace_symbols { regex_filter = true } end, desc = 'Symbols (workspace)' },
     -- misc
     { '<leader>d', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Diagnostics' },
+    { '<leader>f', '<cmd>FzfLua quickfix<cr>', desc = 'Quickfix' },
     { '<leader>g', '<cmd>FzfLua live_grep_native<cr>', desc = 'Ripgrep' },
-    { '<leader>s"', '<cmd>FzfLua registers<cr>', desc = 'Registers' },
     { '<leader>sa', '<cmd>FzfLua autocmds<cr>', desc = 'Autocmds' },
     { '<leader>sc', '<cmd>FzfLua files cwd=~/.config/nvim<cr>', desc = 'Neovim config' },
     { '<leader>sC', '<cmd>FzfLua commands<cr>', desc = 'Commands' },
@@ -41,8 +41,8 @@ return {
     { '<leader>so', '<cmd>FzfLua oldfiles<cr>', desc = 'Oldfiles' },
     { '<leader>sr', '<cmd>FzfLua resume<cr>', desc = 'Resume' },
     { '<leader>sw', '<cmd>FzfLua grep_cword<cr>', desc = 'Word' },
-    { '<leader>sz', '<cmd>FzfLua zoxide<cr>', desc = 'Zoxide' },
-    { '<leader><tab>', '<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>', desc = 'Jump to Buffer' },
+    { '<leader>s"', '<cmd>FzfLua registers<cr>', desc = 'Registers' },
+    { '<leader><tab>', '<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>', desc = 'Buffers' },
     -- stylua: ignore end
   },
 }

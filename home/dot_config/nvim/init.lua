@@ -12,7 +12,7 @@ local config = {
   'options',
   'keymaps',
   'user_cmds',
-  'diagnostics',
+  -- 'diagnostics',
   'autocmds',
   'lazy',
 }

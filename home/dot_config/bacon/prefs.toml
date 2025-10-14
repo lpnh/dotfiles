@@ -1,13 +1,15 @@
+listen = true
+
+[exports.locations]
+auto = true
+path = ".bacon-locations"
+line_format = "{kind} {path}:{line}:{column} {message}"
+
 [jobs.clippy-nursery]
 command = ["cargo", "clippy", "--all-targets", "--", "-W", "clippy::nursery"]
 need_stdout = false
 
-[jobs.clippy-pedantic]
-command = ["cargo", "clippy", "--all-targets", "--", "-W", "clippy::pedantic"]
-need_stdout = false
-
 [keybindings]
-c = "job:clippy-pedantic"
 n = "job:clippy-nursery"
 g = "scroll-to-top"
 shift-g = "scroll-to-bottom"

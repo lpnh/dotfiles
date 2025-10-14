@@ -59,6 +59,44 @@ return {
     },
   },
 
+  -- Bacon
+  {
+    'Canop/nvim-bacon',
+    ft = 'rust',
+    opts = {
+      quickfix = {
+        enabled = true,
+        event_trigger = true,
+      },
+    },
+    keys = {
+      {
+        '<leader>bn',
+        '<cmd>BaconLoad<CR><cmd>w<CR><cmd>BaconNext<CR>',
+        desc = 'Navigate to next location',
+        ft = 'rust',
+      },
+      {
+        '<leader>bp',
+        '<cmd>BaconLoad<CR><cmd>w<CR><cmd>BaconPrevious<CR>',
+        desc = 'Navigate to next location',
+        ft = 'rust',
+      },
+      {
+        '<leader>bd',
+        '<cmd>silent !bacon --send "dismiss-top"<CR>',
+        desc = 'Dismiss all items',
+        ft = 'rust',
+      },
+      {
+        '<leader>bD',
+        '<cmd>silent !bacon --send "dismiss-top"<CR>',
+        desc = 'Dismiss current item',
+        ft = 'rust',
+      },
+    },
+  },
+
   -- Crates dependencies
   {
     'saecki/crates.nvim',
