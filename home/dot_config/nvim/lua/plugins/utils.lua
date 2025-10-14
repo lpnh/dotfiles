@@ -84,14 +84,14 @@ return {
       },
       {
         '<leader>bd',
-        '<cmd>silent !bacon --send "dismiss-top"<CR>',
-        desc = 'Dismiss all items',
+        '<cmd>silent !bacon --send "dismiss-top-item"<CR>',
+        desc = 'Dismiss current item',
         ft = 'rust',
       },
       {
         '<leader>bD',
         '<cmd>silent !bacon --send "dismiss-top"<CR>',
-        desc = 'Dismiss current item',
+        desc = 'Dismiss all items',
         ft = 'rust',
       },
     },
