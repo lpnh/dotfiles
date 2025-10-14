@@ -14,7 +14,7 @@ return {
       -- 'fish',
       'gitcommit',
       -- 'gotmpl',
-      -- 'html',
+      'html',
       -- 'json',
       -- 'jsonc',
       'just',
