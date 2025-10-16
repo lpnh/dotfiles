@@ -591,20 +591,19 @@ binds {
     // Main apps [[[
 
     Mod+Return { spawn "fuzzel"; }
-    Mod+Space { spawn "killall" "-SIGUSR1" "waybar"; }
+    Mod+Space hotkey-overlay-title="Toggle Waybar" { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+A { spawn "alacritty"; }
     Mod+Shift+A { spawn "alacritty" "-T" "alacritty_split"; }
     Mod+B { spawn "firefox"; }
     Mod+Shift+B { spawn "blender"; }
-    Mod+C { spawn "steam" "steam://rungameid/730"; }
     Mod+D { spawn "discord"; }
     Mod+E { spawn "rofimoji" "--selector" "fuzzel"; }
     Mod+M { spawn "prismlauncher"; }
     Mod+N { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
-    Mod+P { spawn "steam" "steam://rungameid/431730"; }
+    Mod+P hotkey-overlay-title="Aseprite" { spawn "steam" "steam://rungameid/431730"; }
     Mod+T { spawn "thunderbird"; }
     Mod+W repeat=false { spawn "sometime"; }
-    Mod+Y { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
+    Mod+Y hotkey-overlay-title="Yazi" { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     {{- if eq .chezmoi.hostname "desktop" }}
     Mod+O { spawn "osu-lazer"; }
