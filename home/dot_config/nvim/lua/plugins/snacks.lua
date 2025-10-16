@@ -85,9 +85,9 @@ return {
           }
         end
 
-        -- Initial diagnostic configuration
+        -- Initial configuration
         vim_config {
-          float = { border = 'rounded', header = '', prefix = '', severity_sort = false },
+          float = { header = '', prefix = '', severity_sort = false },
           severity_sort = true,
           signs = false,
           underline = false,

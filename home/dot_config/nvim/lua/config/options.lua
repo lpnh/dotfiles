@@ -43,3 +43,4 @@ opt.termguicolors = true -- True color support
 opt.timeoutlen = 300 -- Decrease update time
 opt.undofile = true -- Save undo history
 opt.updatetime = 250 -- Decrease update time
+opt.winborder = 'rounded' -- Rounded corners `╭`, etc.

@@ -39,6 +39,11 @@ return {
     'stevearc/oil.nvim',
     lazy = false,
     opts = {
+      skip_confirm_for_simple_edits = true,
+      keymaps = {
+        ['<C-h>'] = false,
+        ['<C-l>'] = false,
+      },
       view_options = { show_hidden = true },
       confirmation = { min_width = { 20, 0.2 } },
     },

@@ -52,7 +52,7 @@ return {
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
-              checkOnSave = { command = 'clippy' },
+              check = { command = 'clippy' },
               diagnostics = { enable = false },
               procMacro = { enable = true },
               rustfmt = { extraArgs = { '+nightly' } },
