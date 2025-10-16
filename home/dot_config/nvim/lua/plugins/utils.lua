@@ -45,7 +45,7 @@ return {
         ['<C-l>'] = false,
       },
       view_options = { show_hidden = true },
-      confirmation = { min_width = { 20, 0.2 } },
+      confirmation = { min_width = 20, min_height = 3 },
     },
     keys = { { '-', '<cmd>Oil<cr>', desc = 'Open parent directory' } },
   },

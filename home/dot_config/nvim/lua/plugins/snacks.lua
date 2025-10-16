@@ -4,6 +4,7 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
+    picker = { ui_select = true },
     dashboard = {
       width = 40,
       preset = {
