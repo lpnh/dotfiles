@@ -45,6 +45,9 @@ alias chst 'chezmoi status'
 alias chup 'chezmoi update --verbose'
 alias chz 'cd ~/tori/chezmoi'
 
+# criterion
+alias opc 'open target/criterion/report/index.html'
+
 # difftastic
 alias d difft
 
