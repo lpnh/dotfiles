@@ -16,15 +16,15 @@ desc = "Linemode: custom"
 
 # fr plugin
 
-# [[mgr.prepend_keymap]]
-# on = ["f", "r"]
-# run = "plugin fr rg"
-# desc = "rg search"
-#
-# [[mgr.prepend_keymap]]
-# on = ["f", "a"]
-# run = "plugin fr rga"
-# desc = "rga search"
+[[mgr.prepend_keymap]]
+on = ["f", "s"]
+run = "plugin fr rg"
+desc = "stable fr"
+
+[[mgr.prepend_keymap]]
+on = ["f", "n"]
+run = "plugin fr-nightly rg"
+desc = "nightly fr"
 
 # frank plugin
 
