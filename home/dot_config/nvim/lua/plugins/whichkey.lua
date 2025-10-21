@@ -9,9 +9,7 @@ return {
       { '<leader>p', icon = '', group = 'Playground' },
       { '<leader>s', icon = '', group = 'Search' },
     },
-    win = {
-      border = 'single',
-    },
+    win = { border = 'rounded' },
   },
   keys = { { '<leader>k', '<cmd>WhichKey<cr>', desc = 'WhichKey' } },
 }
