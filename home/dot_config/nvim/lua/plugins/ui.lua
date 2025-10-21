@@ -117,9 +117,6 @@ return {
       routes = {
         { view = 'notify', filter = { event = 'msg_showmode' } },
       },
-      views = {
-        popup = { scrollbar = false },
-      },
     },
   },
 
