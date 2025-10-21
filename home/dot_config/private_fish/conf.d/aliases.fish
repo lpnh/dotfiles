@@ -48,6 +48,9 @@ alias chz 'cd ~/tori/chezmoi'
 # criterion
 alias opc 'open target/criterion/report/index.html'
 
+# date
+alias cv 'date +%y.%-m.%-d'
+
 # difftastic
 alias d difft
 
