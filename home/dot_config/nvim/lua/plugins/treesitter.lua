@@ -5,42 +5,7 @@ return {
   version = false,
   build = ':TSUpdate',
   config = function()
-    local ensure_installed = {
-      'bash',
-      -- 'c',
-      'css',
-      'diff',
-      -- 'dockerfile',
-      -- 'fish',
-      'gitcommit',
-      'gotmpl',
-      'html',
-      'javascript',
-      -- 'json',
-      -- 'jsonc',
-      'just',
-      'kdl',
-      'lua',
-      -- 'luadoc',
-      'markdown',
-      'markdown_inline',
-      -- 'query',
-      'regex',
-      -- 'ron',
-      'rust',
-      -- 'sql',
-      'toml',
-      -- 'tsx',
-      'vim',
-      'vimdoc',
-      -- 'yaml',
-    }
-
-    local TS = require 'nvim-treesitter'
-
-    TS.setup()
-    TS.install(ensure_installed)
-
+    -- Local parsers
     vim.api.nvim_create_autocmd('User', {
       pattern = 'TSUpdate',
       callback = function()
@@ -80,6 +45,39 @@ return {
       extension = { rue = 'rue', yarn = 'yarn' },
     }
 
+    local ensure_installed = {
+      'askama',
+      'bash',
+      'c',
+      'css',
+      'diff',
+      'dockerfile',
+      'fish',
+      'gitcommit',
+      'gotmpl',
+      'html',
+      'javascript',
+      'json',
+      'just',
+      'kdl',
+      'lua',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'regex',
+      'rue',
+      'rust',
+      'sql',
+      'toml',
+      'vim',
+      'vimdoc',
+      'yaml',
+      'yarn',
+    }
+
+    require('nvim-treesitter').install(ensure_installed)
+
+    -- Treesitter highlighting
     vim.api.nvim_create_autocmd('FileType', {
       group = vim.api.nvim_create_augroup('custom_treesitter', { clear = true }),
       callback = function() pcall(vim.treesitter.start) end,
