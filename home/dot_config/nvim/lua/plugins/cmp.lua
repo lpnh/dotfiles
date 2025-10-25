@@ -28,6 +28,7 @@ return {
             extended_filetypes = {
               html = { 'loremipsum' },
               markdown = { 'loremipsum' },
+              askama = { 'html' },
               rust = { 'html' },
             },
           },
