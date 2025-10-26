@@ -10,12 +10,13 @@ return {
     appearance = { nerd_font_variant = 'mono' },
 
     completion = {
-      list = { selection = { preselect = false } },
+      -- https://github.com/Saghen/blink.cmp/issues/1932
+      -- list = { selection = { preselect = false } },
       trigger = { show_in_snippet = false },
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'markdown' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
         markdown = {
           name = 'RenderMarkdown',
