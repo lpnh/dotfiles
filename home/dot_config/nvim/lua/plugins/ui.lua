@@ -14,6 +14,7 @@ return {
         custom_highlights = function(colors)
           return {
             Visual = { bg = colors.surface0 },
+            BlinkCmpMenuSelection = { bg = colors.surface0 },
             FzfLuaHeaderText = { fg = colors.pink },
             FzfLuaLiveSym = { fg = colors.pink },
             FzfLuaBufFlagCur = { fg = colors.pink },
