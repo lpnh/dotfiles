@@ -17,14 +17,9 @@ desc = "Linemode: custom"
 # fr plugin
 
 [[mgr.prepend_keymap]]
-on = ["f", "s"]
+on = ["f", "g"]
 run = "plugin fr rg"
-desc = "stable fr"
-
-[[mgr.prepend_keymap]]
-on = ["f", "n"]
-run = "plugin fr-nightly rg"
-desc = "nightly fr"
+desc = "fr rg"
 
 # frank plugin
 
@@ -56,6 +51,38 @@ desc = "fd search (file)"
 [[mgr.prepend_keymap]]
 on = ["f", "c"]
 run = "plugin frank 'name cwd'"
+desc = "fd search (cwd)"
+
+# nightly frank
+
+[[mgr.prepend_keymap]]
+on = ["n", "r"]
+run = "plugin frank-nightly 'content rg'"
+desc = "rg search"
+
+[[mgr.prepend_keymap]]
+on = ["n", "a"]
+run = "plugin frank-nightly 'content rga'"
+desc = "rga search"
+
+[[mgr.prepend_keymap]]
+on = ["n", "d"]
+run = "plugin frank-nightly name"
+desc = "fd search (all)"
+
+[[mgr.prepend_keymap]]
+on = ["n", "D"]
+run = "plugin frank-nightly 'name dir'"
+desc = "fd search (dir)"
+
+[[mgr.prepend_keymap]]
+on = ["n", "f"]
+run = "plugin frank-nightly 'name file'"
+desc = "fd search (file)"
+
+[[mgr.prepend_keymap]]
+on = ["n", "c"]
+run = "plugin frank-nightly 'name cwd'"
 desc = "fd search (cwd)"
 
 # quality of life

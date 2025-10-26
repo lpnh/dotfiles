@@ -130,6 +130,9 @@ alias yzd 'ya pkg delete'
 alias yzl 'ya pkg list'
 alias yzu 'ya pkg upgrade'
 
+# yazi nightly
+alias yn yazi-nightly
+
 # zoxide
 alias zz zi
 
