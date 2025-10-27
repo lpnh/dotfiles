@@ -1,16 +1,14 @@
-/* Documentation: https://github.com/Alexays/Waybar/wiki/Configuration */
+/* docs: https://github.com/Alexays/Waybar/wiki/Configuration */
 
 @import "mocha.css";
 
 * {
-    /* border: none; */
     font-family: 'FiraMono Nerd Font';
     font-size: 16px;
     min-height: 0;
 }
 
 window#waybar {
-    /* background: transparent; */
     background: rgba(30, 30, 46, 0.5);
     border-radius: 8px;
     border: 1px solid rgba(235, 160, 172, 0.5);
@@ -25,7 +23,6 @@ window#waybar {
 #workspaces,
 #taskbar,
 #window,
-#clock,
 #tray,
 #language,
 #network,
@@ -44,16 +41,19 @@ window#waybar {
 #workspaces button {
     min-width: 24px;
     padding: 0;
-    color: @pink;
+}
+
+#taskbar button {
+  padding: 4;
+  margin: 4;
 }
 
 #workspaces button.empty,
 #taskbar button {
-    /* margin: 0; */
-    /* padding: 0; */
     color: @surface1;
 }
 
+#workspaces button,
 #workspaces button.focused,
 #taskbar button.active {
     color: @pink;
