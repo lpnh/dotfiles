@@ -11,7 +11,7 @@ function Linemode:custom()
 	return ui.Line(string.format("%s", time))
 end
 
-require("frank"):setup {
+require("frank-nightly"):setup {
 	fzf = {
 		[[--info-command 'echo -e "$FZF_INFO 💛"']],
 		"--no-scrollbar --pointer '󰼛'",
@@ -25,14 +25,18 @@ require("frank"):setup {
 		"--word-regexp",
 	},
 	fd = "--hidden",
-	bat = "--style 'header,grid'",
+	bat = "",
 	eza = "",
 	eza_meta = "--total-size",
 	rga_preview = {
-		"--colors 'line:fg:red'"
-			.. " --colors 'match:fg:blue'"
-			.. " --colors 'match:bg:black'"
-			.. " --colors 'match:style:nobold'",
+		"--colors 'column:fg:black'"
+			.. " --colors 'line:fg:black'"
+			.. " --colors 'match:fg:black'"
+			.. " --colors 'match:bg:blue'"
+			.. " --colors 'match:style:nobold'"
+			.. [[ --context-separator=" "]]
+			.. [[ --field-context-separator=" "]]
+			.. [[ --field-match-separator=" "]],
 	},
 }
 

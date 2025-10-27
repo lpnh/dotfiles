@@ -135,7 +135,3 @@ alias yn yazi-nightly
 
 # zoxide
 alias zz zi
-
-# date and time
-alias dt 'notify-send -t 1800 coucou \n(date "+%A %d")'
-alias hr 'notify-send -t 1800 coucou \n(date +%R)'
