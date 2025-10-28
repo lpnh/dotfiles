@@ -109,6 +109,9 @@ alias lg lazygit
 # neovim
 alias nv nvim
 
+# qalc
+alias qc qalc
+
 # tree-sitter
 alias tg 'tree-sitter generate'
 alias tp 'tree-sitter parse'
