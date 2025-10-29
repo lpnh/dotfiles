@@ -11,7 +11,7 @@ function Linemode:custom()
 	return ui.Line(string.format("%s", time))
 end
 
-require("frank-nightly"):setup {
+require("frank"):setup {
 	fzf = {
 		[[--info-command 'echo -e "$FZF_INFO 💛"']],
 		"--no-scrollbar --pointer '󰼛'",
