@@ -170,8 +170,8 @@ symbol = " "
 [scala]
 symbol = " "
 
-[status]
-symbol = " "
+[swift]
+disabled = true
 
 [xmake]
 symbol = " "
