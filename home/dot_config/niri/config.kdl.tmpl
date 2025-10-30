@@ -32,12 +32,8 @@ input {
     touchpad {
         tap
         dwt
-        // dwtp
         natural-scroll
         accel-speed 1.0
-        // accel-profile "flat"
-        // tap-button-map "left-middle-right"
-        // click-method "clickfinger"
     }
 
     tablet {
@@ -46,7 +42,6 @@ input {
         {{- end }}
     }
 
-    // Make the mouse warp to the center of newly focused windows
     warp-mouse-to-focus
 }
 
@@ -70,37 +65,15 @@ output "HDMI-A-1" {
 
 layout {
     gaps 8
-    center-focused-column "never"
 
-    preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-    }
+    center-focused-column "never"
 
     default-column-width { proportion 0.5; }
 
-    focus-ring {
-        off
-
-        width 1
-        active-gradient from="rgba(245, 194, 231, 0.6)" to="rgba(180, 190, 254, 0.6)" angle=45
-        inactive-gradient from="rgb(69, 71, 90)" to="rgb(49, 50, 68)" angle=45
-    }
-
     border {
-        // off
-
         width 1
         active-gradient from="rgba(243, 139, 168, 0.5)" to="rgba(235, 160, 172, 0.5)" angle=45
         inactive-gradient from="rgba(69, 71, 90, 0.5)" to="rgba(88, 91, 112, 0.5)" angle=45
-    }
-
-    struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
     }
 
     background-color "transparent"
@@ -123,10 +96,8 @@ cursor {
 
 prefer-no-csd
 
-// The path is formatted with strftime(3) to give you the screenshot date and time
 screenshot-path "~/Pictures/Screenshots/ss %Y-%m-%d %H-%M-%S.png"
 
-// Disable the hotkey help at niri startup
 hotkey-overlay {
     skip-at-startup
 }
@@ -146,21 +117,6 @@ gestures {
 // Animations [[[
 
 animations {
-    // Uncomment to turn off all animations.
-    // off
-
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-
-    // Workspace switch [[[
-
-    workspace-switch {
-        off
-        // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-    }
-
-    // ]]]
-
     // Window open [[[
 
     window-open {
@@ -504,11 +460,11 @@ workspace "lounge" {
     open-on-output "HDMI-A-1"
 }
 {{- else if eq .chezmoi.hostname "laptop" }}
-workspace "main" {}
+workspace "main"
 
-workspace "browser" {}
+workspace "browser"
 
-workspace "lounge" {}
+workspace "lounge"
 {{- end }}
 
 // ]]]
@@ -617,16 +573,10 @@ binds {
 
     // Focus [[[
 
-    // Mod+H     { focus-column-left; }
-    // Mod+L     { focus-column-right; }
-
     Mod+H     { focus-column-or-monitor-left; }
     Mod+J     { focus-window-down; }
     Mod+K     { focus-window-up; }
     Mod+L     { focus-column-or-monitor-right; }
-
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
 
     Mod+Alt+H { focus-column-first; }
     Mod+Alt+L { focus-column-last; }
@@ -653,9 +603,6 @@ binds {
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
 
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
-
     Mod+Ctrl+Alt+H { move-column-to-first; }
     Mod+Ctrl+Alt+L { move-column-to-last; }
 
@@ -664,9 +611,6 @@ binds {
 
     Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
 
     Mod+Shift+1 { move-column-to-workspace "main"; }
     Mod+Shift+2 { move-column-to-workspace "browser"; }
@@ -686,18 +630,9 @@ binds {
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
-    // Finer width adjustments
-    // This command can also:
-    // * set width in pixels: "1000"
-    // * adjust width in pixels: "-5" or "+5"
-    // * set width as a percentage of screen width: "25%"
-    // * adjust width as a percentage of screen width: "-10%" or "+10%"
-    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
-    // set-column-width "100" will make the column occupy 200 physical screen pixels
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
 
-    // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
