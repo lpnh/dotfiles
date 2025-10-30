@@ -39,10 +39,25 @@ return {
     })
 
     vim.filetype.add {
+      extension = {
+        rue = 'rue',
+        yarn = 'yarn',
+        html = function()
+          for i = 1, 40 do
+            local line = vim.fn.getline(i)
+            if line == '' then
+              break
+            end
+            if line:match '{[%%{#][%-+~]?%s*%w' then
+              return 'askama'
+            end
+          end
+          return 'html'
+        end,
+      },
       pattern = {
         ['.*/templates/.*%.html'] = 'askama',
       },
-      extension = { rue = 'rue', yarn = 'yarn' },
     }
 
     local ensure_installed = {
