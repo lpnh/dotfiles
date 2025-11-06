@@ -1,0 +1,1 @@
+- add support for tools that require script to be installed. e.g. `flyctl`
