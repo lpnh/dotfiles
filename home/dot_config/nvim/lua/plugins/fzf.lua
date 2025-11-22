@@ -23,7 +23,7 @@ return {
     { 'gI', '<cmd>FzfLua lsp_implementations<cr>', desc = 'Implementation'},
     { 'gy', '<cmd>FzfLua lsp_typedefs<cr>', desc = 'Type definition'},
     { 'gs', function() require('fzf-lua').lsp_document_symbols { regex_filter = true } end, desc = 'Symbols' },
-    { 'gsw', function() require('fzf-lua').lsp_live_workspace_symbols { regex_filter = true } end, desc = 'Symbols (workspace)' },
+    { 'gW', function() require('fzf-lua').lsp_live_workspace_symbols { regex_filter = true } end, desc = 'Symbols (workspace)' },
     -- misc
     { '<leader>d', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Diagnostics' },
     { '<leader>f', '<cmd>FzfLua quickfix<cr>', desc = 'Quickfix' },

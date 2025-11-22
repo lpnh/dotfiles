@@ -14,25 +14,16 @@ return {
         parsers.askama = {
           install_info = {
             path = '~/repos/parsers/tree-sitter-askama',
-            generate = true,
-            generate_from_json = false,
-            queries = 'queries/neovim',
           },
         }
         parsers.rue = {
           install_info = {
             path = '~/repos/parsers/tree-sitter-rue',
-            generate = true,
-            generate_from_json = false,
-            queries = 'queries/neovim',
           },
         }
         parsers.yarn = {
           install_info = {
             path = '~/repos/parsers/tree-sitter-yarn',
-            generate = true,
-            generate_from_json = false,
-            queries = 'queries/neovim',
           },
         }
       end,
