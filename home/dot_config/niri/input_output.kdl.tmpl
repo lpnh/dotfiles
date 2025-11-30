@@ -1,0 +1,41 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+
+input {
+    // For more information, see xkeyboard-config(7)
+    keyboard {
+        xkb {
+            {{- if eq .chezmoi.hostname "desktop" }}
+            layout "us,us(intl)"
+            options "grp:alt_shift_toggle,compose:ralt"
+            {{- else if eq .chezmoi.hostname "laptop" }}
+            layout "br"
+            {{- end }}
+        }
+    }
+
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        accel-speed 1.0
+    }
+
+    tablet {
+        {{- if eq .chezmoi.hostname "desktop" }}
+        map-to-output "HDMI-A-1"
+        {{- end }}
+    }
+
+    warp-mouse-to-focus
+}
+
+{{- if eq .chezmoi.hostname "desktop" }}
+output "DP-2" {
+    position x=0 y=48
+}
+
+output "HDMI-A-1" {
+    position x=1280 y=0
+}
+{{- end }}

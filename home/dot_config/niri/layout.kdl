@@ -1,0 +1,24 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+
+layout {
+    gaps 8
+
+    center-focused-column "never"
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        off
+    }
+
+    border {
+        on
+
+        width 1
+
+        active-gradient from="rgba(243, 139, 168, 0.5)" to="rgba(235, 160, 172, 0.5)" angle=45
+        inactive-gradient from="rgba(69, 71, 90, 0.5)" to="rgba(88, 91, 112, 0.5)" angle=45
+    }
+
+    background-color "transparent"
+}

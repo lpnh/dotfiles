@@ -1,0 +1,37 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layer-Rules
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+window-rule {
+    open-maximized true
+}
+
+window-rule {
+    match title="alacritty_split"
+    open-maximized false
+}
+
+window-rule {
+    match at-startup=true app-id="Alacritty"
+    match title="Minecraft"
+    open-on-workspace "main"
+}
+
+window-rule {
+    match at-startup=true app-id="firefox"
+    open-on-workspace "browser"
+}
+
+window-rule {
+    match app-id="(ncspot|discord)"
+    open-on-workspace "lounge"
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}

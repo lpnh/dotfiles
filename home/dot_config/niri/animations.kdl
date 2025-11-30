@@ -1,130 +1,7 @@
-//
-//                 ██           ██  
-//       ▄▄ ▄▄▄   ▄▄▄  ▄▄▄ ▄▄  ▄▄▄  
-//        ██  ██   ██   ██▀ ▀▀  ██  
-//        ██  ██   ██   ██      ██  
-//       ▄██▄ ██▄ ▄██▄ ▄██▄    ▄██▄ 
-//                                  
-//    ▄▄·          ▐ ▄  ·▄▄▄ ▪    ▄▄ • 
-//   ▐█ ▌▪  ▄█▀▄  •█▌▐█ ▐▄▄  ██  ▐█ ▀ ▪
-//   ██ ▄▄ ▐█▌.▐▌ ▐█▐▐▌ █  ▪ ▐█· ▄█ ▀█▄
-//   ▐███▌ ▐█▌.▐▌ ██▐█▌ ██ . ▐█▌ ▐█▄▪▐█
-//   ·▀▀▀   ▀█▄▀▪ ▀▀ █▪ ▀▀▀  ▀▀▀ ·▀▀▀▀ 
-//
-
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
-
-// Input [[[
-
-input {
-    // For more information, see xkeyboard-config(7)
-    keyboard {
-        xkb {
-            {{- if eq .chezmoi.hostname "desktop" }}
-            layout "us,us(intl)"
-            options "grp:alt_shift_toggle,compose:ralt"
-            {{- else if eq .chezmoi.hostname "laptop" }}
-            layout "br"
-            {{- end }}
-        }
-    }
-
-    touchpad {
-        tap
-        dwt
-        natural-scroll
-        accel-speed 1.0
-    }
-
-    tablet {
-        {{- if eq .chezmoi.hostname "desktop" }}
-        map-to-output "HDMI-A-1"
-        {{- end }}
-    }
-
-    warp-mouse-to-focus
-}
-
-// ]]]
-
-// Output [[[
-
-{{- if eq .chezmoi.hostname "desktop" }}
-output "DP-2" {
-    position x=0 y=48
-}
-
-output "HDMI-A-1" {
-    position x=1280 y=0
-}
-{{- end }}
-
-// ]]]
-
-// Layout [[[
-
-layout {
-    gaps 8
-
-    center-focused-column "never"
-
-    default-column-width { proportion 0.5; }
-
-    focus-ring {
-        off
-    }
-
-    border {
-        width 1
-        active-gradient from="rgba(243, 139, 168, 0.5)" to="rgba(235, 160, 172, 0.5)" angle=45
-        inactive-gradient from="rgba(69, 71, 90, 0.5)" to="rgba(88, 91, 112, 0.5)" angle=45
-    }
-
-    background-color "transparent"
-}
-
-// ]]]
-
-// Miscellaneous [[[
-
-environment {
-    GTK_THEME "Materia-dark"
-    QT_QPA_PLATFORM "wayland"
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-}
-
-cursor {
-    hide-when-typing
-    xcursor-theme "Breeze"
-}
-
-prefer-no-csd
-
-screenshot-path "~/Pictures/Screenshots/ss %Y-%m-%d %H-%M-%S.png"
-
-hotkey-overlay {
-    skip-at-startup
-}
-
-// ]]]
-
-// Gestures [[[
-
-gestures {
-    hot-corners {
-        off
-    }
-}
-
-// ]]]
-
-// Animations [[[
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 
 animations {
-    // Window open [[[
-
     window-open {
-        // off
         duration-ms 250
         curve "linear"
 
@@ -188,10 +65,6 @@ animations {
             }
         "
     }
-
-    // ]]]
-
-    // Window close [[[
 
     window-close {
         // off
@@ -277,29 +150,17 @@ animations {
         "
     }
 
-    // ]]]
-
-    // Horizontal view movement [[[
-
     horizontal-view-movement {
         // off
         duration-ms 250
         curve "ease-out-quad"
     }
 
-    // ]]]
-
-    // Window movement [[[
-
     window-movement {
         // off
         duration-ms 250
         curve "ease-out-quad"
     }
-
-    // ]]]
-
-    // Window resize [[[
 
     window-resize {
         off
@@ -435,223 +296,8 @@ animations {
         "
     }
 
-    // ]]]
-
-    // Config notification [[[
-
     config-notification-open-close {
         off
         // spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
     }
-
-    // ]]]
 }
-
-// ]]]
-
-// Workspaces [[[
-
-{{- if eq .chezmoi.hostname "desktop" }}
-workspace "main" {
-    open-on-output "HDMI-A-1"
-}
-
-workspace "browser" {
-    open-on-output "DP-2"
-}
-
-workspace "lounge" {
-    open-on-output "HDMI-A-1"
-}
-{{- else if eq .chezmoi.hostname "laptop" }}
-workspace "main"
-
-workspace "browser"
-
-workspace "lounge"
-{{- end }}
-
-// ]]]
-
-// Window Rules [[[
-
-window-rule {
-    geometry-corner-radius 8
-    clip-to-geometry true
-}
-
-window-rule {
-    open-maximized true
-}
-
-window-rule {
-    match title="alacritty_split"
-    open-maximized false
-}
-
-window-rule {
-    match at-startup=true app-id="Alacritty"
-    match title="Minecraft"
-    open-on-workspace "main"
-}
-
-window-rule {
-    match at-startup=true app-id="firefox"
-    open-on-workspace "browser"
-}
-
-window-rule {
-    match app-id="(ncspot|discord)"
-    open-on-workspace "lounge"
-}
-
-// ]]]
-
-// Layer Rules [[[
-
-layer-rule {
-    match namespace="^wallpaper$"
-    place-within-backdrop true
-}
-
-// ]]]
-
-// Key Bindings [[[
-
-binds {
-    // Session [[[
-
-    Mod+Shift+Slash { show-hotkey-overlay; }
-
-    Mod+Shift+E { quit; }
-
-    Pause { spawn "~/.config/swaylock/lock-screen.fish"; }
-    Mod+Pause { spawn "reboot"; }
-    Ctrl+Mod+Pause { spawn "poweroff"; }
-
-    Print { screenshot-screen; }
-    Ctrl+Print { screenshot-window; }
-    Alt+Print { screenshot; }
-
-    Mod+Shift+P { power-off-monitors; }
-
-    // ]]]
-
-    // Control [[[
-
-    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-
-    XF86MonBrightnessUp { spawn "brightnessctl" "--class=backlight" "set" "10%+"; }
-    XF86MonBrightnessDown { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-
-    // ]]]
-
-    // Main apps [[[
-
-    Mod+Return { spawn "fuzzel"; }
-    Mod+Space hotkey-overlay-title="Toggle Waybar" { spawn "killall" "-SIGUSR1" "waybar"; }
-    Mod+A { spawn "alacritty"; }
-    Mod+Shift+A { spawn "alacritty" "-T" "alacritty_split"; }
-    Mod+B { spawn "firefox"; }
-    Mod+Shift+B { spawn "blender"; }
-    Mod+D { spawn "discord"; }
-    Mod+E { spawn "rofimoji" "--selector" "fuzzel"; }
-    Mod+M { spawn "prismlauncher"; }
-    Mod+N { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
-    Mod+P hotkey-overlay-title="Aseprite" { spawn "steam" "steam://rungameid/431730"; }
-    Mod+T { spawn "thunderbird"; }
-    Mod+W repeat=false { spawn "sometime-clock"; }
-    Mod+Shift+W repeat=false { spawn "sometime-calendar"; }
-    Mod+Y hotkey-overlay-title="Yazi" { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
-
-    {{- if eq .chezmoi.hostname "desktop" }}
-    Mod+O { spawn "osu-lazer"; }
-    Mod+S { spawn "steam"; }
-    {{- else if eq .chezmoi.hostname "laptop" }}
-    Mod+O { spawn "prime-run" "osu-lazer"; }
-    Mod+S { spawn "prime-run" "steam"; }
-    {{- end }}
-
-    // ]]]
-
-    // Focus [[[
-
-    Mod+H     { focus-column-or-monitor-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-or-monitor-right; }
-
-    Mod+Alt+H { focus-column-first; }
-    Mod+Alt+L { focus-column-last; }
-
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+L     { focus-monitor-right; }
-
-    Mod+Shift+J        { focus-workspace-down; }
-    Mod+Shift+K        { focus-workspace-up; }
-
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-
-    Mod+Tab { focus-workspace-previous; }
-
-    // ]]]
-
-    // Move [[[
-
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
-
-    Mod+Ctrl+Alt+H { move-column-to-first; }
-    Mod+Ctrl+Alt+L { move-column-to-last; }
-
-    Mod+Ctrl+Shift+J   { move-column-to-workspace-down; }
-    Mod+Ctrl+Shift+K   { move-column-to-workspace-up; }
-
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    Mod+Shift+1 { move-column-to-workspace "main"; }
-    Mod+Shift+2 { move-column-to-workspace "browser"; }
-    Mod+Shift+3 { move-column-to-workspace "lounge"; }
-    Mod+Shift+4 { move-column-to-workspace 4; }
-
-    // ]]]
-
-    // Columns and windows [[[
-
-    Mod+Q { close-window; }
-
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
-
-    Mod+R { switch-preset-column-width; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
-
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
-
-    // ]]]
-}
-
-// ]]]
-
-// Startup [[[
-
-spawn-at-startup "alacritty"
-spawn-at-startup "firefox"
-spawn-at-startup "niri" "msg" "action" "focus-workspace" "main"
-
-// ]]]
-
-// vim:fdm=marker:fmr=[[[,]]]

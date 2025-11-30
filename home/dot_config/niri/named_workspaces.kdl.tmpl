@@ -1,0 +1,21 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Named-Workspaces
+
+{{- if eq .chezmoi.hostname "desktop" }}
+workspace "main" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "browser" {
+    open-on-output "DP-2"
+}
+
+workspace "lounge" {
+    open-on-output "HDMI-A-1"
+}
+{{- else if eq .chezmoi.hostname "laptop" }}
+workspace "main"
+
+workspace "browser"
+
+workspace "lounge"
+{{- end }}

@@ -1,0 +1,35 @@
+//
+//                 ██           ██  
+//       ▄▄ ▄▄▄   ▄▄▄  ▄▄▄ ▄▄  ▄▄▄  
+//        ██  ██   ██   ██▀ ▀▀  ██  
+//        ██  ██   ██   ██      ██  
+//       ▄██▄ ██▄ ▄██▄ ▄██▄    ▄██▄ 
+//                                  
+//    ▄▄·          ▐ ▄  ·▄▄▄ ▪    ▄▄ • 
+//   ▐█ ▌▪  ▄█▀▄  •█▌▐█ ▐▄▄  ██  ▐█ ▀ ▪
+//   ██ ▄▄ ▐█▌.▐▌ ▐█▐▐▌ █  ▪ ▐█· ▄█ ▀█▄
+//   ▐███▌ ▐█▌.▐▌ ██▐█▌ ██ . ▐█▌ ▐█▄▪▐█
+//   ·▀▀▀   ▀█▄▀▪ ▀▀ █▪ ▀▀▀  ▀▀▀ ·▀▀▀▀ 
+//
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+
+include "input_output.kdl"
+
+include "binds.kdl"
+
+include "layout.kdl"
+
+include "named_workspaces.kdl"
+
+include "miscellaneous.kdl"
+
+include "window_layer_rules.kdl"
+
+include "animations.kdl"
+
+gestures {
+    hot-corners {
+        off
+    }
+}
