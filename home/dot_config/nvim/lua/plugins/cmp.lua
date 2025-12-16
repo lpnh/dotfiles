@@ -10,8 +10,7 @@ return {
     appearance = { nerd_font_variant = 'mono' },
 
     completion = {
-      -- https://github.com/Saghen/blink.cmp/issues/1932
-      -- list = { selection = { preselect = false } },
+      list = { selection = { preselect = false } },
       trigger = { show_in_snippet = false },
     },
 
