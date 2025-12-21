@@ -1,6 +1,6 @@
 # Core
 
-font=Inter 12
+font=FiraMono Nerd Font 12
 width=300
 outer-margin=20
 padding=12
@@ -13,7 +13,7 @@ default-timeout=5000
 
 background-color=#1e1e2edd
 text-color=#cdd6f4
-border-color=#b4befedd
+border-color=#eba0acdd
 progress-color=over #313244dd
 
 [urgency=high]
