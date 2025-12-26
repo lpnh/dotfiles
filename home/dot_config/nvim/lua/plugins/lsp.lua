@@ -54,7 +54,6 @@ return {
             ['rust-analyzer'] = {
               check = { command = 'clippy' },
               diagnostics = { enable = false },
-              procMacro = { enable = true },
               rustfmt = { extraArgs = { '+nightly' } },
             },
           },

@@ -86,8 +86,12 @@ alias gst 'git status'
 alias ic 'cargo insta test --check'
 alias ir 'cargo insta test --review'
 
+# just
+alias j just
+
 # jujutsu, or as I've recently taken to calling it, jujuba
 alias ja 'jj abandon'
+alias jb 'jj bookmark'
 alias jd 'jj diff'
 alias jde 'jj describe'
 alias jdm 'jj describe -m'
