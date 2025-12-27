@@ -100,9 +100,9 @@ return {
         askama = { 'kirei' },
         css = { 'prettier' },
         html = { 'prettier' },
-        javascript = { 'prettier', 'eslint_d' },
+        javascript = { 'prettier' },
         lua = { 'stylua' },
-        typescript = { 'prettier', 'eslint_d' },
+        typescript = { 'prettier' },
       },
       formatters = {
         kirei = {
