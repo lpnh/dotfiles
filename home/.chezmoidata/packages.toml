@@ -6,32 +6,6 @@ optional = [
     "vulkan-tools",  # to check Vulkan is working
 ]
 
-npm = ["fish-lsp", "vscode-langservers-extracted"]
-
-# dev tools
-dev = [
-    "bacon",
-    "bash-language-server",
-    "cargo-generate",
-    "eslint-language-server",
-    "just",
-    "love",
-    "lua-language-server",
-    "markdownlint-cli",
-    "prettier",
-    "rust-analyzer",
-    "shfmt",
-    "taplo-cli",
-    "tiled",
-    "tokei",
-    "trunk",
-    "typos-lsp",
-    "vscode-css-languageserver",
-    "vscode-html-languageserver",
-    "vscode-json-languageserver",
-    "zola",
-]
-
 # packages already installed during OS setup
 already_installed = [
     # with pacstrap
@@ -129,7 +103,6 @@ system = [
     "usb_modeswitch",
     "usbutils",
     "wayland",
-    "wget",
     "wl-clipboard",
     "which",
     "wireplumber",
@@ -222,6 +195,29 @@ laptop = [
     "vulkan-intel",
 ]
 
+dev = [
+    "bacon",
+    "bash-language-server",
+    "cargo-generate",
+    "eslint-language-server",
+    "just",
+    "love",
+    "lua-language-server",
+    "markdownlint-cli",
+    "prettier",
+    "rust-analyzer",
+    "shfmt",
+    "taplo-cli",
+    "tiled",
+    "tokei",
+    "trunk",
+    "typos-lsp",
+    "vscode-css-languageserver",
+    "vscode-html-languageserver",
+    "vscode-json-languageserver",
+    "zola",
+]
+
 gaming = [
     # minecraft
     "glfw",
@@ -231,6 +227,5 @@ gaming = [
     "osu-lazer-bin",    # aur
     "opentabletdriver", # aur - for tablet support
     # steam (multilib repo)
-    "lib32-mesa",
     "steam",
 ]
