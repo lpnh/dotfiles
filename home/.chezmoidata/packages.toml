@@ -207,6 +207,7 @@ dev = [
     "prettier",
     "rust-analyzer",
     "shfmt",
+    "tailwindcss-language-server",
     "taplo-cli",
     "tiled",
     "tokei",
