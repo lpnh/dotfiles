@@ -2,7 +2,6 @@ function yolo
     set -l commands \
         "rustup update" \
         "cargo install-update --all" \
-        "npm update --global" \
         "ya pkg upgrade" \
         "tldr --update"
 

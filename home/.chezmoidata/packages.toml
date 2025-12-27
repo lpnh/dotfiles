@@ -6,35 +6,29 @@ optional = [
     "vulkan-tools",  # to check Vulkan is working
 ]
 
-# optional dev tools
-npm = [
-    "@anthropic-ai/claude-code",
-    "bash-language-server",
-    "fish-lsp",
-    "markdownlint-cli",
-    "prettier",
-    "prettier-plugin-tailwindcss",
-    "tailwindcss",
-    "@tailwindcss/cli",
-    "@tailwindcss/language-server",
-    "vscode-langservers-extracted",
-]
+npm = ["fish-lsp", "vscode-langservers-extracted"]
 
-optional_dev = [
+# dev tools
+dev = [
     "bacon",
+    "bash-language-server",
     "cargo-generate",
+    "eslint-language-server",
     "just",
     "love",
     "lua-language-server",
+    "markdownlint-cli",
     "prettier",
     "rust-analyzer",
-    "shellcheck-bin",      # AUR
     "shfmt",
     "taplo-cli",
     "tiled",
     "tokei",
     "trunk",
     "typos-lsp",
+    "vscode-css-languageserver",
+    "vscode-html-languageserver",
+    "vscode-json-languageserver",
     "zola",
 ]
 
@@ -214,7 +208,7 @@ common = [
     "zsh",
 ]
 
-aur = ["fswatch", "pandoc-bin", "tlrc", "xcursor-breeze"]
+aur = ["fswatch", "pandoc-bin", "shellcheck-bin", "tlrc", "xcursor-breeze"]
 
 desktop = ["lib32-vulkan-radeon", "openrgb", "piper", "vulkan-radeon"]
 
