@@ -21,6 +21,7 @@ alias alice 'sudo reflector --protocol https --verbose --latest 25 --sort rate -
 
 # bat
 alias b 'bat --plain'
+alias ba 'bat --plain --show-all'
 alias bl 'bat --plain --line-range'
 alias bn 'bat --number'
 alias bnl 'bat --number --line-range'
