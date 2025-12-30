@@ -3,6 +3,9 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.fly/bin
 fish_add_path ~/.local/bin # required by `pipx` x.x
 
+# theme
+fish_config theme choose "Catppuccin Mocha"
+
 # ENV
 set -gx DFT_COLOR always
 set -gx EDITOR nvim
@@ -47,5 +50,6 @@ function yay!
 end
 
 # external setups
+fzf --fish | source
 starship init fish | source
 zoxide init fish | source
