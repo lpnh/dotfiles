@@ -117,6 +117,9 @@ alias nv nvim
 # qalc
 alias qc qalc
 
+# rust
+alias rustf 'rustfmt +nightly src/**/*.rs --edition 2024'
+
 # tree-sitter
 alias tg 'tree-sitter generate'
 alias tp 'tree-sitter parse'
