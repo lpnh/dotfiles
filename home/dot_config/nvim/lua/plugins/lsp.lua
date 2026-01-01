@@ -57,12 +57,6 @@ return {
             end
           end,
         },
-        rue = {
-          cmd = (#vim.fs.find('BUCK', { upward = true }) > 0)
-              and { 'buck2', 'run', '//crates/rue-lsp' }
-            or { 'rue-lsp' },
-          filetypes = { 'rue' },
-        },
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
