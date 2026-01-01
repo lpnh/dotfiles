@@ -13,8 +13,9 @@ map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ 'n', 'v' }, '<C-d>', '5j', { noremap = true })
 map({ 'n', 'v' }, '<C-u>', '5k', { noremap = true })
 
--- Alternate buffer
-map('n', '<A-Tab>', '<cmd>b#<CR>', { desc = 'Alternate buffer', silent = true })
+-- Buffer navigation
+map('n', '<A-h>', '<cmd>bp<CR>', { desc = 'Previous buffer' })
+map('n', '<A-l>', '<cmd>bn<CR>', { desc = 'Next buffer' })
 
 -- Window navigation
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to left window' })
