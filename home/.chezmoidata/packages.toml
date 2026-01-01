@@ -124,6 +124,7 @@ common = [
     "chafa",
     "difftastic",
     "discord",
+    "dust",
     "eza",
     "fcitx5-im",
     "fcitx5-mozc",
