@@ -10,6 +10,10 @@ return {
             { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
             { path = 'snacks.nvim', words = { 'Snacks' } },
           },
+          enabled = function(root_dir)
+            local config_path = vim.fn.stdpath 'config'
+            return vim.startswith(vim.fs.normalize(root_dir), vim.fs.normalize(config_path))
+          end,
         },
       },
 
@@ -35,13 +39,24 @@ return {
           },
         },
         lua_ls = {
-          settings = {
-            Lua = {
-              -- handle the "Undefined global" warnings
-              diagnostics = { globals = { 'ya' } },
-              completion = { callSnippet = 'Replace' },
-            },
-          },
+          on_init = function(client)
+            if not client.workspace_folders then
+              return
+            end
+            local root_dir = client.workspace_folders[1].name
+            local yazi_config = vim.fn.expand '~/.config/yazi'
+            if vim.startswith(root_dir, yazi_config) or root_dir:match '%.yazi/?$' then
+              client.config.settings.Lua =
+                vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                  workspace = {
+                    checkThirdParty = false,
+                    library = {
+                      vim.fs.joinpath(yazi_config, 'plugins', 'types.yazi'),
+                    },
+                  },
+                })
+            end
+          end,
         },
         rue = {
           cmd = (#vim.fs.find('BUCK', { upward = true }) > 0)

@@ -121,7 +121,7 @@ return {
     },
   },
 
-  -- Add git related signs to the gutter and other utilities
+  -- Git signs
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -131,24 +131,6 @@ return {
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
-      },
-    },
-  },
-
-  -- Markdown
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = 'markdown',
-    opts = {
-      enabled = false,
-      latex = { enabled = false },
-    },
-    keys = {
-      {
-        '<leader>tm',
-        '<cmd>RenderMarkdown toggle<cr>',
-        ft = 'markdown',
-        desc = 'Toggle MD rendering',
       },
     },
   },

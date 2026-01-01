@@ -15,15 +15,13 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'lazydev', 'path', 'snippets', 'buffer' },
       providers = {
-        markdown = {
-          name = 'RenderMarkdown',
-          module = 'render-markdown.integ.blink',
-          fallbacks = { 'lsp' },
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
         },
         snippets = {
-          score_offset = -5,
           opts = {
             extended_filetypes = {
               html = { 'loremipsum' },
