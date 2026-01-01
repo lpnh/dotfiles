@@ -18,6 +18,8 @@ return {
             FzfLuaHeaderText = { fg = colors.pink },
             FzfLuaLiveSym = { fg = colors.pink },
             FzfLuaBufFlagCur = { fg = colors.pink },
+            SnippetTabstop = {},
+            SnippetTabstopActive = {},
           }
         end,
         -- https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
@@ -39,14 +41,6 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     config = function()
-      local ok, statusline = pcall(require, 'arrow.statusline')
-
-      local function arrow()
-        if ok then
-          return statusline.text_for_statusline_with_icons()
-        end
-      end
-
       local mode_map = {
         n = '(ᴗ_ ᴗ。)',
         nt = '(ᴗ_ ᴗ。)',
@@ -56,10 +50,10 @@ return {
         V = '(⊙ _ ⊙ )',
         no = 'Σ(°△°ꪱꪱꪱ)',
         ['\22'] = '(⊙ _ ⊙ )',
-        t = '(⌐■_■)',
+        t = '(＾▽＾)',
         ['!'] = 'Σ(°△°ꪱꪱꪱ)',
         c = 'Σ(°△°ꪱꪱꪱ)',
-        s = 'SUB',
+        s = '(^_-)',
       }
 
       require('lualine').setup {
@@ -75,6 +69,12 @@ return {
             {
               'mode',
               fmt = function()
+                if vim.snippet and vim.snippet.active() then
+                  return '( ･ω･)ﾉ'
+                end
+                if vim.fn.reg_recording() ~= '' then
+                  return '(・・；)'
+                end
                 return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
               end,
             },
@@ -84,7 +84,7 @@ return {
             { 'diagnostics', separator = { right = '' }, color = { bg = '#363a4f' } },
           },
           lualine_c = { 'filename' },
-          lualine_x = { arrow },
+          lualine_x = {},
           lualine_y = { { 'progress', color = { bg = '#363a4f' } } },
         },
         extensions = { 'lazy', 'oil' },

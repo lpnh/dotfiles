@@ -40,3 +40,14 @@ map('n', '<A-j>', '<cmd>m .+1<CR>==', { desc = 'Move down' })
 map('n', '<A-k>', '<cmd>m .-2<CR>==', { desc = 'Move up' })
 map('i', '<A-j>', '<esc><cmd>m .+1<CR>==gi', { desc = 'Move down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<CR>==gi', { desc = 'Move up' })
+
+-- Exit snippet
+map({ 'n', 's', 'i' }, '<Esc>', function()
+  if vim.snippet.active() then
+    vim.snippet.stop()
+  end
+  local mode = vim.fn.mode()
+  if mode == 's' or mode == 'i' then
+    return '<Esc>'
+  end
+end, { expr = true, desc = 'Exit snippet' })

@@ -50,20 +50,6 @@ return {
     keys = { { '-', '<cmd>Oil<cr>', desc = 'Open parent directory' } },
   },
 
-  -- Arrow
-  {
-    'otavioschwanck/arrow.nvim',
-    opts = {
-      show_icons = true,
-      leader_key = '<A-a>',
-      buffer_leader_key = 'm',
-    },
-    keys = {
-      { '<A-h>', function() require('arrow.persist').previous() end },
-      { '<A-l>', function() require('arrow.persist').next() end },
-    },
-  },
-
   -- Bacon
   {
     'Canop/nvim-bacon',
