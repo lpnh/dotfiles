@@ -26,7 +26,6 @@ return {
         clangd = true,
         cssls = true,
         eslint = true,
-        fish_lsp = true,
         html = {
           filetypes = { 'askama', 'html' },
         },
