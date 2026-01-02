@@ -17,9 +17,14 @@ desc = "Linemode: custom"
 # fr plugin
 
 [[mgr.prepend_keymap]]
-on = ["f", "g"]
+on = ["f", "g", "g"]
 run = "plugin fr rg"
 desc = "fr rg"
+
+[[mgr.prepend_keymap]]
+on = ["f", "g", "a"]
+run = "plugin fr rga"
+desc = "fr rga"
 
 # frank plugin
 
