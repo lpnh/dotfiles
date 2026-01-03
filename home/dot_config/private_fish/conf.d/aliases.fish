@@ -16,6 +16,9 @@ function aliased --description 'edit conf.d/aliases.fish'
     end
 end
 
+# exit
+alias :q 'exit'
+
 # reflector
 alias alice 'sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
 
