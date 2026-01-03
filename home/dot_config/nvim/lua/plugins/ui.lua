@@ -84,7 +84,12 @@ return {
             { 'diagnostics', separator = { right = '' }, color = { bg = '#363a4f' } },
           },
           lualine_c = { 'filename' },
-          lualine_x = {},
+          lualine_x = {
+            {
+              'buffers',
+              hide_filename_extension = true,
+            },
+          },
           lualine_y = { { 'progress', color = { bg = '#363a4f' } } },
         },
         extensions = { 'lazy', 'oil' },
