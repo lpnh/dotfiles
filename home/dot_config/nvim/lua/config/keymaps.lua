@@ -2,8 +2,16 @@ local map = vim.keymap.set
 
 map({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 
--- Clear search highlight
-map('n', '<esc>', '<cmd>nohlsearch<CR>')
+-- Escape snippets and highlights
+map({ 'n', 's', 'i' }, '<esc>', function()
+  if vim.snippet.active() then
+    vim.snippet.stop()
+  end
+  if vim.fn.mode() == 'n' then
+    vim.cmd 'nohlsearch'
+  end
+  return '<esc>'
+end, { expr = true, desc = 'Escape snippets and highlights' })
 
 -- Wrapped text navigation
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -44,14 +52,3 @@ map('n', '<A-j>', '<cmd>m .+1<CR>==', { desc = 'Move down' })
 map('n', '<A-k>', '<cmd>m .-2<CR>==', { desc = 'Move up' })
 map('i', '<A-j>', '<esc><cmd>m .+1<CR>==gi', { desc = 'Move down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<CR>==gi', { desc = 'Move up' })
-
--- Exit snippet
-map({ 'n', 's', 'i' }, '<Esc>', function()
-  if vim.snippet.active() then
-    vim.snippet.stop()
-  end
-  local mode = vim.fn.mode()
-  if mode == 's' or mode == 'i' then
-    return '<Esc>'
-  end
-end, { expr = true, desc = 'Exit snippet' })
