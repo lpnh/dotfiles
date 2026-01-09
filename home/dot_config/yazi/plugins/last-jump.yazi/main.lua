@@ -10,7 +10,7 @@ return {
 			:wait_with_output()
 
 		if output.status.success then
-			ya.manager_emit("cd", { output.stdout })
+			ya.emit("cd", { output.stdout })
 		end
 	end,
 }
