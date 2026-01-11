@@ -71,6 +71,7 @@ return {
       'markdown_inline',
       'query',
       'regex',
+      'ron',
       'rue',
       'rust',
       'sql',
