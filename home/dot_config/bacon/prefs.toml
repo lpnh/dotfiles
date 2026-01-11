@@ -3,7 +3,7 @@ listen = true
 [exports.locations]
 auto = true
 path = ".bacon-locations"
-line_format = "{kind} {path}:{line}:{column} {message}"
+line_format = "{item-idx}: {kind} {path}:{line}:{column} {message}"
 
 [jobs.clippy-nursery]
 command = ["cargo", "clippy", "--all-targets", "--", "-W", "clippy::nursery"]
