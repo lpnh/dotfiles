@@ -137,6 +137,7 @@ common = [
     "git-delta",
     "gitui",
     "glow",
+    "hexyl",
     "imv",
     "jq",
     "jujutsu",
