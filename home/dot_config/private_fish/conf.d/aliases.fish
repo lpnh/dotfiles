@@ -33,6 +33,7 @@ alias bnl 'bat --number --line-range'
 alias bun 'bob update nightly'
 
 # cargo
+alias cdo 'cargo doc --open'
 alias cq 'cargo test --no-fail-fast --quiet'
 alias cargo-upgrade 'cargo +nightly -Zunstable-options update --breaking'
 
@@ -118,6 +119,9 @@ alias lg lazygit
 
 # neovim
 alias nv nvim
+
+# opencode
+alias oc opencode
 
 # qalc
 alias qc qalc
