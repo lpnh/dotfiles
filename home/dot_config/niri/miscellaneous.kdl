@@ -3,6 +3,7 @@
 spawn-at-startup "alacritty"
 spawn-at-startup "firefox"
 spawn-at-startup "niri" "msg" "action" "focus-workspace" "main"
+spawn-at-startup "sometime-daemon"
 
 prefer-no-csd
 

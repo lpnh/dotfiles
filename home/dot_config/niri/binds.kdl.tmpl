@@ -34,8 +34,8 @@ binds {
     Mod+N { spawn "alacritty" "--class" "ncspot" "-T" "ncspot" "-e" "ncspot"; }
     Mod+P hotkey-overlay-title="Aseprite" { spawn "steam" "steam://rungameid/431730"; }
     Mod+T { spawn "thunderbird"; }
-    Mod+W repeat=false { spawn "sometime-clock"; }
-    Mod+Shift+W repeat=false { spawn "sometime-calendar"; }
+    Mod+W repeat=false { spawn "sometime" "clock"; }
+    Mod+Shift+W repeat=false { spawn "sometime" "calendar"; }
     Mod+Y hotkey-overlay-title="Yazi" { spawn "alacritty" "--class" "yazi" "-T" "yazi" "-e" "yazi"; }
 
     {{- if eq .chezmoi.hostname "desktop" }}
