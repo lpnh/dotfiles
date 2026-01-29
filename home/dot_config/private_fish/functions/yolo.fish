@@ -1,7 +1,7 @@
 function yolo
     set -l commands \
         "rustup update" \
-        "cargo install-update --all" \
+        "cargo install-update --all --locked" \
         "ya pkg upgrade" \
         "tldr --update"
 
