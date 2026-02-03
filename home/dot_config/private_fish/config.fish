@@ -4,7 +4,7 @@ fish_add_path ~/.fly/bin
 fish_add_path ~/.local/bin # required by `pipx` x.x
 
 # theme
-fish_config theme choose "Catppuccin Mocha"
+fish_config theme choose catppuccin-mocha
 
 # ENV
 set -gx DFT_COLOR always
