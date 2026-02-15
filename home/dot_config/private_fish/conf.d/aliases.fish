@@ -127,9 +127,6 @@ alias lg lazygit
 # neovim
 alias nv nvim
 
-# opencode
-alias oc opencode
-
 # qalc
 alias qc qalc
 
