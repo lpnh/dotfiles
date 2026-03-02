@@ -7,4 +7,5 @@ function cn
     jj git init
     jj bookmark create main
     jj describe -m "init"
+    jj new
 end
