@@ -2,13 +2,33 @@
 (identifier) @variable
 
 (variable
-  (identifier)) @variable
+  "$" @punctuation.special
+  (identifier) @variable)
 
 (title_header
   (identifier) @type)
 
 (jump_statement
   (identifier) @type)
+
+(enum_statement
+  name: (identifier) @type)
+
+(enum_case_statement
+  name: (identifier) @constant)
+
+(declare_statement
+  type: (identifier) @type)
+
+(member_expression
+  type: (identifier) @type
+  member: (identifier) @variable.member)
+
+(member_expression
+  member: (identifier) @variable.member)
+
+(command_statement .
+  (identifier) @function.call)
 
 ; Literals
 (number) @number
@@ -19,6 +39,7 @@
 
 ; Punctuation
 [
+  "."
   ":"
   "---"
   "==="
@@ -34,18 +55,25 @@
 ; Operators
 [
   "!"
+  "!="
   "%"
+  "%="
   "&&"
   "*"
+  "*="
   "+"
+  "+="
   "-"
+  "-="
   "/"
+  "/="
   "<"
   "<="
   "="
   "=="
   ">"
   ">="
+  "^"
   "and"
   "eq"
   "gt"
@@ -59,6 +87,8 @@
   "xor"
   "||"
 ] @operator
+
+"to" @keyword.operator
 
 ; Keywords
 [
@@ -77,8 +107,10 @@
   "declare"
   "detour"
   "enum"
+  "endenum"
   "jump"
   "once"
+  "endonce"
   "return"
   "set"
   "title"
@@ -96,7 +128,7 @@
 ] @keyword
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
 ; Tags
 (header) @comment
