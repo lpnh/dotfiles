@@ -1,0 +1,15 @@
+{
+    "name": "lpnh-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "askama",
+                    "html",
+                    "rust"
+                ],
+                "path": "./askama.json"
+            }
+        ]
+    }
+}

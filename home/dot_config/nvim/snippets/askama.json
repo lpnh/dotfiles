@@ -1,0 +1,157 @@
+{
+    "Askama expression": {
+        "body": "{{ $1 }}",
+        "prefix": "aex",
+        "description": "Askama expression with escaping"
+    },
+    "Askama block": {
+        "body": "{% block $1 %}$2{% endblock %}",
+        "prefix": "ablk",
+        "description": "Block for template inheritance"
+    },
+    "Askama let assignment": {
+        "body": "{% let $1 = $2 %}",
+        "prefix": "alet",
+        "description": "Variable assignment with let"
+    },
+    "Askama if": {
+        "body": "{% if $1 %}$2{% endif %}",
+        "prefix": "aif",
+        "description": "If conditional block"
+    },
+    "Askama if let some": {
+        "body": "{% if let Some($1) = $2 %}$3{% endif %}",
+        "prefix": "aifle",
+        "description": "If let pattern matching"
+    },
+    "Askama if let some expression": {
+        "body": "{% if let Some($1) = $2 %}{{ $3 }}{% endif %}",
+        "prefix": "aiflex",
+        "description": "If let pattern matching"
+    },
+    "Askama if let some else": {
+        "body": "{% if let Some($1) = $2 %}{{ $3 }}{% else %}$4{% endif %}",
+        "prefix": "aiflete",
+        "description": "If let pattern matching"
+    },
+    "Askama if defined": {
+        "body": "{% if $1 is defined %}$2{% endif %}",
+        "prefix": "aifdef",
+        "description": "Check if variable is defined"
+    },
+    "Askama else if": {
+        "body": "{% else if $1 %}",
+        "prefix": "aelif",
+        "description": "Else if branch"
+    },
+    "Askama else": {
+        "body": "{% else %}$1",
+        "prefix": "aelse",
+        "description": "Else branch"
+    },
+    "Askama endif": {
+        "body": "{% endif %}",
+        "prefix": "aendif",
+        "description": "End if block"
+    },
+    "Askama match": {
+        "body": "{% match $1 %}{% when $2 %}{% when $3 %}{% endmatch %}",
+        "prefix": "amatch",
+        "description": "Match block for enum handling"
+    },
+    "Askama match with": {
+        "body": "{% match $1 %}{% when $2 with ($3) %}{% when $4 with ($5) %}{% endmatch %}",
+        "prefix": "amatchw",
+        "description": "Match block with pattern capture"
+    },
+    "Askama when": {
+        "body": "{% when $1 %}",
+        "prefix": "awhen",
+        "description": "Match arm"
+    },
+    "Askama when with": {
+        "body": "{% when $1 with ($2) %}",
+        "prefix": "awhenwith",
+        "description": "Match arm with capture"
+    },
+    "Askama endmatch": {
+        "body": "{% endmatch %}",
+        "prefix": "aendmatch",
+        "description": "End match block"
+    },
+    "Askama for loop": {
+        "body": "{% for $1 in $2 %}$3{% endfor %}",
+        "prefix": "afor",
+        "description": "For loop block"
+    },
+    "Askama for with else": {
+        "body": "{% for $1 in $2 %}$3{% else %}$4{% endfor %}",
+        "prefix": "aforelse",
+        "description": "For loop with empty else block"
+    },
+    "Askama for with filter": {
+        "body": "{% for $1 in $2 if $3 %}$4{% endfor %}",
+        "prefix": "aforif",
+        "description": "For loop with condition filter"
+    },
+    "Askama endfor": {
+        "body": "{% endfor %}",
+        "prefix": "aendfor",
+        "description": "End for loop"
+    },
+    "Askama continue": {
+        "body": "{% continue %}",
+        "prefix": "acontinue",
+        "description": "Continue to next loop iteration"
+    },
+    "Askama break": {
+        "body": "{% break %}",
+        "prefix": "abreak",
+        "description": "Break out of loop"
+    },
+    "Askama include": {
+        "body": "{% include \"$1\" %}",
+        "prefix": "ainclude",
+        "description": "Include another template"
+    },
+    "Askama extends": {
+        "body": "{% extends \"$1\" %}",
+        "prefix": "aext",
+        "description": "Template inheritance base"
+    },
+    "Askama macro": {
+        "body": "{% macro $1($2) %}$3{% endmacro %}",
+        "prefix": "amacro",
+        "description": "Macro definition"
+    },
+    "Askama call block": {
+        "body": "{% call $1($2) %}$3{% endcall %}",
+        "prefix": "acallback",
+        "description": "Macro call block with body"
+    },
+    "Askama call with args": {
+        "body": "{% call($1) $2($3) %}$4{% endcall %}",
+        "prefix": "acallbackargs",
+        "description": "Macro call block with caller args"
+    },
+    "Askama import": {
+        "body": "{% import \"$1\" as $2 %}",
+        "prefix": "aimport",
+        "description": "Import macros from another template"
+    },
+    "Askama raw": {
+        "body": "{% raw %}$1{% endraw %}",
+        "prefix": "araw",
+        "description": "Raw block"
+    },
+    "Askama comment": {
+        "body": "{# $1 #}",
+        "prefix": "acom",
+        "description": "Askama comment block"
+    },
+    "Askama concat": {
+        "body": "{{ $1 ~ $2 }}",
+        "prefix": "aconcat",
+        "description": "String concatenation"
+    }
+}
