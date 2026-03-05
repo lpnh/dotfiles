@@ -6,7 +6,7 @@ outer-margin=20
 padding=12
 border-radius=8
 max-icon-size=32
-icon-path=/usr/share/icons/Papirus/
+icon-path=/usr/share/icons/breeze-dark/
 default-timeout=5000
 
 # Colors
