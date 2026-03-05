@@ -45,6 +45,7 @@ system = [
     "bluez",
     "bluez-utils",
     "breeze-icons",
+    "breeze-cursors",
     "device-mapper",
     "diffutils",
     "dmidecode",
@@ -184,7 +185,7 @@ common = [
     "zsh",
 ]
 
-aur = ["fswatch", "pandoc-bin", "shellcheck-bin", "tlrc", "xcursor-breeze"]
+aur = ["fswatch", "pandoc-bin", "shellcheck-bin", "tlrc"]
 
 desktop = ["lib32-vulkan-radeon", "openrgb", "piper", "vulkan-radeon"]
 
