@@ -16,7 +16,7 @@ environment {
 }
 
 cursor {
-    xcursor-theme "Breeze"
+    xcursor-theme "breeze_cursors"
 
     hide-when-typing
     hide-after-inactive-ms 1000
