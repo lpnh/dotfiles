@@ -77,7 +77,6 @@ system = [
     "noto-fonts-cjk",
     "noto-fonts-extra",
     "p7zip",
-    "papirus-icon-theme",
     "parted",
     "pipewire",
     "pipewire-alsa",
