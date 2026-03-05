@@ -110,9 +110,14 @@ desc = "Switch or create tab 2"
 # https://github.com/yazi-rs/plugins
 
 [[mgr.prepend_keymap]]
-on   = "F"
-run  = "plugin toggle-pane min-parent"
-desc = "Custom layout"
+on = "F"
+run = "plugin toggle-pane min-parent"
+desc = "Resize preview"
+
+[[mgr.prepend_keymap]]
+on = "T"
+run = "plugin toggle-pane min-preview"
+desc = "Hide or show preview"
 
 [[mgr.prepend_keymap]]
 on = "M"
@@ -122,8 +127,3 @@ run = 'plugin mount'
 on = ["l"]
 run = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
-
-[[mgr.prepend_keymap]]
-on = "T"
-run = "plugin hide-preview"
-desc = "Hide or show preview"

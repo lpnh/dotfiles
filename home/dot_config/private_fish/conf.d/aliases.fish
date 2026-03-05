@@ -1,7 +1,4 @@
-# function to edit the aliases file without alias warnings
 function aliased --description 'edit conf.d/aliases.fish'
-    # when executing `aliased`, the file will be opened without alias warnings
-    set -lx fish_lsp_diagnostic_disable_error_codes 2001 2002
     $EDITOR ~/.config/fish/conf.d/aliases.fish
 
     fish --no-execute ~/.config/fish/conf.d/aliases.fish

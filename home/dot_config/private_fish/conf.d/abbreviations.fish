@@ -1,4 +1,3 @@
-# function to edit the abbreviations file without warnings
 function abbred --description 'edit conf.d/abbreviations.fish'
     $EDITOR ~/.config/fish/conf.d/abbreviations.fish
 
