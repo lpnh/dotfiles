@@ -5,16 +5,16 @@ width=300
 outer-margin=20
 padding=12
 border-radius=8
-max-icon-size=32
-icon-path=/usr/share/icons/breeze-dark/
+max-icon-size=48
+icon-path=/usr/share/icons/breeze-dark/:/usr/share/icons/Papirus
 default-timeout=5000
 
 # Colors
 
-background-color=#1e1e2edd
+background-color=#1e1e2e99
 text-color=#cdd6f4
-border-color=#eba0acdd
-progress-color=over #313244dd
+border-color=#eba0ac99
+progress-color=over #31324499
 
 [urgency=high]
-border-color=#fab387dd
+border-color=#fab38799
