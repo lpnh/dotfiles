@@ -99,16 +99,23 @@ return {
     'stevearc/conform.nvim',
     lazy = false,
     opts = {
-      notify_on_error = false,
+      default_format_opts = {
+        lsp_format = 'fallback',
+      },
       format_on_save = {
         timeout_ms = 500,
-        lsp_format = 'fallback',
       },
       formatters_by_ft = {
         askama = { 'kirei' },
         css = { 'prettier' },
         html = { 'prettier' },
-        javascript = { 'prettier' },
+        javascript = function(bufnr)
+          local file = vim.api.nvim_buf_get_name(bufnr)
+          if file:match 'grammar' then
+            return { 'eslint' }
+          end
+          return { 'prettier' }
+        end,
         lua = { 'stylua' },
         typescript = { 'prettier' },
       },
@@ -126,7 +133,7 @@ return {
     keys = {
       {
         '<leader>F',
-        function() require('conform').format { async = true, lsp_format = 'fallback' } end,
+        function() require('conform').format { async = true } end,
         desc = 'Format',
       },
     },

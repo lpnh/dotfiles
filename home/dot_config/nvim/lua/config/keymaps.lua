@@ -41,7 +41,7 @@ map('n', '<C-S-j>', '<C-w>s', { noremap = true, silent = true, desc = 'Split win
 map('n', '<leader>c', '<cmd>close<CR>', { desc = 'Close window' })
 
 -- Close all buffers except current one
-map('n', '<leader>bc', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close other buffers' })
+map('n', '<leader>C', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close other buffers' })
 
 -- Paste and delete using the black hole
 map('v', '<leader>p', '"_dP', { desc = 'Paste' })
