@@ -132,6 +132,9 @@ alias nv nvim
 # qalc
 alias qc qalc
 
+# ripgrep
+alias rgl 'rg -l'
+
 # rust
 alias rustf 'rustfmt +nightly src/**/*.rs --edition 2024'
 
