@@ -158,6 +158,7 @@ common = [
     "nvtop",
     "otf-firamono-nerd",
     "otf-font-awesome",
+    "resvg",
     "ripgrep",
     "ripgrep-all",
     "rnote",
