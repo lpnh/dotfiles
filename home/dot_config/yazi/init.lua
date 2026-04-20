@@ -38,6 +38,7 @@ require("frank"):setup {
 			.. [[ --field-context-separator=" "]]
 			.. [[ --field-match-separator=" "]],
 	},
+	img_preview = 'chafa --size=$FZF_PREVIEW_COLUMNS"x"$FZF_PREVIEW_LINES',
 }
 
 require("mime-ext.local"):setup {

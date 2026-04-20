@@ -24,13 +24,15 @@ url = "*"
 run = 'piper -- hexyl --border=none --terminal-width=$w "$1"'
 
 [[plugin.prepend_fetchers]]
-id   = "mime"
+id   = "mime" # remove this in the next stable release
 url  = "local://*"
 run  = "mime-ext.local"
 prio = "high"
+# group = "mime"
 
 [[plugin.prepend_fetchers]]
-id   = "mime"
+id   = "mime" # remove this in the next stable release
 url  = "remote://*"
 run  = "mime-ext.remote"
 prio = "high"
+# group = "mime"
