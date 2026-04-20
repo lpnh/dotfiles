@@ -177,7 +177,6 @@ common = [
     "ttf-nerd-fonts-symbols",
     "ttf-noto-nerd",
     "typos",
-    "wakatime",
     "waybar",
     "wev",
     "wlsunset",
