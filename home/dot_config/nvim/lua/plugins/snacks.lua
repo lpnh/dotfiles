@@ -47,8 +47,6 @@ return {
   },
   keys = {
     -- stylua: ignore start
-    { '<leader>pn', function() Snacks.scratch() end, desc = 'New buffer' },
-    { '<leader>ps', function() Snacks.scratch.select() end, desc = 'Select buffer' },
     { '<leader>n', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
     { 'grf', function() Snacks.rename.rename_file() end, desc = 'Rename file' },
     -- stylua: ignore end

@@ -37,8 +37,14 @@ map('n', '<C-S-l>', '<C-w>v', { noremap = true, silent = true, desc = 'Split win
 -- Split window horizontally (new window at the bottom)
 map('n', '<C-S-j>', '<C-w>s', { noremap = true, silent = true, desc = 'Split window horizontally' })
 
--- Close window
-map('n', '<leader>c', '<cmd>close<CR>', { desc = 'Close window' })
+-- Close buffer or window
+vim.keymap.set('n', '<leader>c', function()
+  if vim.bo.buftype == '' then
+    vim.cmd 'bdelete'
+  else
+    vim.cmd 'close'
+  end
+end, { desc = 'Close buffer or window' })
 
 -- Close all buffers except current one
 map('n', '<leader>C', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close other buffers' })

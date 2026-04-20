@@ -16,9 +16,6 @@ return {
           end,
         },
       },
-
-      -- Schema information
-      'b0o/SchemaStore.nvim',
     },
     config = function()
       local servers = {
@@ -32,7 +29,6 @@ return {
         jsonls = {
           settings = {
             json = {
-              schemas = require('schemastore').json.schemas(),
               validate = { enable = true },
             },
           },

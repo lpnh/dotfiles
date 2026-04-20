@@ -1,7 +1,4 @@
 return {
-  -- Wakatime
-  -- { 'wakatime/vim-wakatime', lazy = false },
-
   -- Find and replace
   {
     'MagicDuck/grug-far.nvim',
