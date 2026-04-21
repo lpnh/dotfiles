@@ -38,7 +38,7 @@ require("frank"):setup {
 			.. [[ --field-context-separator=" "]]
 			.. [[ --field-match-separator=" "]],
 	},
-	img_preview = 'chafa --size=$FZF_PREVIEW_COLUMNS"x"$FZF_PREVIEW_LINES',
+	img_preview = 'chafa --size=$FZF_PREVIEW_COLUMNS"x"(math $FZF_PREVIEW_LINES - 3)',
 }
 
 require("mime-ext.local"):setup {
