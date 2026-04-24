@@ -1,6 +1,7 @@
 return {
   'saghen/blink.cmp',
   dependencies = 'rafamadriz/friendly-snippets',
+  branch = 'v1',
   build = 'cargo build --release',
   event = 'InsertEnter',
   opts = {
