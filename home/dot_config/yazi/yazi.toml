@@ -1,5 +1,3 @@
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
-
 [mgr]
 ratio = [1, 3, 4]
 sort_by = "mtime"
@@ -24,15 +22,13 @@ url = "*"
 run = 'piper -- hexyl --border=none --terminal-width=$w "$1"'
 
 [[plugin.prepend_fetchers]]
-id   = "mime" # remove this in the next stable release
 url  = "local://*"
 run  = "mime-ext.local"
 prio = "high"
-# group = "mime"
+group = "mime"
 
 [[plugin.prepend_fetchers]]
-id   = "mime" # remove this in the next stable release
 url  = "remote://*"
 run  = "mime-ext.remote"
 prio = "high"
-# group = "mime"
+group = "mime"
