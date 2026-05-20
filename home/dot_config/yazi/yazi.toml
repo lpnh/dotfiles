@@ -17,9 +17,9 @@ for = "unix"
 url = "*.md"
 run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=$HOME/.config/glow/mocha.json "$1"'
 
-[[plugin.append_previewers]]
-url = "*"
-run = 'piper -- hexyl --border=none --terminal-width=$w "$1"'
+# [[plugin.append_previewers]]
+# url = "*"
+# run = 'piper -- hexyl --border=none --terminal-width=$w "$1"'
 
 [[plugin.prepend_fetchers]]
 url  = "local://*"
