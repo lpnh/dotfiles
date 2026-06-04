@@ -99,6 +99,7 @@ alias jb 'jj bookmark'
 alias jbl 'jj bookmark list'
 alias jbm 'jj bookmark move'
 alias jbm- 'jj bookmark move --to @-'
+alias jbt 'jj bookmark track'
 alias jd 'jj diff'
 alias jd- 'jj diff -r @-'
 alias jds 'jj diff --summary'
@@ -134,9 +135,6 @@ alias qc qalc
 
 # ripgrep
 alias rgl 'rg -l'
-
-# rust
-alias rustf 'rustfmt +nightly src/**/*.rs --edition 2024'
 
 # tree-sitter
 alias tg 'tree-sitter generate'
