@@ -2,7 +2,7 @@ ignore-empty-password
 
 daemonize
 
-image=$HOME/.config/assets/lock.png
+image=$HOME/.config/tori/assets/lock.png
 
 font=FiraMono Nerd Font
 hide-keyboard-layout
