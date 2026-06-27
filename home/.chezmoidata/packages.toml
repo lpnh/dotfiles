@@ -46,6 +46,7 @@ system = [
     "bluez-utils",
     "breeze-icons",
     "breeze-cursors",
+    "breeze-gtk",               # gtk 3.0 and 4.0
     "device-mapper",
     "diffutils",
     "dmidecode",
@@ -59,6 +60,7 @@ system = [
     "freetype2",
     "geoclue",
     "gnome-keyring",
+    "gnome-themes-extra",       # gtk 2.0
     "hunspell-en_us",
     "imagemagick",
     "inter-font",
@@ -69,7 +71,6 @@ system = [
     "lvm2",
     "man-db",
     "man-pages",
-    "materia-gtk-theme",
     "mdadm",
     "modemmanager",
     "noto-fonts",
