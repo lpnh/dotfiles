@@ -10,7 +10,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/ss %Y-%m-%d %H-%M-%S.png"
 
 environment {
-    GTK_THEME "Materia-dark"
+    GTK_THEME "Breeze-Dark"
     QT_QPA_PLATFORM "wayland"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 }
