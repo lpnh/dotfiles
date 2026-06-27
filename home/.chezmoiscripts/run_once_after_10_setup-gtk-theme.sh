@@ -14,9 +14,9 @@ display_gtk_settings() {
 update_gtk_settings() {
     echo -e "\nupdating GTK theme..."
 
-    gsettings set org.gnome.desktop.interface gtk-theme 'Materia-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Breeze-Dark'
     gsettings set org.gnome.desktop.interface icon-theme 'breeze-dark'
-    gsettings set org.gnome.desktop.interface font-name 'Inter Medium 10.5'
+    gsettings set org.gnome.desktop.interface font-name 'Noto Sans 11'
     gsettings set org.gnome.desktop.interface cursor-theme 'breeze_cursors'
     gsettings set org.gnome.desktop.interface cursor-size 24
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
