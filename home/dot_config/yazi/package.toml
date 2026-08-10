@@ -1,16 +1,16 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "8cd50c6"
-hash = "e3260d0b1feded8c8e3ae3afa1169e30"
+rev = "0be29a9"
+hash = "46cbdc05596a3ecd730b288e28c7079d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "8cd50c6"
-hash = "2678c84a0b3a0b22504e918ccaf99011"
+rev = "0be29a9"
+hash = "a7bf2e1ae72ff22eb21700e12416508e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "8cd50c6"
+rev = "0be29a9"
 hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[plugin.deps]]
@@ -20,12 +20,12 @@ hash = "ed6ef316e1d4f76ec9fd77080f48fbcf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "8cd50c6"
-hash = "e0d59bd47866a6a574c74574097e5070"
+rev = "0be29a9"
+hash = "f23ecc89ce0f9eeefdd4cea14e2a9ba7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "8cd50c6"
+rev = "0be29a9"
 hash = "15e5b67a241172cbb86b8fbf9e63692"
 
 [[plugin.deps]]
@@ -35,15 +35,15 @@ hash = "8b0e87c3176e0d44f79a8656f79f0fa"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "8cd50c6"
+rev = "0be29a9"
 hash = "9105494e98299f392aee95340066da9f"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "4770a34"
-hash = "7dfe41c9c3d9be76da8a844263d0bbed"
+rev = "be0b21d"
+hash = "ce320f877fe709b189433941aba747c4"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-latte"
-rev = "4770a34"
-hash = "b8f46853c27707115f25f3423a47bd38"
+rev = "be0b21d"
+hash = "273ee53369ccfbf7feb9b0c65e387ed8"
