@@ -1,16 +1,16 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "4dc7f1b"
+rev = "f703392"
 hash = "b95f898e6dc60b52edbc415952e14395"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "4dc7f1b"
+rev = "f703392"
 hash = "3bcc00df11efc3ae5d15f2dba860be7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "4dc7f1b"
+rev = "f703392"
 hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[plugin.deps]]
@@ -20,12 +20,12 @@ hash = "ed6ef316e1d4f76ec9fd77080f48fbcf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "4dc7f1b"
-hash = "45a533508a9840cc5a10cf6129f63e6a"
+rev = "f703392"
+hash = "d1e0499cae5f3aeb628c267616d4b682"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "4dc7f1b"
+rev = "f703392"
 hash = "5b2fbef7d1513ce38ff72623a071a5e"
 
 [[plugin.deps]]
@@ -35,7 +35,7 @@ hash = "8b0e87c3176e0d44f79a8656f79f0fa"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "4dc7f1b"
+rev = "f703392"
 hash = "d368d5a6a72657e1c0e7ee7340dcea8c"
 
 [[flavor.deps]]
