@@ -35,3 +35,15 @@ layer-rule {
     match namespace="^wallpaper$"
     place-within-backdrop true
 }
+
+window-rule {
+    match app-id="ueberzugpp_"
+    open-focused false
+    open-floating true
+    default-floating-position x=0 y=0 relative-to="top-right"
+
+    border {
+        width 8
+        inactive-color "#00000000"
+    }
+}
